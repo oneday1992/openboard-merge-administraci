@@ -356,6 +356,7 @@ UBGraphicsScene::UBGraphicsScene(UBDocumentProxy* parent, bool enableUndoRedoSta
 //    Just for debug. Do not delete please
 //    connect(this, SIGNAL(selectionChanged()), this, SLOT(selectionChangedProcessing()));
     connect(UBApplication::undoStack.data(), SIGNAL(indexChanged(int)), this, SLOT(updateSelectionFrameWrapper(int)));
+    connect(this, SIGNAL(selectionChanged()), this, SLOT(updateGroupButtonState()));
 }
 
 UBGraphicsScene::~UBGraphicsScene()
@@ -377,6 +378,40 @@ void UBGraphicsScene::selectionChangedProcessing()
 
     }
 }
+
+void UBGraphicsScene::updateGroupButtonState()
+{
+
+    UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
+    if (UBStylusTool::Selector != currentTool && UBStylusTool::Play != currentTool)
+        return;
+
+    QAction *groupAction = UBApplication::mainWindow->actionGroupItems;
+    QList<QGraphicsItem*> selItems = selectedItems();
+    int selCount = selItems.count();
+
+    if (selCount < 1) {
+        //issue NC - NNE - 20131128 : correction bug of group action icon
+        groupAction->setChecked(false);
+        groupAction->setEnabled(false);
+        groupAction->setText(UBApplication::app()->boardController->actionGroupText());
+
+    } else if (selCount == 1) {
+        if (selItems.first()->type() == UBGraphicsGroupContainerItem::Type) {
+            //issue NC - NNE - 20131128 : correction bug of group action icon
+            groupAction->setChecked(true);
+            groupAction->setEnabled(true);
+            groupAction->setText(UBApplication::app()->boardController->actionUngroupText());
+        } else {
+            groupAction->setEnabled(false);
+        }
+
+    } else if (selCount > 1) {
+        groupAction->setEnabled(true);
+        groupAction->setText(UBApplication::app()->boardController->actionGroupText());
+    }
+}
+
 
 bool UBGraphicsScene::inputDevicePress(const QPointF& scenePos, const qreal& pressure)
 {

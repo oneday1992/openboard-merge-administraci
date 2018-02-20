@@ -77,6 +77,8 @@ class UBActionPalette : public UBFloatingPalette
 
         UBActionPaletteButton* getButtonFromAction(QAction* action);
 
+        Qt::Orientation orientation() const {return mOrientation;}
+
     public slots:
         void close();
 
@@ -104,6 +106,7 @@ class UBActionPalette : public UBFloatingPalette
         QSize mButtonSize;
         QPoint mMousePos;
         UBActionPaletteButton *createPaletteButton(QAction* action, QWidget *parent);
+        Qt::Orientation mOrientation;
 
     private slots:
         void buttonClicked();

@@ -975,6 +975,9 @@ void UBBoardView::longPressEvent()
 
 void UBBoardView::mousePressEvent (QMouseEvent *event)
 {
+    //EV-7 - NNE - 20131231
+    emit mousePress(event);
+
     if (!bIsControl && !bIsDesktop) {
         event->ignore();
         return;
@@ -1097,6 +1100,9 @@ void UBBoardView::mouseMoveEvent (QMouseEvent *event)
     //    if (!lastCallTime.isNull()) {
     //        qDebug() << "time interval is " << lastCallTime.msecsTo(QTime::currentTime());
     //    }
+
+    //EV-7 - NNE - 20131231
+    emit mouseMove(event);
 
     //  QTime mouseMoveTime = QTime::currentTime();
     if(!mIsDragInProgress && ((mapToScene(event->pos()) - mLastPressedMousePos).manhattanLength() < QApplication::startDragDistance())) {
@@ -1227,6 +1233,10 @@ void UBBoardView::mouseMoveEvent (QMouseEvent *event)
 
 void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
 {
+
+    //EV-7 - NNE - 20131231
+    emit mouseRelease(event);
+
     UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController ()->stylusTool ();
 
     setToolCursor (currentTool);
@@ -1743,7 +1753,7 @@ void UBBoardView::setToolCursor (int tool)
         controlViewport->setCursor (UBResources::resources ()->penCursor);
         break;
     default:
-        Q_ASSERT (false);
+        //Q_ASSERT (false);
         //failsafe
         controlViewport->setCursor (UBResources::resources ()->penCursor);
     }

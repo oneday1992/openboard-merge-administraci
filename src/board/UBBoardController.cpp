@@ -156,7 +156,12 @@ void UBBoardController::init()
 
     setActiveDocumentScene(doc);
 
+    connect(UBApplication::mainWindow->actionGroupItems, SIGNAL(triggered()), this, SLOT(groupButtonClicked()));
+
     undoRedoStateChange(true);
+
+    //EV-7 - NNE - 20131231
+    mShapeFactory.init();
 
 }
 
@@ -207,6 +212,7 @@ void UBBoardController::setupViews()
     mPaletteManager = new UBBoardPaletteManager(mControlContainer, this);
     connect(this, SIGNAL(activeSceneChanged()), mPaletteManager, SLOT(activeSceneChanged()));
 }
+
 
 
 void UBBoardController::setupLayout()
@@ -986,6 +992,37 @@ void UBBoardController::lastScene()
 
     updateActionStates();
 }
+
+void UBBoardController::groupButtonClicked()
+{
+    QAction *groupAction = UBApplication::mainWindow->actionGroupItems;
+    QList<QGraphicsItem*> selItems = activeScene()->selectedItems();
+    if (!selItems.count()) {
+        qDebug() << "Got grouping request when there is no any selected item on the scene";
+        return;
+    }
+
+    if (groupAction->text() == mActionGroupText) { //The only way to get information from item, considering using smth else
+        UBGraphicsGroupContainerItem *groupItem = activeScene()->createGroup(selItems);
+        groupItem->setSelected(true);
+        UBDrawingController::drawingController()->setStylusTool(UBStylusTool::Selector);
+
+    }
+    else if (groupAction->text() == mActionUngroupText) {
+        //Considering one selected item and it's a group
+        if (selItems.count() > 1)
+        {
+            qDebug() << "can't make sense of ungrouping more then one item. Grouping action should be performed for that purpose";
+            return;
+        }
+        UBGraphicsGroupContainerItem *currentGroup = dynamic_cast<UBGraphicsGroupContainerItem*>(selItems.first());
+        if (currentGroup) {
+            /*currentGroup->Delegate()->setAction(0);*/
+            currentGroup->destroy();
+        }
+    }
+}
+
 
 void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, const QPointF& pPos, const QSize& pSize, bool isBackground, bool internalData)
 {
@@ -2058,6 +2095,21 @@ void UBBoardController::saveViewState()
     }
 }
 
+void UBBoardController::updateBackgroundState()
+{
+    //adjust background style
+    QString newBackgroundStyle;
+
+    if (mActiveScene && mActiveScene->isDarkBackground())
+    {
+        newBackgroundStyle ="QWidget {background-color: #0E0E0E}";
+    }
+    else
+    {
+        newBackgroundStyle ="QWidget {background-color: #F1F1F1}";
+    }
+}
+
 void UBBoardController::stylusToolChanged(int tool)
 {
     if (UBPlatformUtils::hasVirtualKeyboard() && mPaletteManager->mKeyboardPalette)
@@ -2070,6 +2122,30 @@ void UBBoardController::stylusToolChanged(int tool)
         }
     }
 
+    QButtonGroup * buttonGroup = NULL;
+    if (tool == UBStylusTool::Drawing || tool == UBStylusTool::ChangeFill)
+    {
+        buttonGroup = paletteManager()->stylusPalette()->buttonGroup();
+    }
+    else
+    {
+        buttonGroup = paletteManager()->drawingPalette()->buttonGroup();
+    }
+
+    if (buttonGroup->checkedButton())
+    {
+        QToolButton * toolButton = dynamic_cast<QToolButton*>(buttonGroup->checkedButton());
+        if (toolButton && toolButton->defaultAction())
+        {
+            buttonGroup->setExclusive(false);
+            //buttonGroup->checkedButton()->setChecked(false);
+            toolButton->defaultAction()->toggle();
+            //buttonGroup->checkedButton()->toggle();
+            buttonGroup->setExclusive(true);
+        }
+    }
+
+    updateBackgroundState();
 }
 
 

@@ -74,6 +74,11 @@ signals:
     void shown();
     void mouseReleased();
 
+    //EV-7 - NNE - 20131231
+    void mouseMove(QMouseEvent* event);
+    void mousePress(QMouseEvent* event);
+    void mouseRelease(QMouseEvent* event);
+
 protected:
 
     bool itemIsLocked(QGraphicsItem *item);

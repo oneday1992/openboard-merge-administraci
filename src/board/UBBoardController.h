@@ -38,6 +38,7 @@
 
 #include "document/UBDocumentContainer.h"
 #include "core/UBApplicationController.h"
+#include "domain/UBShapeFactory.h"
 
 class UBMainWindow;
 class UBApplication;
@@ -158,6 +159,13 @@ class UBBoardController : public UBDocumentContainer
         {
             return mSystemScaleFactor;
         }
+
+        //EV-7 - NNE - 20140106
+        UBShapeFactory& shapeFactory()
+        {
+            return mShapeFactory;
+        }
+
         qreal currentZoom();
         void persistCurrentScene(bool isAnAutomaticBackup = false, bool forceImmediateSave = false);
         void showNewVersionAvailable(bool automatic, const UBVersion &installedVersion, const UBSoftwareUpdate &softwareUpdate);
@@ -216,6 +224,7 @@ class UBBoardController : public UBDocumentContainer
         void nextScene();
         void firstScene();
         void lastScene();
+        void groupButtonClicked();
         void downloadURL(const QUrl& url, QString contentSourceUrl = QString(), const QPointF& pPos = QPointF(0.0, 0.0), const QSize& pSize = QSize(), bool isBackground = false, bool internalData = false);
         UBItem *downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl contentUrl, QString pHeader,
                                  QByteArray pData, QPointF pPos, QSize pSize,
@@ -317,11 +326,16 @@ class UBBoardController : public UBDocumentContainer
 
         QTimer *mAutosaveTimer;
 
+        //EV-7 - NNE - 20131230
+        UBShapeFactory mShapeFactory;
+
+
     private slots:
         void stylusToolDoubleClicked(int tool);
         void boardViewResized(QResizeEvent* event);
         void documentWillBeDeleted(UBDocumentProxy* pProxy);
         void updateBackgroundActionsState(bool isDark, bool isCrossed);
+        void updateBackgroundState();
         void colorPaletteChanged();
         void libraryDialogClosed(int ret);
         void lastWindowClosed();

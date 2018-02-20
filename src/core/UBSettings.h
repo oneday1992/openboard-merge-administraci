@@ -243,6 +243,8 @@ class UBSettings : public QObject
         UBSetting* appToolBarOrientationVertical;
         UBSetting* appPreferredLanguage;
 
+        UBSetting* appDrawingPaletteOrientationHorizontal;
+
         UBSetting* appIsInSoftwareUpdateProcess;
 
         UBSetting* appLastSessionDocumentUUID;

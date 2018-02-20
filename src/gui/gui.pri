@@ -40,7 +40,16 @@ HEADERS += src/gui/UBThumbnailView.h \
     src/gui/UBFeaturesActionBar.h \
     src/gui/UBMessagesDialog.h \
     src/gui/UBOpenSankoreImporterWidget.h \
-    src/gui/UBStartupHintsPalette.h
+    src/gui/UBStartupHintsPalette.h \
+    $$PWD/UBDrawingPalette.h \
+    $$PWD/UBDrawingStrokePropertiesPalette.h \
+    $$PWD/UBDrawingPolygonPalette.h \
+    $$PWD/UBDrawingFillPropertiesPalette.h \
+    $$PWD/UBDrawingArrowsPropertiesPalette.h \
+    $$PWD/UBRegularShapesPalette.h \
+    $$PWD/UBShapesPalette.h \
+    $$PWD/UBAbstractSubPalette.h \
+    $$PWD/UBAlignObjectPalette.h
 SOURCES += src/gui/UBThumbnailView.cpp \
     src/gui/UBFloatingPalette.cpp \
     src/gui/UBToolbarButtonGroup.cpp \
@@ -83,7 +92,16 @@ SOURCES += src/gui/UBThumbnailView.cpp \
     src/gui/UBFeaturesActionBar.cpp \
     src/gui/UBMessagesDialog.cpp \
     src/gui/UBOpenSankoreImporterWidget.cpp \
-    src/gui/UBStartupHintsPalette.cpp
+    src/gui/UBStartupHintsPalette.cpp \
+    $$PWD/UBDrawingPalette.cpp \
+    $$PWD/UBDrawingStrokePropertiesPalette.cpp \
+    $$PWD/UBDrawingPolygonPalette.cpp \
+    $$PWD/UBDrawingFillPropertiesPalette.cpp \
+    $$PWD/UBDrawingArrowsPropertiesPalette.cpp \
+    $$PWD/UBRegularShapesPalette.cpp \
+    $$PWD/UBShapesPalette.cpp \
+    $$PWD/UBAbstractSubPalette.cpp \
+    $$PWD/UBAlignObjectPalette.cpp
 win32:SOURCES += src/gui/UBKeyboardPalette_win.cpp
 macx:OBJECTIVE_SOURCES += src/gui/UBKeyboardPalette_mac.mm
 linux-g++:SOURCES += src/gui/UBKeyboardPalette_linux.cpp

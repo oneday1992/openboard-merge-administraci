@@ -229,6 +229,8 @@ void UBSettings::init()
     appToolBarOrientationVertical = new UBSetting(this, "App", "ToolBarOrientationVertical", false);
     appPreferredLanguage = new UBSetting(this,"App","PreferredLanguage", "");
 
+    appDrawingPaletteOrientationHorizontal = new UBSetting(this, "App", "DrawingPaletteOrientationHorizontal", false);
+
     rightLibPaletteBoardModeWidth = new UBSetting(this, "Board", "RightLibPaletteBoardModeWidth", 270);
     rightLibPaletteBoardModeIsCollapsed = new UBSetting(this,"Board", "RightLibPaletteBoardModeIsCollapsed",true);
     rightLibPaletteDesktopModeWidth = new UBSetting(this, "Board", "RightLibPaletteDesktopModeWidth", 270);
@@ -247,7 +249,7 @@ void UBSettings::init()
 
     appLookForOpenSankoreInstall = new UBSetting(this, "App", "LookForOpenSankoreInstall", true);
 
-    appStartMode = new UBSetting(this, "App", "StartMode", "1");
+    appStartMode = new UBSetting(this, "App", "StartMode", "");
 
     featureSliderPosition = new UBSetting(this, "Board", "FeatureSliderPosition", 40);
 

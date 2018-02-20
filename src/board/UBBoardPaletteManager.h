@@ -40,10 +40,13 @@
 #include "gui/UBDockDownloadWidget.h"
 #include "core/UBApplicationController.h"
 #include "gui/UBFeaturesWidget.h"
+#include "gui/UBStylusPalette.h"
+#include "gui/UBDrawingPalette.h"
 
 
 class UBWebToolsPalette;
 class UBStylusPalette;
+class UBDrawingPalette;
 class UBClockPalette;
 class UBPageNumberPalette;
 class UBZoomPalette;
@@ -67,7 +70,8 @@ class UBBoardPaletteManager : public QObject
         UBLeftPalette* leftPalette(){return mLeftPalette;}
         UBRightPalette* rightPalette(){return mRightPalette;}
         UBStylusPalette* stylusPalette(){return mStylusPalette;}
-        UBActionPalette *addItemPalette() {return mAddItemPalette;}
+        UBDrawingPalette* drawingPalette() { return mDrawingPalette; }
+        UBActionPalette *addItemPalette() {return mAddItemPalette;}        
         void showVirtualKeyboard(bool show = true);
         void initPalettesPosAtStartup();
         void refreshPalettes();
@@ -105,6 +109,7 @@ class UBBoardPaletteManager : public QObject
         UBBoardController *mBoardControler;
 
         UBStylusPalette *mStylusPalette;
+        UBDrawingPalette *mDrawingPalette;
 
         UBZoomPalette *mZoomPalette;
 	UBStartupHintsPalette* mTipPalette;
@@ -158,6 +163,7 @@ class UBBoardPaletteManager : public QObject
 
         void toggleStylusPalette(bool checked);
         void tooglePodcastPalette(bool checked);
+        void toggleDrawingPalette(bool checked);
 
         void erasePaletteButtonPressed();
         void erasePaletteButtonReleased();

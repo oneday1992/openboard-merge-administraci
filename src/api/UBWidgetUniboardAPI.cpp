@@ -216,7 +216,7 @@ void UBWidgetUniboardAPI::addObject(QString pUrl, int width, int height, int x, 
     if (UBApplication::boardController->activeScene() != mScene)
         return;
 
-    UBApplication::boardController->downloadURL(QUrl(pUrl), QString(), QPointF(x, y), QSize(width, height), background);
+    /*UBApplication::boardController->downloadURL(QUrl(pUrl), QString(), QPointF(x, y), QSize(width, height), background);*/
 
 }
 
@@ -246,7 +246,7 @@ void UBWidgetUniboardAPI::drawLineTo(const qreal x, const qreal y, const qreal p
         return;
 
     if (mScene)
-    mScene->drawLineTo(QPointF(x, y), pWidth, 
+    mScene->drawLineTo(QPointF(x, y), pWidth,
         UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line);
 }
 
@@ -409,6 +409,10 @@ QString UBWidgetUniboardAPI::preference(const QString& key , const QString& pDef
     }
 }
 
+bool UBWidgetUniboardAPI::currentToolIsSelector()
+{
+    return ((UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Selector);
+}
 
 QStringList UBWidgetUniboardAPI::preferenceKeys()
 {
