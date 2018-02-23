@@ -506,5 +506,6 @@
         <file>images/toque.svg</file>
         <file>images/underline.svg</file>
         <file>images/uniboard.png</file>
+        <file>images/toolbar/pecs.png</file>
     </qresource>
 </RCC>
