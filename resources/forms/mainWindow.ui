@@ -2305,6 +2305,24 @@
     <string>Group items</string>
    </property>
   </action>
+  <action name="actionLineCustom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../OpenBoard.qrc">
+     <normaloff>:/images/toolbar/plusBlack.png</normaloff>:/images/toolbar/plusBlack.png</iconset>
+   </property>
+   <property name="text">
+    <string>Line</string>
+   </property>
+   <property name="toolTip">
+    <string>Custom Line</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../OpenBoard.qrc"/>

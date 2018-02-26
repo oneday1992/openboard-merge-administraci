@@ -30,6 +30,7 @@
 #include "UBBoardController.h"
 
 #include <QtWidgets>
+#include <QSlider>
 #include <QtWebKitWidgets>
 
 #include "frameworks/UBFileSystemUtils.h"
@@ -307,6 +308,8 @@ void UBBoardController::setupToolbar()
     lineWidthActions.append(mMainWindow->actionLineSmall);
     lineWidthActions.append(mMainWindow->actionLineMedium);
     lineWidthActions.append(mMainWindow->actionLineLarge);
+    // Added 26/02/2018 -- slider to control the thickness of pen.
+    lineWidthActions.append(mMainWindow->actionLineCustom);
 
     UBToolbarButtonGroup *lineWidthChoice =
             new UBToolbarButtonGroup(mMainWindow->boardToolBar, lineWidthActions);
@@ -322,6 +325,7 @@ void UBBoardController::setupToolbar()
     lineWidthChoice->displayText(QVariant(settings->appToolBarDisplayText->get().toBool()));
 
     mMainWindow->boardToolBar->insertWidget(mMainWindow->actionBackgrounds, lineWidthChoice);
+
 
     //-----------------------------------------------------------//
     // Setup eraser width choice widget
@@ -360,7 +364,6 @@ void UBBoardController::setupToolbar()
 
     UBApplication::app()->toolBarDisplayTextChanged(QVariant(settings->appToolBarDisplayText->get().toBool()));
 }
-
 
 void UBBoardController::setToolCursor(int tool)
 {
