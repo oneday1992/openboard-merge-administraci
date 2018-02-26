@@ -100,27 +100,21 @@ void UBShapesPalette::buttonClicked()
 
 void UBShapesPalette::triggerAction(QAction* action)
 {
-    qWarning() << "UBShapesPalette";
     if (action)
     {
         if (action == UBApplication::mainWindow->actionEllipse){
-            qWarning() << "UBShapesPalette actionEllipse";
             UBApplication::boardController->shapeFactory().createEllipse(true);
         }
         else if (action == UBApplication::mainWindow->actionCircle){
-            qWarning() << "UBShapesPalette actionCircle";
             UBApplication::boardController->shapeFactory().createCircle(true);
         }
         else if (action == UBApplication::mainWindow->actionRectangle){
-            qWarning() << "UBShapesPalette actionRectangle";
             UBApplication::boardController->shapeFactory().createRectangle(true);
         }
         else if (action == UBApplication::mainWindow->actionSquare){
-            qWarning() << "UBShapesPalette actionSquare";
             UBApplication::boardController->shapeFactory().createSquare(true);
         }
     }
-    qWarning() << "END UBShapesPalette";
 }
 
 

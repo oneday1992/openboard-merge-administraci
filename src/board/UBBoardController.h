@@ -36,6 +36,7 @@
 #include <QHBoxLayout>
 #include <QUndoCommand>
 
+#include "UBFeaturesController.h"
 #include "document/UBDocumentContainer.h"
 #include "core/UBApplicationController.h"
 #include "domain/UBShapeFactory.h"
@@ -59,6 +60,11 @@ class UBBoardPaletteManager;
 class UBItem;
 class UBGraphicsItem;
 
+typedef enum{
+    eItemActionType_Default,
+    eItemActionType_Duplicate,
+    eItemActionType_Paste
+}eItemActionType;
 
 class UBBoardController : public UBDocumentContainer
 {
@@ -167,6 +173,9 @@ class UBBoardController : public UBDocumentContainer
         }
 
         qreal currentZoom();
+
+        void persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
+
         void persistCurrentScene(bool isAnAutomaticBackup = false, bool forceImmediateSave = false);
         void showNewVersionAvailable(bool automatic, const UBVersion &installedVersion, const UBSoftwareUpdate &softwareUpdate);
         void setBoxing(QRect displayRect);
@@ -225,7 +234,7 @@ class UBBoardController : public UBDocumentContainer
         void firstScene();
         void lastScene();
         void groupButtonClicked();
-        void downloadURL(const QUrl& url, QString contentSourceUrl = QString(), const QPointF& pPos = QPointF(0.0, 0.0), const QSize& pSize = QSize(), bool isBackground = false, bool internalData = false);
+        void downloadURL(const QUrl& url, QString contentSourceUrl = QString(), const QPointF& pPos = QPointF(0.0, 0.0), const QSize& pSize = QSize(), bool isBackground = false, bool internalData = false, UBFeatureBackgroundDisposition disposition = Center);
         UBItem *downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl contentUrl, QString pHeader,
                                  QByteArray pData, QPointF pPos, QSize pSize,
                                  bool isBackground = false, bool internalData = false);

@@ -176,6 +176,7 @@ void UBDrawingStrokePropertiesPalette::onBtnSelectThickness()
     {
         int thickness = mMapBtnStrokeThickness.value(button);
         UBApplication::boardController->shapeFactory().setThickness(thickness);
+        qWarning() << "thickness: " << thickness;
     }
 }
 

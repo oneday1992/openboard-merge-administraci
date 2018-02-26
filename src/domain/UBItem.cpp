@@ -42,6 +42,15 @@
 #include "tools/UBGraphicsCurtainItem.h"
 #include "domain/UBGraphicsItemDelegate.h"
 
+// Added from Open-Sankoré
+#include "domain/UBEditableGraphicsPolygonItem.h"
+#include "domain/UBEditableGraphicsRegularShapeItem.h"
+#include "domain/UBGraphicsEllipseItem.h"
+#include "domain/UBGraphicsRectItem.h"
+#include "domain/UBGraphicsLineItem.h"
+#include "domain/UBGraphicsFreehandItem.h"
+#include "tools/UBGraphicsCurtainItem.h"
+
 UBItem::UBItem()
     : mUuid(QUuid())
     , mRenderingQuality(UBItem::RenderingQualityNormal)
@@ -104,6 +113,7 @@ void UBGraphicsItem::remove(bool canUndo)
         Delegate()->remove(canUndo);
 }
 
+
 UBGraphicsItemDelegate *UBGraphicsItem::Delegate(QGraphicsItem *pItem)
 {
     UBGraphicsItemDelegate *result = 0;
@@ -119,8 +129,6 @@ UBGraphicsItemDelegate *UBGraphicsItem::Delegate(QGraphicsItem *pItem)
         result = (static_cast<UBGraphicsSvgItem*>(pItem))->Delegate();
         break;
     case UBGraphicsMediaItem::Type:
-    case UBGraphicsVideoItem::Type:
-    case UBGraphicsAudioItem::Type:
         result = (static_cast<UBGraphicsMediaItem*>(pItem))->Delegate();
         break;
     case UBGraphicsStrokesGroup::Type :
@@ -134,6 +142,15 @@ UBGraphicsItemDelegate *UBGraphicsItem::Delegate(QGraphicsItem *pItem)
         break;
     case UBGraphicsCurtainItem::Type :
         result = (static_cast<UBGraphicsCurtainItem*>(pItem))->Delegate();
+        break;
+    // Added from Open-Sankoré to handle SHAPES and POLYGONS
+    case UBEditableGraphicsRegularShapeItem::Type :
+    case UBEditableGraphicsPolygonItem::Type :
+    case UBGraphicsFreehandItem::Type :
+    case UBGraphicsItemType::GraphicsShapeItemType :
+        UBAbstractGraphicsItem* item = dynamic_cast<UBAbstractGraphicsItem*>(pItem);
+        if (item)
+            result = item->Delegate();
         break;
     }
 

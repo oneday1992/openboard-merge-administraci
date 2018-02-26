@@ -63,7 +63,7 @@ void UBAbstractEditableGraphicsShapeItem::mouseMoveEvent(QGraphicsSceneMouseEven
     {
         mHasMoved = true;
 
-        if(!isInEditMode()){
+        if(!isInEditMode()){            
             UBAbstractGraphicsItem::mouseMoveEvent(event);
             Delegate()->mouseMoveEvent(event);
         }

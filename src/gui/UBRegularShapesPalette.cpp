@@ -134,33 +134,25 @@ void UBRegularShapesPalette::buttonClicked()
 
 void UBRegularShapesPalette::triggerAction(QAction *action)
 {
-    qWarning()<<"UBRegularShapesPalette";
     if (action)
     {
         if (action == UBApplication::mainWindow->actionRegularTriangle){
-            qWarning()<<"UBRegularShapesPalette actionRegularTriangle";
             UBApplication::boardController->shapeFactory().createRegularPolygon(Triangle);
         }
         else if (action == UBApplication::mainWindow->actionRegularSquare){
-            qWarning()<<"UBRegularShapesPalette actionRegularSquare";
             UBApplication::boardController->shapeFactory().createSquare(true);
         }
         else if (action == UBApplication::mainWindow->actionRegularPentagone){
-            qWarning()<<"UBRegularShapesPalette actionRegularPentagone";
             UBApplication::boardController->shapeFactory().createRegularPolygon(Pentagone);
         }
         else if (action == UBApplication::mainWindow->actionRegularHexagone){
-            qWarning()<<"UBRegularShapesPalette actionRegularHexagone";
             UBApplication::boardController->shapeFactory().createRegularPolygon(Hexagone);
         }
         else if (action == UBApplication::mainWindow->actionRegularHeptagone){
-            qWarning()<<"UBRegularShapesPalette actionRegularHeptagone";
             UBApplication::boardController->shapeFactory().createRegularPolygon(Heptagone);
         }
         else if (action == UBApplication::mainWindow->actionRegularOctogone){
-            qWarning()<<"UBRegularShapesPalette actionRegularOctogone";
             UBApplication::boardController->shapeFactory().createRegularPolygon(Octogone);
         }
     }
-    qWarning()<<"END UBRegularShapesPalette";
 }

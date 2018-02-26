@@ -688,9 +688,7 @@ void UBBoardPaletteManager::toggleStylusPalette(bool checked)
 
 void UBBoardPaletteManager::toggleDrawingPalette(bool checked)
 {
-    qWarning() << "before SetVisible";
     mDrawingPalette->setVisible(checked);
-    qWarning() << "after SetVisible";
 }
 
 void UBBoardPaletteManager::toggleErasePalette(bool checked)

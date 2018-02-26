@@ -208,7 +208,7 @@ void UBGraphicsPolygonItem::copyItemParameters(UBItem *copy) const
 }
 
 void UBGraphicsPolygonItem::paint ( QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
-{
+{    
     if(mHasAlpha && scene() && scene()->isLightBackground())
         painter->setCompositionMode(QPainter::CompositionMode_SourceOver);
 
