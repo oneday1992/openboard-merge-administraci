@@ -60,6 +60,7 @@ include(src/podcast/podcast.pri)
 include(src/tools/tools.pri)
 include(src/desktop/desktop.pri)
 include(src/web/web.pri)
+include(src/pecs/pecs.pri)
 
 DEPENDPATH += src/pdf-merger
 INCLUDEPATH += src/pdf-merger
@@ -950,5 +951,5 @@ DISTFILES += \
     resources/images/unpin.svg \
     resources/images/vflipTool.svg \
     resources/images/z_layer_down.svg \
-    resources/images/z_layer_up.svg
+    resources/images/z_layer_up.svg \
 
