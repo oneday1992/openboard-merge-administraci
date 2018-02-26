@@ -58,6 +58,10 @@ QString UBSettings::documentIdentifer = QString("ID");
 QString UBSettings::documentVersion = QString("Version");
 QString UBSettings::documentUpdatedAt = QString("UpdatedAt");
 QString UBSettings::documentDate = QString("date");
+// Issue 1684 - ALTI/AOU - 20131210
+QString UBSettings::documentDefaultBackgroundImage = QString("defaultBackgroundImage");
+QString UBSettings::documentDefaultBackgroundImageDisposition = QString("defaultBackgroundImageDisposition");
+// Fin Issue 1684 - ALTI/AOU - 20131210
 
 QString UBSettings::trashedDocumentGroupNamePrefix = QString("_Trash:");
 
@@ -249,7 +253,7 @@ void UBSettings::init()
 
     appLookForOpenSankoreInstall = new UBSetting(this, "App", "LookForOpenSankoreInstall", true);
 
-    appStartMode = new UBSetting(this, "App", "StartMode", "");
+    appStartMode = new UBSetting(this, "App", "StartMode", "1");
 
     featureSliderPosition = new UBSetting(this, "Board", "FeatureSliderPosition", 40);
 

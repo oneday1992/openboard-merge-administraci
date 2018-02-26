@@ -57,7 +57,6 @@ void UBAbstractSubPalette::togglePalette()
 
 void UBAbstractSubPalette::triggerAction(QAction *action)
 {
-    qWarning() << "UBAbstractSubPalette NOOP";
     Q_UNUSED(action)
     // NOOP
 }

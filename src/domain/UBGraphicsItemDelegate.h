@@ -54,6 +54,7 @@ class UBGraphicsProxyWidget;
 class UBGraphicsDelegateFrame;
 class UBGraphicsWidgetItem;
 class UBGraphicsMediaItem;
+class UBGraphicsItemAction;
 
 class DelegateButton: public QGraphicsSvgItem
 {
@@ -293,6 +294,9 @@ class UBGraphicsItemDelegate : public QObject
         qreal antiScaleRatio() const { return mAntiScaleRatio; }
         virtual void update() {positionHandles();}
 
+        UBGraphicsItemAction* action() { return mAction; }
+        void setAction(UBGraphicsItemAction* action);
+
         UBGraphicsFlags ubflags() const {return mFlags;}
         bool testUBFlags(UBGraphicsFlags pf) const {return mFlags & pf;}
         void setUBFlags(UBGraphicsFlags pf);
@@ -352,6 +356,8 @@ class UBGraphicsItemDelegate : public QObject
         QList<DelegateButton*> mButtons;
         QList<DelegateButton*> mToolBarButtons;
         UBGraphicsToolBarItem* mToolBarItem;
+
+        UBGraphicsItemAction* mAction;
 
 protected slots:
         virtual void gotoContentSource();

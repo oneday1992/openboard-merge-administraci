@@ -125,11 +125,8 @@ void UBDrawingPalette::buttonClicked()
         if (subPalette->isHidden())
         {
             initSubPalettesPosition();
-            qWarning() << "after init";
             subPalette->togglePalette(); // Show palette
-            qWarning() << "after togglePalette";
             subPalette->triggerAction(button->defaultAction());
-            qWarning() << "after triggerAction";
         }
         else
         {

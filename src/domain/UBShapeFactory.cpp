@@ -178,7 +178,6 @@ void UBShapeFactory::setEndArrowType(UBAbstractGraphicsPathItem::ArrowType arrow
 
 void UBShapeFactory::init()
 {
-    qWarning()<<"INIT()";
     mBoardView = UBApplication::boardController->controlView();
     mDrawingController = UBDrawingController::drawingController();
 
@@ -268,6 +267,8 @@ UBAbstractGraphicsItem* UBShapeFactory::instanciateCurrentShape()
 
     mCurrentShape->setStrokeColor(mCurrentStrokeColor);
 
+    qWarning()<<"mThickness: ";
+    qWarning()<<mThickness;
     mCurrentShape->setStrokeSize(mThickness);
 
     UBAbstractGraphicsPathItem * abstractGraphicsPathItem  = dynamic_cast<UBAbstractGraphicsPathItem*>(mCurrentShape);
@@ -283,9 +284,7 @@ UBAbstractGraphicsItem* UBShapeFactory::instanciateCurrentShape()
 void UBShapeFactory::createEllipse(bool create)
 {
     if(create){
-        qWarning() << "BEFORE ELLIPSE STYLE";
         mDrawingController->setStylusTool(UBStylusTool::Drawing);
-        qWarning() << "AFTER ELLIPSE STYLE";
         mIsRegularShape = true;
         mIsCreating = true;
         mShapeType = Ellipse;
@@ -376,44 +375,41 @@ void UBShapeFactory::onMouseMove(QMouseEvent *event)
         {
             if (mShapeType == Ellipse)
             {
-                qWarning() << "mouse move ellipse";
                 UB3HEditableGraphicsEllipseItem* shape = dynamic_cast<UB3HEditableGraphicsEllipseItem*>(mCurrentShape);
                 QRectF rect = QRectF(shape->pos(), cursorPosition);
 
+                qWarning() << "before setting radius";
                 shape->setRadiusX(rect.width()/2);
                 shape->setRadiusY(rect.height()/2);
+                /*QThread::msleep(50);*/
+                qWarning() << "after setting radius";
             }
             else if(mShapeType == Circle)
             {
-                qWarning() << "mouse move circle";
                 UB1HEditableGraphicsCircleItem* shape = dynamic_cast<UB1HEditableGraphicsCircleItem*>(mCurrentShape);
 
                 shape->setRect(QRectF(shape->pos(), cursorPosition));
             }
             else if (mShapeType == Rectangle)
             {
-                qWarning() << "mouse move rectangle";
                 UB3HEditableGraphicsRectItem* shape = dynamic_cast<UB3HEditableGraphicsRectItem*>(mCurrentShape);
 
                 shape->setRect(QRectF(shape->pos(), cursorPosition));
             }
             else if(mShapeType == Square)
             {
-                qWarning() << "mouse move square";
                 UB1HEditableGraphicsSquareItem* shape = dynamic_cast<UB1HEditableGraphicsSquareItem*>(mCurrentShape);
 
                 shape->setRect(QRectF(shape->pos(), cursorPosition));
             }
             else if (mShapeType == Line)
             {
-                qWarning() << "mouse move line";
                 UBEditableGraphicsLineItem* line = dynamic_cast<UBEditableGraphicsLineItem*>(mCurrentShape);
 
                 line->setEndPoint(cursorPosition);
             }
         }else{
             if(mShapeType == Pen){
-                qWarning() << "mouse move freehand";
                 UBGraphicsFreehandItem *freeHand = dynamic_cast<UBGraphicsFreehandItem*>(mCurrentShape);
                 if (freeHand)
                 {
@@ -426,7 +422,6 @@ void UBShapeFactory::onMouseMove(QMouseEvent *event)
                     mBoundingRect = freeHand->boundingRect();
                 }
             }else if (mShapeType == RegularPolygon){
-                qWarning() << "mouse move regularshape";
                 UBEditableGraphicsRegularShapeItem* regularPathItem = dynamic_cast<UBEditableGraphicsRegularShapeItem*>(mCurrentShape);
                 regularPathItem->updatePath(cursorPosition);
                 mBoundingRect = regularPathItem->boundingRect();
@@ -456,7 +451,6 @@ void UBShapeFactory::onMousePress(QMouseEvent *event)
             {
                 UB3HEditableGraphicsEllipseItem* ellipse = dynamic_cast<UB3HEditableGraphicsEllipseItem*>(instanciateCurrentShape());
                 ellipse->setPos(cursorPosition);
-
                 mBoardView->scene()->addItem(ellipse);
             }
             else if(mShapeType == Circle)
@@ -566,7 +560,6 @@ void UBShapeFactory::onMouseRelease(QMouseEvent *event)
     }
     else if(mShapeType == Ellipse)
     {
-        qWarning() << "mouse release ellipse";
         UB3HEditableGraphicsEllipseItem* shape = dynamic_cast<UB3HEditableGraphicsEllipseItem*>(mCurrentShape);
 
         QRectF rect = shape->rect();

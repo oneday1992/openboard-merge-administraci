@@ -57,6 +57,7 @@ UBDesktopPalette::UBDesktopPalette(QWidget *parent, UBRightPalette* _rightPalett
     actions << mActionUniboard;
 
 
+    actions << UBApplication::mainWindow->actionDrawing;
     actions << UBApplication::mainWindow->actionPen;
     actions << UBApplication::mainWindow->actionEraser;
     actions << UBApplication::mainWindow->actionMarker;
@@ -185,6 +186,7 @@ void UBDesktopPalette::maximizeMe()
     clearLayout();
 
     actions << mActionUniboard;
+    actions << UBApplication::mainWindow->actionDrawing;
     actions << UBApplication::mainWindow->actionPen;
     actions << UBApplication::mainWindow->actionEraser;
     actions << UBApplication::mainWindow->actionMarker;
@@ -211,9 +213,13 @@ void UBDesktopPalette::maximizeMe()
 void UBDesktopPalette::showEvent(QShowEvent *event)
 {
     Q_UNUSED(event);
+    QIcon drawingIcon;
     QIcon penIcon;
     QIcon markerIcon;
     QIcon eraserIcon;
+    drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-palette.png"), QIcon::Normal, QIcon::Off);
+    drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-paletteOn.png"), QIcon::Normal, QIcon::On);
+    UBApplication::mainWindow->actionDrawing->setIcon(drawingIcon);
     penIcon.addPixmap(QPixmap(":images/stylusPalette/penArrow.png"), QIcon::Normal, QIcon::Off);
     penIcon.addPixmap(QPixmap(":images/stylusPalette/penOnArrow.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionPen->setIcon(penIcon);
@@ -230,9 +236,13 @@ void UBDesktopPalette::showEvent(QShowEvent *event)
 void UBDesktopPalette::hideEvent(QHideEvent *event)
 {
     Q_UNUSED(event);
+    QIcon drawingIcon;
     QIcon penIcon;
     QIcon markerIcon;
     QIcon eraserIcon;
+    drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-palette.png"), QIcon::Normal, QIcon::Off);
+    drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-paletteOn.png"), QIcon::Normal, QIcon::On);
+    UBApplication::mainWindow->actionDrawing->setIcon(drawingIcon);
     penIcon.addPixmap(QPixmap(":images/stylusPalette/pen.png"), QIcon::Normal, QIcon::Off);
     penIcon.addPixmap(QPixmap(":images/stylusPalette/penOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionPen->setIcon(penIcon);

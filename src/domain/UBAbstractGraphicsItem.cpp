@@ -7,7 +7,9 @@ UBAbstractGraphicsItem::UBAbstractGraphicsItem(QGraphicsItem *parent):
     QAbstractGraphicsShapeItem(parent)
 {
 
-    setDelegate(new UBGraphicsItemDelegate(this,0, GF_ALL));
+    setDelegate(new UBGraphicsItemDelegate(this,0, GF_REVOLVABLE | GF_DUPLICATION_ENABLED | GF_RESPECT_RATIO));
+    // Might be fit in int value under most OS
+
     /*Delegate()->init();
     Delegate()->setFlippable(false);
     Delegate()->setRotatable(true);
@@ -35,7 +37,7 @@ UBAbstractGraphicsItem::~UBAbstractGraphicsItem()
 void UBAbstractGraphicsItem::setStyle(Qt::PenStyle penStyle)
 {
     Qt::BrushStyle brushStyle = Qt::NoBrush;
-    if (hasFillingProperty())
+    /*if (hasFillingProperty())*/
         brushStyle = brush().style();
 
     setStyle(brushStyle, penStyle);
@@ -44,7 +46,7 @@ void UBAbstractGraphicsItem::setStyle(Qt::PenStyle penStyle)
 void UBAbstractGraphicsItem::setStyle(Qt::BrushStyle brushStyle)
 {
     Qt::PenStyle penStyle = Qt::NoPen;
-    if(hasStrokeProperty())
+    /*if(hasStrokeProperty())*/
         penStyle = pen().style();
 
     setStyle(brushStyle, penStyle);
@@ -52,52 +54,53 @@ void UBAbstractGraphicsItem::setStyle(Qt::BrushStyle brushStyle)
 
 void UBAbstractGraphicsItem::setStyle(Qt::BrushStyle brushStyle, Qt::PenStyle penStyle)
 {
-    if(hasFillingProperty()){
+    /*if(hasFillingProperty()){*/
         QBrush b = brush();
         b.setStyle(brushStyle);
         setBrush(b);
-    }
+    /*}
 
-    if(hasStrokeProperty()){
+    if(hasStrokeProperty()){*/
         QPen p = pen();
         p.setStyle(penStyle);
         setPen(p);
-    }
+    /*}*/
 }
 
 void UBAbstractGraphicsItem::setFillColor(const QColor& color)
 {
-    if(hasFillingProperty()){
+    /*if(hasFillingProperty()){*/
         QBrush b = brush();
         b.setColor(color);
         setBrush(b);
-    }
+    /*}*/
 }
 
 void UBAbstractGraphicsItem::setStrokeColor(const QColor& color)
 {
-    if(hasStrokeProperty()){
+    /*if(hasStrokeProperty()){*/
         QPen p = pen();
         p.setColor(color);
         setPen(p);
-    }
+    /*}*/
 }
 
 void UBAbstractGraphicsItem::setStrokeSize(int size)
 {
-    if(hasStrokeProperty()){
+    /*if(hasStrokeProperty()){*/
+        qWarning()<<"setStrokeSize";
         QPen p = pen();
         p.setWidth(size);
         setPen(p);
-    }
+    /*}*/
 }
 
 void UBAbstractGraphicsItem::setFillPattern(UBAbstractGraphicsItem::FillPattern pattern)
 {
     mFillPatern = pattern;
 
-    if (hasFillingProperty())
-    {
+    /*if (hasFillingProperty())
+    {*/
         QBrush b = brush();
         switch (pattern) {
         case FillPattern_Diag1:
@@ -111,7 +114,7 @@ void UBAbstractGraphicsItem::setFillPattern(UBAbstractGraphicsItem::FillPattern 
         }
 
         setBrush(b);
-    }
+    /*}*/
 }
 
 void UBAbstractGraphicsItem::setUuid(const QUuid &pUuid)

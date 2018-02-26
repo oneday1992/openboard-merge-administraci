@@ -102,9 +102,6 @@ int UBDrawingController::latestDrawingTool()
 
 void UBDrawingController::setStylusTool(int tool)
 {
-    qWarning() << tool;
-    qWarning() << mStylusTool;
-
     if (tool != mStylusTool)
     {
         //Ev-7 - NNE - 20140106
@@ -123,13 +120,11 @@ void UBDrawingController::setStylusTool(int tool)
             }
         }
 
-        qWarning()<<"mStylus1";
         if (mStylusTool == UBStylusTool::Pen || mStylusTool == UBStylusTool::Marker
                 || mStylusTool == UBStylusTool::Line)
         {
             mLatestDrawingTool = mStylusTool;
         }
-        qWarning()<<"mStylus2";
 
         if (tool == UBStylusTool::Pen || tool == UBStylusTool::Line)
         {
