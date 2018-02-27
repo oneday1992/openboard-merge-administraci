@@ -1901,21 +1901,46 @@ QList<UBGraphicsPolygonItem*> UBSvgSubsetAdaptor::UBSvgSubsetReader::polygonItem
 
 
 
-void UBSvgSubsetAdaptor::UBSvgSubsetWriter::pixmapItemToLinkedImage(UBGraphicsPixmapItem* pixmapItem)
+void UBSvgSubsetAdaptor::UBSvgSubsetWriter::pixmapItemToLinkedImage(UBGraphicsPixmapItem* pixmapItem, bool isBackground)
 {
     mXmlWriter.writeStartElement("image");
-
-    QString fileName = UBPersistenceManager::imageDirectory + "/" + pixmapItem->uuid().toString() + ".png";
+    QString fileName;
+    if (isBackground // Issue 1684 - CFA - 20131128 : specify isBackground
+        && ( ! mScene->document()->metaData(UBSettings::documentDefaultBackgroundImage).toString().isEmpty())) // Issue 1684 - ALTI/AOU - 20131210 : Si il y a une image par défaut définie, on utilise son uuid :
+    {
+        fileName = UBPersistenceManager::imageDirectory + "/" + mScene->document()->metaData(UBSettings::documentDefaultBackgroundImage).toString();
+    }
+    else
+        fileName = UBPersistenceManager::imageDirectory + "/" + pixmapItem->uuid().toString() + ".png";
 
     QString path = mDocumentPath + "/" + fileName;
 
+    if (!QFile::exists(path))
+    {
+        QDir dir;
+        dir.mkdir(mDocumentPath + "/" + UBPersistenceManager::imageDirectory);
+
+        pixmapItem->pixmap().toImage().save(path, "PNG");
+    }
+
     mXmlWriter.writeAttribute(nsXLink, "href", fileName);
 
+    writeAction(pixmapItem->Delegate()->action());
     graphicsItemToSvg(pixmapItem);
 
     mXmlWriter.writeEndElement();
 }
 
+void UBSvgSubsetAdaptor::UBSvgSubsetWriter::writeAction(UBGraphicsItemAction* action)
+{
+    /*if(action){
+        QStringList actionParameters = action->save();
+        mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri,"actionType",actionParameters.at(0));
+        mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri,"actionFirstParameter",actionParameters.at(1));
+        if(actionParameters.count()>2)
+            mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri,"actionSecondParameter",actionParameters.at(2));
+    }*/
+}
 
 UBGraphicsPixmapItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::pixmapItemFromSvg()
 {
@@ -1943,15 +1968,40 @@ UBGraphicsPixmapItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::pixmapItemFromSvg()
 }
 
 
-void UBSvgSubsetAdaptor::UBSvgSubsetWriter::svgItemToLinkedSvg(UBGraphicsSvgItem* svgItem)
+void UBSvgSubsetAdaptor::UBSvgSubsetWriter::svgItemToLinkedSvg(UBGraphicsSvgItem* svgItem, bool isBackground)
 {
 
     mXmlWriter.writeStartElement("image");
 
-    QString fileName = UBPersistenceManager::imageDirectory + "/" + svgItem->uuid().toString() + ".svg";
+    QString fileName;
+    if (isBackground
+            && ( ! mScene->document()->metaData(UBSettings::documentDefaultBackgroundImage).toString().isEmpty())) // Issue 1684 - ALTI/AOU - 20131210 : Si il y a une image par défaut définie, on utilise son uuid :
+    {
+        fileName = UBPersistenceManager::imageDirectory + "/" + mScene->document()->metaData(UBSettings::documentDefaultBackgroundImage).toString();
+    }
+    else
+        fileName = UBPersistenceManager::imageDirectory + "/" + svgItem->uuid().toString() + ".svg";
 
+    QString path = mDocumentPath + "/" + fileName;
+
+    if (!QFile::exists(path))
+    {
+        QDir dir;
+        dir.mkdir(mDocumentPath + "/" + UBPersistenceManager::imageDirectory);
+
+        QFile file(path);
+        if (!file.open(QIODevice::WriteOnly))
+        {
+            qWarning() << "cannot open file for writing embeded svg content " << path;
+            return;
+        }
+
+        file.write(svgItem->fileData());
+    }
 
     mXmlWriter.writeAttribute(nsXLink, "href", fileName);
+
+    writeAction(svgItem->Delegate()->action());
 
     graphicsItemToSvg(svgItem);
 

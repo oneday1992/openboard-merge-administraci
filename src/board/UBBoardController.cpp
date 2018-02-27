@@ -482,12 +482,13 @@ void UBBoardController::stylusToolDoubleClicked(int tool)
     else if (tool == UBStylusTool::Hand)
     {
         centerRestore();
+        mActiveScene->setLastCenter(QPointF(0,0));// Issue 1598/1605 - CFA - 20131028
     }
 }
 
 
 
-void UBBoardController::addScene()
+/*void UBBoardController::addScene()
 {
     QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     persistCurrentScene(false,true);
@@ -497,6 +498,33 @@ void UBBoardController::addScene()
     selectedDocument()->setMetaData(UBSettings::documentUpdatedAt, UBStringUtils::toUtcIsoDateTime(QDateTime::currentDateTime()));
 
     setActiveDocumentScene(mActiveSceneIndex + 1);
+    QApplication::restoreOverrideCursor();
+}*/
+void UBBoardController::addScene()
+{
+    QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+    persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
+    persistCurrentScene();
+
+    UBDocumentContainer::addPage(mActiveSceneIndex + 1);
+
+    selectedDocument()->setMetaData(UBSettings::documentUpdatedAt, UBStringUtils::toUtcIsoDateTime(QDateTime::currentDateTime()));
+
+    reloadThumbnails(); // Issue 1026 - AOU - 20131028 : (commentaire du 20130925) - synchro des thumbnails présentés en mode Board et en mode Documents.
+
+    setActiveDocumentScene(mActiveSceneIndex + 1);
+
+    // Issue 1684 - CFA - 20131127 : handle default background // Issue 1684 - ALTI/AOU - 20131210
+    QString backgroundImage = selectedDocument()->metaData(UBSettings::documentDefaultBackgroundImage).toString();
+    qDebug() << backgroundImage;
+    UBFeatureBackgroundDisposition backgroundImageDisposition = static_cast<UBFeatureBackgroundDisposition>(selectedDocument()->metaData(UBSettings::documentDefaultBackgroundImageDisposition).toInt());
+    if ( ! backgroundImage.isEmpty())
+    {
+        QString sUrl = "file:///" + selectedDocument()->persistencePath() + "/" + UBPersistenceManager::imageDirectory + "/" + backgroundImage;
+        QUrl urlImage(sUrl);
+        downloadURL( urlImage, QString(), QPointF(), QSize(), true, false, backgroundImageDisposition);
+    }
+
     QApplication::restoreOverrideCursor();
 }
 
@@ -768,6 +796,10 @@ void UBBoardController::clearScene()
     {
         freezeW3CWidgets(true);
         mActiveScene->clearContent(UBGraphicsScene::clearItemsAndAnnotations);
+        // Issue 1598/1605 - CFA - 20131028 : quand on clear complètement le tableau, on reset aussi la vue
+        mActiveScene->setLastCenter(QPointF(0,0));
+        mControlView->centerOn(mActiveScene->lastCenter());
+        // Fin issue 1598/1605 - CFA - 20131028
         updateActionStates();
     }
 }
@@ -937,12 +969,22 @@ void UBBoardController::handScroll(qreal dx, qreal dy)
     emit controlViewportChanged();
 }
 
+// Issue 1598/1605 - CFA - 20131028
+void UBBoardController::persistViewPositionOnCurrentScene()
+{
+    QRect rect = mControlView->rect();
+    QPoint center(rect.x() + rect.width() / 2, rect.y() + rect.height() / 2);
+    QPointF viewRelativeCenter = mControlView->mapToScene(center);
+    mActiveScene->setLastCenter(viewRelativeCenter);
+}
+// Fin issue 1598/1605 - CFA - 20131028
 
 void UBBoardController::previousScene()
 {
     if (mActiveSceneIndex > 0)
     {
         QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+        persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(mActiveSceneIndex - 1);
         QApplication::restoreOverrideCursor();
@@ -957,6 +999,7 @@ void UBBoardController::nextScene()
     if (mActiveSceneIndex < selectedDocument()->pageCount() - 1)
     {
         QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+        persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(mActiveSceneIndex + 1);
         QApplication::restoreOverrideCursor();
@@ -971,6 +1014,7 @@ void UBBoardController::firstScene()
     if (mActiveSceneIndex > 0)
     {
         QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+        persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(0);
         QApplication::restoreOverrideCursor();
@@ -985,6 +1029,7 @@ void UBBoardController::lastScene()
     if (mActiveSceneIndex < selectedDocument()->pageCount() - 1)
     {
         QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+        persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(selectedDocument()->pageCount() - 1);
         QApplication::restoreOverrideCursor();
@@ -1024,7 +1069,7 @@ void UBBoardController::groupButtonClicked()
 }
 
 
-void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, const QPointF& pPos, const QSize& pSize, bool isBackground, bool internalData)
+void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, const QPointF& pPos, const QSize& pSize, bool isBackground, bool internalData, UBFeatureBackgroundDisposition disposition)
 {
     qDebug() << "something has been dropped on the board! Url is: " << url.toString();
     QString sUrl = url.toString();
@@ -1033,10 +1078,9 @@ void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, c
     if (isBackground)
         oldBackgroundObject = mActiveScene->backgroundObject();
 
-    if(sUrl.startsWith("openboardtool://"))
-
+    if(sUrl.startsWith("uniboardTool://"))
     {
-        downloadFinished(true, url, QUrl(), "application/openboard-tool", QByteArray(), pPos, pSize, isBackground);
+        downloadFinished(true, url, QUrl(), "application/vnd.mnemis-uniboard-tool", QByteArray(), pPos, pSize, isBackground);
     }
     else if (sUrl.startsWith("file://") || sUrl.startsWith("/"))
     {
@@ -1047,10 +1091,14 @@ void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, c
         bool shouldLoadFileData =
                 contentType.startsWith("image")
                 || contentType.startsWith("application/widget")
-                || contentType.startsWith("application/vnd.apple-widget");
+                || contentType.startsWith("application/vnd.apple-widget")
+                || contentType.startsWith("internal/link");
 
-       if (shouldLoadFileData)
-       {
+        if (isBackground)
+            mActiveScene->setURStackEnable(false);
+
+        if (shouldLoadFileData)
+        {
             QFile file(fileName);
             file.open(QIODevice::ReadOnly);
             downloadFinished(true, formedUrl, QUrl(), contentType, file.readAll(), pPos, pSize, isBackground, internalData);
@@ -1096,16 +1144,14 @@ void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, c
     }
 
     if (isBackground && oldBackgroundObject != mActiveScene->backgroundObject())
-    {
+    {        
+        mActiveScene->setURStackEnable(true);
         if (mActiveScene->isURStackIsEnabled()) { //should be deleted after scene own undo stack implemented
             UBGraphicsItemUndoCommand* uc = new UBGraphicsItemUndoCommand(mActiveScene, oldBackgroundObject, mActiveScene->backgroundObject());
             UBApplication::undoStack->push(uc);
         }
     }
-
-
 }
-
 
 UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl contentUrl, QString pContentTypeHeader,
                                             QByteArray pData, QPointF pPos, QSize pSize,

@@ -379,6 +379,18 @@ void UBGraphicsScene::selectionChangedProcessing()
     }
 }
 
+// Issue 1598/1605 - CFA - 20131028
+void UBGraphicsScene::setLastCenter(QPointF center)
+{
+    mViewState.setLastSceneCenter(center);
+}
+
+QPointF UBGraphicsScene::lastCenter()
+{
+    return mViewState.lastSceneCenter();
+}
+// Fin issue 1598/1605 - CFA - 20131028
+
 void UBGraphicsScene::updateGroupButtonState()
 {
 
@@ -598,6 +610,8 @@ bool UBGraphicsScene::inputDeviceMove(const QPointF& scenePos, const qreal& pres
 
 bool UBGraphicsScene::inputDeviceRelease()
 {
+    qWarning()<<"inputDeviceRelease ******************************** ";
+
     bool accepted = false;
 
     if (mPointer)
@@ -608,6 +622,8 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
+    qWarning()<<currentTool;
+
     if (currentTool == UBStylusTool::Eraser)
         redrawEraser(false);
 
@@ -616,8 +632,9 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     if (dc->isDrawingTool() || mDrawWithCompass)
     {
+        qWarning()<<"### [1] ####";
         if(mArcPolygonItem){
-
+            qWarning()<<"### [2] ####";
             UBGraphicsStrokesGroup* pStrokes = new UBGraphicsStrokesGroup();
 
             // Add the arc
@@ -643,6 +660,7 @@ bool UBGraphicsScene::inputDeviceRelease()
             mDrawWithCompass = false;
         }
         else if (mCurrentStroke){
+            qWarning()<<"### [3] ####";
             UBGraphicsStrokesGroup* pStrokes = new UBGraphicsStrokesGroup();
 
             // Remove the strokes that were just drawn here and replace them by a stroke item
@@ -670,12 +688,15 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     if (mRemovedItems.size() > 0 || mAddedItems.size() > 0)
     {
-
+        qWarning()<<"### [4] ####";
         if (mUndoRedoStackEnabled) { //should be deleted after scene own undo stack implemented
+            qWarning()<<"### [5] ####";
             UBGraphicsItemUndoCommand* udcmd = new UBGraphicsItemUndoCommand(this, mRemovedItems, mAddedItems); //deleted by the undoStack
 
-            if(UBApplication::undoStack)
+            if(UBApplication::undoStack){
+                qWarning()<<"### [6] ####";
                 UBApplication::undoStack->push(udcmd);
+            }
         }
 
         mRemovedItems.clear();
@@ -687,7 +708,7 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     setDocumentUpdated();
 
-    if (mCurrentStroke && mCurrentStroke->polygons().empty()){
+    if (mCurrentStroke && mCurrentStroke->polygons().empty()){        
         delete mCurrentStroke;
     }
 
@@ -1134,7 +1155,7 @@ void UBGraphicsScene::notifyZChanged(QGraphicsItem *item, qreal zValue)
 }
 
 void UBGraphicsScene::updateSelectionFrame()
-{
+{    
     if (!mSelectionFrame) {
         mSelectionFrame = new UBSelectionFrame();
         addItem(mSelectionFrame);
@@ -1282,6 +1303,9 @@ void UBGraphicsScene::clearContent(clearCase pCase)
     QSet<QGraphicsItem*> removedItems;
     UBGraphicsItemUndoCommand::GroupDataTable groupsMap;
 
+    qWarning() << "@$% @$% @$% @$% @$% @$% @$% @$% @$% @$% @$% @$%";
+    qWarning() << mBackgroundObject;
+
     switch (pCase) {
     case clearBackground :
         if(mBackgroundObject){
@@ -1293,6 +1317,11 @@ void UBGraphicsScene::clearContent(clearCase pCase)
     case clearItemsAndAnnotations :
     case clearItems :
     case clearAnnotations :
+        qWarning () << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
+        qWarning () << "CLEAR ANNOTATIONS AND/OR ITEMS";
+        qWarning() << static_cast<int>(pCase);
+        qWarning() << items().count();
+
         foreach(QGraphicsItem* item, items()) {
 
             UBGraphicsGroupContainerItem *itemGroup = item->parentItem()
@@ -1305,6 +1334,9 @@ void UBGraphicsScene::clearContent(clearCase pCase)
 
             bool isGroup = item->type() == UBGraphicsGroupContainerItem::Type;
             bool isStrokesGroup = item->type() == UBGraphicsStrokesGroup::Type;
+
+            qWarning() << "isStrokeGroup?:";
+            qWarning() << isStrokesGroup;
 
             bool shouldDelete = false;
             switch (static_cast<int>(pCase)) {
@@ -1784,7 +1816,28 @@ void UBGraphicsScene::addItem(QGraphicsItem* item)
     if (!mTools.contains(item))
       ++mItemCount;
 
+    //CFA
+    addShapeToUndoStack(item);
     mFastAccessItems << item;
+}
+
+void UBGraphicsScene::addShapeToUndoStack(QGraphicsItem* item)
+{
+    UBAbstractGraphicsItem * shape = dynamic_cast<UBAbstractGraphicsItem*>(item);
+    if (shape)
+    {
+        mAddedItems.insert(item);
+    }
+}
+
+void UBGraphicsScene::removeShapeToUndoStack(QGraphicsItem* item)
+{
+    //CFA - TEST UNDO
+    UBAbstractGraphicsItem * shape = dynamic_cast<UBAbstractGraphicsItem*>(item);
+    if (shape)
+    {
+        mRemovedItems.insert(item);
+    }
 }
 
 void UBGraphicsScene::addItems(const QSet<QGraphicsItem*>& items)
@@ -1809,6 +1862,10 @@ void UBGraphicsScene::removeItem(QGraphicsItem* item)
       --mItemCount;
 
     mFastAccessItems.removeAll(item);
+
+    //CFA
+    removeShapeToUndoStack(item);
+
     /* delete the item if it is cache to allow its reinstanciation, because Cache implements design pattern Singleton. */
     if (dynamic_cast<UBGraphicsCache*>(item))
         UBCoreGraphicsScene::deleteItem(item);

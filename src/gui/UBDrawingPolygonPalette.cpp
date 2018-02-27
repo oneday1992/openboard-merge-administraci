@@ -78,21 +78,16 @@ void UBDrawingPolygonPalette::buttonClicked()
 
 void UBDrawingPolygonPalette::triggerAction(QAction *action)
 {
-    qWarning()<<"UBDrawingPolygonPalette";
     if (action)
     {        
         if (action == UBApplication::mainWindow->actionPolygon){
-            qWarning()<<"UBDrawingPolygonPalette -- actionPolygon";
             UBApplication::boardController->shapeFactory().createPolygon(true);            
         }
         else if (action == UBApplication::mainWindow->actionSmartLine){
-            qWarning()<<"UBDrawingPolygonPalette -- actionSmartLine";
             UBApplication::boardController->shapeFactory().createLine(true);
         }
         else if (action == UBApplication::mainWindow->actionSmartPen){
-            qWarning()<<"UBDrawingPolygonPalette -- actionSmartPen";
             UBApplication::boardController->shapeFactory().createPen(true);
         }
     }
-    qWarning()<<"END UBDrawingPolygonPalette";
 }

@@ -1124,7 +1124,7 @@ void UBFeatureProperties::onSetAsBackground()
 {
     QWidget *w = parentWidget()->parentWidget()->parentWidget();
     UBFeaturesWidget* featuresWidget = qobject_cast<UBFeaturesWidget*>( w );
-    featuresWidget->getFeaturesController()->addItemAsBackground( *mpElement );
+    featuresWidget->getFeaturesController()->addItemAsBackground( *mpElement, false );
 }
 
 

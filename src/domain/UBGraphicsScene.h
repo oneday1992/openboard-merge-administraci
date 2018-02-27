@@ -151,12 +151,19 @@ class UBGraphicsScene: public UBCoreGraphicsScene, public UBItem
         void addItems(const QSet<QGraphicsItem*>& item);
         void removeItems(const QSet<QGraphicsItem*>& item);
 
+        // Add from Open-Sankoré
+        void addShapeToUndoStack(QGraphicsItem* item);
+        void removeShapeToUndoStack(QGraphicsItem* item);
+
         UBGraphicsWidgetItem* addWidget(const QUrl& pWidgetUrl, const QPointF& pPos = QPointF(0, 0));
         UBGraphicsAppleWidgetItem* addAppleWidget(const QUrl& pWidgetUrl, const QPointF& pPos = QPointF(0, 0));
         UBGraphicsW3CWidgetItem* addW3CWidget(const QUrl& pWidgetUrl, const QPointF& pPos = QPointF(0, 0));
         void addGraphicsWidget(UBGraphicsWidgetItem* graphicsWidget, const QPointF& pPos = QPointF(0, 0));
 
-
+        // Issue 1598/1605 - CFA - 20131028
+        QPointF lastCenter();
+        void setLastCenter(QPointF center);
+        // Fin Issue 1598/1605 - CFA - 20131028
 
         UBGraphicsMediaItem* addMedia(const QUrl& pMediaFileUrl, bool shouldPlayAsap, const QPointF& pPos = QPointF(0, 0));
         UBGraphicsMediaItem* addVideo(const QUrl& pVideoFileUrl, bool shouldPlayAsap, const QPointF& pPos = QPointF(0, 0));
@@ -241,6 +248,7 @@ class UBGraphicsScene: public UBCoreGraphicsScene, public UBItem
 
         class SceneViewState
         {
+            QPointF mLastSceneCenter;// Issue 1598/1605 - CFA - 20131028
             public:
                 SceneViewState()
                 {
@@ -255,6 +263,18 @@ class UBGraphicsScene: public UBCoreGraphicsScene, public UBItem
                     horizontalPosition = pHorizontalPosition;
                     verticalPostition = pVerticalPostition;
                 }
+
+                // Issue 1598/1605 - CFA - 20131028
+                QPointF lastSceneCenter() // Save Scene Center to replace the view when the scene becomes active
+                {
+                    return mLastSceneCenter;
+                }
+
+                void setLastSceneCenter(QPointF center)
+                {
+                    mLastSceneCenter = center;
+                }
+                // Fin issue 1598/1605 - CFA - 20131028
 
                 qreal zoomFactor;
                 int horizontalPosition;

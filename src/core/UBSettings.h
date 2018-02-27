@@ -191,6 +191,11 @@ class UBSettings : public QObject
         static QString documentVersion;
         static QString documentUpdatedAt;
 
+        // Issue 1684 - ALTI/AOU - 20131210
+        static QString documentDefaultBackgroundImage;
+        static QString documentDefaultBackgroundImageDisposition;
+        // Fin Issue 1684 - ALTI/AOU - 20131210
+
         static QString documentDate;
 
         static QString trashedDocumentGroupNamePrefix;

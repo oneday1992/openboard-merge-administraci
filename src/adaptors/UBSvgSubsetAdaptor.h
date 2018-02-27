@@ -59,6 +59,7 @@ class UBGraphicsTriangle;
 class UBGraphicsCache;
 class UBGraphicsGroupContainerItem;
 class UBGraphicsStrokesGroup;
+class UBGraphicsItemAction;
 
 class UBSvgSubsetAdaptor
 {
@@ -194,6 +195,7 @@ class UBSvgSubsetAdaptor
                 void polygonItemToSvgLine(UBGraphicsPolygonItem* polygonItem, bool groupHoldsInfo);
                 void strokeToSvgPolyline(UBGraphicsStroke* stroke, bool groupHoldsInfo);
                 void strokeToSvgPolygon(UBGraphicsStroke* stroke, bool groupHoldsInfo);
+                void writeAction(UBGraphicsItemAction* action);
 
                 inline QString pointsToSvgPointsAttribute(QVector<QPointF> points)
                 {
@@ -235,8 +237,8 @@ class UBSvgSubsetAdaptor
                         return trickAlpha;
                 }
 
-                void pixmapItemToLinkedImage(UBGraphicsPixmapItem *pixmapItem);
-                void svgItemToLinkedSvg(UBGraphicsSvgItem *svgItem);
+                void pixmapItemToLinkedImage(UBGraphicsPixmapItem *pixmapItem, bool isBackground = false); // Issue 1684 - CFA 20131128
+                void svgItemToLinkedSvg(UBGraphicsSvgItem *svgItem, bool isBackground = false);
                 void pdfItemToLinkedPDF(UBGraphicsPDFItem *pdfItem);
                 void videoItemToLinkedVideo(UBGraphicsVideoItem *videoItem);
                 void audioItemToLinkedAudio(UBGraphicsAudioItem *audioItem);
