@@ -70,6 +70,7 @@
    <addaction name="separator"/>
    <addaction name="actionErase"/>
    <addaction name="actionBoard"/>
+   <addaction name="actionPecs"/>
    <addaction name="actionWeb"/>
    <addaction name="actionDocument"/>
    <addaction name="actionDesktop"/>
@@ -115,6 +116,7 @@
    <addaction name="actionWebSmaller"/>
    <addaction name="separator"/>
    <addaction name="actionBoard"/>
+   <addaction name="actionPecs"/>
    <addaction name="actionWeb"/>
    <addaction name="actionDocument"/>
    <addaction name="actionDesktop"/>
@@ -164,6 +166,7 @@
    <addaction name="actionAddToWorkingDocument"/>
    <addaction name="actionDocumentAdd"/>
    <addaction name="actionBoard"/>
+   <addaction name="actionPecs"/>
    <addaction name="actionWeb"/>
    <addaction name="actionDocument"/>
    <addaction name="actionDesktop"/>
@@ -2303,6 +2306,21 @@
    </property>
    <property name="toolTip">
     <string>Group items</string>
+   </property>
+  </action>
+  <action name="actionPecs">
+   <property name="icon">
+    <iconset resource="../OpenBoard.qrc">
+     <normaloff>:/images/toolbar/pecs.png</normaloff>:/images/toolbar/pecs.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pecs</string>
+   </property>
+   <property name="toolTip">
+    <string>Access to mode Picture Exchange Communication System</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>

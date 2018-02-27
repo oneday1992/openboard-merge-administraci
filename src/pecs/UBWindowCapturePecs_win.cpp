@@ -27,48 +27,13 @@
 
 
 
-#include "UBWindowCapture.h"
+#include "UBWindowPecsCapture.h"
 
-#include "UBWindowCaptureDelegate_win.h"
-#include "UBDesktopAnnotationController.h"
-#include "UBDesktopPalette.h"
+#include "UBWindowCapturePecsDelegate_win.h"
+#include "UBDesktopAnnotationPecsController.h"
+#include "UBDesktopPecsPalette.h"
 
 #include "board/UBBoardView.h"
 
 #include "core/memcheck.h"
 
-UBWindowCapture::UBWindowCapture(UBDesktopAnnotationController *parent)
-        : QObject(parent)
-        , mParent(parent)
-{
-    // NOOP
-}
-
-
-UBWindowCapture::~UBWindowCapture()
-{
-    // NOOP
-}
-
-
-const QPixmap UBWindowCapture::getCapturedWindow()
-{
-    return mWindowPixmap;
-}
-
-
-int UBWindowCapture::execute()
-{
-    mParent->desktopPalette()->grabMouse();
-    mParent->desktopPalette()->grabKeyboard();
-
-    UBWindowCaptureDelegate windowCaptureEventHandler;
-    int result = windowCaptureEventHandler.execute();
-
-    mParent->desktopPalette()->releaseMouse();
-    mParent->desktopPalette()->releaseKeyboard();
-
-    mWindowPixmap = windowCaptureEventHandler.getCapturedWindow();
-
-    return result;
-}
