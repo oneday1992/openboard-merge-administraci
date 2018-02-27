@@ -1,10 +1,12 @@
 /*
- * Copyright (C) 2015-2016 Département de l'Instruction Publique (DIP-SEM)
+ * OpenBoard
+ * Authors: Elisa Aparicio Pérez (isabel.aparicio@juntaex.es)
+ *          Ismael Campos Suárez (ismael.campos@juntaex.es)
+ *          Rafael Jesús García Perdigón (rafael.garciap@juntaex.es)
+ *          Álvaro Rubio Largo (alvaro.rubio@juntaex.es)
  *
- * Copyright (C) 2013 Open Education Foundation
- *
- * Copyright (C) 2010-2013 Groupement d'Intérêt Public pour
- * l'Education Numérique en Afrique (GIP ENA)
+ * Creation Date : 27/02/2018
+ * Copyright (C) 2018 Junta de Extremadura.
  *
  * This file is part of OpenBoard.
  *
@@ -25,36 +27,9 @@
  */
 
 
-
 #include <QDialog>
 
 #include "UBWindowPecsCapture.h"
 #include "UBDesktopAnnotationPecsController.h"
 
 
-/*UBWindowCapture::UBWindowCapture(UBDesktopAnnotationController *parent)
-        : QObject(parent)
-        , mParent(parent)
-{
-    // NOOP
-}
-
-
-UBWindowCapture::~UBWindowCapture()
-{
-    // NOOP
-}
-
-
-const QPixmap UBWindowCapture::getCapturedWindow()
-{
-    return mWindowPixmap;
-}
-
-
-int UBWindowCapture::execute()
-{
-    //TODO UB 4.x - Not used for now
-
-    return QDialog::Rejected;
-}*/

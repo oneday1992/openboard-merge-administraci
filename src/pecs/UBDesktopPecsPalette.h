@@ -1,10 +1,12 @@
 /*
- * Copyright (C) 2015-2016 Département de l'Instruction Publique (DIP-SEM)
+ * OpenBoard
+ * Authors: Elisa Aparicio Pérez (isabel.aparicio@juntaex.es)
+ *          Ismael Campos Suárez (ismael.campos@juntaex.es)
+ *          Rafael Jesús García Perdigón (rafael.garciap@juntaex.es)
+ *          Álvaro Rubio Largo (alvaro.rubio@juntaex.es)
  *
- * Copyright (C) 2013 Open Education Foundation
- *
- * Copyright (C) 2010-2013 Groupement d'Intérêt Public pour
- * l'Education Numérique en Afrique (GIP ENA)
+ * Creation Date : 27/02/2018
+ * Copyright (C) 2018 Junta de Extremadura.
  *
  * This file is part of OpenBoard.
  *
@@ -24,75 +26,3 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
-
-#ifndef UBUNINOTESWINDOW_H_
-#define UBUNINOTESWINDOW_H_
-#include <QtGui>
-#include <QShowEvent>
-#include <QHideEvent>
-
-#include "gui/UBActionPalette.h"
-#include "gui/UBRightPalette.h"
-
-/**
- * The uninotes window. This window is controlled by UBUninotesWindowController.
- */
-class UBDesktopPalette : public UBActionPalette
-{
-    Q_OBJECT
-
-    public:
-        UBDesktopPalette(QWidget *parent, UBRightPalette* rightPalette);
-        virtual ~UBDesktopPalette();
-
-        void disappearForCapture();
-        void appear();
-        QPoint buttonPos(QAction* action);
-
-    signals:
-        void uniboardClick();
-        void customClick();
-        void windowClick();
-        void screenClick();
-
-//#ifdef Q_OS_LINUX //TODO: check why this produces an error on linux if uncommented
-        void refreshMask();
-//#endif
-
-    public slots:
-
-        void showHideClick(bool checked);
-        void updateShowHideState(bool pShowEnabled);
-        void setShowHideButtonVisible(bool visible);
-        void setDisplaySelectButtonVisible(bool show);
-        void minimizeMe(eMinimizedLocation location);
-        void maximizeMe();
-        void parentResized();
-
-protected:
-        void showEvent(QShowEvent *event);
-        void hideEvent(QHideEvent *event);
-
-        virtual int getParentRightOffset();
-
-private:
-        QAction *mShowHideAction;
-        QAction *mDisplaySelectAction;
-        QAction *mMaximizeAction;
-        QAction *mActionUniboard;
-        QAction *mActionCustomSelect;
-        QAction* mActionTest;
-
-
-        UBRightPalette* rightPalette;
-        void adjustPosition();
-
-
-signals:
-        void stylusToolChanged(int tool);
-
-};
-
-#endif /* UBUNINOTESWINDOW_H_ */

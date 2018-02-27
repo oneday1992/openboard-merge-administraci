@@ -1,10 +1,12 @@
 /*
- * Copyright (C) 2015-2016 Département de l'Instruction Publique (DIP-SEM)
+ * OpenBoard
+ * Authors: Elisa Aparicio Pérez (isabel.aparicio@juntaex.es)
+ *          Ismael Campos Suárez (ismael.campos@juntaex.es)
+ *          Rafael Jesús García Perdigón (rafael.garciap@juntaex.es)
+ *          Álvaro Rubio Largo (alvaro.rubio@juntaex.es)
  *
- * Copyright (C) 2013 Open Education Foundation
- *
- * Copyright (C) 2010-2013 Groupement d'Intérêt Public pour
- * l'Education Numérique en Afrique (GIP ENA)
+ * Creation Date : 27/02/2018
+ * Copyright (C) 2018 Junta de Extremadura.
  *
  * This file is part of OpenBoard.
  *
@@ -27,44 +29,4 @@
 
 
 
-#ifndef UBCUSTOMCAPTUREWINDOW_H_
-#define UBCUSTOMCAPTUREWINDOW_H_
 
-#include <QtGui>
-#include <QDialog>
-#include <QRubberBand>
-
-/**
-* This class is used to do the custom capture of Uninotes
-**/
-class UBCustomCaptureWindow : public QDialog
-{
-
-    Q_OBJECT;
-
-    public:
-        UBCustomCaptureWindow(QWidget *parent = 0);
-        virtual ~UBCustomCaptureWindow();
-
-        // launch the custom capture window based on pSreenPixmap.
-        // The function returns a DialogCode result.
-        int execute(const QPixmap &pScreenPixmap);
-        // return the selected area pixmap.
-        QPixmap getSelectedPixmap();
-
-    protected:
-        virtual void showEvent ( QShowEvent * event );
-        virtual void mouseMoveEvent ( QMouseEvent * event );
-        virtual void mousePressEvent ( QMouseEvent * event );
-        virtual void mouseReleaseEvent ( QMouseEvent * event );
-        virtual void keyPressEvent ( QKeyEvent * event );
-        virtual void paintEvent(QPaintEvent *event);
-
-        QPixmap mWholeScreenPixmap;
-        QRubberBand *mSelectionBand;
-        QStyle *mRubberBandStyle;
-        QPoint mOrigin;
-        bool mIsSelecting;
-};
-
-#endif /* UBCUSTOMCAPTUREWINDOW_H_ */

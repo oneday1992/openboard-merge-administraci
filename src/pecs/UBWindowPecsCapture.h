@@ -1,10 +1,12 @@
 /*
- * Copyright (C) 2015-2016 Département de l'Instruction Publique (DIP-SEM)
+ * OpenBoard
+ * Authors: Elisa Aparicio Pérez (isabel.aparicio@juntaex.es)
+ *          Ismael Campos Suárez (ismael.campos@juntaex.es)
+ *          Rafael Jesús García Perdigón (rafael.garciap@juntaex.es)
+ *          Álvaro Rubio Largo (alvaro.rubio@juntaex.es)
  *
- * Copyright (C) 2013 Open Education Foundation
- *
- * Copyright (C) 2010-2013 Groupement d'Intérêt Public pour
- * l'Education Numérique en Afrique (GIP ENA)
+ * Creation Date : 27/02/2018
+ * Copyright (C) 2018 Junta de Extremadura.
  *
  * This file is part of OpenBoard.
  *
@@ -23,30 +25,3 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-
-
-#ifndef UBWINDOWCAPTURE_H_
-#define UBWINDOWCAPTURE_H_
-
-
-#include <QtGui>
-
-class UBDesktopAnnotationController;
-
-class UBWindowCapture : public QObject
-{
-    Q_OBJECT;
-
-    public:
-        UBWindowCapture(UBDesktopAnnotationController *parent = 0);
-        virtual ~UBWindowCapture();
-        int execute();
-        const QPixmap getCapturedWindow();
-
-    private:
-        QPixmap mWindowPixmap;
-        UBDesktopAnnotationController* mParent;
-};
-#endif /* UBWINDOWCAPTURE_H_ */
