@@ -59,6 +59,7 @@ UBDesktopPalette::UBDesktopPalette(QWidget *parent, UBRightPalette* _rightPalett
 
     actions << UBApplication::mainWindow->actionDrawing;
     actions << UBApplication::mainWindow->actionPen;
+    actions << UBApplication::mainWindow->actionPecs;
     actions << UBApplication::mainWindow->actionEraser;
     actions << UBApplication::mainWindow->actionMarker;
     actions << UBApplication::mainWindow->actionSelector;
@@ -188,10 +189,13 @@ void UBDesktopPalette::maximizeMe()
     actions << mActionUniboard;
     actions << UBApplication::mainWindow->actionDrawing;
     actions << UBApplication::mainWindow->actionPen;
+    actions << UBApplication::mainWindow->actionPecs;
     actions << UBApplication::mainWindow->actionEraser;
     actions << UBApplication::mainWindow->actionMarker;
     actions << UBApplication::mainWindow->actionSelector;
     actions << UBApplication::mainWindow->actionPointer;
+
+
     if (UBPlatformUtils::hasVirtualKeyboard())
         actions << UBApplication::mainWindow->actionVirtualKeyboard;
 
@@ -217,6 +221,8 @@ void UBDesktopPalette::showEvent(QShowEvent *event)
     QIcon penIcon;
     QIcon markerIcon;
     QIcon eraserIcon;
+    QIcon pecsIcon;
+
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-palette.png"), QIcon::Normal, QIcon::Off);
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-paletteOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionDrawing->setIcon(drawingIcon);
@@ -226,6 +232,11 @@ void UBDesktopPalette::showEvent(QShowEvent *event)
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerArrow.png"), QIcon::Normal, QIcon::Off);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOnArrow.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
+    //Añadiendo icono de PECS
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
+    UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
+    //FIN DE ICONO DE PECS
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserArrow.png"), QIcon::Normal, QIcon::Off);
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserOnArrow.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionEraser->setIcon(eraserIcon);
@@ -240,15 +251,23 @@ void UBDesktopPalette::hideEvent(QHideEvent *event)
     QIcon penIcon;
     QIcon markerIcon;
     QIcon eraserIcon;
+    QIcon pecsIcon;
+
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-palette.png"), QIcon::Normal, QIcon::Off);
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-paletteOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionDrawing->setIcon(drawingIcon);
+
     penIcon.addPixmap(QPixmap(":images/stylusPalette/pen.png"), QIcon::Normal, QIcon::Off);
     penIcon.addPixmap(QPixmap(":images/stylusPalette/penOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionPen->setIcon(penIcon);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/marker.png"), QIcon::Normal, QIcon::Off);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
+    //Añadiendo icono de PECS
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
+    UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
+    //FIN DE ICONO DE PECS
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraser.png"), QIcon::Normal, QIcon::Off);
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionEraser->setIcon(eraserIcon);
