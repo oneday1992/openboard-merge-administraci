@@ -47,7 +47,7 @@ QPointer<UBSettings> UBSettings::sSingleton = 0;
 
 int UBSettings::pointerDiameter = 40;
 int UBSettings::crossSize = 32;
-int UBSettings::colorPaletteSize = 5;
+int UBSettings::colorPaletteSize = 6;
 int UBSettings::objectFrameWidth = 20;
 int UBSettings::boardMargin = 10;
 
@@ -253,7 +253,7 @@ void UBSettings::init()
 
     appLookForOpenSankoreInstall = new UBSetting(this, "App", "LookForOpenSankoreInstall", true);
 
-    appStartMode = new UBSetting(this, "App", "StartMode", "1");
+    appStartMode = new UBSetting(this, "App", "StartMode", "");
 
     featureSliderPosition = new UBSetting(this, "Board", "FeatureSliderPosition", 40);
 
@@ -280,21 +280,21 @@ void UBSettings::init()
     boardCrossColorLightBackground = new UBSetting(this, "Board", "CrossColorLightBackground", "#A5E1FF");
 
     QStringList penLightBackgroundColors;
-    penLightBackgroundColors << "#000000" << "#FF0000" <<"#004080" << "#008000" << "#FFDD00" << "#C87400" << "#800040" << "#008080"  << "#5F2D0A" << "#FFFFFF";
+    penLightBackgroundColors << "#000000" << "#FF0000" <<"#004080" << "#008000" << "#FFDD00" << "#C87400" << "#800040" << "#008080"  << "#5F2D0A" << "#FFFFFF" << "#5F2D0A" << "#FFFFFF";
     boardPenLightBackgroundColors = new UBColorListSetting(this, "Board", "PenLightBackgroundColors", penLightBackgroundColors, 1.0);
 
     QStringList penDarkBackgroundColors;
-    penDarkBackgroundColors << "#FFFFFF" << "#FF3400" <<"#66C0FF" << "#81FF5C" << "#FFFF00" << "#B68360" << "#FF497E" << "#8D69FF" << "#000000";
+    penDarkBackgroundColors << "#FFFFFF" << "#FF3400" <<"#66C0FF" << "#81FF5C" << "#FFFF00" << "#B68360" << "#FF497E" << "#8D69FF" << "#000000" << "#8D69FF" << "#000000" ;
     boardPenDarkBackgroundColors = new UBColorListSetting(this, "Board", "PenDarkBackgroundColors", penDarkBackgroundColors, 1.0);
 
     boardMarkerAlpha = new UBSetting(this, "Board", "MarkerAlpha", 0.5);
 
     QStringList markerLightBackgroundColors;
-    markerLightBackgroundColors << "#E3FF00" << "#FF0000" <<"#004080" << "#008000" << "#C87400" << "#800040" << "#008080"  << "#000000";
+    markerLightBackgroundColors << "#E3FF00" << "#FF0000" <<"#004080" << "#008000" << "#C87400" << "#800040" << "#008080"  << "#000000" << "#008080"  << "#000000";
     boardMarkerLightBackgroundColors = new UBColorListSetting(this, "Board", "MarkerLightBackgroundColors", markerLightBackgroundColors, boardMarkerAlpha->get().toDouble());
 
     QStringList markerDarkBackgroundColors;
-    markerDarkBackgroundColors << "#FFFF00" << "#FF4400" <<"#66C0FF" << "#81FF5C" << "#B68360" << "#FF497E" << "#8D69FF" << "#FFFFFF";
+    markerDarkBackgroundColors << "#FFFF00" << "#FF4400" <<"#66C0FF" << "#81FF5C" << "#B68360" << "#FF497E" << "#8D69FF" << "#FFFFFF" << "#8D69FF" << "#FFFFFF";
     boardMarkerDarkBackgroundColors = new UBColorListSetting(this, "Board", "MarkerDarkBackgroundColors", markerDarkBackgroundColors, boardMarkerAlpha->get().toDouble());
 
     QStringList penLightBackgroundSelectedColors;
@@ -556,7 +556,6 @@ void UBSettings::setPenColorIndex(int index)
     }
 }
 
-
 QColor UBSettings::currentPenColor()
 {
     return penColor(isDarkBackground());
@@ -635,9 +634,8 @@ void UBSettings::setMarkerColorIndex(int index)
     if (index != markerColorIndex())
     {
         setValue("Board/MarkerColorIndex", index);
-    }
+    }    
 }
-
 
 QColor UBSettings::currentMarkerColor()
 {
@@ -1382,7 +1380,7 @@ void UBSettings::checkNewSettings()
                   << boardMarkerLightBackgroundSelectedColors;
 
     foreach (UBColorListSetting* setting, colorSettings) {
-        if (setting->colors().size() < 5)
+        if (setting->colors().size() < 6) // We introduce a new color [ CUSTOM COLOR ] 27/02/2018
             setting->reset();
     }
 

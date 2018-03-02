@@ -37,18 +37,21 @@
 #include "core/UBSettings.h"
 
 #include "board/UBDrawingController.h"
+#include "UBAbstractSubPalette.h"
 
 #include "core/memcheck.h"
 
-UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QAction*> &actions)
+UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QAction*> &actions, bool isColorToolBar)
     : QWidget(toolBar)
     , mActions(actions)
     , mCurrentIndex(-1)
     , mDisplayLabel(true)
     , mActionGroup(0)
+    , launched(false)
 {
     Q_ASSERT(actions.size() > 0);
 
+    isColorTool = isColorToolBar;
     mToolButton = qobject_cast<QToolButton*>(toolBar->layout()->itemAt(0)->widget());
     Q_ASSERT(mToolButton);
 
@@ -69,7 +72,6 @@ UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QActio
     foreach(QAction *action, actions)
     {
         mActionGroup->addAction(action);
-
         QToolButton *button = new QToolButton(this);
         mButtons.append(button);
         button->setDefaultAction(action);
@@ -88,6 +90,9 @@ UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QActio
             button->setObjectName("ubButtonGroupCenter");
         }
 
+        if((isColorTool == true) && ((i+1) == UBSettings::colorPaletteSize )) // If it is the last color button, then it is the CUSTOM COLOR BUTTON
+            connect(button, SIGNAL(clicked(bool)), this, SLOT(nuevoMethod()));
+
         connect(button, SIGNAL(triggered(QAction*)), this, SLOT(selected(QAction*)));
 
         horizontalLayout->addWidget(button);
@@ -95,12 +100,59 @@ UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QActio
         buttonSize = button->sizeHint();
         i++;
     }
+
+    if(isColorToolBar == true){
+        // Issue 27/02/2018 - OpenBoard - CUSTOM COLOR.
+        mColorDialog = new QColorDialog(this);
+        mColorDialog->setOptions(QColorDialog::DontUseNativeDialog);
+
+        connect(mColorDialog,SIGNAL(colorSelected(QColor)),this,SLOT(updateCustomColor(QColor)));
+        // End - Issue 27/02/2018 - OpenBoard - CUSTOM COLOR.
+    }
 }
 
 UBToolbarButtonGroup::~UBToolbarButtonGroup()
 {
     // NOOP
 }
+
+
+// Issue 27/02/2018 - OpenBoard - CUSTOM COLOR.
+void UBToolbarButtonGroup::updateCustomColor(QColor selectedColor){
+    qWarning()<<"updateCustomColor";
+
+    bool isDarkBackground = UBSettings::settings()->isDarkBackground();
+    int i = UBSettings::colorPaletteSize - 1; // The last button is CUSTOM COLOR.
+    if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
+        || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line)
+    {
+        if(isDarkBackground){
+            UBSettings::settings()->boardPenDarkBackgroundSelectedColors->setColor(i,selectedColor);
+            UBDrawingController::drawingController()->setPenColor(true,selectedColor,i);
+        }
+        else{
+            UBSettings::settings()->boardPenLightBackgroundSelectedColors->setColor(i,selectedColor);
+            UBDrawingController::drawingController()->setPenColor(false,selectedColor,i);
+        }
+
+    }
+    else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
+    {
+        if(isDarkBackground){
+            UBSettings::settings()->boardMarkerDarkBackgroundSelectedColors->setColor(i,selectedColor);
+            UBDrawingController::drawingController()->setMarkerColor(true,selectedColor,i);
+        }
+        else{
+            UBSettings::settings()->boardMarkerLightBackgroundSelectedColors->setColor(i,selectedColor);
+            UBDrawingController::drawingController()->setMarkerColor(false,selectedColor,i);
+        }
+    }
+    QPixmap px(12, 12);
+    px.fill(selectedColor);
+    mButtons.at(i)->setIcon(px);
+}
+
+
 
 void UBToolbarButtonGroup::setIcon(const QIcon &icon, int index)
 {
@@ -122,6 +174,13 @@ void UBToolbarButtonGroup::setColor(const QColor &color, int index)
     pixmap.fill(color);
     QIcon icon(pixmap);
     setIcon(icon, index);
+}
+
+// Issue Open-Board 27/02/2018 - Custom color choice
+void UBToolbarButtonGroup::nuevoMethod(){
+    mColorDialog->show(); // The color is updated once it is closed.
+    mColorDialog->activateWindow();
+    mColorDialog->raise();
 }
 
 void UBToolbarButtonGroup::selected(QAction *action)
@@ -152,9 +211,10 @@ int UBToolbarButtonGroup::currentIndex() const
 }
 
 void UBToolbarButtonGroup::setCurrentIndex(int index)
-{
+{    
     Q_ASSERT(index < mButtons.size());
 
+    qWarning()<<mCurrentIndex;
     if (index != mCurrentIndex)
     {
         for(int i = 0; i < mButtons.size(); i++)
@@ -162,6 +222,7 @@ void UBToolbarButtonGroup::setCurrentIndex(int index)
             mButtons.at(i)->setChecked(i == index);
         }
         mCurrentIndex = index;
+        qWarning()<<"currentIndexChanged(index)";
         emit currentIndexChanged(index);
     }
 }

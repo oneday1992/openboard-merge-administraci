@@ -2314,13 +2314,26 @@
    </property>
    <property name="icon">
     <iconset resource="../OpenBoard.qrc">
-     <normaloff>:/images/toolbar/plusBlack.png</normaloff>:/images/toolbar/plusBlack.png</iconset>
+     <normaloff>:/images/toolbar/icon-moreON.png</normaloff>
+     <normalon>:/images/toolbar/icon-more.png</normalon>:/images/toolbar/icon-moreON.png</iconset>
    </property>
    <property name="text">
     <string>Line</string>
    </property>
    <property name="toolTip">
     <string>Custom Line</string>
+   </property>
+  </action>
+  <action name="actionColorCustom">
+   <property name="icon">
+    <iconset resource="../OpenBoard.qrc">
+     <normaloff>:/images/toolbar/color.png</normaloff>:/images/toolbar/color.png</iconset>
+   </property>
+   <property name="text">
+    <string>Color</string>
+   </property>
+   <property name="toolTip">
+    <string>Select any color</string>
    </property>
   </action>
  </widget>

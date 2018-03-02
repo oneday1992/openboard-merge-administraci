@@ -36,13 +36,14 @@
 #include <QToolBar>
 #include <QToolButton>
 #include <QActionGroup>
+#include <qcolordialog.h>
 
 class UBToolbarButtonGroup : public QWidget
 {
     Q_OBJECT;
 
     public:
-        UBToolbarButtonGroup(QToolBar *toolbar, const QList<QAction*> &actions = QList<QAction*>());
+        UBToolbarButtonGroup(QToolBar *toolbar, const QList<QAction*> &actions = QList<QAction*>(), bool isColorToolBar=false);
         virtual ~UBToolbarButtonGroup();
 
         void setIcon(const QIcon &icon, int index);
@@ -60,18 +61,24 @@ class UBToolbarButtonGroup : public QWidget
         int                  mCurrentIndex;
         bool                 mDisplayLabel;
         QActionGroup*        mActionGroup;
+        QColorDialog        *mColorDialog; // Issue 27/02/2018 - OpenBoard - CUSTOM COLOR.
+        bool                 isColorTool;  // Issue 27/02/2018 - OpenBoard - CUSTOM COLOR.
+        bool launched;
 
     public slots:
         void setCurrentIndex(int index);
         void colorPaletteChanged();
         void displayText(QVariant display);
+        void updateCustomColor(QColor selectedColor); // Issue 27/02/2018 - OpenBoard - CUSTOM COLOR.
 
     private slots:
         void selected(QAction *action);
+        void nuevoMethod();
 
     signals:
         void activated(int index);
         void currentIndexChanged(int index);
+        void customColorUpdated();
 };
 
 #endif /* UBTOOLBARBUTTONGROUP_H_ */

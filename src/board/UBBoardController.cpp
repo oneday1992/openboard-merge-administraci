@@ -276,6 +276,11 @@ QRectF UBBoardController::controlGeometry()
     return mControlView->geometry();
 }
 
+// Issue Open-Board 27/02/2018 - Custom color
+void UBBoardController::menuChoice()
+{
+    qWarning()<<"Conectado y funcionando el click largo";
+}
 
 void UBBoardController::setupToolbar()
 {
@@ -287,15 +292,18 @@ void UBBoardController::setupToolbar()
     colorActions.append(mMainWindow->actionColor1);
     colorActions.append(mMainWindow->actionColor2);
     colorActions.append(mMainWindow->actionColor3);
-    colorActions.append(mMainWindow->actionColor4);
+    colorActions.append(mMainWindow->actionColor4);    
+    // Issue Open-Board 27/02/2018 - Custom color
+    colorActions.append(mMainWindow->actionColorCustom);
 
     UBToolbarButtonGroup *colorChoice =
-            new UBToolbarButtonGroup(mMainWindow->boardToolBar, colorActions);
+            new UBToolbarButtonGroup(mMainWindow->boardToolBar, colorActions, true);
 
     mMainWindow->boardToolBar->insertWidget(mMainWindow->actionBackgrounds, colorChoice);
 
     connect(settings->appToolBarDisplayText, SIGNAL(changed(QVariant)), colorChoice, SLOT(displayText(QVariant)));
     connect(colorChoice, SIGNAL(activated(int)), this, SLOT(setColorIndex(int)));
+    connect(colorChoice, SIGNAL(customColorUpdated()), this, SLOT(updateCustomColor()));
     connect(UBDrawingController::drawingController(), SIGNAL(colorIndexChanged(int)), colorChoice, SLOT(setCurrentIndex(int)));
     connect(UBDrawingController::drawingController(), SIGNAL(colorPaletteChanged()), colorChoice, SLOT(colorPaletteChanged()));
     connect(UBDrawingController::drawingController(), SIGNAL(colorPaletteChanged()), this, SLOT(colorPaletteChanged()));
@@ -308,11 +316,12 @@ void UBBoardController::setupToolbar()
     lineWidthActions.append(mMainWindow->actionLineSmall);
     lineWidthActions.append(mMainWindow->actionLineMedium);
     lineWidthActions.append(mMainWindow->actionLineLarge);
+
     // Added 26/02/2018 -- slider to control the thickness of pen.
     lineWidthActions.append(mMainWindow->actionLineCustom);
 
     UBToolbarButtonGroup *lineWidthChoice =
-            new UBToolbarButtonGroup(mMainWindow->boardToolBar, lineWidthActions);
+            new UBToolbarButtonGroup(mMainWindow->boardToolBar, lineWidthActions, false);
 
     connect(settings->appToolBarDisplayText, SIGNAL(changed(QVariant)), lineWidthChoice, SLOT(displayText(QVariant)));
 
@@ -336,7 +345,7 @@ void UBBoardController::setupToolbar()
     eraserWidthActions.append(mMainWindow->actionEraserLarge);
 
     UBToolbarButtonGroup *eraserWidthChoice =
-            new UBToolbarButtonGroup(mMainWindow->boardToolBar, eraserWidthActions);
+            new UBToolbarButtonGroup(mMainWindow->boardToolBar, eraserWidthActions, false);
 
     mMainWindow->boardToolBar->insertWidget(mMainWindow->actionBackgrounds, eraserWidthChoice);
 
@@ -488,8 +497,6 @@ void UBBoardController::stylusToolDoubleClicked(int tool)
         mActiveScene->setLastCenter(QPointF(0,0));// Issue 1598/1605 - CFA - 20131028
     }
 }
-
-
 
 /*void UBBoardController::addScene()
 {
@@ -1939,10 +1946,9 @@ void UBBoardController::lastWindowClosed()
     }
 }
 
-
-
 void UBBoardController::setColorIndex(int pColorIndex)
 {
+    qWarning() << "setColorIndex &&&&&&&&&&&&&&&&&&&& ####################### ";
     UBDrawingController::drawingController()->setColorIndex(pColorIndex);
 
     if (UBDrawingController::drawingController()->stylusTool() != UBStylusTool::Marker &&
@@ -1971,6 +1977,7 @@ void UBBoardController::setColorIndex(int pColorIndex)
             }
         }
 
+        qWarning()<<"penColorChanged()";
         emit penColorChanged();
     }
     else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
@@ -1978,6 +1985,11 @@ void UBBoardController::setColorIndex(int pColorIndex)
         mMarkerColorOnDarkBackground = UBSettings::settings()->markerColors(true).at(pColorIndex);
         mMarkerColorOnLightBackground = UBSettings::settings()->markerColors(false).at(pColorIndex);
     }
+}
+
+void UBBoardController::updateCustomColor()
+{
+    setColorIndex(UBSettings::colorPaletteSize - 1);
 }
 
 void UBBoardController::colorPaletteChanged()

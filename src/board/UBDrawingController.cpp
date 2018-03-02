@@ -81,7 +81,6 @@ UBDrawingController::UBDrawingController(QObject * parent)
     connect(UBApplication::boardController, SIGNAL(activeSceneChanged()), this, SLOT(onActiveSceneChanged()));
 }
 
-
 UBDrawingController::~UBDrawingController()
 {
     // NOOP
@@ -297,7 +296,6 @@ int UBDrawingController::currentToolColorIndex()
     }
 }
 
-
 QColor UBDrawingController::currentToolColor()
 {
     return toolColor(UBSettings::settings()->isDarkBackground());
@@ -331,18 +329,21 @@ QColor UBDrawingController::toolColor(bool onDarkBackground)
 
 void UBDrawingController::setColorIndex(int index)
 {
-    Q_ASSERT(index >= 0 && index < UBSettings::settings()->colorPaletteSize);
+    qWarning()<<"INDEX:";
+    qWarning()<<index;
 
-    if (stylusTool() == UBStylusTool::Marker)
-    {
-        UBSettings::settings()->setMarkerColorIndex(index);
-    }
-    else
-    {
-        UBSettings::settings()->setPenColorIndex(index);
-    }
+        Q_ASSERT(index >= 0 && index < UBSettings::settings()->colorPaletteSize);
 
-    emit colorIndexChanged(index);
+        if (stylusTool() == UBStylusTool::Marker)
+        {
+            UBSettings::settings()->setMarkerColorIndex(index);
+        }
+        else
+        {
+            UBSettings::settings()->setPenColorIndex(index);
+        }
+
+        emit colorIndexChanged(index);
 }
 
 

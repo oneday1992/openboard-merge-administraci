@@ -209,6 +209,9 @@ class UBBoardController : public UBDocumentContainer
         QString actionUngroupText(){ return mActionUngroupText;}
 
     public slots:
+        // Issue Open-Board 27/02/2018 - Custom color choice
+        void menuChoice();
+
         void showDocumentsDialog();
         void showKeyboard(bool show);
         void togglePodcast(bool checked);
@@ -244,6 +247,8 @@ class UBBoardController : public UBDocumentContainer
         void hideMessage();
         void setDisabled(bool disable);
         void setColorIndex(int pColorIndex);
+        void updateCustomColor(); // Issue 27/02/2018 - OpenBoard - CUSTOM COLOR
+
         void removeTool(UBToolWidget* toolWidget);
         void hide();
         void show();
@@ -282,6 +287,8 @@ class UBBoardController : public UBDocumentContainer
         void displayMetadata(QMap<QString, QString> metadata);
         void pageSelectionChanged(int index);
         void npapiWidgetCreated(const QString &Url);
+        void customColorUpdated();
+
 
     protected:
         void setupViews();
@@ -338,7 +345,6 @@ class UBBoardController : public UBDocumentContainer
         //EV-7 - NNE - 20131230
         UBShapeFactory mShapeFactory;
 
-
     private slots:
         void stylusToolDoubleClicked(int tool);
         void boardViewResized(QResizeEvent* event);
@@ -349,7 +355,6 @@ class UBBoardController : public UBDocumentContainer
         void libraryDialogClosed(int ret);
         void lastWindowClosed();
         void onDownloadModalFinished();
-
 };
 
 
