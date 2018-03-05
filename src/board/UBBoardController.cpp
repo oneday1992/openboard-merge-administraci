@@ -276,12 +276,6 @@ QRectF UBBoardController::controlGeometry()
     return mControlView->geometry();
 }
 
-// Issue Open-Board 27/02/2018 - Custom color
-void UBBoardController::menuChoice()
-{
-    qWarning()<<"Conectado y funcionando el click largo";
-}
-
 void UBBoardController::setupToolbar()
 {
     UBSettings *settings = UBSettings::settings();
@@ -297,7 +291,7 @@ void UBBoardController::setupToolbar()
     colorActions.append(mMainWindow->actionColorCustom);
 
     UBToolbarButtonGroup *colorChoice =
-            new UBToolbarButtonGroup(mMainWindow->boardToolBar, colorActions, true);
+            new UBToolbarButtonGroup(mMainWindow->boardToolBar, colorActions, true, false);
 
     mMainWindow->boardToolBar->insertWidget(mMainWindow->actionBackgrounds, colorChoice);
 
@@ -317,11 +311,12 @@ void UBBoardController::setupToolbar()
     lineWidthActions.append(mMainWindow->actionLineMedium);
     lineWidthActions.append(mMainWindow->actionLineLarge);
 
-    // Added 26/02/2018 -- slider to control the thickness of pen.
+    // Issue 05/03/2018 -- Open-Board - Custom Line Width
     lineWidthActions.append(mMainWindow->actionLineCustom);
+    lineWidthActions.append(mMainWindow->actionLineWidthSpinBox);
 
     UBToolbarButtonGroup *lineWidthChoice =
-            new UBToolbarButtonGroup(mMainWindow->boardToolBar, lineWidthActions, false);
+            new UBToolbarButtonGroup(mMainWindow->boardToolBar, lineWidthActions, false, true);
 
     connect(settings->appToolBarDisplayText, SIGNAL(changed(QVariant)), lineWidthChoice, SLOT(displayText(QVariant)));
 
@@ -345,7 +340,7 @@ void UBBoardController::setupToolbar()
     eraserWidthActions.append(mMainWindow->actionEraserLarge);
 
     UBToolbarButtonGroup *eraserWidthChoice =
-            new UBToolbarButtonGroup(mMainWindow->boardToolBar, eraserWidthActions, false);
+            new UBToolbarButtonGroup(mMainWindow->boardToolBar, eraserWidthActions, false, false);
 
     mMainWindow->boardToolBar->insertWidget(mMainWindow->actionBackgrounds, eraserWidthChoice);
 
@@ -1948,7 +1943,6 @@ void UBBoardController::lastWindowClosed()
 
 void UBBoardController::setColorIndex(int pColorIndex)
 {
-    qWarning() << "setColorIndex &&&&&&&&&&&&&&&&&&&& ####################### ";
     UBDrawingController::drawingController()->setColorIndex(pColorIndex);
 
     if (UBDrawingController::drawingController()->stylusTool() != UBStylusTool::Marker &&
@@ -1976,8 +1970,6 @@ void UBBoardController::setColorIndex(int pColorIndex)
                 mMainWindow->actionPen->setChecked(true);
             }
         }
-
-        qWarning()<<"penColorChanged()";
         emit penColorChanged();
     }
     else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)

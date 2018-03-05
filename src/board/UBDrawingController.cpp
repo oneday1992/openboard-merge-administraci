@@ -402,6 +402,7 @@ void UBDrawingController::penToolSelected(bool checked)
     if (checked)
     {
         setStylusTool(UBStylusTool::Pen);
+        emit clickOnPenMarkerButton();
 
     }
 }
@@ -414,8 +415,10 @@ void UBDrawingController::eraserToolSelected(bool checked)
 
 void UBDrawingController::markerToolSelected(bool checked)
 {
-    if (checked)
+    if (checked){
         setStylusTool(UBStylusTool::Marker);
+        emit clickOnPenMarkerButton();
+    }
 }
 
 void UBDrawingController::selectorToolSelected(bool checked)

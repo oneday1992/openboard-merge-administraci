@@ -41,7 +41,7 @@
 
 #include "core/memcheck.h"
 
-UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QAction*> &actions, bool isColorToolBar)
+UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QAction*> &actions, bool isColorToolBar, bool isLineWidthToolBar)
     : QWidget(toolBar)
     , mActions(actions)
     , mCurrentIndex(-1)
@@ -52,6 +52,7 @@ UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QActio
     Q_ASSERT(actions.size() > 0);
 
     isColorTool = isColorToolBar;
+    isLineWidthTool = isLineWidthToolBar;
     mToolButton = qobject_cast<QToolButton*>(toolBar->layout()->itemAt(0)->widget());
     Q_ASSERT(mToolButton);
 
@@ -72,32 +73,74 @@ UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QActio
     foreach(QAction *action, actions)
     {
         mActionGroup->addAction(action);
-        QToolButton *button = new QToolButton(this);
-        mButtons.append(button);
-        button->setDefaultAction(action);
-        button->setCheckable(true);
-
-        if(i == 0)
+        if((isLineWidthTool == true) && ((i+1) == 5 )) // The last line-width action is the SpinBox action
         {
-            button->setObjectName("ubButtonGroupLeft");
-        }
-        else if (i == actions.size() - 1)
-        {
-            button->setObjectName("ubButtonGroupRight");
-        }
-        else
-        {
-            button->setObjectName("ubButtonGroupCenter");
-        }
+            lineWidthSpinBox = new QDoubleSpinBox(this);
+            lineWidthSpinBox->addAction(action);
+            lineWidthSpinBox->setObjectName("ubButtonGroupRight");
+            lineWidthSpinBox->setRange(1,120);
+            lineWidthSpinBox->setSingleStep(0.5);
 
-        if((isColorTool == true) && ((i+1) == UBSettings::colorPaletteSize )) // If it is the last color button, then it is the CUSTOM COLOR BUTTON
-            connect(button, SIGNAL(clicked(bool)), this, SLOT(nuevoMethod()));
+            customPenLineWidth = 4.0; // Default value for custom, it is reset every time you close and open Open-Board (it is NOT saved).
+            customMarkerLineWidth = 30.0; // Default value for custom, it is reset every time you close and open Open-Board (it is NOT saved).
 
-        connect(button, SIGNAL(triggered(QAction*)), this, SLOT(selected(QAction*)));
+            if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
+                || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line)
+            {
+                lineWidthSpinBox->setValue(UBSettings::settings()->currentPenWidth());
+            }
+            else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
+            {
+                lineWidthSpinBox->setValue(UBSettings::settings()->currentMarkerWidth());
+            }
 
-        horizontalLayout->addWidget(button);
-        mLabel = action->text();
-        buttonSize = button->sizeHint();
+            connect(this, SIGNAL(clickOnLineWidthButton()), this, SLOT(updateLineWidthSpinBox()));
+            connect(UBDrawingController::drawingController(), SIGNAL(clickOnPenMarkerButton()), this, SLOT(updateLineWidthSpinBox()));
+
+            connect(lineWidthSpinBox,SIGNAL(valueChanged(double)),this,SLOT(updatePenMarkerWidth(double)));
+
+            horizontalLayout->addWidget(lineWidthSpinBox);
+            mLabel = action->text();
+            buttonSize = lineWidthSpinBox->sizeHint();
+
+        }
+        else{
+            QToolButton *button = new QToolButton(this);
+            mButtons.append(button);
+            button->setDefaultAction(action);
+            button->setCheckable(true);
+
+            if(i == 0)
+            {
+                button->setObjectName("ubButtonGroupLeft");
+            }
+            else if (i == actions.size() - 1)
+            {
+                button->setObjectName("ubButtonGroupRight");
+            }
+            else
+            {
+                button->setObjectName("ubButtonGroupCenter");
+            }
+
+            if((isColorTool == true) && ((i+1) == UBSettings::colorPaletteSize )) // If it is the last color button, then it is the CUSTOM COLOR BUTTON
+                connect(button, SIGNAL(clicked(bool)), this, SLOT(customColorHandle()));
+
+            if( (isLineWidthTool == true)&&((i+1) < 4) ) // If it is a LINE-WIDTH BUTTON
+            {
+                connect(button, SIGNAL(clicked(bool)), this, SLOT(lineWidthHandlePredefined()));
+            }
+            if( (isLineWidthTool == true)&&((i+1) == 4) ) // If it is a LINE-WIDTH BUTTON
+            {
+                connect(button, SIGNAL(clicked(bool)), this, SLOT(lineWidthHandleCustom()));
+            }
+
+            connect(button, SIGNAL(triggered(QAction*)), this, SLOT(selected(QAction*)));
+
+            horizontalLayout->addWidget(button);
+            mLabel = action->text();
+            buttonSize = button->sizeHint();
+        }
         i++;
     }
 
@@ -116,11 +159,44 @@ UBToolbarButtonGroup::~UBToolbarButtonGroup()
     // NOOP
 }
 
+void UBToolbarButtonGroup::updatePenMarkerWidth(double value)
+{
+    qWarning()<<value;
+    if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
+        || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line)
+    {
+        UBSettings::settings()->boardPenCustomWidth->set(value);
+        customPenLineWidth = value; // Default value for custom, it is reset every time you close and open Open-Board (it is NOT saved).
+    }
+    else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
+    {
+        UBSettings::settings()->boardMarkerCustomWidth->set(value);
+        customMarkerLineWidth = value; // Default value for custom, it is reset every time you close and open Open-Board (it is NOT saved).
+    }
+}
+
+void UBToolbarButtonGroup::updateLineWidthSpinBox()
+{
+    if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
+        || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line)
+    {
+        lineWidthSpinBox->setValue(UBSettings::settings()->currentPenWidth());
+    }
+    else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
+    {
+        lineWidthSpinBox->setValue(UBSettings::settings()->currentMarkerWidth());
+    }
+    if((mCurrentIndex+1) < 4) // If any predefined button is selected, then we have to disable the spinbox
+    {
+        lineWidthSpinBox->setEnabled(false);
+    }
+    else{
+        lineWidthSpinBox->setEnabled(true);
+    }
+}
 
 // Issue 27/02/2018 - OpenBoard - CUSTOM COLOR.
 void UBToolbarButtonGroup::updateCustomColor(QColor selectedColor){
-    qWarning()<<"updateCustomColor";
-
     bool isDarkBackground = UBSettings::settings()->isDarkBackground();
     int i = UBSettings::colorPaletteSize - 1; // The last button is CUSTOM COLOR.
     if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
@@ -177,11 +253,37 @@ void UBToolbarButtonGroup::setColor(const QColor &color, int index)
 }
 
 // Issue Open-Board 27/02/2018 - Custom color choice
-void UBToolbarButtonGroup::nuevoMethod(){
+void UBToolbarButtonGroup::customColorHandle(){
     mColorDialog->show(); // The color is updated once it is closed.
     mColorDialog->activateWindow();
     mColorDialog->raise();
 }
+
+// Issue 05/03/2018 - OpenBoard - CUSTOM WIDTH
+void UBToolbarButtonGroup::lineWidthHandlePredefined(){
+    qWarning() << "customLineWidthHandle";
+    lineWidthSpinBox->setEnabled(false);
+    emit clickOnLineWidthButton();
+}
+
+// Issue 05/03/2018 - OpenBoard - CUSTOM WIDTH
+void UBToolbarButtonGroup::lineWidthHandleCustom(){
+    qWarning() << "customLineWidthHandle";
+    if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
+        || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line)
+    {
+        qWarning() << "Pen";
+        lineWidthSpinBox->setValue(customPenLineWidth);
+    }
+    else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
+    {
+        qWarning() << "Marker";
+        lineWidthSpinBox->setValue(customMarkerLineWidth);
+    }
+    lineWidthSpinBox->setEnabled(true);
+    emit clickOnLineWidthButton();
+}
+
 
 void UBToolbarButtonGroup::selected(QAction *action)
 {
@@ -196,7 +298,8 @@ void UBToolbarButtonGroup::selected(QAction *action)
                 if (eachAction == action)
                 {
                     setCurrentIndex(i);
-                    emit activated(i);
+                    //if(!((isLineWidthTool == true)&&((i+1) == 4)))
+                      emit activated(i);
                     break;
                 }
                 i++;
@@ -212,9 +315,8 @@ int UBToolbarButtonGroup::currentIndex() const
 
 void UBToolbarButtonGroup::setCurrentIndex(int index)
 {    
-    Q_ASSERT(index < mButtons.size());
+    //Q_ASSERT(index < mButtons.size());
 
-    qWarning()<<mCurrentIndex;
     if (index != mCurrentIndex)
     {
         for(int i = 0; i < mButtons.size(); i++)
@@ -222,7 +324,17 @@ void UBToolbarButtonGroup::setCurrentIndex(int index)
             mButtons.at(i)->setChecked(i == index);
         }
         mCurrentIndex = index;
-        qWarning()<<"currentIndexChanged(index)";
+        qWarning()<<isLineWidthTool;
+        if(isLineWidthTool == true){
+            if(index+1 < 4)
+            {
+                lineWidthSpinBox->setEnabled(false);
+            }
+            else
+            {
+                lineWidthSpinBox->setEnabled(true);
+            }
+        }
         emit currentIndexChanged(index);
     }
 }

@@ -209,9 +209,6 @@ class UBBoardController : public UBDocumentContainer
         QString actionUngroupText(){ return mActionUngroupText;}
 
     public slots:
-        // Issue Open-Board 27/02/2018 - Custom color choice
-        void menuChoice();
-
         void showDocumentsDialog();
         void showKeyboard(bool show);
         void togglePodcast(bool checked);

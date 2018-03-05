@@ -260,10 +260,12 @@ void UBSettings::init()
     boardPenFineWidth = new UBSetting(this, "Board", "PenFineWidth", 1.5);
     boardPenMediumWidth = new UBSetting(this, "Board", "PenMediumWidth", 3.0);
     boardPenStrongWidth = new UBSetting(this, "Board", "PenStrongWidth", 8.0);
+    boardPenCustomWidth = new UBSetting(this, "Board", "PenCustomWidth", 4.0); // Issue 05/03/2018 -- Open-Board - Custom Line Width
 
     boardMarkerFineWidth = new UBSetting(this, "Board", "MarkerFineWidth", 12.0);
     boardMarkerMediumWidth = new UBSetting(this, "Board", "MarkerMediumWidth", 24.0);
     boardMarkerStrongWidth = new UBSetting(this, "Board", "MarkerStrongWidth", 48.0);
+    boardMarkerCustomWidth = new UBSetting(this, "Board", "MarkerCustomWidth", 30.0); // Issue 05/03/2018 -- Open-Board - Custom Line Width
 
     boardPenPressureSensitive = new UBSetting(this, "Board", "PenPressureSensitive", true);
     boardMarkerPressureSensitive = new UBSetting(this, "Board", "MarkerPressureSensitive", false);
@@ -531,6 +533,9 @@ qreal UBSettings::currentPenWidth()
         case UBWidth::Strong:
             width = boardPenStrongWidth->get().toDouble();
             break;
+        case UBWidth::Custom: // Issue 05/03/2018 -- Open-Board - Custom Line Width
+            width = boardPenCustomWidth->get().toDouble();
+            break;
         default:
             Q_ASSERT(false);
             //failsafe
@@ -611,6 +616,9 @@ qreal UBSettings::currentMarkerWidth()
             break;
         case UBWidth::Strong:
             width = boardMarkerStrongWidth->get().toDouble();
+            break;
+        case UBWidth::Custom: // Issue 05/03/2018 -- Open-Board - Custom Line Width
+            width = boardMarkerCustomWidth->get().toDouble();
             break;
         default:
             Q_ASSERT(false);

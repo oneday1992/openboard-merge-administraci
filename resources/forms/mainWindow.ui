@@ -2321,7 +2321,7 @@
     <string>Line</string>
    </property>
    <property name="toolTip">
-    <string>Custom Line</string>
+    <string>Specify a custom line width [1-120]</string>
    </property>
   </action>
   <action name="actionColorCustom">
@@ -2334,6 +2334,14 @@
    </property>
    <property name="toolTip">
     <string>Select any color</string>
+   </property>
+  </action>
+  <action name="actionLineWidthSpinBox">
+   <property name="text">
+    <string>Line</string>
+   </property>
+   <property name="toolTip">
+    <string>Specify a custom line width [1-120]</string>
    </property>
   </action>
  </widget>

@@ -264,10 +264,12 @@ class UBSettings : public QObject
         UBSetting* boardPenFineWidth;
         UBSetting* boardPenMediumWidth;
         UBSetting* boardPenStrongWidth;
+        UBSetting* boardPenCustomWidth; // Issue 05/03/2018 -- Open-Board - Custom Line Width
 
         UBSetting* boardMarkerFineWidth;
         UBSetting* boardMarkerMediumWidth;
         UBSetting* boardMarkerStrongWidth;
+        UBSetting* boardMarkerCustomWidth;  // Issue 05/03/2018 -- Open-Board - Custom Line Width
 
         UBSetting* boardPenPressureSensitive;
         UBSetting* boardMarkerPressureSensitive;

@@ -79,7 +79,7 @@ struct UBWidth
 {
     enum Enum
     {
-        Fine = 0, Medium, Strong
+        Fine = 0, Medium, Strong, Custom
     };
 };
 

@@ -84,6 +84,7 @@ class UBDrawingController : public QObject
 
         void lineWidthIndexChanged(int index);
         void colorIndexChanged(int index);
+        void clickOnPenMarkerButton();
 
     private:
         UBStylusTool::Enum mStylusTool;
