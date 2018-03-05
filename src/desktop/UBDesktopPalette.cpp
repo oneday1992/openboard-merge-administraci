@@ -233,8 +233,8 @@ void UBDesktopPalette::showEvent(QShowEvent *event)
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOnArrow.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
     //Añadiendo icono de PECS
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::Off);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
     //FIN DE ICONO DE PECS
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserArrow.png"), QIcon::Normal, QIcon::Off);
@@ -264,8 +264,8 @@ void UBDesktopPalette::hideEvent(QHideEvent *event)
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
     //Añadiendo icono de PECS
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::Off);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
     //FIN DE ICONO DE PECS
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraser.png"), QIcon::Normal, QIcon::Off);

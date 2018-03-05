@@ -121,6 +121,8 @@ class UBDesktopAnnotationController : public QObject
         void selectorActionReleased();
         void pointerActionPressed();
         void pointerActionReleased();
+        void pecsActionPressed();
+        void pecsActionReleased();
 
         void switchCursor(int tool);
         void onDesktopPaletteMaximized();

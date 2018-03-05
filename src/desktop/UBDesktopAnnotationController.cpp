@@ -123,6 +123,7 @@ UBDesktopAnnotationController::UBDesktopAnnotationController(QObject *parent, UB
     connect(mDesktopPalette, SIGNAL(windowClick()), this, SLOT(windowCapture()));
     connect(mDesktopPalette, SIGNAL(screenClick()), this, SLOT(screenCapture()));
     connect(UBApplication::mainWindow->actionPointer, SIGNAL(triggered()), this, SLOT(onToolClicked()));
+    connect(UBApplication::mainWindow->actionPecs, SIGNAL(triggered()), this, SLOT(onToolClicked()));
     connect(UBApplication::mainWindow->actionSelector, SIGNAL(triggered()), this, SLOT(onToolClicked()));
     connect(mDesktopPalette, SIGNAL(maximized()), this, SLOT(onDesktopPaletteMaximized()));
     connect(mDesktopPalette, SIGNAL(minimizeStart(eMinimizedLocation)), this, SLOT(onDesktopPaletteMinimize()));
@@ -718,6 +719,17 @@ void UBDesktopAnnotationController::pointerActionReleased()
     switchCursor(UBStylusTool::Pointer);
 }
 
+void UBDesktopAnnotationController::pecsActionPressed()
+{
+
+}
+
+void UBDesktopAnnotationController::pecsActionReleased()
+{
+    UBApplication::mainWindow->actionPecs->setChecked(true);
+    switchCursor(UBStylusTool::Pecs);
+}
+
 
 /**
  * \brief Toggle the given palette visibility
@@ -793,6 +805,12 @@ void UBDesktopAnnotationController::onDesktopPaletteMaximized()
     {
         connect(pPointerButton, SIGNAL(pressed()), this, SLOT(pointerActionPressed()));
         connect(pPointerButton, SIGNAL(released()), this, SLOT(pointerActionReleased()));
+    }
+    UBActionPaletteButton* pPecsButton = mDesktopPalette->getButtonFromAction(UBApplication::mainWindow->actionPecs);
+    if(NULL != pPecsButton)
+    {
+        connect(pPecsButton, SIGNAL(pressed()), this, SLOT(pecsActionPressed()));
+        connect(pPecsButton, SIGNAL(released()), this, SLOT(pecsActionReleased()));
     }
 }
 
@@ -962,6 +980,7 @@ void UBDesktopAnnotationController::refreshMask()
                 //Needed to work correctly when another actions on stylus are checked
                 || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Eraser
                 || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pointer
+                || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pecs
                 || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
                 || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
         {
