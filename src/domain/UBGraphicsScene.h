@@ -418,6 +418,7 @@ public slots:
 
         QGraphicsEllipseItem* mEraser;
         QGraphicsEllipseItem* mPointer; // "laser" pointer
+        QGraphicsEllipseItem* mPecs;
         QGraphicsEllipseItem* mMarkerCircle; // dotted circle around marker
 
         QSet<QGraphicsItem*> mAddedItems;

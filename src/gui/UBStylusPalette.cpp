@@ -56,6 +56,7 @@ UBStylusPalette::UBStylusPalette(QWidget *parent, Qt::Orientation orient)
     actions << UBApplication::mainWindow->actionZoomOut;
 
     actions << UBApplication::mainWindow->actionPointer;
+    actions << UBApplication::mainWindow->actionPecs;
     actions << UBApplication::mainWindow->actionLine; // ALTI/AOU - 20140606 : restore Line tool
     actions << UBApplication::mainWindow->actionText;
 

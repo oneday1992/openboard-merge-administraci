@@ -2326,9 +2326,13 @@
    </property>
   </action>
   <action name="actionPecs">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="../OpenBoard.qrc">
-     <normaloff>:/images/toolbar/pecs.png</normaloff>:/images/toolbar/pecs.png</iconset>
+     <normaloff>:/images/stylusPalette/pecs.png</normaloff>
+     <normalon>:/images/stylusPalette/pecsOn.png</normalon>:/images/stylusPalette/pecs.png</iconset>
    </property>
    <property name="text">
     <string>Pecs</string>

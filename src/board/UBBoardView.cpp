@@ -1717,6 +1717,9 @@ void UBBoardView::setToolCursor (int tool)
     case UBStylusTool::Pointer:
         controlViewport->setCursor (UBResources::resources ()->pointerCursor);
         break;
+    case UBStylusTool::Pecs:
+        controlViewport->setCursor (UBResources::resources ()->pecsCursor);
+        break;
     case UBStylusTool::Hand:
         controlViewport->setCursor (UBResources::resources ()->handCursor);
         break;

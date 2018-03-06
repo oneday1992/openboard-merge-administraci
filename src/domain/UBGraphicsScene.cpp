@@ -101,6 +101,8 @@ UBZLayerController::UBZLayerController(QGraphicsScene *scene) :
     scopeMap.insert(itemLayerType::CppTool,        ItemLayerTypeData( 1000100.0,  1000200.0 ));
     scopeMap.insert(itemLayerType::Curtain,        ItemLayerTypeData( 1000200.0,  1001000.0 ));
     scopeMap.insert(itemLayerType::Eraiser,        ItemLayerTypeData( 1001000.0,  1001100.0 ));
+    scopeMap.insert(itemLayerType::Pecs,           ItemLayerTypeData( 1001000.0,  1001100.0 ));
+
     scopeMap.insert(itemLayerType::Pointer,        ItemLayerTypeData( 1001100.0,  1001200.0 ));
     scopeMap.insert(itemLayerType::Cache,          ItemLayerTypeData( 1001300.0,  1001400.0 ));
 
@@ -316,6 +318,7 @@ UBGraphicsScene::UBGraphicsScene(UBDocumentProxy* parent, bool enableUndoRedoSta
     : UBCoreGraphicsScene(parent)
     , mEraser(0)
     , mPointer(0)
+    , mPecs(0)
     , mMarkerCircle(0)
     , mDocument(parent)
     , mDarkBackground(false)
@@ -2689,6 +2692,7 @@ void UBGraphicsScene::createPointer()
     mTools << mPointer;
     addItem(mPointer);
 }
+
 
 void UBGraphicsScene::createMarkerCircle()
 {

@@ -72,6 +72,7 @@ UBDrawingController::UBDrawingController(QObject * parent)
     connect(UBApplication::mainWindow->actionZoomIn, SIGNAL(triggered(bool)), this, SLOT(zoomInToolSelected(bool)));
     connect(UBApplication::mainWindow->actionZoomOut, SIGNAL(triggered(bool)), this, SLOT(zoomOutToolSelected(bool)));
     connect(UBApplication::mainWindow->actionPointer, SIGNAL(triggered(bool)), this, SLOT(pointerToolSelected(bool)));
+    connect(UBApplication::mainWindow->actionPecs, SIGNAL(triggered(bool)), this, SLOT(pecsToolSelected(bool)));
     connect(UBApplication::mainWindow->actionLine, SIGNAL(triggered(bool)), this, SLOT(lineToolSelected(bool)));
     connect(UBApplication::mainWindow->actionText, SIGNAL(triggered(bool)), this, SLOT(textToolSelected(bool)));
     //connect(UBApplication::mainWindow->actionRichTextEditor, SIGNAL(triggered(bool)), this, SLOT(richTextToolSelected(bool))); ALTI/AOU - 20140606 : RichTextEditor tool isn't available anymore.
@@ -158,6 +159,8 @@ void UBDrawingController::setStylusTool(int tool)
             UBApplication::mainWindow->actionZoomOut->setChecked(true);
         else if (mStylusTool == UBStylusTool::Pointer)
             UBApplication::mainWindow->actionPointer->setChecked(true);
+        else if (mStylusTool == UBStylusTool::Pecs)
+            UBApplication::mainWindow->actionPecs->setChecked(true);
         else if (mStylusTool == UBStylusTool::Line)
             UBApplication::mainWindow->actionLine->setChecked(true);
         else if (mStylusTool == UBStylusTool::Text)
@@ -454,6 +457,12 @@ void UBDrawingController::pointerToolSelected(bool checked)
 {
     if (checked)
         setStylusTool(UBStylusTool::Pointer);
+}
+
+void UBDrawingController::pecsToolSelected(bool checked)
+{
+    if (checked)
+        setStylusTool(UBStylusTool::Pecs);
 }
 
 

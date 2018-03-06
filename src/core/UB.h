@@ -66,6 +66,7 @@ struct UBStylusTool
         ZoomIn,
         ZoomOut,
         Pointer,
+        Pecs,
         Line,
         Text,
         Capture,
@@ -120,6 +121,7 @@ struct itemLayerType
         , Eraiser
         , Curtain
         , Pointer
+        , Pecs
         , Cache
         , SelectedItem
         , SelectionFrame
