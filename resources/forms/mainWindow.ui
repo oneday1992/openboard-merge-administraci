@@ -2314,8 +2314,8 @@
    </property>
    <property name="icon">
     <iconset resource="../OpenBoard.qrc">
-     <normaloff>:/images/stylusPalette/pecsOn.png</normaloff>
-     <normalon>:/images/stylusPalette/pecs.png</normalon>:/images/stylusPalette/pecsOn.png</iconset>
+     <normaloff>:/images/stylusPalette/pecs.png</normaloff>
+     <normalon>:/images/stylusPalette/pecsOn.png</normalon>:/images/stylusPalette/pecs.png</iconset>
    </property>
    <property name="text">
     <string>Pecs</string>

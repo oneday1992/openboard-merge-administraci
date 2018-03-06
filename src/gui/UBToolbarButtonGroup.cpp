@@ -153,7 +153,7 @@ int UBToolbarButtonGroup::currentIndex() const
 
 void UBToolbarButtonGroup::setCurrentIndex(int index)
 {
-    Q_ASSERT(index < mButtons.size());
+    //Q_ASSERT(index < mButtons.size());
 
     if (index != mCurrentIndex)
     {

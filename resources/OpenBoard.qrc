@@ -509,5 +509,6 @@
         <file>images/toolbar/pecs.png</file>
         <file>images/stylusPalette/pecs.png</file>
         <file>images/stylusPalette/pecsOn.png</file>
+        <file>images/toolbar/pecsOn.png</file>
     </qresource>
 </RCC>

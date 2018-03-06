@@ -232,10 +232,12 @@ void UBDesktopPalette::showEvent(QShowEvent *event)
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerArrow.png"), QIcon::Normal, QIcon::Off);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOnArrow.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
+    //Adding PECS icon
     //Añadiendo icono de PECS
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::Off);
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::On);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
+    //End of PECS icon
     //FIN DE ICONO DE PECS
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserArrow.png"), QIcon::Normal, QIcon::Off);
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserOnArrow.png"), QIcon::Normal, QIcon::On);
@@ -263,10 +265,12 @@ void UBDesktopPalette::hideEvent(QHideEvent *event)
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/marker.png"), QIcon::Normal, QIcon::Off);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
+    //Adding PECS icon
     //Añadiendo icono de PECS
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::Off);
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::On);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
+    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
+    //end of pecs icon
     //FIN DE ICONO DE PECS
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraser.png"), QIcon::Normal, QIcon::Off);
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserOn.png"), QIcon::Normal, QIcon::On);
