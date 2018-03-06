@@ -108,7 +108,7 @@ UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QActio
             QToolButton *button = new QToolButton(this);
             mButtons.append(button);
             button->setDefaultAction(action);
-            button->setCheckable(true);
+            button->setCheckable(true);            
 
             if(i == 0)
             {
@@ -124,7 +124,10 @@ UBToolbarButtonGroup::UBToolbarButtonGroup(QToolBar *toolBar, const QList<QActio
             }
 
             if((isColorTool == true) && ((i+1) == UBSettings::colorPaletteSize )) // If it is the last color button, then it is the CUSTOM COLOR BUTTON
+            {
+                button->setStyleSheet("QToolButton{ width: 40px; }");
                 connect(button, SIGNAL(clicked(bool)), this, SLOT(customColorHandle()));
+            }
 
             if( (isLineWidthTool == true)&&((i+1) < 4) ) // If it is a LINE-WIDTH BUTTON
             {
