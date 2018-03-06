@@ -83,7 +83,8 @@ FORMS += resources/forms/mainWindow.ui \
    resources/forms/trapFlash.ui \
    resources/forms/youTubePublishingDialog.ui \
    resources/forms/capturePublishing.ui \
-   resources/forms/intranetPodcastPublishingDialog.ui
+   resources/forms/intranetPodcastPublishingDialog.ui \
+    resources/forms/pecswindow.ui
 
 UB_ETC.files = resources/etc
 UB_I18N.files = resources/i18n/*.qm
@@ -952,4 +953,8 @@ DISTFILES += \
     resources/images/vflipTool.svg \
     resources/images/z_layer_down.svg \
     resources/images/z_layer_up.svg \
+
+HEADERS +=
+
+SOURCES +=
 

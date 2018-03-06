@@ -44,6 +44,7 @@ typedef enum
     eUBDockPaletteWidget_WEB,
     eUBDockPaletteWidget_DOCUMENT,
     eUBDockPaletteWidget_DESKTOP,
+    eUBDockPaletteWidget_PECS, //PECS
 } eUBDockPaletteWidgetMode;
 
 class UBDockPaletteWidget : public QWidget

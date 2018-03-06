@@ -52,6 +52,7 @@
 #include "board/UBBoardView.h"
 #include "board/UBBoardPaletteManager.h"
 #include "web/UBWebController.h"
+#include "pecs/UBPecsController.h" //PECS
 
 #include "document/UBDocumentController.h"
 #include "document/UBDocumentProxy.h"
@@ -74,6 +75,7 @@ QPointer<QUndoStack> UBApplication::undoStack;
 UBApplicationController* UBApplication::applicationController = 0;
 UBBoardController* UBApplication::boardController = 0;
 UBWebController* UBApplication::webController = 0;
+UBPecsController* UBApplication::pecsController = 0; //PECS
 UBDocumentController* UBApplication::documentController = 0;
 
 UBMainWindow* UBApplication::mainWindow = 0;
@@ -287,6 +289,8 @@ int UBApplication::exec(const QString& pFileToImport)
     mainWindow->actionCut->setShortcuts(QKeySequence::Cut);
 
     connect(mainWindow->actionBoard, SIGNAL(triggered()), this, SLOT(showBoard()));
+    //LLamo a showPecs cuando se pulsa icono Pecs
+    connect(mainWindow->actionPecs, SIGNAL(triggered()), this, SLOT(showPecs()));
     connect(mainWindow->actionWeb, SIGNAL(triggered()), this, SLOT(showInternet()));
     connect(mainWindow->actionWeb, SIGNAL(triggered()), this, SLOT(stopScript()));
     connect(mainWindow->actionDocument, SIGNAL(triggered()), this, SLOT(showDocument()));
@@ -298,6 +302,7 @@ int UBApplication::exec(const QString& pFileToImport)
     boardController->init();
 
     webController = new UBWebController(mainWindow);
+    pecsController = new UBPecsController(mainWindow); //PECS
     documentController = new UBDocumentController(mainWindow);
 
     UBDrawingController::drawingController()->setStylusTool((int)UBStylusTool::Pen);
@@ -395,6 +400,11 @@ void UBApplication::showBoard()
     applicationController->showBoard();
 }
 
+void UBApplication::showPecs()
+{
+    applicationController->showPecs();
+}
+
 void UBApplication::showInternet()
 {
     applicationController->showInternet();
@@ -424,6 +434,7 @@ void UBApplication::toolBarPositionChanged(QVariant topOrBottom)
     mainWindow->addToolBar(area, mainWindow->boardToolBar);
     mainWindow->addToolBar(area, mainWindow->webToolBar);
     mainWindow->addToolBar(area, mainWindow->documentToolBar);
+    mainWindow->addToolBar(area, mainWindow->pecsToolBar); //PECS
 
     webController->showTabAtTop(topOrBottom.toBool());
 
@@ -457,6 +468,10 @@ void UBApplication::closing()
 
     if (webController)
         webController->closing();
+
+    //PECS
+    if (pecsController)
+        pecsController->closing();
 
     UBSettings::settings()->closing();
 
@@ -621,11 +636,13 @@ void UBApplication::cleanup()
     if (applicationController) delete applicationController;
     if (boardController) delete boardController;
     if (webController) delete webController;
+    if (pecsController) delete pecsController; //PECS
     if (documentController) delete documentController;
 
     applicationController = NULL;
     boardController = NULL;
     webController = NULL;
+    pecsController = NULL; //PECS
     documentController = NULL;
 }
 

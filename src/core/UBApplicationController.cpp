@@ -45,6 +45,7 @@
 #include "board/UBBoardPaletteManager.h"
 #include "board/UBDrawingController.h"
 
+#include "pecs/UBPecsController.h" //PECS
 
 #include "document/UBDocumentProxy.h"
 #include "document/UBDocumentController.h"
@@ -190,11 +191,13 @@ void UBApplicationController::adaptToolBar()
     mMainWindow->actionBoard->setVisible(Board != mMainMode || highResolution);
     mMainWindow->actionDocument->setVisible(Document != mMainMode || highResolution);
     mMainWindow->actionWeb->setVisible(Internet != mMainMode || highResolution);
+    mMainWindow->actionPecs->setVisible(Pecs != mMainMode || highResolution);
     mMainWindow->boardToolBar->setIconSize(QSize(highResolution ? 48 : 42, mMainWindow->boardToolBar->iconSize().height()));
 
     mMainWindow->actionBoard->setEnabled(mMainMode != Board);
     mMainWindow->actionWeb->setEnabled(mMainMode != Internet);
     mMainWindow->actionDocument->setEnabled(mMainMode != Document);
+    mMainWindow->actionPecs->setEnabled(mMainMode != Pecs);
 
     if (Document == mMainMode)
     {
@@ -347,6 +350,7 @@ void UBApplicationController::showBoard()
 {
     mMainWindow->webToolBar->hide();
     mMainWindow->documentToolBar->hide();
+    mMainWindow->pecsToolBar->hide();
     mMainWindow->boardToolBar->show();
 
     if (mMainMode == Document)
@@ -381,6 +385,30 @@ void UBApplicationController::showBoard()
     UBApplication::boardController->freezeW3CWidgets(false);
 }
 
+// Método para mostrar modo Pecs
+void UBApplicationController::showPecs()
+{
+    mMainWindow->webToolBar->hide();
+    mMainWindow->documentToolBar->hide();
+    mMainWindow->boardToolBar->hide();
+    mMainWindow->pecsToolBar->show();
+
+    mMainMode = Pecs;
+
+    adaptToolBar();
+
+    if (UBApplication::boardController)
+        UBApplication::boardController->hide();
+
+    mMainWindow->switchToPecsWidget();
+    mMainWindow->show();
+    mUninoteController->hideWindow();
+
+    UBApplication::pecsController->show();
+    emit mainModeChanged(Pecs);
+
+}
+// Fin de metodo showPecs
 
 void UBApplicationController::showInternet()
 {
@@ -400,6 +428,7 @@ void UBApplicationController::showInternet()
     {
         mMainWindow->boardToolBar->hide();
         mMainWindow->documentToolBar->hide();
+        mMainWindow->pecsToolBar->hide();
         mMainWindow->webToolBar->show();
 
         mMainMode = Internet;
@@ -420,6 +449,7 @@ void UBApplicationController::showDocument()
 {
     mMainWindow->webToolBar->hide();
     mMainWindow->boardToolBar->hide();
+    mMainWindow->pecsToolBar->hide();
     mMainWindow->documentToolBar->show();
 
     mMainMode = Document;

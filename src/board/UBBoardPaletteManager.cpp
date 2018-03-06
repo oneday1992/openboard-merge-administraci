@@ -196,6 +196,10 @@ void UBBoardPaletteManager::slot_changeMainMode(UBApplicationController::MainMod
         case UBApplicationController::Document:
             changeMode(eUBDockPaletteWidget_DOCUMENT);
             break;
+//PECS
+        case UBApplicationController::Pecs:
+            changeMode(eUBDockPaletteWidget_PECS);
+            break;
 
         default:
             {
@@ -878,7 +882,9 @@ void UBBoardPaletteManager::changeMode(eUBDockPaletteWidgetMode newMode, bool is
 
             }
             break;
-
+//PECS
+    // ??????
+// END PECS
         case eUBDockPaletteWidget_DOCUMENT:
             {
                 mLeftPalette->setVisible(leftPaletteVisible);

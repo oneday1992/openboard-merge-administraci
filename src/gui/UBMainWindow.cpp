@@ -47,6 +47,7 @@
 UBMainWindow::UBMainWindow(QWidget *parent, Qt::WindowFlags flags)
     : QMainWindow(parent, flags)
     , mBoardWidget(0)
+    , mPecsWidget(0) //PECS
     , mWebWidget(0)
     , mDocumentsWidget(0)
     , mpDownloadWidget(NULL)
@@ -103,6 +104,26 @@ void UBMainWindow::switchToBoardWidget()
         mStackedLayout->setCurrentWidget(mBoardWidget);
     }
 }
+
+// PECS
+void UBMainWindow::addPecsWidget(QWidget *pWidget)
+{
+    if (!mPecsWidget)
+    {
+        mPecsWidget = pWidget;
+        mStackedLayout->addWidget(mPecsWidget);
+    }
+}
+
+void UBMainWindow::switchToPecsWidget()
+{
+    if (mPecsWidget)
+    {
+        mStackedLayout->setCurrentWidget(mPecsWidget);
+    }
+}
+
+//Fin PECS
 
 void UBMainWindow::addWebWidget(QWidget *pWidget)
 {

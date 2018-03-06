@@ -86,6 +86,8 @@ class UBApplicationController : public QObject
 
         void showBoard();
 
+        void showPecs(); //Método para modo Pecs
+
         void showInternet();
 
         void showDocument();
@@ -106,7 +108,7 @@ class UBApplicationController : public QObject
 
         enum MainMode
         {
-            Board = 0, Internet, Document, WebDocument
+            Board = 0, Internet, Document, WebDocument, Pecs
         };
 
         MainMode displayMode()

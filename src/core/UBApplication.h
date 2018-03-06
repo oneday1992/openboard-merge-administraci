@@ -45,6 +45,7 @@ namespace Ui
 
 class UBBoardController;
 class UBWebController;
+class UBPecsController; //Clase UBPecsController
 class UBControlView;
 class UBPreferencesController;
 class UBResources;
@@ -72,6 +73,7 @@ class UBApplication : public QtSingleApplication
         static UBApplicationController *applicationController;
         static UBBoardController* boardController;
         static UBWebController* webController;
+        static UBPecsController* pecsController;
         static UBDocumentController* documentController;
 
         static UBMainWindow* mainWindow;
@@ -110,6 +112,7 @@ class UBApplication : public QtSingleApplication
     public slots:
 
         void showBoard();
+        void showPecs();
         void showInternet();
         void showDocument();
         void startScript();

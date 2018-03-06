@@ -25,3 +25,49 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
+
+#ifndef UBPECSCONTROLLER_H_
+#define UBPECSCONTROLLER_H_
+
+#include <QObject>
+#include "core/UBApplicationController.h"
+
+namespace Ui
+{
+    class pecswindow;
+}
+
+class UBPecsController : public QObject
+{
+    Q_OBJECT
+
+    public:
+        UBPecsController(UBMainWindow* mainWindow);
+        virtual ~UBPecsController();
+
+        void closing();
+
+        void show();
+
+
+    protected:
+        void setupViews ();
+    public slots:
+
+
+    private:
+        UBMainWindow *mMainWindow;
+        Ui::pecswindow* mPecsUI;
+        QWidget *mPecsWidget;
+
+
+    private slots:
+
+
+
+    signals:
+
+};
+
+
+#endif /* UBPECSCONTROLLER_H_ */

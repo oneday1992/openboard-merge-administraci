@@ -25,3 +25,62 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
+
+
+#include "UBPecsController.h"
+#include "core/UBApplication.h"
+#include "gui/UBMainWindow.h"
+
+#include "ui_pecswindow.h"
+#include "ui_mainWindow.h"
+
+UBPecsController::UBPecsController(UBMainWindow* mainWindow)
+    : QObject(mainWindow->centralWidget())
+    , mMainWindow(mainWindow)
+    , mPecsUI(0)
+    , mPecsWidget(0)
+{
+    qDebug() << "Construtor de PECS";
+    //Contenido de constructor
+    setupViews();
+
+
+}
+
+UBPecsController::~UBPecsController()
+{
+    // Destructor
+    qDebug() << "Destructor PECS";
+    if (mPecsUI)
+        delete mPecsUI;
+}
+
+
+void UBPecsController::closing()
+{
+    //NOOP
+    qDebug() << "PECS Closing";
+}
+
+
+void UBPecsController::show()
+{
+    qDebug() << "PECS show";
+}
+
+void UBPecsController::setupViews()
+{
+
+    if (!mPecsWidget)
+    {
+        mPecsWidget = new QWidget(mMainWindow->centralWidget());
+        mMainWindow->addPecsWidget(mPecsWidget);
+
+        mPecsUI = new Ui::pecswindow();
+
+        mPecsUI->setupUi(mPecsWidget);
+    }
+
+
+
+}

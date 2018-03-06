@@ -50,7 +50,10 @@ class UBMainWindow : public QMainWindow, public Ui::MainWindow
 
         void addBoardWidget(QWidget *pWidget);
         void switchToBoardWidget();
-
+        //PECS
+        void addPecsWidget(QWidget *pWidget);
+        void switchToPecsWidget();
+        //PECS
         void addWebWidget(QWidget *pWidget);
         void switchToWebWidget();
 
@@ -87,6 +90,7 @@ class UBMainWindow : public QMainWindow, public Ui::MainWindow
         QWidget *mBoardWidget;
         QWidget *mWebWidget;
         QWidget *mDocumentsWidget;
+        QWidget *mPecsWidget; //Pecs
 
 private:
 // work around for handling tablet events on MAC OS with Qt 4.8.0 and above
