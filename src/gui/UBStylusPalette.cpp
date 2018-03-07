@@ -19,7 +19,12 @@
  * along with Open-Sankoré.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
+/*
+ *
+ * Esta es la paleta que aparece en modo board en la parte inferior de la ventana
+ * This is the palette that appears in board mode at the bottom of the window
+ *
+ */
 
 #include "UBStylusPalette.h"
 
@@ -56,7 +61,6 @@ UBStylusPalette::UBStylusPalette(QWidget *parent, Qt::Orientation orient)
     actions << UBApplication::mainWindow->actionZoomOut;
 
     actions << UBApplication::mainWindow->actionPointer;
-    actions << UBApplication::mainWindow->actionPecs;
     actions << UBApplication::mainWindow->actionLine; // ALTI/AOU - 20140606 : restore Line tool
     actions << UBApplication::mainWindow->actionText;
 

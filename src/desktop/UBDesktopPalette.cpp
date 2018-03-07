@@ -24,8 +24,12 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
+/*
+ *
+ * Esta es la paleta que aparece en modo desktop en la parte izquierda de la ventana.
+ * This is the palette that appears in desktop mode on the left side of the window.
+ *
+*/
 
 #include "UBDesktopPalette.h"
 
@@ -221,7 +225,6 @@ void UBDesktopPalette::showEvent(QShowEvent *event)
     QIcon penIcon;
     QIcon markerIcon;
     QIcon eraserIcon;
-    QIcon pecsIcon;
 
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-palette.png"), QIcon::Normal, QIcon::Off);
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-paletteOn.png"), QIcon::Normal, QIcon::On);
@@ -231,14 +234,7 @@ void UBDesktopPalette::showEvent(QShowEvent *event)
     UBApplication::mainWindow->actionPen->setIcon(penIcon);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerArrow.png"), QIcon::Normal, QIcon::Off);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOnArrow.png"), QIcon::Normal, QIcon::On);
-    UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
-    //Adding PECS icon
-    //Añadiendo icono de PECS
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
-    UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
-    //End of PECS icon
-    //FIN DE ICONO DE PECS
+    UBApplication::mainWindow->actionMarker->setIcon(markerIcon);   
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserArrow.png"), QIcon::Normal, QIcon::Off);
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserOnArrow.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionEraser->setIcon(eraserIcon);
@@ -253,7 +249,6 @@ void UBDesktopPalette::hideEvent(QHideEvent *event)
     QIcon penIcon;
     QIcon markerIcon;
     QIcon eraserIcon;
-    QIcon pecsIcon;
 
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-palette.png"), QIcon::Normal, QIcon::Off);
     drawingIcon.addPixmap(QPixmap(":images/drawingPalette/paint-paletteOn.png"), QIcon::Normal, QIcon::On);
@@ -264,14 +259,7 @@ void UBDesktopPalette::hideEvent(QHideEvent *event)
     UBApplication::mainWindow->actionPen->setIcon(penIcon);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/marker.png"), QIcon::Normal, QIcon::Off);
     markerIcon.addPixmap(QPixmap(":images/stylusPalette/markerOn.png"), QIcon::Normal, QIcon::On);
-    UBApplication::mainWindow->actionMarker->setIcon(markerIcon);
-    //Adding PECS icon
-    //Añadiendo icono de PECS
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecs.png"), QIcon::Normal, QIcon::Off);
-    pecsIcon.addPixmap(QPixmap(":images/stylusPalette/pecsOn.png"), QIcon::Normal, QIcon::On);
-    UBApplication::mainWindow->actionPecs->setIcon(pecsIcon);
-    //end of pecs icon
-    //FIN DE ICONO DE PECS
+    UBApplication::mainWindow->actionMarker->setIcon(markerIcon);    
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraser.png"), QIcon::Normal, QIcon::Off);
     eraserIcon.addPixmap(QPixmap(":images/stylusPalette/eraserOn.png"), QIcon::Normal, QIcon::On);
     UBApplication::mainWindow->actionEraser->setIcon(eraserIcon);
