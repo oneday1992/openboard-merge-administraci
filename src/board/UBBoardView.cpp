@@ -1109,6 +1109,7 @@ UBBoardView::mouseMoveEvent (QMouseEvent *event)
       return;
   }
 
+  mWidgetMoved = true;
   mIsDragInProgress = true;
   UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController ()->stylusTool ();
 
@@ -1214,9 +1215,6 @@ UBBoardView::mouseMoveEvent (QMouseEvent *event)
       }
       event->accept ();
     }
-
-  if((event->pos() - mLastPressedMousePos).manhattanLength() < QApplication::startDragDistance())
-      mWidgetMoved = true;
 
   //EV-7 - NNE - 20131231
   emit mouseMove(event);
