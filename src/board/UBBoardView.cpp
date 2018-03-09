@@ -1038,6 +1038,7 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             break;
 
         case UBStylusTool::Text : {
+            qWarning()<<"Text";
             int frameWidth = UBSettings::settings ()->objectFrameWidth;
             QRectF fuzzyRect (0, 0, frameWidth * 4, frameWidth * 4);
             fuzzyRect.moveCenter (mapToScene (mMouseDownPos));
@@ -1057,8 +1058,9 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             {
                 scene()->deselectAllItems();
 
-                if (!mRubberBand)
+                if (!mRubberBand){
                     mRubberBand = new UBRubberBand (QRubberBand::Rectangle, this);
+                }
                 mRubberBand->setGeometry (QRect (mMouseDownPos, QSize ()));
                 mRubberBand->show();
                 mIsCreatingTextZone = true;
