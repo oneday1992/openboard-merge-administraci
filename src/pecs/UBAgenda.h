@@ -26,48 +26,27 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UBPECSCONTROLLER_H_
-#define UBPECSCONTROLLER_H_
 
-#include <QObject>
-#include "core/UBApplicationController.h"
+#ifndef UBAGENDA_H
+#define UBAGENDA_H
 
-/*namespace Ui
-{
-    class pecswindow;
-}
-*/
-class UBPecsController : public QObject
+#include <QWidget>
+#include "gui/UBDockPaletteWidget.h"
+
+class UBAgenda : public UBDockPaletteWidget
 {
     Q_OBJECT
+public:
+    UBAgenda(QWidget *parent = 0);
 
-    public:
-        UBPecsController(UBMainWindow* mainWindow);
-        virtual ~UBPecsController();
+    bool visibleInMode(eUBDockPaletteWidgetMode mode)
+    {
+        return mode == eUBDockPaletteWidget_BOARD
+            || mode == eUBDockPaletteWidget_DESKTOP;
+    }
+signals:
 
-        void closing();
-
-        void show();
-
-
-    protected:
-        void setupViews ();
-    public slots:
-
-
-    private:
-        UBMainWindow *mMainWindow;
-        //Ui::pecswindow* mPecsUI;
-        QWidget *mPecsWidget;
-
-
-    private slots:
-
-
-
-    signals:
-
+public slots:
 };
 
-
-#endif /* UBPECSCONTROLLER_H_ */
+#endif // UBAGENDA_H

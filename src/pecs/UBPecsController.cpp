@@ -30,14 +30,21 @@
 #include "UBPecsController.h"
 #include "core/UBApplication.h"
 #include "gui/UBMainWindow.h"
+#include "gui/UBFeaturesWidget.h"
+#include "gui/UBRightPalette.h"
+#include "gui/UBLeftPalette.h"
+#include "gui/UBDockPaletteWidget.h"
+#include "UBAgenda.h"
 
-#include "ui_pecswindow.h"
+
+
+//#include "ui_pecswindow.h"
 #include "ui_mainWindow.h"
 
 UBPecsController::UBPecsController(UBMainWindow* mainWindow)
     : QObject(mainWindow->centralWidget())
     , mMainWindow(mainWindow)
-    , mPecsUI(0)
+    //, mPecsUI(0)
     , mPecsWidget(0)
 {
     qDebug() << "Construtor de PECS";
@@ -51,8 +58,9 @@ UBPecsController::~UBPecsController()
 {
     // Destructor
     qDebug() << "Destructor PECS";
-    if (mPecsUI)
+    /*if (mPecsUI)
         delete mPecsUI;
+     */
 }
 
 
@@ -76,9 +84,24 @@ void UBPecsController::setupViews()
         mPecsWidget = new QWidget(mMainWindow->centralWidget());
         mMainWindow->addPecsWidget(mPecsWidget);
 
-        mPecsUI = new Ui::pecswindow();
+        //mPecsUI = new Ui::pecswindow();
 
-        mPecsUI->setupUi(mPecsWidget);
+        //mPecsUI->setupUi(mPecsWidget);
+
+        UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
+        UBAgenda *agenda = new UBAgenda();
+
+        UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
+        paletaCarpetaPecs->registerWidget(carpetasPecs);
+        paletaCarpetaPecs->addTab(carpetasPecs);
+
+        UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
+        paletaAgenda->registerWidget(agenda);
+        paletaAgenda->addTab(agenda);
+
+
+
+
     }
 
 
