@@ -507,5 +507,6 @@
         <file>images/underline.svg</file>
         <file>images/uniboard.png</file>
         <file>images/toolbar/icon-moreON.png</file>
+        <file>images/textEditor/align-justify.svg</file>
     </qresource>
 </RCC>

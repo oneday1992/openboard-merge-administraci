@@ -65,6 +65,7 @@
 #include "UBGraphicsItemUndoCommand.h"
 #include "UBGraphicsItemGroupUndoCommand.h"
 #include "UBGraphicsTextItemUndoCommand.h"
+#include "UBAbstractGraphicsProxyWidget.h"
 #include "UBGraphicsProxyWidget.h"
 #include "UBGraphicsPixmapItem.h"
 #include "UBGraphicsSvgItem.h"
@@ -673,7 +674,7 @@ bool UBGraphicsScene::inputDeviceRelease()
             }
 
             // TODO LATER : Generate well pressure-interpolated polygons and create the line group with them
-
+            qWarning()<<"que hacemos aqui?";
             mAddedItems.clear();
             mAddedItems << pStrokes;
             addItem(pStrokes);
@@ -1514,6 +1515,14 @@ UBGraphicsWidgetItem* UBGraphicsScene::addWidget(const QUrl& pWidgetUrl, const Q
         qDebug() << "UBGraphicsScene::addWidget: Unknown widget Type";
         return 0;
     }
+}
+
+UBGraphicsProxyWidget* UBGraphicsScene::addWidget(QWidget *widget, Qt::WindowFlags wFlags)
+{
+    UBGraphicsProxyWidget *proxy = new UBGraphicsProxyWidget(0, wFlags);
+    proxy->setWidget(widget);
+    QGraphicsScene::addItem(proxy);
+    return proxy;
 }
 
 UBGraphicsAppleWidgetItem* UBGraphicsScene::addAppleWidget(const QUrl& pWidgetUrl, const QPointF& pPos)

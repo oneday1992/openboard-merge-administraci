@@ -62,6 +62,8 @@
 
 #include "core/memcheck.h"
 
+DelegateButton *DelegateButton::Spacer = 0;
+
 DelegateButton::DelegateButton(const QString & fileName, QGraphicsItem* pDelegated, QGraphicsItem * parent, Qt::WindowFrameSection section)
     : QGraphicsSvgItem(fileName, parent)
     , mDelegated(pDelegated)
@@ -159,6 +161,12 @@ void DelegateButton::startShowProgress()
     }
 }
 
+DelegateSpacer::DelegateSpacer(QGraphicsItem * parent, Qt::WindowFrameSection section):
+    DelegateButton("", 0, parent, section)
+{
+
+}
+
 UBGraphicsItemDelegate::UBGraphicsItemDelegate(QGraphicsItem* pDelegated, QObject * parent, UBGraphicsFlags fls)
     : QObject(parent)
     , mDelegated(pDelegated)
@@ -183,8 +191,10 @@ UBGraphicsItemDelegate::UBGraphicsItemDelegate(QGraphicsItem* pDelegated, QObjec
 
 void UBGraphicsItemDelegate::createControls()
 {
-    if (testUBFlags(GF_TOOLBAR_USED) && !mToolBarItem)
-        mToolBarItem = new UBGraphicsToolBarItem(mDelegated);
+    if (testUBFlags(GF_TOOLBAR_USED) && !mToolBarItem){
+         mToolBarItem = new UBGraphicsToolBarItem(mDelegated);
+    }
+
 
     if (!mFrame) {
         mFrame = new UBGraphicsDelegateFrame(this, QRectF(0, 0, 0, 0), mFrameWidth, testUBFlags(GF_RESPECT_RATIO), testUBFlags(GF_TITLE_BAR_USED));
@@ -224,8 +234,6 @@ void UBGraphicsItemDelegate::createControls()
         connect(mZOrderDownButton, SIGNAL(longClicked()), this, SLOT(increaseZlevelBottom()));
         mButtons << mZOrderDownButton;
     }
-
-
 
     buildButtons();
 
@@ -434,7 +442,6 @@ void UBGraphicsItemDelegate::positionHandles()
     if (!controlsExist()) {
         return;
     }
-
     if (mDelegated->isSelected()) {
         bool shownOnDisplay = mDelegated->data(UBGraphicsItemData::ItemLayerType).toInt() != UBItemLayerType::Control;
         showHide(shownOnDisplay);
@@ -453,6 +460,7 @@ void UBGraphicsItemDelegate::positionHandles()
             mToolBarItem->show();
         }
     } else {
+
         foreach(DelegateButton* button, mButtons)
             button->hide();
 
@@ -745,6 +753,7 @@ void UBGraphicsItemDelegate::updateFrame()
 
 void UBGraphicsItemDelegate::updateButtons(bool showUpdated)
 {
+    qWarning()<<"updateButtons )))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))";
     QTransform tr;
     tr.scale(mAntiScaleRatio, mAntiScaleRatio);
 
@@ -866,14 +875,32 @@ UBGraphicsToolBarItem::UBGraphicsToolBarItem(QGraphicsItem * parent) :
 
 void UBGraphicsToolBarItem::positionHandles()
 {
+    qWarning()<<rect().width();
     int itemXOffset = 0;
     foreach (QGraphicsItem* item, mItemsOnToolBar)
-    {
-        item->setPos(itemXOffset, 0);
-        itemXOffset += (item->boundingRect().width()+mElementsPadding);
-        item->show();
-    }
+    {        
+        if(item == DelegateButton::Spacer){
+            itemXOffset += 10;
+        }else{
+            item->setPos(itemXOffset, 0);
+
+            itemXOffset += item->boundingRect().width();
+
+            if(itemXOffset < rect().width()){
+                qWarning()<<"1";
+                item->show();
+            }
+            else{
+                qWarning()<<"0";
+                item->hide();
+            }
+            itemXOffset += mElementsPadding;
+        }
+    }    
+    qWarning()<<itemXOffset;
+    qWarning()<<"";
 }
+
 
 void UBGraphicsToolBarItem::update()
 {

@@ -58,6 +58,8 @@
 #include "board/UBBoardController.h"
 #include "board/UBBoardPaletteManager.h"
 
+#include "domain/UBGraphicsProxyWidget.h"
+
 #ifdef Q_OS_OSX
 #include "core/UBApplicationController.h"
 #include "desktop/UBDesktopAnnotationController.h"
@@ -532,6 +534,21 @@ Here we determines cases when items should to get mouse press event at pressing 
     // some behavior depends on current tool.
     UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
+    //EV-7 - NNE - 20140103
+    if(UBShapeFactory::isShape(item)){
+        if (currentTool == UBStylusTool::Play)
+            return false;
+        if ((currentTool == UBStylusTool::Selector) && item->isSelected())
+            return true;
+        if ((currentTool == UBStylusTool::Selector) && item->parentItem() && item->parentItem()->isSelected())
+            return true;
+
+        if(UBShapeFactory::isInEditMode(item)){
+            return true;
+        }
+    }
+
+
     switch(item->type())
     {
     case UBGraphicsProtractor::Type:
@@ -586,8 +603,15 @@ Here we determines cases when items should to get mouse press event at pressing 
         break;
     case QGraphicsWebView::Type:
         return true;
-    case QGraphicsProxyWidget::Type:
-        return false;
+    case QGraphicsProxyWidget::Type: // Issue 1313 - CFA - 20131016 : If Qt sends this unexpected type, the event should not be triggered
+    {
+        QGraphicsItem *c = item;
+
+        while(c && dynamic_cast<UBGraphicsProxyWidget*>(c) == 0)
+            c = c->parentItem();
+
+        return c && dynamic_cast<UBGraphicsProxyWidget*>(c) != 0;
+    }
 
     case UBGraphicsWidgetItem::Type:
         if (currentTool == UBStylusTool::Selector && item->parentItem() && item->parentItem()->isSelected())
@@ -611,7 +635,7 @@ bool UBBoardView::itemShouldReceiveSuspendedMousePressEvent(QGraphicsItem *item)
     if (item == scene()->backgroundObject())
         return false;
 
-    UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
+    UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();    
 
     switch(item->type())
     {
@@ -656,6 +680,17 @@ bool UBBoardView::itemShouldBeMoved(QGraphicsItem *item)
         return false;
 
     UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
+
+    //EV-7 - NNE - 20140103
+    if(UBShapeFactory::isShape(item)){
+        //if the item is selected or in edit mode
+        //we have to received the mouse event throught the QGraphicsView
+        if(item->isSelected() || UBShapeFactory::isInEditMode(item)){
+            return false;
+        }
+        return true;
+    }
+
 
     switch(item->type())
     {
@@ -995,6 +1030,9 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
 
     mMouseDownPos = event->pos ();
     movingItem = scene()->itemAt(this->mapToScene(event->localPos().toPoint()), QTransform());
+
+    if (!movingItem)
+        emit clickOnBoard();
 
     if (event->button () == Qt::LeftButton && isInteractive())
     {

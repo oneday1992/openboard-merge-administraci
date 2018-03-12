@@ -61,6 +61,7 @@ class DelegateButton: public QGraphicsSvgItem
     Q_OBJECT
 
     public:
+        static DelegateButton *Spacer;
         DelegateButton(const QString & fileName, QGraphicsItem* pDelegated, QGraphicsItem * parent = 0, Qt::WindowFrameSection section = Qt::TopLeftSection);
 
         virtual ~DelegateButton();
@@ -110,6 +111,16 @@ private slots:
         void longClicked();
 
 };
+
+//N/C - NNE - 20140529
+class DelegateSpacer : public DelegateButton
+{
+    Q_OBJECT
+
+public:
+    DelegateSpacer(QGraphicsItem * parent = 0, Qt::WindowFrameSection section = Qt::TopLeftSection);
+};
+//N/C - NNE - 20140529 : END
 
 /*
     Code of this class is copied from QT QLCDNumber class sources
