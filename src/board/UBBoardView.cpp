@@ -146,6 +146,7 @@ UBBoardView::~UBBoardView ()
 
 void UBBoardView::init ()
 {
+
   connect (UBSettings::settings ()->boardPenPressureSensitive, SIGNAL (changed (QVariant)),
            this, SLOT (settingChanged (QVariant)));
 

@@ -145,6 +145,9 @@ UBApplication::UBApplication(const QString &id, int &argc, char **argv) : QtSing
 
     installEventFilter(this);
 
+    // Issue 12/03/2018 - OpenBoard - NEED to RESET ALL PARAMETERS TO DEFAULT.
+    resetAppOptionsToDefault();
+
 }
 
 
@@ -527,6 +530,33 @@ void UBApplication::decorateActionMenu(QAction* action)
     }
 }
 
+// Issue 12/03/2018 - OpenBoard - NEED to RESET ALL PARAMETERS TO DEFAULT.
+void UBApplication::resetAppOptionsToDefault(){
+    UBSettings *settings = UBSettings::settings();
+    settings->appToolBarPositionedAtTop->reset();
+    settings->appToolBarDisplayText->reset();
+    settings->appToolBarOrientationVertical->reset();
+    settings->appToolBarOrientationVertical->reset();
+    settings->useSystemOnScreenKeyboard->reset();
+    settings->boardPenFineWidth->reset();
+    settings->boardPenMediumWidth->reset();
+    settings->boardPenStrongWidth->reset();
+    settings->boardPenPressureSensitive->reset();
+    settings->boardPenLightBackgroundSelectedColors->reset();
+    settings->boardPenDarkBackgroundSelectedColors->reset();
+    settings->boardMarkerFineWidth->reset();
+    settings->boardMarkerMediumWidth->reset();
+    settings->boardMarkerStrongWidth->reset();
+    settings->boardMarkerPressureSensitive->reset();
+    settings->boardMarkerAlpha->reset();
+    settings->boardMarkerLightBackgroundSelectedColors->reset();
+    settings->boardMarkerDarkBackgroundSelectedColors->reset();
+    settings->appEnableAutomaticSoftwareUpdates->reset();
+    settings->appLookForOpenSankoreInstall->reset();
+    settings->webUseExternalBrowser->reset();
+    settings->webShowPageImmediatelyOnMirroredScreen->reset();
+    settings->webHomePage->reset();
+}
 
 void UBApplication::updateProtoActionsState()
 {

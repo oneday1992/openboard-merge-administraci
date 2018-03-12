@@ -94,6 +94,8 @@ class UBApplication : public QtSingleApplication
         void decorateActionMenu(QAction* action);
         void insertSpaceToToolbarBeforeAction(QToolBar* toolbar, QAction* action, int width = -1);
 
+        void resetAppOptionsToDefault(); // Issue 12/03/2018 - OpenBoard - NEED to RESET ALL PARAMETERS TO DEFAULT.
+
         int toolBarHeight();
         bool eventFilter(QObject *obj, QEvent *event);
 

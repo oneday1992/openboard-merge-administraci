@@ -1368,7 +1368,7 @@ void UBSettings::removeSetting(const QString &setting)
 }
 
 void UBSettings::checkNewSettings()
-{
+{    
     /*
      * Some settings were modified in new versions and OpenBoard can crash
      * if an old settings file is used. This function checks these settings and

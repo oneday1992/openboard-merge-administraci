@@ -674,7 +674,6 @@ bool UBGraphicsScene::inputDeviceRelease()
             }
 
             // TODO LATER : Generate well pressure-interpolated polygons and create the line group with them
-            qWarning()<<"que hacemos aqui?";
             mAddedItems.clear();
             mAddedItems << pStrokes;
             addItem(pStrokes);
