@@ -52,7 +52,8 @@ HEADERS += src/gui/UBThumbnailView.h \
     $$PWD/UBAlignObjectPalette.h \
     $$PWD/UBCellPropertiesPalette.h \
     $$PWD/UBCreateHyperLinkPalette.h \
-    $$PWD/UBCreateTablePalette.h
+    $$PWD/UBCreateTablePalette.h \
+    $$PWD/UBCreateLinkPalette.h
 SOURCES += src/gui/UBThumbnailView.cpp \
     src/gui/UBFloatingPalette.cpp \
     src/gui/UBToolbarButtonGroup.cpp \
@@ -107,7 +108,8 @@ SOURCES += src/gui/UBThumbnailView.cpp \
     $$PWD/UBAlignObjectPalette.cpp \
     $$PWD/UBCellPropertiesPalette.cpp \
     $$PWD/UBCreateHyperLinkPalette.cpp \
-    $$PWD/UBCreateTablePalette.cpp
+    $$PWD/UBCreateTablePalette.cpp \
+    $$PWD/UBCreateLinkPalette.cpp
 win32:SOURCES += src/gui/UBKeyboardPalette_win.cpp
 macx:OBJECTIVE_SOURCES += src/gui/UBKeyboardPalette_mac.mm
 linux-g++:SOURCES += src/gui/UBKeyboardPalette_linux.cpp

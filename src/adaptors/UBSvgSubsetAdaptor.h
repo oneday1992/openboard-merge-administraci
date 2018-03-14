@@ -35,6 +35,7 @@
 #include <QGraphicsItem>
 
 #include "frameworks/UBGeometryUtils.h"
+#include "customWidgets/UBGraphicsItemAction.h"
 
 class UBGraphicsSvgItem;
 class UBGraphicsPolygonItem;
@@ -153,9 +154,11 @@ class UBSvgSubsetAdaptor
 
                 UBGraphicsCache* cacheFromSvg();
 
+                UBGraphicsItemAction* readAction(); // Issue 13/03/2018 - OpenBoard - Custom Widget.
+
                 void readGroupRoot();
                 QGraphicsItem *readElementFromGroup();
-                UBGraphicsGroupContainerItem* readGroup();
+                UBGraphicsGroupContainerItem* readGroup(UBGraphicsItemAction *action = 0, QString uuid = ""); // Issue 13/03/2018 - OpenBoard - Custom Widget.
 
                 void graphicsItemFromSvg(QGraphicsItem* gItem);
 
@@ -195,7 +198,7 @@ class UBSvgSubsetAdaptor
                 void polygonItemToSvgLine(UBGraphicsPolygonItem* polygonItem, bool groupHoldsInfo);
                 void strokeToSvgPolyline(UBGraphicsStroke* stroke, bool groupHoldsInfo);
                 void strokeToSvgPolygon(UBGraphicsStroke* stroke, bool groupHoldsInfo);
-                void writeAction(UBGraphicsItemAction* action);
+                void writeAction(UBGraphicsItemAction* action); // Issue 13/03/2018 - OpenBoard - Custom Widget.
 
                 inline QString pointsToSvgPointsAttribute(QVector<QPointF> points)
                 {

@@ -930,13 +930,15 @@ void UBGraphicsTextItemDelegate::updateMenuActionState()
 }
 
 void UBGraphicsTextItemDelegate::positionHandles()
-{
-    UBGraphicsItemDelegate::positionHandles();
+{    
+    qWarning()<<"UBGraphicsTextItemDelegate::positionHandles()";
 
     if (mDelegated->isSelected() || (mDelegated->parentItem() && UBGraphicsGroupContainerItem::Type == mDelegated->parentItem()->type()))
     {
+        qWarning()<<"UBGraphicsTextItemDelegate 1";
         if (mToolBarItem->isVisibleOnBoard())
         {
+            qWarning()<<"UBGraphicsTextItemDelegate 2";
             qreal AntiScaleRatio = 1 / (UBApplication::boardController->systemScaleFactor() * UBApplication::boardController->currentZoom());
             mToolBarItem->setScale(AntiScaleRatio);
             QRectF toolBarRect = mToolBarItem->rect();
@@ -954,11 +956,14 @@ void UBGraphicsTextItemDelegate::positionHandles()
             mToolBarItem->hide();
             if (mToolBarItem->parentItem())
             {
-                if (group && group->getCurrentItem() == mDelegated && group->isSelected())
+                qWarning()<<"UBGraphicsTextItemDelegate 3";
+                if (group && group->getCurrentItem() == mDelegated && group->isSelected()){
                     mToolBarItem->show();
+                }
 
-                if (!group)
+                if (!group){
                      mToolBarItem->show();
+                }
             }
 
         }
@@ -967,6 +972,7 @@ void UBGraphicsTextItemDelegate::positionHandles()
     {
         mToolBarItem->hide();
     }
+    UBGraphicsItemDelegate::positionHandles();
 }
 
 void UBGraphicsTextItemDelegate::changeDelegateButtonsMode(bool htmlMode)

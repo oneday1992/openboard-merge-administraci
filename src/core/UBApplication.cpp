@@ -29,6 +29,8 @@
 
 #include "UBApplication.h"
 
+#include <QThread>
+
 #include <QtGui>
 #include <QtWebKit>
 #include <QtXml>
@@ -359,7 +361,8 @@ int UBApplication::exec(const QString& pFileToImport)
         applicationController->showBoard();
 
     onScreenCountChanged(1);
-    connect(desktop(), SIGNAL(screenCountChanged(int)), this, SLOT(onScreenCountChanged(int)));
+    connect(desktop(), SIGNAL(screenCountChanged(int)), this, SLOT(onScreenCountChanged(int)));        
+
     return QApplication::exec();
 }
 
@@ -682,6 +685,13 @@ QString UBApplication::urlFromHtml(QString html)
     }
 
     return url;
+}
+
+// Issue 13/03/2018 - OpenBoard - Text Editor URL management.
+void UBApplication::loadUrl(const QString &url)
+{
+    if (webController)
+        webController->loadUrl(url);
 }
 
 bool UBApplication::isFromWeb(QString url)

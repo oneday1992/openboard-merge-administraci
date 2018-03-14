@@ -1,6 +1,6 @@
 #include "UBGraphicsFreehandItem.h"
 
-/*#include <customWidgets/UBGraphicsItemAction.h>*/
+#include <customWidgets/UBGraphicsItemAction.h>
 
 UBGraphicsFreehandItem::UBGraphicsFreehandItem(QGraphicsItem *parent) :
     UBAbstractGraphicsPathItem(parent)
@@ -58,7 +58,7 @@ void UBGraphicsFreehandItem::copyItemParameters(UBItem *copy) const
         cp->setData(UBGraphicsItemData::ItemLayerType, this->data(UBGraphicsItemData::ItemLayerType));
         cp->setData(UBGraphicsItemData::ItemLocked, this->data(UBGraphicsItemData::ItemLocked));
 
-        /*if(Delegate()->action()){
+        if(Delegate()->action()){
             if(Delegate()->action()->linkType() == eLinkToAudio){
                 UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(Delegate()->action());
                 UBGraphicsItemPlayAudioAction* action = new UBGraphicsItemPlayAudioAction(audioAction->fullPath());
@@ -66,7 +66,7 @@ void UBGraphicsFreehandItem::copyItemParameters(UBItem *copy) const
             }
             else
                 cp->Delegate()->setAction(Delegate()->action());
-        }*/
+        }
 
         cp->setBrush(brush());
         cp->setPen(pen());

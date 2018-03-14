@@ -101,6 +101,7 @@ class UBApplication : public QtSingleApplication
 
         bool isVerbose() { return mIsVerbose;}
         void setVerbose(bool verbose){mIsVerbose = verbose;}
+        static void loadUrl(const QString& url); // Issue 13/03/2018 - OpenBoard - Text Editor URL management.
         static QString urlFromHtml(QString html);
         static bool isFromWeb(QString url);
 

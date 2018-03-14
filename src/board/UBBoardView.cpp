@@ -86,6 +86,8 @@
 #include "tools/UBGraphicsTriangle.h"
 #include "tools/UBGraphicsProtractor.h"
 
+#include "customWidgets/UBGraphicsItemAction.h"
+
 #include "core/memcheck.h"
 
 UBBoardView::UBBoardView (UBBoardController* pController, QWidget* pParent, bool isControl, bool isDesktop)
@@ -731,12 +733,32 @@ QGraphicsItem* UBBoardView::determineItemToPress(QGraphicsItem *item)
     {
         UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
+        //TODO claudio
+        // another chuck of very good code
+        if(item->parentItem() && UBGraphicsGroupContainerItem::Type == item->parentItem()->type() && currentTool == UBStylusTool::Play){
+            UBGraphicsGroupContainerItem* group = qgraphicsitem_cast<UBGraphicsGroupContainerItem*>(item->parentItem());
+            if(group && group->Delegate()->action()){
+                group->Delegate()->action()->play();
+                return item;
+            }
+        }
+
         // if item is on group and group is not selected - group should take press.
         if (UBStylusTool::Selector == currentTool
                 && item->parentItem()
                 && UBGraphicsGroupContainerItem::Type == item->parentItem()->type()
                 && !item->parentItem()->isSelected())
             return item->parentItem();
+
+        // if item is on group and group is not selected - group should take press.
+        if ((UBStylusTool::Selector == currentTool
+             || currentTool == UBStylusTool::Play) // Issue 1509 - AOU - 20131113
+            && item->parentItem()
+            && UBGraphicsGroupContainerItem::Type == item->parentItem()->type())
+                /*&& !item->parentItem()->isSelected())*/ // Issue 1509 - AOU - 20131113
+        {
+            return item->parentItem();
+        }
 
         // items like polygons placed in two groups nested, so we need to recursive call.
         if(item->parentItem() && UBGraphicsStrokesGroup::Type == item->parentItem()->type())
@@ -1060,10 +1082,23 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
 
         case UBStylusTool::Selector :
         case UBStylusTool::Play :
+            qWarning()<<"PLAY";
             if (bIsDesktop) {
                 event->ignore();
                 return;
             }
+
+            // Issue 13/03/2018 - OpenBoard - Custom Widget.
+            if (currentTool == UBStylusTool::Play)
+            {
+                //UBGraphicsItem* shape = dynamic_cast<UBGraphicsItem*>(movingItem);
+                // Issue retours 2.4RC1 - CFA - 20140217 : No idea why "play action" is doing in determineItemToPress...)
+                UBAbstractGraphicsItem* shape = dynamic_cast<UBAbstractGraphicsItem*>(movingItem);
+
+                if (shape && shape->Delegate() && shape->Delegate()->action())
+                    shape->Delegate()->action()->play();
+            }
+            // END Issue 13/03/2018 - OpenBoard - Custom Widget.
 
             if (scene()->backgroundObject() == movingItem)
                 movingItem = NULL;
@@ -1465,7 +1500,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
         mIsCreatingSceneGrabZone = false;
     }
     else
-    {        
+    {
         if (mPendingStylusReleaseEvent || mMouseButtonIsPressed)
         {
             event->accept ();

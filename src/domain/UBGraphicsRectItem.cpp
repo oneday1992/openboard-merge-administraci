@@ -20,7 +20,7 @@
  */
 
 #include "UBGraphicsRectItem.h"
-/*#include "customWidgets/UBGraphicsItemAction.h"*/
+#include "customWidgets/UBGraphicsItemAction.h"
 #include "UBAbstractGraphicsItem.h"
 #include "UBGraphicsDelegateFrame.h"
 

@@ -39,7 +39,7 @@
 #include "document/UBDocumentController.h"
 #include "board/UBBoardController.h"
 #include "document/UBDocumentProxy.h"
-//#include "customWidgets/UBGraphicsItemAction.h"
+#include "customWidgets/UBGraphicsItemAction.h"
 #include "frameworks/UBFileSystemUtils.h"
 #include "core/UBPersistenceManager.h"
 #include "core/UBTextTools.h"
@@ -73,8 +73,8 @@ UBGraphicsTextItem::UBGraphicsTextItem(QGraphicsItem * parent) :
 
     Delegate()->frame()->setOperationMode(UBGraphicsDelegateFrame::Resizing);
     Delegate()->setFlippable(false);
-    Delegate()->setRotatable(true);
-    Delegate()->setCanTrigAnAction(true);*/
+    Delegate()->setRotatable(true);*/
+    Delegate()->setCanTrigAnAction(true);
 
     mTypeTextHereLabel = tr("<Type Text Here>");
 
@@ -95,7 +95,7 @@ UBGraphicsTextItem::UBGraphicsTextItem(QGraphicsItem * parent) :
 
     connect(document(), SIGNAL(contentsChanged()), Delegate(), SLOT(contentsChanged()));
     connect(document(), SIGNAL(undoCommandAdded()), this, SLOT(undoCommandAdded()));
-    //connect(this, SIGNAL(linkActivated(QString)), this, SLOT(loadUrl(QString)));
+    connect(this, SIGNAL(linkActivated(QString)), this, SLOT(loadUrl(QString)));
 
 
     connect(document()->documentLayout(), SIGNAL(documentSizeChanged(const QSizeF &)),
@@ -446,7 +446,7 @@ void UBGraphicsTextItem::setHtmlMode(const bool mode)
 
 void UBGraphicsTextItem::loadUrl(QString url)
 {
-    /*UBApplication::loadUrl(url);*/
+    UBApplication::loadUrl(url);
 }
 
 UBItem* UBGraphicsTextItem::deepCopy() const
@@ -491,15 +491,17 @@ void UBGraphicsTextItem::copyItemParameters(UBItem *copy) const
         if(mBackgroundColor != Qt::transparent)
             cp->setBackgroundColor(mBackgroundColor);
 
-        /*if(Delegate()->action()){
-            /*if(Delegate()->action()->linkType() == eLinkToAudio){
+        // Issue 13/03/2018 - OpenBoard - Custom Widget.
+        if(Delegate()->action()){
+            if(Delegate()->action()->linkType() == eLinkToAudio){
                 UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(Delegate()->action());
                 UBGraphicsItemPlayAudioAction* action = new UBGraphicsItemPlayAudioAction(audioAction->fullPath());
                 cp->Delegate()->setAction(action);
             }
             else
                 cp->Delegate()->setAction(Delegate()->action());
-        }*/
+        }
+        // END Issue 13/03/2018 - OpenBoard - Custom Widget.
     }
 }
 

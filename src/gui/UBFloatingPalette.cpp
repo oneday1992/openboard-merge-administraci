@@ -66,6 +66,8 @@ UBFloatingPalette::UBFloatingPalette(Qt::Corner position, QWidget *parent)
 #endif
     }
 
+
+    qWarning()<<"Creadon floating palette";
     mBackgroundBrush = QBrush(UBSettings::paletteColor);
     mbGrip = true;
 }

@@ -57,6 +57,8 @@ class UBKeyboardPalette;
 class UBMainWindow;
 class UBApplicationController;
 class UBStartupHintsPalette;
+class UBCreateLinkPalette;
+
 
 class UBBoardPaletteManager : public QObject
 {
@@ -77,6 +79,8 @@ class UBBoardPaletteManager : public QObject
         void refreshPalettes();
 
         UBKeyboardPalette *mKeyboardPalette;
+
+        UBCreateLinkPalette* linkPalette(); // Issue 12/03/2018 - OpenBoard - Custo Widget
 
         void setCurrentWebToolsPalette(UBWebToolsPalette *palette) {mWebToolsCurrentPalette = palette;}
         UBWebToolsPalette* mWebToolsCurrentPalette;
@@ -112,7 +116,9 @@ class UBBoardPaletteManager : public QObject
         UBDrawingPalette *mDrawingPalette;
 
         UBZoomPalette *mZoomPalette;
-	UBStartupHintsPalette* mTipPalette;
+        UBStartupHintsPalette* mTipPalette;
+        UBCreateLinkPalette* mLinkPalette; // Issue 12/03/2018 - OpenBoard - Custo Widget
+
         /** The left dock palette */
         UBLeftPalette* mLeftPalette;
         /** The right dock palette */

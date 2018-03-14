@@ -171,7 +171,7 @@ void UBGraphicsItemUndoCommand::undo()
 
         QGraphicsItem *groupedItem = mScene->itemForUuid(curMapElement.value());
         if (groupedItem) {
-            nextGroup->addToGroup(groupedItem);
+            nextGroup->addToGroup(groupedItem, false);
         }
 
         previousGroupItem = curMapElement.key();
