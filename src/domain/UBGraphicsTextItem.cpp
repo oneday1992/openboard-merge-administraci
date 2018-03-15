@@ -58,10 +58,10 @@ UBGraphicsTextItem::UBGraphicsTextItem(QGraphicsItem * parent) :
     , mLastMousePressTime(QTime::currentTime())
     , mBackgroundColor(QColor(Qt::transparent))
     , mHtmlIsInterpreted(false)
-{    
+{
     setDelegate(new UBGraphicsTextItemDelegate(this, 0));
 
-    // TODO claudio remove this because in contrast with the fact the frame should be created on demand.    
+    // TODO claudio remove this because in contrast with the fact the frame should be created on demand.
     Delegate()->setUBFlag(GF_FLIPPABLE_ALL_AXIS, false);
     Delegate()->setUBFlag(GF_REVOLVABLE, true);
     Delegate()->setUBFlag(GF_TOOLBAR_USED, true);
@@ -630,7 +630,7 @@ void UBGraphicsTextItem::insertTable(const int lines, const int columns)
         v.push_back(t);
     format.setColumnWidthConstraints(v);
     format.merge(cursor.charFormat());
-    cursor.insertTable(lines,columns,format);    
+    cursor.insertTable(lines,columns,format);
 }
 
 void UBGraphicsTextItem::setBackgroundColor(const QColor& color)
@@ -638,7 +638,7 @@ void UBGraphicsTextItem::setBackgroundColor(const QColor& color)
     QTextBlockFormat format;
     format.setBackground(QBrush(color));
 
-    QTextCursor cursor = textCursor();   
+    QTextCursor cursor = textCursor();
 
     QTextTable* t = cursor.currentTable();
     int firstRow,numRows,firstCol,numCols;
@@ -716,7 +716,7 @@ void UBGraphicsTextItem::setAlignmentToRight()
     format.setAlignment(Qt::AlignRight);
     QTextCursor cursor = textCursor();
     cursor.mergeBlockFormat(format);
-    setTextCursor(cursor);    
+    setTextCursor(cursor);
     setFocus();
 }
 
@@ -730,7 +730,6 @@ void UBGraphicsTextItem::resize(qreal w, qreal h)
 {
     setTextWidth(w);
     setTextHeight(h);
-
     if (Delegate())
     {
         Delegate()->positionHandles();
@@ -743,6 +742,7 @@ void UBGraphicsTextItem::resize(qreal w, qreal h)
             textDelegate->cellPropertiesPalette()->setPos(QPoint((w-tablePaletteSize.width())/2, (h-tablePaletteSize.height())/2));
         }
     }
+
 }
 
 QSizeF UBGraphicsTextItem::size() const
@@ -817,7 +817,7 @@ void UBGraphicsTextItem::keyPressEvent(QKeyEvent *event)
             UBTextTools::cleanHtmlClipboard();
         }
     }
-
+    qWarning()<<event->text();
     QGraphicsTextItem::keyPressEvent(event);
 }
 //issue 1539 - NNE - 20131018 : END

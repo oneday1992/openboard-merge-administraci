@@ -216,8 +216,8 @@ void UBGraphicsTextItemDelegate::buildButtons()
 
 void UBGraphicsTextItemDelegate::contentsChanged()
 {
-    positionHandles();
     delegated()->contentsChanged();
+    positionHandles();    
 }
 
 //Issue N/C - NNE - 20140528

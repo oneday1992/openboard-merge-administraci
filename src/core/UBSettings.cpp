@@ -253,7 +253,7 @@ void UBSettings::init()
 
     appLookForOpenSankoreInstall = new UBSetting(this, "App", "LookForOpenSankoreInstall", true);
 
-    appStartMode = new UBSetting(this, "App", "StartMode", "");
+    appStartMode = new UBSetting(this, "App", "StartMode", "1"); // Issue 15/03/2018 - OpenBoard - Desktop mode by DEFAULT.
 
     featureSliderPosition = new UBSetting(this, "Board", "FeatureSliderPosition", 40);
 
@@ -870,6 +870,7 @@ QString UBSettings::userDataDirectory()
 QString UBSettings::userImageDirectory()
 {
     static QString imageDirectory = "";
+    qWarning()<<imageDirectory;
     if(imageDirectory.isEmpty()){
         if (sAppSettings && getAppSettings()->contains("App/UserImageDirectory")) {
             imageDirectory = getAppSettings()->value("App/UserImageDirectory").toString();

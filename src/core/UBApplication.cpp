@@ -355,8 +355,13 @@ int UBApplication::exec(const QString& pFileToImport)
     if (pFileToImport.length() > 0)
         UBApplication::applicationController->importFile(pFileToImport);
 
-    if (UBSettings::settings()->appStartMode->get().toInt())
+    if (UBSettings::settings()->appStartMode->get().toInt()){
+        qWarning()<<"***************** DESKTOP MODE **********************************";
+        // Issue 15/03/2018 - OpenBoard - Launch Desktop Mode
+        emit applicationController->desktopMode(true);
         applicationController->showDesktop();
+        // END Issue 15/03/2018 - OpenBoard - Launch Desktop Mode
+    }
     else
         applicationController->showBoard();
 

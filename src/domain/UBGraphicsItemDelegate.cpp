@@ -465,9 +465,9 @@ void UBGraphicsItemDelegate::positionHandles()
 
         if (mToolBarItem && mToolBarItem->isVisibleOnBoard())
         {
+            mToolBarItem->positionHandles();
             mToolBarItem->update();
             mToolBarItem->show();
-            mToolBarItem->positionHandles();
         }
     } else {
 
@@ -986,14 +986,12 @@ UBGraphicsToolBarItem::UBGraphicsToolBarItem(QGraphicsItem * parent) :
     update();
 }
 
-
 void UBGraphicsToolBarItem::positionHandles()
 {
     qWarning()<<"UBGraphicsToolBarItem::positionHandles()";
-    qWarning()<<rect().width();
     int itemXOffset = 0;
     foreach (QGraphicsItem* item, mItemsOnToolBar)
-    {        
+    {                
         if(item == DelegateButton::Spacer){
             itemXOffset += 10;
         }else{
@@ -1001,23 +999,14 @@ void UBGraphicsToolBarItem::positionHandles()
 
             itemXOffset += item->boundingRect().width();
 
-            if(itemXOffset < rect().width()){
-                qWarning()<<"1";
+            if(itemXOffset < rect().width())
                 item->show();
-                qWarning()<<item->isVisible();
-            }
-            else{
-                qWarning()<<"0";
-                item->hide();
-                qWarning()<<item->isVisible();
-            }
-            itemXOffset += mElementsPadding;
-            this->update();
+            else
+                item->hide();            
+
+            itemXOffset += qrand()%10;//mElementsPadding;
         }
-    }
-    //UBApplication::boardController->activeScene()->update(UBApplication::boardController->activeScene()->sceneRect());
-    qWarning()<<itemXOffset;
-    qWarning()<<"";
+    }    
 }
 
 
