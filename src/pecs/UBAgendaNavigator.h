@@ -25,46 +25,43 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
-#include "UBAgenda.h"
+
+#ifndef UBAGENDANAVIGATOR_H
+#define UBAGENDANAVIGATOR_H
+
 #include <QGraphicsView>
-#include "globals/UBGlobals.h"
+#include "gui/UBThumbnailWidget.h"
+#include "document/UBDocumentContainer.h"
 
 
-UBAgenda::UBAgenda(QWidget *parent, const char *name) : UBDockPaletteWidget(parent)
-  , mLayout(NULL)
-  , mNavigator(NULL)
+
+class UBAgendaNavigator : public QGraphicsView
 {
+    Q_OBJECT
+public:
+    UBAgendaNavigator(QWidget* parent=0, const char* name="agendaNavigator");
+    ~UBAgendaNavigator();
 
-    setObjectName(name);
-    mName = "Agenda";
-    mVisibleState = true;
+    void mouseDoubleClickEvent(QMouseEvent *event);
 
-    SET_STYLE_SHEET();
+private:
+    int border();
 
-    mIconToRight = QPixmap(":images/pages_open.png");
-    mIconToLeft = QPixmap(":images/pages_close.png");
+    /** The scene */
+    QGraphicsScene* mScene;
+   /** The list of current thumbnails with labels*/
+    QList<QPixmap> mQPixmap;
+    /** The current number of columns */
+    int mNbColumns;
+    /** The current thumbnails width */
+    int mThumbnailWidth;
+    /** The current thumbnails minimum width */
+    int mThumbnailMinWidth;
+    /** The selected thumbnail */
+    UBSceneThumbnailNavigPixmap* mSelectedThumbnail;
 
-    mNavigator = new UBAgendaNavigator(this);
+public slots:
+     void generateThumbnails();
+};
 
-//Main layout including all the widgets in palette
-    mLayout = new QVBoxLayout(this);
-    setLayout(mLayout);
-    mLayout->addWidget(mNavigator, 1);
-
-}
-
-UBAgenda::~UBAgenda()
-{
-    //Destructor
-    if(NULL != mNavigator)
-    {
-        delete mNavigator;
-        mNavigator = NULL;
-    }
-    if(NULL != mLayout)
-    {
-        delete mLayout;
-        mLayout = NULL;
-    }
-
-}
+#endif // UBAGENDANAVIGATOR_H

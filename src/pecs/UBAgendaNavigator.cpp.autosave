@@ -25,46 +25,51 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
-#include "UBAgenda.h"
-#include <QGraphicsView>
-#include "globals/UBGlobals.h"
+#include "UBAgendaNavigator.h"
 
-
-UBAgenda::UBAgenda(QWidget *parent, const char *name) : UBDockPaletteWidget(parent)
-  , mLayout(NULL)
-  , mNavigator(NULL)
+UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphicsView(parent)
+  , mScene(NULL)
+  , mNbColumns(1)
+  , mThumbnailWidth(0)
+  , mThumbnailMinWidth(100)
+  , mSelectedThumbnail(NULL)
 {
-
     setObjectName(name);
-    mName = "Agenda";
-    mVisibleState = true;
+    mScene = new QGraphicsScene(this);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setScene(mScene);
+    mThumbnailWidth = width() - 2*border();
 
-    SET_STYLE_SHEET();
+    setFrameShadow(QFrame::Plain);
 
-    mIconToRight = QPixmap(":images/pages_open.png");
-    mIconToLeft = QPixmap(":images/pages_close.png");
-
-    mNavigator = new UBAgendaNavigator(this);
-
-//Main layout including all the widgets in palette
-    mLayout = new QVBoxLayout(this);
-    setLayout(mLayout);
-    mLayout->addWidget(mNavigator, 1);
 
 }
 
-UBAgenda::~UBAgenda()
+UBAgendaNavigator::~UBAgendaNavigator()
 {
-    //Destructor
-    if(NULL != mNavigator)
-    {
-        delete mNavigator;
-        mNavigator = NULL;
-    }
-    if(NULL != mLayout)
-    {
-        delete mLayout;
-        mLayout = NULL;
-    }
 
+}
+
+void UBAgendaNavigator::mouseDoubleClickEvent(QMouseEvent *event)
+{
+ generateThumbnails();
+}
+
+int UBAgendaNavigator::border()
+{
+    return 20;
+}
+
+
+void UBAgendaNavigator::generateThumbnails()
+{
+        const QPixmap *pix = new QPixmap(":pecs/10236.png");
+        QGraphicsPixmapItem *picto = new QGraphicsPixmapItem(*pix);
+        
+        mScene->addItem(picto);
+
+
+    // Draw the items
+    //refreshScene();
+        show();
 }

@@ -32,18 +32,29 @@
 
 #include <QWidget>
 #include "gui/UBDockPaletteWidget.h"
+#include "UBAgendaNavigator.h"
+#include <QVBoxLayout>
+#include <QGraphicsView>
+#include <QLabel>
 
 class UBAgenda : public UBDockPaletteWidget
 {
     Q_OBJECT
 public:
-    UBAgenda(QWidget *parent = 0);
+    UBAgenda(QWidget *parent = 0, const char* name="UBAgenda");
+    ~UBAgenda();
 
     bool visibleInMode(eUBDockPaletteWidgetMode mode)
     {
         return mode == eUBDockPaletteWidget_BOARD
             || mode == eUBDockPaletteWidget_DESKTOP;
     }
+private:
+    UBAgendaNavigator* mNavigator;
+    /** The layout */
+    QVBoxLayout* mLayout;
+
+
 signals:
 
 public slots:
