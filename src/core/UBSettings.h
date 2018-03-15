@@ -368,6 +368,10 @@ class UBSettings : public QObject
         UBSetting* leftLibPaletteBoardModeIsCollapsed;
         UBSetting* leftLibPaletteDesktopModeWidth;
         UBSetting* leftLibPaletteDesktopModeIsCollapsed;
+        UBSetting* downLibPaletteBoardModeWidth;
+        UBSetting* downLibPaletteBoardModeIsCollapsed;
+        UBSetting* downLibPaletteDesktopModeWidth;
+        UBSetting* downLibPaletteDesktopModeIsCollapsed;
 
         UBSetting* communityUser;
         UBSetting* communityPsw;

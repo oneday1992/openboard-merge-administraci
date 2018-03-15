@@ -33,8 +33,10 @@
 #include "gui/UBFeaturesWidget.h"
 #include "gui/UBRightPalette.h"
 #include "gui/UBLeftPalette.h"
+#include "gui/UBDownPalette.h"
 #include "gui/UBDockPaletteWidget.h"
 #include "UBAgenda.h"
+#include "UBLineaComunicacion.h"
 
 
 
@@ -90,14 +92,19 @@ void UBPecsController::setupViews()
 
         UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBAgenda *agenda = new UBAgenda();
+        UBLineaComunicacion * lineacomunicacion = new UBLineaComunicacion();
 
         UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
         paletaCarpetaPecs->registerWidget(carpetasPecs);
         paletaCarpetaPecs->addTab(carpetasPecs);
 
-        UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
-        paletaAgenda->registerWidget(agenda);
-        paletaAgenda->addTab(agenda);
+      //  UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
+      //  paletaAgenda->registerWidget(agenda);
+      //  paletaAgenda->addTab(agenda);
+
+        UBDownPalette * paletaLineaComunicacion = new UBDownPalette(mPecsWidget);
+        paletaLineaComunicacion->registerWidget(lineacomunicacion);
+        paletaLineaComunicacion->addTab(lineacomunicacion);
 
 
 

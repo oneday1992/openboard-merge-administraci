@@ -48,18 +48,18 @@ class UBDocumentProxy;
 
 #include "UBDockPaletteWidget.h"
 
-#define TABSIZE        50       //Height of the tab of the palette
-#define CLICKTIME   1000000  //Clicktime to expand or collapse palette
+#define TABSIZE        50       //Height of the tab of the palette (Altura de la pestaña de la paleta)
+#define CLICKTIME   1000000  //Clicktime to expand or collapse palette (Tiempo de click para expandir o colapsar la paleta)
 
 /**
  * \brief The dock positions
  */
 typedef enum
 {
-    eUBDockOrientation_Left,  /** Left dock */
-    eUBDockOrientation_Right, /** Right dock */
-    eUBDockOrientation_Top,   /** [to be implemented]Top dock */
-    eUBDockOrientation_Bottom /** [to be implemented]Bottom dock */
+    eUBDockOrientation_Left,  /** Left dock (Izquierdo)*/
+    eUBDockOrientation_Right, /** Right dock (Derecho)*/
+    eUBDockOrientation_Top,   /** [to be implemented]Top dock (Arriba)*/
+    eUBDockOrientation_Bottom /** [to be implemented]Bottom dock (Abajo)*/
 }eUBDockOrientation;
 
 typedef enum
@@ -96,7 +96,8 @@ private:
 typedef enum
 {
     eUBDockPaletteType_LEFT,
-    eUBDockPaletteType_RIGHT
+    eUBDockPaletteType_RIGHT,
+    eUBDockPaletteType_DOWN
 } eUBDockPaletteType;
 
 
@@ -161,43 +162,85 @@ protected:
     virtual void resizeEvent(QResizeEvent *event);
     virtual int collapseWidth();
 
-    /** The current dock orientation */
+    /** The current dock orientation
+    * La orientacion actual del dock
+    */
     eUBDockOrientation mOrientation;
-    /** The current background brush */
+    /** The current background brush
+    * El pincel de fondo actual
+    */
     QBrush mBackgroundBrush;
-    /** The preferred width */
+    /** The preferred width
+    * El ancho preferido
+    */
     int mPreferredWidth;
-    /** The preferred height */
+    /** The preferred height
+    * La altura preferida
+    */
     int mPreferredHeight;
-    /** A flag used to allow the resize */
+    /** A flag used to allow the resize
+    * Bandera usada para permitir el cambio de tamaño
+    */
     bool mCanResize;
-    /** A flag indicating if the palette has been resized between a click and a release */
+    /** A flag indicating if the palette has been resized between a click and a release
+    * Una bandera que indica si la paleta se ha cambiado de tamaño entre un clic y una version
+    */
     bool mResized;
-    /** The width that trig the collapse */
+    /** The width that trig the collapse
+    * El ancho que activa el colapso
+    */
     int mCollapseWidth;
-    /** The last width of the palette */
+    /** The last width of the palette
+    * El ultimo ancho de la paleta
+    */
     int mLastWidth;
-    /** The click time*/
+    /** The last height of the palette
+    * El ultimo alto de la paleta
+    */
+    int mLastHeight;
+    /** The click time
+    * El tiempo de clic
+    */
     QTime mClickTime;
-    /** The mouse pressed position */
+    /** The mouse pressed position
+    * La posicion presionada por el raton
+    */
     QPoint mMousePressPos;
-    /** The tab orientation */
+    /** The tab orientation
+    * La orientacion de las pestañas
+    */
     eUBDockTabOrientation mTabsOrientation;
-    /** The h position of the tab */
+    /** The h position of the tab
+    * La posicion horizontal de la pestaña
+    */
     int mHTab;
-    /** The stacked widget */
+    /** The stacked widget
+    * El widget apilado
+    */
     QStackedWidget* mpStackWidget;
-    /** The layout */
+    /** The layout
+    * El diseño
+    */
     QVBoxLayout* mpLayout;
-    /** The current tab index */
+    /** The current tab index
+    * El indice de la pestaña actual
+    */
     int mCurrentTab;
-    /** The visible tab widgets */
+    /** The visible tab widgets
+    * El widget de pestañas visible
+    */
     QVector<UBDockPaletteWidget*> mTabWidgets;
-    /** The current widget */
+    /** The current widget
+    * El widget actual
+    */
     QVector<UBDockPaletteWidget*> mRegisteredWidgets;
-    /** The current tab widget */
+    /** The current tab widget
+    * El widget de pestaña actual
+    */
     QString mCrntTabWidget;
-    /** Last opened tab index depending on mode */
+    /** Last opened tab index depending on mode
+    * El ultimo indice de pestaña abierto segun el modo
+    */
     QMap<eUBDockPaletteWidgetMode,int> mLastOpenedTabForMode;
 
 private slots:

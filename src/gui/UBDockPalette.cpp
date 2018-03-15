@@ -57,6 +57,7 @@ UBDockPalette::UBDockPalette(eUBDockPaletteType paletteType, QWidget *parent, co
 , mResized(false)
 , mCollapseWidth(150)
 , mLastWidth(-1)
+, mLastHeight(-1)
 , mHTab(0)
 , mpStackWidget(NULL)
 , mpLayout(NULL)
@@ -73,9 +74,11 @@ UBDockPalette::UBDockPalette(eUBDockPaletteType paletteType, QWidget *parent, co
     mpLayout->addWidget(mpStackWidget);
 
     // clear the tab widgets
+    //borra las pestañas de los widgets
     mTabWidgets.clear();
 
     // We let 2 pixels in order to keep a small border for the resizing
+    // Dejamos 2 pixeles para mantener un borde pequeño para cambiar el tamaño
     setMinimumWidth(0);
 
     if (parent)
@@ -86,15 +89,18 @@ UBDockPalette::UBDockPalette(eUBDockPaletteType paletteType, QWidget *parent, co
     else
     {
         // standalone window
+        // si es una ventana independiente
         setAttribute(Qt::WA_TranslucentBackground);
     }
 
     mBackgroundBrush = QBrush(UBSettings::paletteColor);
 
     // This is the only way to set the background as transparent!
+    // Esta es la unica manera de establecer el fondo como transparente
     setStyleSheet("QWidget {background-color: transparent}");
 
     // Set the position of the tab
+    // Establecemos la posicion de la pestaña
     onToolbarPosUpdated();
     connect(UBSettings::settings()->appToolBarPositionedAtTop, SIGNAL(changed(QVariant)), this, SLOT(onToolbarPosUpdated()));
     connect(UBDownloadManager::downloadManager(), SIGNAL(allDownloadsFinished()), this, SLOT(onAllDownloadsFinished()));
@@ -127,6 +133,7 @@ void UBDockPalette::onDocumentSet(UBDocumentProxy* documentProxy)
 /**
  * \brief Get the current orientation
  * @return the current orientation
+ * Obtiene la orientacion actual
  */
 eUBDockOrientation UBDockPalette::orientation()
 {
@@ -136,19 +143,35 @@ eUBDockOrientation UBDockPalette::orientation()
 /**
  * \brief Set the current orientation
  * @param orientation as the given orientation
+ * Establece la orientacion actual
  */
 void UBDockPalette::setOrientation(eUBDockOrientation orientation)
 {
     // Set the size
+    // Establecemos el tamaño
     mOrientation = orientation;
-
     if(orientation == eUBDockOrientation_Left || orientation == eUBDockOrientation_Right)
     {
-        setMaximumHeight(parentWidget()->height());
-        setMinimumHeight(maximumHeight());
+       // int maximo=parentWidget()->height();
+       // int minimo=maximumHeight();
+
+      //  setMaximumHeight(parentWidget()->height());
+      //  setMinimumHeight(maximumHeight());
+        setMaximumWidth(40);
+        setMinimumWidth(1700);
+
+        setMaximumHeight(100);
+        setMinimumHeight(500);
     }
     else if(orientation == eUBDockOrientation_Top || orientation == eUBDockOrientation_Bottom)
     {
+        // establece como ancho maximo el ancho de la ventana padre
+       // int maximol=parentWidget()->width();
+       // int minimol=maximumWidth();
+      //  int maximol=100;
+       // int minimol=100;
+      //  setMaximumWidth(maximol);
+      //  setMinimumWidth(minimol);
         setMaximumWidth(parentWidget()->width());
         setMinimumWidth(maximumWidth());
     }
@@ -157,6 +180,7 @@ void UBDockPalette::setOrientation(eUBDockOrientation orientation)
 /**
  * \brief Handle the resize event
  * @param event as the resize event
+ * Manejador del evento de cambio de tamaño
  */
 void UBDockPalette::resizeEvent(QResizeEvent *event)
 {
@@ -167,7 +191,10 @@ void UBDockPalette::resizeEvent(QResizeEvent *event)
         setMinimumHeight(parentWidget()->height());
     }
     // Set the position
+    // Establecemos la posicion
     QPoint origin;
+    int altoPadre;
+    int mialtura;
     switch(mOrientation)
     {
     case eUBDockOrientation_Right:
@@ -175,7 +202,13 @@ void UBDockPalette::resizeEvent(QResizeEvent *event)
         origin.setY(0);
         break;
     case eUBDockOrientation_Bottom:
-        // Not supported yet
+        //se implementa para posicionar la linea de comunicacion
+        origin.setX(0);
+        altoPadre = parentWidget()->height();
+        mialtura = this->height();
+        //origin.setY(parentWidget()->height() - this->height());
+        origin.setY(this->height());
+        break;
     case eUBDockOrientation_Top:
         // Not supported yet
     case eUBDockOrientation_Left:
@@ -191,11 +224,13 @@ void UBDockPalette::resizeEvent(QResizeEvent *event)
 /**
  * \brief Handle the mouse enter event
  * @param event as the mouse event
+ * Maneja el evento enter del raton
  */
 void UBDockPalette::enterEvent(QEvent *event)
 {
     Q_UNUSED(event);
     // We want to set the cursor as an arrow everytime it enters the palette
+    //Queremos establecer el cursor como una flecha cada vez que ingresa a la paleta
     setCursor(Qt::ArrowCursor);
     emit mouseEntered();
 }
@@ -203,19 +238,23 @@ void UBDockPalette::enterEvent(QEvent *event)
 /**
  * \brief Handle the mouse leave event
  * @param event as the mouse event
+ * Manejador del evento cuando deja el raton
  */
 void UBDockPalette::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event);
     // Restore the cursor to its previous shape
+    // Restaura el cursor a su forma anterior
     unsetCursor();
 }
 
 /**
  * \brief Draw the palette
  * @param event as the paint event
+ * Dibuja la paleta
  */
 void UBDockPalette::paintEvent(QPaintEvent *event)
+//Este es el metodo que se usa para pintar las paletas
 {
     Q_UNUSED(event);
     QPainter painter(this);
@@ -229,16 +268,28 @@ void UBDockPalette::paintEvent(QPaintEvent *event)
     if(0 < nbTabs)
     {
         // First draw the BIG RECTANGLE (I write it big because the rectangle is big...)
+        // Primero pintamos el rectangulo grande.
         if(mOrientation == eUBDockOrientation_Left)
         {
-            path.addRect(0.0, 0.0, width(), height());
+            // Con este metodo estamos pintando el rectangulo gris oscuro que aparece en la paletas
+           int ancho=width();
+           int alto=height();
+//           path.addRect(0.0, 0.0, width(), height());
+
+            path.addRect(240.0, 750.0, width(), height()-200);
+           //
         }
         else if(mOrientation == eUBDockOrientation_Right)
         {
             path.addRect(0.0, 0.0, width(), height());
         }
+        else if(mOrientation == eUBDockOrientation_Bottom)
+        {
+            path.addRect(240.0, 750.0, width(), height()-200);
+        }
 
-        // THEN DRAW THE small tabs (yes, the tabs are small...)
+         //THEN DRAW THE small tabs (yes, the tabs are small...)
+        // Despues dibujamos las pestañas pequeñas
         if(eUBDockTabOrientation_Up == mTabsOrientation)
         {
             mHTab = border();
@@ -254,6 +305,7 @@ void UBDockPalette::paintEvent(QPaintEvent *event)
 /**
  * \brief Set the background brush
  * @param brush as the given brush
+ * Establecemos el pincel de fondo
  */
 void UBDockPalette::setBackgroundBrush(const QBrush &brush)
 {
@@ -267,6 +319,7 @@ void UBDockPalette::setBackgroundBrush(const QBrush &brush)
 /**
  * Get the border size
  * @return the border size
+ * Obtener el tamaño del borde
  */
 int UBDockPalette::border()
 {
@@ -276,6 +329,7 @@ int UBDockPalette::border()
 /**
  * \brief Get the radius size
  * @return the radius size
+ * Obtener el tamaño del radio
  */
 int UBDockPalette::radius()
 {
@@ -284,15 +338,18 @@ int UBDockPalette::radius()
 
 /**
  * \brief Set the maximum width
+ * Establecer el ancho maximo
  */
 void UBDockPalette::updateMaxWidth()
 {
     // Only the inherited class will overload this method
+    // La clase que herda debe sobrecargar el metodo
 }
 
 /**
  * \brief Get the collapse width value
  * @return the collapse widht value
+ * Obtiene el valor del ancho de colapso
  */
 int UBDockPalette::collapseWidth()
 {
@@ -301,15 +358,18 @@ int UBDockPalette::collapseWidth()
 
 /**
  * \brief collapse/expand automatically the palette after a click on its tab
+ * contraer / expandir automáticamente la paleta después de hacer clic en su pestaña
  */
 void UBDockPalette::tabClicked(int tabIndex)
 {
     // If the current tab is not the clicked one, show its content
+    // Si la pestaña actual no es la que hizo clic, muestre su contenido
     if(mCurrentTab != tabIndex)
     {
         showTabWidget(tabIndex);
     }
     // else collapse the palette
+    // si no, colapsa la paleta
     else
     {
         toggleCollapseExpand();
@@ -320,6 +380,7 @@ void UBDockPalette::tabClicked(int tabIndex)
 /**
  * \brief Show the tab widget related to the given index
  * @param tabIndex as the given index
+ * Mostrar el widget de pestaña relacionado con el índice dado
  */
 void UBDockPalette::showTabWidget(int tabIndex)
 {
@@ -327,6 +388,7 @@ void UBDockPalette::showTabWidget(int tabIndex)
     mCurrentTab = tabIndex;
 
     // Update the current tab index
+    // Actualiza la pestaña indice actual
     if(NULL != (dynamic_cast<UBDockPaletteWidget*>(mpStackWidget->widget(tabIndex)))){
         mCrntTabWidget = dynamic_cast<UBDockPaletteWidget*>(mpStackWidget->widget(tabIndex))->name();
     }
@@ -335,6 +397,7 @@ void UBDockPalette::showTabWidget(int tabIndex)
 
 /**
  * \brief Toggle the collapse / expand state
+ * Alterna el estado de colapsado / expandido
  */
 void UBDockPalette::toggleCollapseExpand()
 {
@@ -350,6 +413,7 @@ void UBDockPalette::toggleCollapseExpand()
 /**
  * \brief Set the tabs orientation
  * @param orientation as the given tabs orientation
+ * Establece la orientacion de las pestañas
  */
 void UBDockPalette::setTabsOrientation(eUBDockTabOrientation orientation)
 {
@@ -358,10 +422,12 @@ void UBDockPalette::setTabsOrientation(eUBDockTabOrientation orientation)
 
 /**
  * \brief Update the tab position regarding the toolbar position (up or down)
+ * Actualice la posición de la pestaña con respecto a la posición de la barra de herramientas (arriba o abajo)
  */
 void UBDockPalette::onToolbarPosUpdated()
 {
     // Get the position of the tab
+    // Obtenemos la posicion de la pestaña
     if(UBSettings::settings()->appToolBarPositionedAtTop->get().toBool())
     {
         setTabsOrientation(eUBDockTabOrientation_Up);
@@ -377,6 +443,7 @@ void UBDockPalette::onToolbarPosUpdated()
 /**
  * \brief Get the custom margin
  * @return the custom margin value
+ * Obtiene el margen personalizado
  */
 int UBDockPalette::customMargin()
 {
@@ -386,6 +453,7 @@ int UBDockPalette::customMargin()
 /**
  * \brief Add the given tab widget
  * @param widget as the given widget
+ * Añade la pestaña al widget dado
  */
 void UBDockPalette::addTab(UBDockPaletteWidget *widget)
 {
@@ -402,6 +470,7 @@ void UBDockPalette::addTab(UBDockPaletteWidget *widget)
 /**
  * \brief Remove the given tab
  * @param widgetName as the tab widget name
+ * Borra la pestaña dada
  */
 void UBDockPalette::removeTab(UBDockPaletteWidget* widget)
 {
@@ -420,6 +489,7 @@ void UBDockPalette::removeTab(UBDockPaletteWidget* widget)
 /**
  * \brief Handle the resize request
  * @param event as the given resize request
+ * Maneja la solicitud de cambio de tamaño
  */
 void UBDockPalette::onResizeRequest(QResizeEvent *event)
 {
@@ -429,6 +499,7 @@ void UBDockPalette::onResizeRequest(QResizeEvent *event)
 /**
  * \brief Get the tab spacing
  * @return the tab spacing
+ * Obtiene el espacio de la pestaña
  */
 int UBDockPalette::tabSpacing()
 {
@@ -438,6 +509,7 @@ int UBDockPalette::tabSpacing()
 /**
  * \brief Show the given widget
  * @param widgetName as the given widget name
+ * Muestra un widget dado
  */
 void UBDockPalette::onShowTabWidget(UBDockPaletteWidget* widget)
 {
@@ -451,6 +523,7 @@ void UBDockPalette::onShowTabWidget(UBDockPaletteWidget* widget)
 /**
  * \brief Hide the given widget
  * @param widgetName as the given widget name
+ * Oculta un widget dado
  */
 void UBDockPalette::onHideTabWidget(UBDockPaletteWidget* widget)
 {
@@ -463,6 +536,7 @@ void UBDockPalette::onHideTabWidget(UBDockPaletteWidget* widget)
 
 /**
  * \brief Connect the show / hide signals of the widget related to this dock palette
+ * Conecte las señales de mostrar / ocultar del widget relacionadas con esta paleta
  */
 void UBDockPalette::connectSignals()
 {
@@ -476,22 +550,26 @@ void UBDockPalette::connectSignals()
 /**
  * \brief Register the given widget
  * @param widget as the given widget
+ * Registra el widget dado
  */
 void UBDockPalette::registerWidget(UBDockPaletteWidget *widget)
 {
     if(!mRegisteredWidgets.contains(widget))
     {
         // Update the parent of this widget
+        // Actualiza el padre del widget
         widget->setParent(this);
         mRegisteredWidgets.append(widget);
 
         // By default, the widget is hidden
+        // Por defecto, el widget esta oculto
         widget->hide();
     }
 }
 
 /**
  * \brief Handles the 'all download finished' notification
+ * Maneja las notificaciones de todas las descargas terminadas
  */
 void UBDockPalette::onAllDownloadsFinished()
 {
@@ -525,7 +603,11 @@ void UBDockPalette::moveTabs()
         }
         break;
     case eUBDockOrientation_Top: ;
-    case eUBDockOrientation_Bottom: ;
+    case eUBDockOrientation_Bottom:
+        //hay que implementarlo correctamente, es solo para probar
+        origin.setY(width());
+        break;
+        ;
     }
 
     mTabPalette->move(origin.x(), origin.y());
@@ -561,6 +643,7 @@ bool UBDockPalette::switchMode(eUBDockPaletteWidgetMode mode)
     bool hasVisibleElements = false;
     //-------------------------------//
     // get full palette widgets list, parse it, show all widgets for BOARD mode, and hide all other
+    // obtener la lista completa de widgets de paleta, analizarla, mostrar todos los widgets para el modo BOARD y ocultar todos los demás
     for(int i = 0; i < mRegisteredWidgets.size(); i++)
     {
         UBDockPaletteWidget* pNextWidget = mRegisteredWidgets.at(i);
@@ -651,7 +734,26 @@ void UBTabDockPalette::paintEvent(QPaintEvent *)
             break;
 
         case eUBDockOrientation_Top: ;
-        case eUBDockOrientation_Bottom: ;
+        case eUBDockOrientation_Bottom:
+
+            //hay que implementarlo, es solo para probar
+          //  yFrom= 1012;
+            path.addRect(0, yFrom + width() / 2, width() / 2, TABSIZE);
+            path.addRoundedRect(0, yFrom, width(), TABSIZE, dock->radius(), dock->radius());
+            if (pCrntWidget) {
+                if(dock->mCollapseWidth >= dock->width()) {
+                    // Get the collapsed icon
+                    // obtiene el icono colapsado
+                    iconPixmap = pCrntWidget->iconToRight();
+                } else {
+                    // Get the expanded icon
+                    // Obtiene el icono expandido
+                    iconPixmap = pCrntWidget->iconToLeft();
+                }
+
+            }
+            break;
+
         default:
             break;
         }
@@ -679,6 +781,8 @@ void UBTabDockPalette::mousePressEvent(QMouseEvent *event)
     dock->mClickTime = QTime::currentTime();
     // The goal here is to verify if the user can resize the widget.
     // It is only possible to resize it if the border is selected
+    // El objetivo aquí es verificar si el usuario puede cambiar el tamaño del widget.
+    // Solo es posible cambiar su tamaño si se selecciona el borde
     QPoint p = event->pos();
     dock->mMousePressPos = p;
     dock->mResized = false;
@@ -691,10 +795,11 @@ void UBTabDockPalette::mousePressEvent(QMouseEvent *event)
         dock->mCanResize = true;
         break;
     case eUBDockOrientation_Top:
-        // Not supported yet
-        break;
+        //dock->mCanResize = true;
+       // break;
     case eUBDockOrientation_Bottom:
-        // Not supported yet
+        // de momento ponemos que el usuario no pueda cambiar de tamaño la linea de comunicacion
+        dock->mCanResize = true;
         break;
     default:
         break;
@@ -761,6 +866,7 @@ void UBTabDockPalette::mouseReleaseEvent(QMouseEvent *event)
         int nbTabs = dock->mTabWidgets.size();
         int clickedTab = 0;
         // If the clicked position is in the tab, perform the related action
+        // Si la posicion cliqueada esta en la pestaña, realice la accion relacionada
 
         if(dock->mMousePressPos.x() >= 0 &&
                 dock->mMousePressPos.x() <= width() &&
