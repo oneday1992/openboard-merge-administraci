@@ -448,7 +448,7 @@ QGraphicsItem *UBGraphicsItemDelegate::delegated()
 
 void UBGraphicsItemDelegate::positionHandles()
 {
-    qWarning()<<"UBGraphicsItemDelegate::positionHandles()";
+    //qWarning()<<"UBGraphicsItemDelegate::positionHandles()";
     if (!controlsExist()) {
         return;
     }
@@ -988,7 +988,7 @@ UBGraphicsToolBarItem::UBGraphicsToolBarItem(QGraphicsItem * parent) :
 
 void UBGraphicsToolBarItem::positionHandles()
 {
-    qWarning()<<"UBGraphicsToolBarItem::positionHandles()";
+    //qWarning()<<"UBGraphicsToolBarItem::positionHandles()";
     int itemXOffset = 0;
     foreach (QGraphicsItem* item, mItemsOnToolBar)
     {                
@@ -1004,11 +1004,11 @@ void UBGraphicsToolBarItem::positionHandles()
             else
                 item->hide();            
 
-            itemXOffset += qrand()%10;//mElementsPadding;
+            itemXOffset += mElementsPadding;
         }
-    }    
+    }
+    qWarning()<<itemXOffset - mElementsPadding;
 }
-
 
 void UBGraphicsToolBarItem::update()
 {

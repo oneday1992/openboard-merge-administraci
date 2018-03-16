@@ -59,6 +59,9 @@ UBGraphicsTextItem::UBGraphicsTextItem(QGraphicsItem * parent) :
     , mBackgroundColor(QColor(Qt::transparent))
     , mHtmlIsInterpreted(false)
 {
+
+    toolbarExtended = false;
+
     setDelegate(new UBGraphicsTextItemDelegate(this, 0));
 
     // TODO claudio remove this because in contrast with the fact the frame should be created on demand.
@@ -66,7 +69,7 @@ UBGraphicsTextItem::UBGraphicsTextItem(QGraphicsItem * parent) :
     Delegate()->setUBFlag(GF_REVOLVABLE, true);
     Delegate()->setUBFlag(GF_TOOLBAR_USED, true);
     Delegate()->createControls();
-    Delegate()->frame()->setOperationMode(UBGraphicsDelegateFrame::Resizing);
+    //Delegate()->frame()->setOperationMode(UBGraphicsDelegateFrame::Resizing);
 
     /*setDelegate(new UBGraphicsTextItemDelegate(this));
     Delegate()->init();
@@ -110,6 +113,16 @@ UBGraphicsTextItem::UBGraphicsTextItem(QGraphicsItem * parent) :
 
 UBGraphicsTextItem::~UBGraphicsTextItem()
 {
+}
+
+// Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+bool UBGraphicsTextItem::isToolbarExtended(){
+    return toolbarExtended;
+}
+
+// Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+void UBGraphicsTextItem::setToolbarExtended(bool mode){
+    toolbarExtended = mode;
 }
 
 void UBGraphicsTextItem::insertColumn(bool onRight)
@@ -505,11 +518,15 @@ void UBGraphicsTextItem::copyItemParameters(UBItem *copy) const
     }
 }
 
-
 QRectF UBGraphicsTextItem::boundingRect() const
 {
     qreal width = textWidth();
     qreal height = textHeight();
+    // Issue 16/03/2018 - OpenBoard - Fixed width of the TEXEDITOR WINDOW to avoid problems with no-hidden icons
+    if((toolbarExtended == true) && (width < MIN_TEXT_WIDTH_EXTENDED) ) width=MIN_TEXT_WIDTH_EXTENDED;
+    if((toolbarExtended == false) && (width < MIN_TEXT_WIDTH_REDUCED) ) width=MIN_TEXT_WIDTH_REDUCED;
+
+
     return QRectF(QPointF(), QSizeF(width, height));
 }
 
@@ -683,7 +700,7 @@ void UBGraphicsTextItem::setAlignmentToLeft()
 {
     QTextBlockFormat format;
     format.setAlignment(Qt::AlignLeft);
-    QTextCursor cursor = textCursor();
+    QTextCursor cursor = textCursor();    
     cursor.mergeBlockFormat(format);
     setTextCursor(cursor);
     setFocus();
@@ -726,13 +743,18 @@ UBGraphicsScene* UBGraphicsTextItem::scene()
 }
 
 
-void UBGraphicsTextItem::resize(qreal w, qreal h)
+void UBGraphicsTextItem::resize(qreal width, qreal height)
 {
+    // Issue 16/03/2018 - OpenBoard - Fixed width of the TEXEDITOR WINDOW to avoid problems with no-hidden icons
+    qreal w = width;
+    qreal h = height;
+    if(isToolbarExtended() == true && w < MIN_TEXT_WIDTH_EXTENDED ) w=MIN_TEXT_WIDTH_EXTENDED;
+    if(isToolbarExtended() == false && w < MIN_TEXT_WIDTH_REDUCED ) w=MIN_TEXT_WIDTH_REDUCED;
+
     setTextWidth(w);
     setTextHeight(h);
     if (Delegate())
     {
-        Delegate()->positionHandles();
         UBGraphicsTextItemDelegate* textDelegate = dynamic_cast<UBGraphicsTextItemDelegate*>(Delegate());
         if (textDelegate)
         {
@@ -741,6 +763,7 @@ void UBGraphicsTextItem::resize(qreal w, qreal h)
             textDelegate->linkPalette()->setPos(QPoint((w-tablePaletteSize.width())/2, (h-tablePaletteSize.height())/2));
             textDelegate->cellPropertiesPalette()->setPos(QPoint((w-tablePaletteSize.width())/2, (h-tablePaletteSize.height())/2));
         }
+        Delegate()->positionHandles();
     }
 
 }
@@ -771,6 +794,7 @@ void UBGraphicsTextItem::documentSizeChanged(const QSizeF & newSize)
 //issue 1554 - NNE - 20131009
 void UBGraphicsTextItem::activateTextEditor(bool activateTextEditor)
 {
+    qDebug() << textInteractionFlags();
     this->isActivatedTextEditor = activateTextEditor;
 
     if(!activateTextEditor){
@@ -817,7 +841,6 @@ void UBGraphicsTextItem::keyPressEvent(QKeyEvent *event)
             UBTextTools::cleanHtmlClipboard();
         }
     }
-    qWarning()<<event->text();
     QGraphicsTextItem::keyPressEvent(event);
 }
 //issue 1539 - NNE - 20131018 : END

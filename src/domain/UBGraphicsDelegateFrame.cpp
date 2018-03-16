@@ -781,7 +781,7 @@ void UBGraphicsDelegateFrame::setVisible(bool visible)
 
 void UBGraphicsDelegateFrame::positionHandles()
 {
-    qWarning()<<"UBGraphicsDelegateFrame::positionHandles()";
+    //qWarning()<<"UBGraphicsDelegateFrame::positionHandles()";
     QRectF itemRect = delegated()->boundingRect();
 
     if (mDelegate->getToolBarItem() && mDelegate->getToolBarItem()->isVisibleOnBoard()

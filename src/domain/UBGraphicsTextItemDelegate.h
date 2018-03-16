@@ -59,6 +59,11 @@ class UBGraphicsTextItemDelegate : public UBGraphicsItemDelegate
         UBCreateHyperLinkPalette* linkPalette();
         UBCellPropertiesPalette* cellPropertiesPalette();
 
+        // Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+        void buildButtonsExtended();
+        void buildButtonsReduced();
+        // END Issue
+
         void changeDelegateButtonsMode(bool htmlMode);
 
     public slots:
@@ -79,6 +84,7 @@ class UBGraphicsTextItemDelegate : public UBGraphicsItemDelegate
 
         UBGraphicsTextItem* delegated();
 
+        DelegateButton* mSwtichTextEditorToolBar;
         DelegateButton* mFontButton;
         DelegateButton* mFontBoldButton;        
         DelegateButton* mFontItalicButton;
@@ -103,6 +109,9 @@ class UBGraphicsTextItemDelegate : public UBGraphicsItemDelegate
         UBCreateHyperLinkPalette* mLinkPalette;
         UBCellPropertiesPalette* mCellPropertiesPalette;
 
+        // Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+        bool toolbarExtended;
+
         int mLastFontPixelSize;
 
         static const int sMinPixelSize;
@@ -118,6 +127,9 @@ class UBGraphicsTextItemDelegate : public UBGraphicsItemDelegate
         QMenu * mTableMenu;
 
     private slots:
+
+        // Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+        void swtichTextEditorToolBar();
 
         void pickFont();
         void setFontBold();

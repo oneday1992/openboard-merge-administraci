@@ -56,6 +56,11 @@ class UBGraphicsTextItem : public QGraphicsTextItem, public UBItem, public UBRes
         virtual QRectF boundingRect() const;
         virtual QPainterPath shape() const;
 
+        // Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+        bool isToolbarExtended();
+        void setToolbarExtended(bool mode);
+        // END Issue
+
         void setTextWidth(qreal width);
         void setTextHeight(qreal height);
         qreal textHeight() const;
@@ -82,7 +87,7 @@ class UBGraphicsTextItem : public QGraphicsTextItem, public UBItem, public UBRes
 
         void contentsChanged();
 
-        virtual void resize(qreal w, qreal h);
+        virtual void resize(qreal width, qreal height);
 
         virtual QSizeF size() const;
 
@@ -163,6 +168,13 @@ class UBGraphicsTextItem : public QGraphicsTextItem, public UBItem, public UBRes
 
         //issue 1554
         bool isActivatedTextEditor;
+
+        // Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+        bool toolbarExtended;
+
+        // Issue 16/03/2018 - OpenBoard - Fixed width of the TEXEDITOR WINDOW to avoid problems with no-hidden icons
+        const qreal MIN_TEXT_WIDTH_EXTENDED = 618;
+        const qreal MIN_TEXT_WIDTH_REDUCED = 176;
 
         QString findAndReplaceAttribute(QString tag, QString oldAttribute, QString newAttribute, QString& source);
 

@@ -53,6 +53,7 @@ UBGraphicsTextItemDelegate::UBGraphicsTextItemDelegate(UBGraphicsTextItem* pDele
     , mLinkPalette(new UBCreateHyperLinkPalette())
     , mCellPropertiesPalette(new UBCellPropertiesPalette())
 {
+
     UBGraphicsProxyWidget* w = UBApplication::boardController->activeScene()->addWidget(mTablePalette);
     w->setParentItem(delegated());
     w->hide();
@@ -70,6 +71,9 @@ UBGraphicsTextItemDelegate::UBGraphicsTextItemDelegate(UBGraphicsTextItem* pDele
 
     delegated()->setData(UBGraphicsItemData::ItemEditable, QVariant(true));
     delegated()->setPlainText("");
+
+    // Issue 16/03/2018 - OpenBoard - Two text-editor toolboards. (by default NOT EXTENDED)
+    delegated()->setToolbarExtended(false);
 
     QTextCursor curCursor = delegated()->textCursor();
     QTextCharFormat format;
@@ -127,6 +131,44 @@ void UBGraphicsTextItemDelegate::buildButtons()
 {
     UBGraphicsItemDelegate::buildButtons();
 
+    if(delegated()->isToolbarExtended()){
+        buildButtonsExtended();
+    }
+    else{
+        buildButtonsReduced();
+    }
+}
+
+void UBGraphicsTextItemDelegate::buildButtonsReduced()
+{
+    mFontButton = new DelegateButton(":/images/textEditor/font.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
+    mFontBoldButton = new DelegateButton(":/images/textEditor/bold.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
+    mFontItalicButton = new DelegateButton(":/images/textEditor/italic.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
+    mFontUnderlineButton = new DelegateButton(":/images/textEditor/underline.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
+    mColorButton = new DelegateButton(":/images/color.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
+    mSwtichTextEditorToolBar = new DelegateButton(":/images/textEditor/expand.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
+
+    connect(mFontButton, SIGNAL(clicked(bool)), this, SLOT(pickFont()));
+    connect(mFontBoldButton, SIGNAL(clicked()), this, SLOT(setFontBold()));
+    connect(mFontItalicButton, SIGNAL(clicked()), this, SLOT(setFontItalic()));
+    connect(mFontUnderlineButton, SIGNAL(clicked()), this, SLOT(setFontUnderline()));
+    connect(mColorButton, SIGNAL(clicked(bool)), this, SLOT(pickColor()));
+    connect(mSwtichTextEditorToolBar, SIGNAL(clicked(bool)), this, SLOT(swtichTextEditorToolBar()));
+
+    QList<QGraphicsItem*> itemsOnToolBar;
+    itemsOnToolBar << mFontButton << mColorButton
+                   << mFontBoldButton << mFontItalicButton << mFontUnderlineButton
+                   << DelegateButton::Spacer
+                   << mSwtichTextEditorToolBar;
+
+    mToolBarItem->setItemsOnToolBar(itemsOnToolBar);
+    //qWarning()<<"6666666666666666666666666666666666666666666666666666666666666666";
+    mToolBarItem->setShifting(true);
+    mToolBarItem->setVisibleOnBoard(true);
+}
+
+void UBGraphicsTextItemDelegate::buildButtonsExtended()
+{    
     mFontButton = new DelegateButton(":/images/textEditor/font.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
     mFontBoldButton = new DelegateButton(":/images/textEditor/bold.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
     mFontItalicButton = new DelegateButton(":/images/textEditor/italic.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
@@ -146,6 +188,7 @@ void UBGraphicsTextItemDelegate::buildButtons()
     mRemoveIndentButton = new DelegateButton(":/images/textEditor/unindent.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
     mHyperLinkButton = new DelegateButton(":/images/textEditor/link.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
     mTableButton = new DelegateButton(":/images/textEditor/table.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
+    mSwtichTextEditorToolBar = new DelegateButton(":/images/textEditor/collapse.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
 
     connect(mFontButton, SIGNAL(clicked(bool)), this, SLOT(pickFont()));
     connect(mFontBoldButton, SIGNAL(clicked()), this, SLOT(setFontBold()));
@@ -166,6 +209,7 @@ void UBGraphicsTextItemDelegate::buildButtons()
     connect(mRemoveIndentButton, SIGNAL(clicked(bool)), this, SLOT(removeIndent()));
     connect(mHyperLinkButton, SIGNAL(clicked(bool)), this, SLOT(addLink()));
     connect(mTableButton, SIGNAL(clicked(bool)), this, SLOT(showMenuTable()));
+    connect(mSwtichTextEditorToolBar, SIGNAL(clicked(bool)), this, SLOT(swtichTextEditorToolBar()));
 
     // Create actions and subMenus of the "Table" menu :
     mTableMenu = new QMenu();
@@ -206,10 +250,12 @@ void UBGraphicsTextItemDelegate::buildButtons()
                    << mUnorderedListButton << mOrderedListButton
                    << DelegateButton::Spacer << mAddIndentButton << mRemoveIndentButton
                    << DelegateButton::Spacer
-                   << mHyperLinkButton << mTableButton << mBackgroundColorButton << mCodeButton;
+                   << mHyperLinkButton << mTableButton << mBackgroundColorButton << mCodeButton
+                   << DelegateButton::Spacer
+                   << mSwtichTextEditorToolBar;
 
     mToolBarItem->setItemsOnToolBar(itemsOnToolBar);
-    qWarning()<<"6666666666666666666666666666666666666666666666666666666666666666";
+    //qWarning()<<"6666666666666666666666666666666666666666666666666666666666666666";
     mToolBarItem->setShifting(true);
     mToolBarItem->setVisibleOnBoard(true);
 }
@@ -281,6 +327,21 @@ void UBGraphicsTextItemDelegate::customize(QFontDialog &fontDialog)
         comboBoxes.at(0)->setEnabled(false);
 }
 
+// Issue 16/03/2018 - OpenBoard - Two text-editor toolboards.
+void UBGraphicsTextItemDelegate::swtichTextEditorToolBar(){
+    UBApplication::boardController->activeScene()->removeItem(mToolBarItem);
+    mToolBarItem=new UBGraphicsToolBarItem(mDelegated);
+
+    /*mToolBarItem->setVisible(false);*/
+    if(delegated()->isToolbarExtended() == true){
+        delegated()->setToolbarExtended(false);
+    }
+    else{
+        delegated()->setToolbarExtended(true);
+    }
+
+    buildButtons();
+}
 
 void UBGraphicsTextItemDelegate::pickFont()
 {
@@ -931,14 +992,14 @@ void UBGraphicsTextItemDelegate::updateMenuActionState()
 
 void UBGraphicsTextItemDelegate::positionHandles()
 {    
-    qWarning()<<"UBGraphicsTextItemDelegate::positionHandles()";
+    //qWarning()<<"UBGraphicsTextItemDelegate::positionHandles()";
 
     if (mDelegated->isSelected() || (mDelegated->parentItem() && UBGraphicsGroupContainerItem::Type == mDelegated->parentItem()->type()))
     {
-        qWarning()<<"UBGraphicsTextItemDelegate 1";
+        //qWarning()<<"UBGraphicsTextItemDelegate 1";
         if (mToolBarItem->isVisibleOnBoard())
         {
-            qWarning()<<"UBGraphicsTextItemDelegate 2";
+            //qWarning()<<"UBGraphicsTextItemDelegate 2";
             qreal AntiScaleRatio = 1 / (UBApplication::boardController->systemScaleFactor() * UBApplication::boardController->currentZoom());
             mToolBarItem->setScale(AntiScaleRatio);
             QRectF toolBarRect = mToolBarItem->rect();
@@ -956,7 +1017,7 @@ void UBGraphicsTextItemDelegate::positionHandles()
             mToolBarItem->hide();
             if (mToolBarItem->parentItem())
             {
-                qWarning()<<"UBGraphicsTextItemDelegate 3";
+                //qWarning()<<"UBGraphicsTextItemDelegate 3";
                 if (group && group->getCurrentItem() == mDelegated && group->isSelected()){
                     mToolBarItem->show();
                 }
