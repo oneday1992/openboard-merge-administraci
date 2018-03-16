@@ -30,9 +30,10 @@
 #define UBAGENDANAVIGATOR_H
 
 #include <QGraphicsView>
+#include <QGraphicsItem>
 #include "gui/UBThumbnailWidget.h"
 #include "document/UBDocumentContainer.h"
-
+#include <QBoxLayout>
 
 
 class UBAgendaNavigator : public QGraphicsView
@@ -46,11 +47,12 @@ public:
 
 private:
     int border();
+    void refreshScene();
 
     /** The scene */
     QGraphicsScene* mScene;
    /** The list of current thumbnails with labels*/
-    QList<QPixmap> mQPixmap;
+    QList<QGraphicsItem*> mItems;
     /** The current number of columns */
     int mNbColumns;
     /** The current thumbnails width */

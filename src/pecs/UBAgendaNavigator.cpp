@@ -26,6 +26,8 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "UBAgendaNavigator.h"
+#include <QFile>
+#include <QBoxLayout>
 
 UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphicsView(parent)
   , mScene(NULL)
@@ -36,7 +38,7 @@ UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphic
 {
     setObjectName(name);
     mScene = new QGraphicsScene(this);
-    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     setScene(mScene);
     mThumbnailWidth = width() - 2*border();
 
@@ -47,7 +49,12 @@ UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphic
 
 UBAgendaNavigator::~UBAgendaNavigator()
 {
-
+    if(NULL != mScene)
+    {
+        delete mScene;
+        mScene = NULL;
+    }
+    mItems.clear();
 }
 
 void UBAgendaNavigator::mouseDoubleClickEvent(QMouseEvent *event)
@@ -60,16 +67,62 @@ int UBAgendaNavigator::border()
     return 20;
 }
 
+void UBAgendaNavigator::refreshScene()
+{
+    qreal thumbnailHeight = mThumbnailWidth / UBSettings::minScreenRatio;
+
+    for(int i = 0; i < mItems.count(); i++)
+    {
+        // Get the item
+        QGraphicsItem *item = mItems[i];
+        //int columnIndex = i % mNbColumns;
+        //int rowIndex = i / mNbColumns;
+        //item->ensureVisible(rowIndex, columnIndex, mThumbnailWidth, thumbnailHeight);
+        mScene->addItem(item);
+    }
+    //scene()->setSceneRect(scene()->itemsBoundingRect());
+
+
+
+        //setRenderHints( QPainter::Antialiasing );
+        //show();
+}
+
 
 void UBAgendaNavigator::generateThumbnails()
 {
-        const QPixmap *pix = new QPixmap(":pecs/10236.png");
-        QGraphicsPixmapItem *picto = new QGraphicsPixmapItem(*pix);
+        QPixmap pix = QPixmap(":pecs/10236.png");
+        QPixmap pixmap =pix.scaled(200, 100);
 
-        mScene->addItem(picto);
+        QGraphicsPixmapItem *picto = new QGraphicsPixmapItem(pixmap);
+        QGraphicsPixmapItem *picto2 = new QGraphicsPixmapItem(pix);
+
+
+        //QGraphicsPixmapItem *picto = new QGraphicsPixmapItem(pix);
+
+
+        //mScene->addItem(picto);
+
+        QGraphicsRectItem *item = new QGraphicsRectItem();
+        // izquierda, arriba, ancho y alto
+          item->setRect(0, 0, 200, 100);
+          // Línea: Ancho y estilo
+          item->setPen(QPen(Qt::blue,4,Qt::SolidLine));
+          // Relleno: Color y estilo.
+          item->setBrush(QBrush(Qt::green,Qt::SolidPattern));
+
+        //mScene->addItem(item);
+
+        //Añado a la lista de Items
+          //mItems.append(picto);
+          //mItems.append(item);
+          //mItems.append(picto2);
+
+          mScene->addItem(picto);
+
 
 
     // Draw the items
-    //refreshScene();
-        show();
+    refreshScene();
+
 }
