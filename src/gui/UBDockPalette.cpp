@@ -57,7 +57,7 @@ UBDockPalette::UBDockPalette(eUBDockPaletteType paletteType, QWidget *parent, co
 , mResized(false)
 , mCollapseWidth(150)
 , mLastWidth(-1)
-, mLastHeight(-1)
+//, mLastHeight(-1)
 , mHTab(0)
 , mpStackWidget(NULL)
 , mpLayout(NULL)
@@ -152,26 +152,13 @@ void UBDockPalette::setOrientation(eUBDockOrientation orientation)
     mOrientation = orientation;
     if(orientation == eUBDockOrientation_Left || orientation == eUBDockOrientation_Right)
     {
-       // int maximo=parentWidget()->height();
-       // int minimo=maximumHeight();
+        setMaximumHeight(parentWidget()->height());
+        setMinimumHeight(maximumHeight());
 
-      //  setMaximumHeight(parentWidget()->height());
-      //  setMinimumHeight(maximumHeight());
-        setMaximumWidth(40);
-        setMinimumWidth(1700);
-
-        setMaximumHeight(100);
-        setMinimumHeight(500);
     }
     else if(orientation == eUBDockOrientation_Top || orientation == eUBDockOrientation_Bottom)
     {
         // establece como ancho maximo el ancho de la ventana padre
-       // int maximol=parentWidget()->width();
-       // int minimol=maximumWidth();
-      //  int maximol=100;
-       // int minimol=100;
-      //  setMaximumWidth(maximol);
-      //  setMinimumWidth(minimol);
         setMaximumWidth(parentWidget()->width());
         setMinimumWidth(maximumWidth());
     }
@@ -193,8 +180,6 @@ void UBDockPalette::resizeEvent(QResizeEvent *event)
     // Set the position
     // Establecemos la posicion
     QPoint origin;
-    int altoPadre;
-    int mialtura;
     switch(mOrientation)
     {
     case eUBDockOrientation_Right:
@@ -203,12 +188,6 @@ void UBDockPalette::resizeEvent(QResizeEvent *event)
         break;
     case eUBDockOrientation_Bottom:
         //se implementa para posicionar la linea de comunicacion
-        origin.setX(0);
-        altoPadre = parentWidget()->height();
-        mialtura = this->height();
-        //origin.setY(parentWidget()->height() - this->height());
-        origin.setY(this->height());
-        break;
     case eUBDockOrientation_Top:
         // Not supported yet
     case eUBDockOrientation_Left:
@@ -271,22 +250,14 @@ void UBDockPalette::paintEvent(QPaintEvent *event)
         // Primero pintamos el rectangulo grande.
         if(mOrientation == eUBDockOrientation_Left)
         {
-            // Con este metodo estamos pintando el rectangulo gris oscuro que aparece en la paletas
-           int ancho=width();
-           int alto=height();
-//           path.addRect(0.0, 0.0, width(), height());
+           path.addRect(0.0, 0.0, width(), height());
 
-            path.addRect(240.0, 750.0, width(), height()-200);
-           //
         }
         else if(mOrientation == eUBDockOrientation_Right)
         {
             path.addRect(0.0, 0.0, width(), height());
         }
-        else if(mOrientation == eUBDockOrientation_Bottom)
-        {
-            path.addRect(240.0, 750.0, width(), height()-200);
-        }
+
 
          //THEN DRAW THE small tabs (yes, the tabs are small...)
         // Despues dibujamos las pestañas pequeñas
@@ -603,10 +574,9 @@ void UBDockPalette::moveTabs()
         }
         break;
     case eUBDockOrientation_Top: ;
-    case eUBDockOrientation_Bottom:
+    case eUBDockOrientation_Bottom:;
         //hay que implementarlo correctamente, es solo para probar
-        origin.setY(width());
-        break;
+
         ;
     }
 
@@ -734,25 +704,7 @@ void UBTabDockPalette::paintEvent(QPaintEvent *)
             break;
 
         case eUBDockOrientation_Top: ;
-        case eUBDockOrientation_Bottom:
-
-            //hay que implementarlo, es solo para probar
-          //  yFrom= 1012;
-            path.addRect(0, yFrom + width() / 2, width() / 2, TABSIZE);
-            path.addRoundedRect(0, yFrom, width(), TABSIZE, dock->radius(), dock->radius());
-            if (pCrntWidget) {
-                if(dock->mCollapseWidth >= dock->width()) {
-                    // Get the collapsed icon
-                    // obtiene el icono colapsado
-                    iconPixmap = pCrntWidget->iconToRight();
-                } else {
-                    // Get the expanded icon
-                    // Obtiene el icono expandido
-                    iconPixmap = pCrntWidget->iconToLeft();
-                }
-
-            }
-            break;
+        case eUBDockOrientation_Bottom: ;
 
         default:
             break;
@@ -796,10 +748,10 @@ void UBTabDockPalette::mousePressEvent(QMouseEvent *event)
         break;
     case eUBDockOrientation_Top:
         //dock->mCanResize = true;
-       // break;
+        break;
     case eUBDockOrientation_Bottom:
         // de momento ponemos que el usuario no pueda cambiar de tamaño la linea de comunicacion
-        dock->mCanResize = true;
+     //   dock->mCanResize = true;
         break;
     default:
         break;

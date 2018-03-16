@@ -30,11 +30,17 @@
 //Clase creada para customizar la linea de comunicaciones de PECS.
 // Class created to customize the communications line of PECS.
 
+#include <QPoint>
+#include <QPointF>
+#include <QPainterPath>
 
 #include "UBDownPalette.h"
 #include "core/UBApplication.h"
 #include "board/UBBoardController.h"
 #include "core/memcheck.h"
+
+
+
 
 
 
@@ -44,25 +50,15 @@
 UBDownPalette::UBDownPalette(QWidget *parent, const char *name) :
     UBDockPalette(eUBDockPaletteType_DOWN, parent)
 {
-    setObjectName(name);
-    setOrientation(eUBDockOrientation_Bottom);
-    mCollapseWidth = 150;
-    bool isCollapsed = false;
-    if(mCurrentMode == eUBDockPaletteWidget_BOARD){
-        mLastWidth = UBSettings::settings()->downLibPaletteBoardModeWidth->get().toInt();
-        isCollapsed = UBSettings::settings()->downLibPaletteBoardModeIsCollapsed->get().toBool();
-    }
-    else{
-        mLastWidth = UBSettings::settings()->downLibPaletteDesktopModeWidth->get().toInt();
-        isCollapsed = UBSettings::settings()->downLibPaletteDesktopModeIsCollapsed->get().toBool();
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setPen(Qt::NoPen);
+    QPainterPath path;
+    painter.setBackground(Qt::black);
+    path.addRect(20.0, 30.0, 300, 300);
+    painter.drawPath(path);
 
-    }
-    if(isCollapsed)
-        //resize(0,parentWidget()->height());
-        resize(parentWidget()->width(),0);
-    else
-        //resize(mLastWidth, parentWidget()->height());
-        resize(parentWidget()->width(),mLastWidth);
+
 }
 
 /**
@@ -96,16 +92,16 @@ void UBDownPalette::mouseMoveEvent(QMouseEvent *event)
 void UBDownPalette::resizeEvent(QResizeEvent *event)
 {
     int newWidth = width();
-    if(mCurrentMode == eUBDockPaletteWidget_BOARD){
-        if(newWidth > mCollapseWidth)
-            UBSettings::settings()->downLibPaletteBoardModeWidth->set(newWidth);
-        UBSettings::settings()->downLibPaletteBoardModeIsCollapsed->set(newWidth == 0);
-    }
-    else{
-        if(newWidth > mCollapseWidth)
-            UBSettings::settings()->downLibPaletteDesktopModeWidth->set(newWidth);
-        UBSettings::settings()->downLibPaletteDesktopModeIsCollapsed->set(newWidth == 0);
-    }
+  //  if(mCurrentMode == eUBDockPaletteWidget_BOARD){
+    //    if(newWidth > mCollapseWidth)
+ //           UBSettings::settings()->downLibPaletteBoardModeWidth->set(newWidth);
+   //     UBSettings::settings()->downLibPaletteBoardModeIsCollapsed->set(newWidth == 0);
+  //  }
+  //  else{
+    //    if(newWidth > mCollapseWidth)
+     //       UBSettings::settings()->downLibPaletteDesktopModeWidth->set(newWidth);
+       // UBSettings::settings()->downLibPaletteDesktopModeIsCollapsed->set(newWidth == 0);
+   // }
     UBDockPalette::resizeEvent(event);
     emit resized();
 }
@@ -126,16 +122,16 @@ bool UBDownPalette::switchMode(eUBDockPaletteWidgetMode mode)
 {
     int newModeWidth;
     if(mode == eUBDockPaletteWidget_BOARD){
-        mLastWidth = UBSettings::settings()->downLibPaletteBoardModeWidth->get().toInt();
-        newModeWidth = mLastWidth;
-        if(UBSettings::settings()->downLibPaletteBoardModeIsCollapsed->get().toBool())
-            newModeWidth = 0;
+  //      mLastWidth = UBSettings::settings()->downLibPaletteBoardModeWidth->get().toInt();
+    //    newModeWidth = mLastWidth;
+      //  if(UBSettings::settings()->downLibPaletteBoardModeIsCollapsed->get().toBool())
+        //    newModeWidth = 0;
     }
     else{
-        mLastWidth = UBSettings::settings()->downLibPaletteDesktopModeWidth->get().toInt();
-        newModeWidth = mLastWidth;
-        if(UBSettings::settings()->downLibPaletteDesktopModeIsCollapsed->get().toBool())
-            newModeWidth = 0;
+  //      mLastWidth = UBSettings::settings()->downLibPaletteDesktopModeWidth->get().toInt();
+    //    newModeWidth = mLastWidth;
+      //  if(UBSettings::settings()->downLibPaletteDesktopModeIsCollapsed->get().toBool())
+        //    newModeWidth = 0;
     }
     resize(newModeWidth,height());
     return UBDockPalette::switchMode(mode);
