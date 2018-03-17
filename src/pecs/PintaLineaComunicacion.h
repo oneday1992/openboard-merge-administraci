@@ -9,6 +9,9 @@ class PintaLineaComunicacion : public QWidget
 public:
     explicit PintaLineaComunicacion(QWidget *parent = 0);
 
+protected:
+    void paintEvent(QPaintEvent * e);
+
 signals:
 
 public slots:

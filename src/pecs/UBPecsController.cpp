@@ -91,9 +91,9 @@ void UBPecsController::setupViews()
 
         //mPecsUI->setupUi(mPecsWidget);
 
-        UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
-        UBAgenda *agenda = new UBAgenda();
-        UBLineaComunicacion * lineacomunicacion = new UBLineaComunicacion();
+     //   UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
+      //  UBAgenda *agenda = new UBAgenda();
+        //UBLineaComunicacion * lineacomunicacion = new UBLineaComunicacion();
 
       //  UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
         //paletaCarpetaPecs->registerWidget(carpetasPecs);
@@ -107,24 +107,23 @@ void UBPecsController::setupViews()
         paletaLineaComunicacion->registerWidget(lineacomunicacion);
         paletaLineaComunicacion->addTab(lineacomunicacion);
 */
-        //PintaLineaComunicacion *kk = new PintaLineaComunicacion(mPecsWidget);
+        PintaLineaComunicacion *kk = new PintaLineaComunicacion(mPecsWidget);
 
 
         //QPushButton *kk2 = new QPushButton(mPecsWidget);
         //kk2->setText("HOLA");
 
-        QPainter painter(mPecsWidget);
-        painter.setRenderHint(QPainter::Antialiasing,true);
+        //QPainter painter(mPecsWidget);
+       // painter.setRenderHint(QPainter::Antialiasing,true);
         //painter.setPen(Qt::NoPen);
-        QPainterPath path;
-        path.moveTo(80,320);
-        path.cubicTo(200,80,320,80,480,320);
-        painter.setPen(QPen(Qt::black,8));
-        painter.setBackground(Qt::black);
+       // QPainterPath path;
+       // path.moveTo(80,320);
+       // path.cubicTo(200,80,320,80,480,320);
+       // painter.setPen(QPen(Qt::black,8));
+       // painter.setBackground(Qt::black);
         //path.addRect(20.0, 30.0, 300, 300);
         //painter.drawPath(path);
-        painter.drawEllipse(80,80,400,240);
-
+       // painter.drawEllipse(80,80,400,240);
 
     }
 
