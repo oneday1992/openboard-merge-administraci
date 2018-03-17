@@ -31,18 +31,12 @@
 
 UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphicsView(parent)
   , mScene(NULL)
-  , mNbColumns(1)
-  , mThumbnailWidth(0)
-  , mThumbnailMinWidth(100)
-  , mSelectedThumbnail(NULL)
+
 {
     setObjectName(name);
     mScene = new QGraphicsScene(this);
 
     setScene(mScene);
-    mThumbnailWidth = width() - 2*border();
-
-    setFrameShadow(QFrame::Plain);
 
 
 }
@@ -54,75 +48,51 @@ UBAgendaNavigator::~UBAgendaNavigator()
         delete mScene;
         mScene = NULL;
     }
-    mItems.clear();
+    mPecs.clear();
 }
 
 void UBAgendaNavigator::mouseDoubleClickEvent(QMouseEvent *event)
 {
- generateThumbnails();
-}
-
-int UBAgendaNavigator::border()
-{
-    return 20;
+ generateListPecs();
 }
 
 void UBAgendaNavigator::refreshScene()
 {
-    qreal thumbnailHeight = mThumbnailWidth / UBSettings::minScreenRatio;
 
-    for(int i = 0; i < mItems.count(); i++)
+    for(int i = 0; i < mPecs.count(); i++)
     {
         // Get the item
-        QGraphicsItem *item = mItems[i];
-        //int columnIndex = i % mNbColumns;
-        //int rowIndex = i / mNbColumns;
-        //item->ensureVisible(rowIndex, columnIndex, mThumbnailWidth, thumbnailHeight);
+        QGraphicsItem *item = mPecs[i];
+        item->setPos(0,i*200);
         mScene->addItem(item);
     }
-    //scene()->setSceneRect(scene()->itemsBoundingRect());
 
-
-
-        //setRenderHints( QPainter::Antialiasing );
-        //show();
 }
 
 
-void UBAgendaNavigator::generateThumbnails()
+void UBAgendaNavigator::generateListPecs()
 {
         QPixmap pix = QPixmap(":pecs/10236.png");
-        QPixmap pixmap =pix.scaled(200, 100);
-
+        QPixmap pixmap =pix.scaled(300, 180,Qt::KeepAspectRatio);
+        pix =pix.scaled(200, 180,Qt::KeepAspectRatio);
         QGraphicsPixmapItem *picto = new QGraphicsPixmapItem(pixmap);
         QGraphicsPixmapItem *picto2 = new QGraphicsPixmapItem(pix);
 
-
-        //QGraphicsPixmapItem *picto = new QGraphicsPixmapItem(pix);
-
-
-        //mScene->addItem(picto);
-
         QGraphicsRectItem *item = new QGraphicsRectItem();
         // izquierda, arriba, ancho y alto
-          item->setRect(0, 0, 200, 100);
+          item->setRect(0, 0, 180, 180);
           // Línea: Ancho y estilo
           item->setPen(QPen(Qt::blue,4,Qt::SolidLine));
           // Relleno: Color y estilo.
           item->setBrush(QBrush(Qt::green,Qt::SolidPattern));
 
-        //mScene->addItem(item);
 
         //Añado a la lista de Items
-          //mItems.append(picto);
-          //mItems.append(item);
-          //mItems.append(picto2);
+          mPecs.append(picto);
+          mPecs.append(item);
+          mPecs.append(picto2);
 
-          mScene->addItem(picto);
-
-
-
-    // Draw the items
-    refreshScene();
+        // Draw the items
+        refreshScene();
 
 }

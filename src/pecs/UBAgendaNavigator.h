@@ -30,10 +30,9 @@
 #define UBAGENDANAVIGATOR_H
 
 #include <QGraphicsView>
-#include <QGraphicsItem>
-#include "gui/UBThumbnailWidget.h"
-#include "document/UBDocumentContainer.h"
-#include <QBoxLayout>
+//#include "gui/UBThumbnailWidget.h"
+//#include "document/UBDocumentContainer.h"
+#include "UBPecs.h"
 
 
 class UBAgendaNavigator : public QGraphicsView
@@ -46,24 +45,15 @@ public:
     void mouseDoubleClickEvent(QMouseEvent *event);
 
 private:
-    int border();
     void refreshScene();
 
     /** The scene */
     QGraphicsScene* mScene;
-   /** The list of current thumbnails with labels*/
-    QList<QGraphicsItem*> mItems;
-    /** The current number of columns */
-    int mNbColumns;
-    /** The current thumbnails width */
-    int mThumbnailWidth;
-    /** The current thumbnails minimum width */
-    int mThumbnailMinWidth;
-    /** The selected thumbnail */
-    UBSceneThumbnailNavigPixmap* mSelectedThumbnail;
+   /** The list of pecs */
+    QList<QGraphicsItem*> mPecs;
 
 public slots:
-     void generateThumbnails();
+     void generateListPecs();
 };
 
 #endif // UBAGENDANAVIGATOR_H
