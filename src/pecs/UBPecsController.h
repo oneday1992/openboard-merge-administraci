@@ -59,6 +59,9 @@ class UBPecsController : public QObject
         UBMainWindow *mMainWindow;
         //Ui::pecswindow* mPecsUI;
         QWidget *mPecsWidget;
+        QHBoxLayout *mControlLayout;
+
+        QGraphicsView *mCentralView;
 
 
     private slots:

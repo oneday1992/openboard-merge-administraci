@@ -26,8 +26,6 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "UBAgendaNavigator.h"
-#include <QFile>
-#include <QBoxLayout>
 
 UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphicsView(parent)
   , mScene(NULL)
@@ -73,24 +71,10 @@ void UBAgendaNavigator::refreshScene()
 void UBAgendaNavigator::generateListPecs()
 {
         QPixmap pix = QPixmap(":pecs/10236.png");
-        QPixmap pixmap =pix.scaled(300, 180,Qt::KeepAspectRatio);
-        pix =pix.scaled(200, 180,Qt::KeepAspectRatio);
-        QGraphicsPixmapItem *picto = new QGraphicsPixmapItem(pixmap);
-        QGraphicsPixmapItem *picto2 = new QGraphicsPixmapItem(pix);
-
-        QGraphicsRectItem *item = new QGraphicsRectItem();
-        // izquierda, arriba, ancho y alto
-          item->setRect(0, 0, 180, 180);
-          // Línea: Ancho y estilo
-          item->setPen(QPen(Qt::blue,4,Qt::SolidLine));
-          // Relleno: Color y estilo.
-          item->setBrush(QBrush(Qt::green,Qt::SolidPattern));
-
+        UBPecs *picto = new UBPecs(pix);
 
         //Añado a la lista de Items
           mPecs.append(picto);
-          mPecs.append(item);
-          mPecs.append(picto2);
 
         // Draw the items
         refreshScene();

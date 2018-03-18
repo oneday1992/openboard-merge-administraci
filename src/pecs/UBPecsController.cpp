@@ -35,8 +35,9 @@
 #include "gui/UBLeftPalette.h"
 #include "gui/UBDockPaletteWidget.h"
 #include "UBAgenda.h"
+#include <QLayout>
 
-
+#include "board/UBBoardView.h"
 
 //#include "ui_pecswindow.h"
 #include "ui_mainWindow.h"
@@ -82,12 +83,35 @@ void UBPecsController::setupViews()
     if (!mPecsWidget)
     {
         mPecsWidget = new QWidget(mMainWindow->centralWidget());
+
+
+        mControlLayout = new QHBoxLayout(mPecsWidget);
+        mControlLayout->setContentsMargins(0, 0, 0, 0);
+
+        //Board del medio
+        mCentralView = new QGraphicsView(mPecsWidget);
+        mCentralView->setObjectName("pecsCentralView");
+        mCentralView->setInteractive(true);
+        mCentralView->setMouseTracking(true);
+        mCentralView->grabGesture(Qt::SwipeGesture);
+        mCentralView->setTransformationAnchor(QGraphicsView::NoAnchor);
+        mControlLayout->addWidget(mCentralView);
+
+        //Escena
+        QGraphicsScene *mScene = new QGraphicsScene(mCentralView);
+        mCentralView->setScene(mScene);
+        QPixmap pix = QPixmap(":pecs/10236.png");
+        UBPecs *picto = new UBPecs(pix,0,Qt::blue);
+        mScene->addItem(picto);
+        // Fin Escena
+        //Fin de board del medio
+
+        //Añado el widget a mainwindows
+        mPecsWidget->setObjectName("ubPecsContainer");
         mMainWindow->addPecsWidget(mPecsWidget);
 
-        //mPecsUI = new Ui::pecswindow();
-
-        //mPecsUI->setupUi(mPecsWidget);
-
+       //Paleta selección de Pecs de la izquierda
+       //Paleta de agenda de la derecha
         UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBAgenda *agenda = new UBAgenda();
 
@@ -97,13 +121,8 @@ void UBPecsController::setupViews()
 
         UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
         paletaAgenda->registerWidget(agenda);
-        paletaAgenda->addTab(agenda);
-
-
-
-
+        paletaAgenda->addTab(agenda);  
+       //Fin de Paletas
     }
-
-
 
 }

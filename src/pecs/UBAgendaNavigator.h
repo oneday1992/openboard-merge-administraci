@@ -30,8 +30,7 @@
 #define UBAGENDANAVIGATOR_H
 
 #include <QGraphicsView>
-//#include "gui/UBThumbnailWidget.h"
-//#include "document/UBDocumentContainer.h"
+
 #include "UBPecs.h"
 
 
