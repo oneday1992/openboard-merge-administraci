@@ -34,6 +34,7 @@
 #define UBPECS_H
 
 #include <QGraphicsPixmapItem>
+#include <QtGui>
 
 class QGraphicsItem;
 
@@ -41,14 +42,19 @@ class UBPecs : public QGraphicsPixmapItem
 {
     //Q_OBJECT
 public:
-    UBPecs(QGraphicsItem *parent = 0);
-    UBPecs(const QPixmap &pixmap, QGraphicsItem *parent = 0, Qt::GlobalColor color=Qt::red);
+ //   UBPecs(const QPixmap &pixmap, QGraphicsItem *parent = 0, QGraphicsScene *scene=0);
+    UBPecs(const QPixmap &pixmap, QGraphicsItem *parent = 0, Qt::GlobalColor color=Qt::red, QGraphicsScene *scene=0);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+protected:
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
     int width;
     int height;
     Qt::GlobalColor mColor;
+    QGraphicsScene* mScene;
+    bool noPen;
 
 signals:
 

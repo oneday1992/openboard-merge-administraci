@@ -49,7 +49,6 @@ class UBPecsController : public QObject
 
         void show();
 
-
     protected:
         void setupViews ();
     public slots:
@@ -62,7 +61,6 @@ class UBPecsController : public QObject
         QHBoxLayout *mControlLayout;
 
         QGraphicsView *mCentralView;
-
 
     private slots:
 

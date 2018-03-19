@@ -71,7 +71,7 @@ void UBAgendaNavigator::refreshScene()
 void UBAgendaNavigator::generateListPecs()
 {
         QPixmap pix = QPixmap(":pecs/10236.png");
-        UBPecs *picto = new UBPecs(pix);
+        UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
 
         //Añado a la lista de Items
           mPecs.append(picto);

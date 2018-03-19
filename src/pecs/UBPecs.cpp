@@ -29,20 +29,26 @@
 #include "UBPecs.h"
 #include <QGraphicsItem>
 #include <QPainter>
+#include "core/UBApplication.h"
+#include "board/UBBoardController.h"
+#include "domain/UBGraphicsScene.h"
 
 
-UBPecs::UBPecs(QGraphicsItem *parent) : QGraphicsPixmapItem(parent)
+/*UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsPixmapItem(parent)
   , width(180)
   , height(180)
+  , noPen(false)
 {
-
+   mScene = scene;
 }
-
-UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, Qt::GlobalColor color) : QGraphicsPixmapItem(pixmap,parent)
+*/
+UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, Qt::GlobalColor color, QGraphicsScene *scene) : QGraphicsPixmapItem(pixmap,parent)
   , width(180)
   , height(180)
   , mColor(color)
+  , noPen(false)
 {
+   mScene = scene;
    setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
    setFlag(QGraphicsItem::ItemIsMovable);
 
@@ -51,8 +57,33 @@ UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, Qt::GlobalColor col
 //Pinto el borde del picto con el color elegido
 void UBPecs::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setPen(QPen(mColor,8,Qt::SolidLine));
-    painter->drawRect(0,0,180,180);
-    QGraphicsPixmapItem::paint(painter,option,widget);
+    qWarning()<<"PAINT";
+    painter->setRenderHint(QPainter::Antialiasing,true);
+    painter->setRenderHint(QPainter::SmoothPixmapTransform,true);
+    if(noPen==true)
+        painter->setPen(Qt::NoPen);
+    else
+        painter->setPen(QPen(mColor,8,Qt::SolidLine));
 
+    QGraphicsPixmapItem::paint(painter,option,widget);
+    painter->drawRect(this->pixmap().rect());
 }
+
+
+void UBPecs::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    noPen=true;
+    qWarning()<<"mousePressEvent";
+    QGraphicsPixmapItem::mousePressEvent(event);
+    mScene->update();
+}
+
+void UBPecs::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    noPen=false;
+    qWarning()<<"mouseReleaseEvent";
+    QGraphicsPixmapItem::mouseReleaseEvent(event);
+    // force refresh, QT is a bit lazy and take a lot of time (nb item ^2 ?) to trigger repaint
+    mScene->update();
+}
+

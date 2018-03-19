@@ -101,7 +101,7 @@ void UBPecsController::setupViews()
         QGraphicsScene *mScene = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mScene);
         QPixmap pix = QPixmap(":pecs/10236.png");
-        UBPecs *picto = new UBPecs(pix,0,Qt::blue);
+        UBPecs *picto = new UBPecs(pix,0,Qt::blue, mScene);
         mScene->addItem(picto);
         // Fin Escena
         //Fin de board del medio
