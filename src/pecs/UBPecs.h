@@ -26,51 +26,33 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UBPECSCONTROLLER_H_
-#define UBPECSCONTROLLER_H_
+/* Clase para implementar un elemento de Pecs
+ *
+ */
 
-#include <QObject>
-#include "core/UBApplicationController.h"
+#ifndef UBPECS_H
+#define UBPECS_H
 
-/*namespace Ui
+#include <QGraphicsPixmapItem>
+
+class QGraphicsItem;
+
+class UBPecs : public QGraphicsPixmapItem
 {
-    class pecswindow;
-}
-*/
-class UBPecsController : public QObject
-{
-    Q_OBJECT
+    //Q_OBJECT
+public:
+    UBPecs(QGraphicsItem *parent = 0);
+    UBPecs(const QPixmap &pixmap, QGraphicsItem *parent = 0, Qt::GlobalColor color=Qt::red);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    public:
-        UBPecsController(UBMainWindow* mainWindow);
-        virtual ~UBPecsController();
+private:
+    int width;
+    int height;
+    Qt::GlobalColor mColor;
 
-        void closing();
+signals:
 
-        void show();
-
-
-    protected:
-        void setupViews ();
-    public slots:
-
-
-    private:
-        UBMainWindow *mMainWindow;
-        //Ui::pecswindow* mPecsUI;
-        QWidget *mPecsWidget;
-        QHBoxLayout *mControlLayout;
-
-        QGraphicsView *mCentralView;
-
-
-    private slots:
-
-
-
-    signals:
-
+public slots:
 };
 
-
-#endif /* UBPECSCONTROLLER_H_ */
+#endif // UBPECS_H

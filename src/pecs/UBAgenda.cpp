@@ -26,8 +26,45 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "UBAgenda.h"
+#include <QGraphicsView>
+#include "globals/UBGlobals.h"
 
-UBAgenda::UBAgenda(QWidget *parent) : UBDockPaletteWidget(parent)
+
+UBAgenda::UBAgenda(QWidget *parent, const char *name) : UBDockPaletteWidget(parent)
+  , mLayout(NULL)
+  , mNavigator(NULL)
 {
+
+    setObjectName(name);
+    mName = "Agenda";
+    mVisibleState = true;
+
+    SET_STYLE_SHEET();
+
+    mIconToRight = QPixmap(":images/pages_open.png");
+    mIconToLeft = QPixmap(":images/pages_close.png");
+
+    mNavigator = new UBAgendaNavigator(this);
+
+//Main layout including all the widgets in palette
+    mLayout = new QVBoxLayout(this);
+    setLayout(mLayout);
+    mLayout->addWidget(mNavigator, 1);
+
+}
+
+UBAgenda::~UBAgenda()
+{
+    //Destructor
+    if(NULL != mNavigator)
+    {
+        delete mNavigator;
+        mNavigator = NULL;
+    }
+    if(NULL != mLayout)
+    {
+        delete mLayout;
+        mLayout = NULL;
+    }
 
 }

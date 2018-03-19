@@ -26,51 +26,33 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UBPECSCONTROLLER_H_
-#define UBPECSCONTROLLER_H_
+#ifndef UBAGENDANAVIGATOR_H
+#define UBAGENDANAVIGATOR_H
 
-#include <QObject>
-#include "core/UBApplicationController.h"
+#include <QGraphicsView>
 
-/*namespace Ui
-{
-    class pecswindow;
-}
-*/
-class UBPecsController : public QObject
+#include "UBPecs.h"
+
+
+class UBAgendaNavigator : public QGraphicsView
 {
     Q_OBJECT
+public:
+    UBAgendaNavigator(QWidget* parent=0, const char* name="agendaNavigator");
+    ~UBAgendaNavigator();
 
-    public:
-        UBPecsController(UBMainWindow* mainWindow);
-        virtual ~UBPecsController();
+    void mouseDoubleClickEvent(QMouseEvent *event);
 
-        void closing();
+private:
+    void refreshScene();
 
-        void show();
+    /** The scene */
+    QGraphicsScene* mScene;
+   /** The list of pecs */
+    QList<QGraphicsItem*> mPecs;
 
-
-    protected:
-        void setupViews ();
-    public slots:
-
-
-    private:
-        UBMainWindow *mMainWindow;
-        //Ui::pecswindow* mPecsUI;
-        QWidget *mPecsWidget;
-        QHBoxLayout *mControlLayout;
-
-        QGraphicsView *mCentralView;
-
-
-    private slots:
-
-
-
-    signals:
-
+public slots:
+     void generateListPecs();
 };
 
-
-#endif /* UBPECSCONTROLLER_H_ */
+#endif // UBAGENDANAVIGATOR_H

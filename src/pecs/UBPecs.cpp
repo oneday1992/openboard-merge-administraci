@@ -26,51 +26,33 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UBPECSCONTROLLER_H_
-#define UBPECSCONTROLLER_H_
+#include "UBPecs.h"
+#include <QGraphicsItem>
+#include <QPainter>
 
-#include <QObject>
-#include "core/UBApplicationController.h"
 
-/*namespace Ui
+UBPecs::UBPecs(QGraphicsItem *parent) : QGraphicsPixmapItem(parent)
+  , width(180)
+  , height(180)
 {
-    class pecswindow;
+
 }
-*/
-class UBPecsController : public QObject
+
+UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, Qt::GlobalColor color) : QGraphicsPixmapItem(pixmap,parent)
+  , width(180)
+  , height(180)
+  , mColor(color)
 {
-    Q_OBJECT
+   setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
+   setFlag(QGraphicsItem::ItemIsMovable);
 
-    public:
-        UBPecsController(UBMainWindow* mainWindow);
-        virtual ~UBPecsController();
+}
 
-        void closing();
+//Pinto el borde del picto con el color elegido
+void UBPecs::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    painter->setPen(QPen(mColor,8,Qt::SolidLine));
+    painter->drawRect(0,0,180,180);
+    QGraphicsPixmapItem::paint(painter,option,widget);
 
-        void show();
-
-
-    protected:
-        void setupViews ();
-    public slots:
-
-
-    private:
-        UBMainWindow *mMainWindow;
-        //Ui::pecswindow* mPecsUI;
-        QWidget *mPecsWidget;
-        QHBoxLayout *mControlLayout;
-
-        QGraphicsView *mCentralView;
-
-
-    private slots:
-
-
-
-    signals:
-
-};
-
-
-#endif /* UBPECSCONTROLLER_H_ */
+}

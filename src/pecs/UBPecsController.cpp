@@ -38,8 +38,9 @@
 #include "UBAgenda.h"
 #include "UBLineaComunicacion.h"
 #include "PintaLineaComunicacion.h"
+#include <QLayout>
 
-
+#include "board/UBBoardView.h"
 
 //#include "ui_pecswindow.h"
 #include "ui_mainWindow.h"
@@ -85,48 +86,52 @@ void UBPecsController::setupViews()
     if (!mPecsWidget)
     {
         mPecsWidget = new QWidget(mMainWindow->centralWidget());
+
+
+        mControlLayout = new QHBoxLayout(mPecsWidget);
+        mControlLayout->setContentsMargins(0, 0, 0, 0);
+
+        //Board del medio
+        mCentralView = new QGraphicsView(mPecsWidget);
+        mCentralView->setObjectName("pecsCentralView");
+        mCentralView->setInteractive(true);
+        mCentralView->setMouseTracking(true);
+        mCentralView->grabGesture(Qt::SwipeGesture);
+        mCentralView->setTransformationAnchor(QGraphicsView::NoAnchor);
+        mControlLayout->addWidget(mCentralView);
+
+        //Escena
+        QGraphicsScene *mScene = new QGraphicsScene(mCentralView);
+        mCentralView->setScene(mScene);
+        QPixmap pix = QPixmap(":pecs/10236.png");
+        UBPecs *picto = new UBPecs(pix,0,Qt::blue);
+        mScene->addItem(picto);
+        // Fin Escena
+        //Fin de board del medio
+
+        //Añado el widget a mainwindows
+        mPecsWidget->setObjectName("ubPecsContainer");
         mMainWindow->addPecsWidget(mPecsWidget);
 
-        //mPecsUI = new Ui::pecswindow();
-
-        //mPecsUI->setupUi(mPecsWidget);
-
-     //   UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
-      //  UBAgenda *agenda = new UBAgenda();
-        //UBLineaComunicacion * lineacomunicacion = new UBLineaComunicacion();
-
-      //  UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
-        //paletaCarpetaPecs->registerWidget(carpetasPecs);
-       // paletaCarpetaPecs->addTab(carpetasPecs);
-
-      //  UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
-      //  paletaAgenda->registerWidget(agenda);
-      //  paletaAgenda->addTab(agenda);
-
- /*       UBDownPalette * paletaLineaComunicacion = new UBDownPalette(mPecsWidget);
-        paletaLineaComunicacion->registerWidget(lineacomunicacion);
-        paletaLineaComunicacion->addTab(lineacomunicacion);
-*/
         PintaLineaComunicacion *kk = new PintaLineaComunicacion(mPecsWidget);
 
 
         //QPushButton *kk2 = new QPushButton(mPecsWidget);
         //kk2->setText("HOLA");
 
-        //QPainter painter(mPecsWidget);
-       // painter.setRenderHint(QPainter::Antialiasing,true);
-        //painter.setPen(Qt::NoPen);
-       // QPainterPath path;
-       // path.moveTo(80,320);
-       // path.cubicTo(200,80,320,80,480,320);
-       // painter.setPen(QPen(Qt::black,8));
-       // painter.setBackground(Qt::black);
-        //path.addRect(20.0, 30.0, 300, 300);
-        //painter.drawPath(path);
-       // painter.drawEllipse(80,80,400,240);
+       //Paleta selección de Pecs de la izquierda
+       //Paleta de agenda de la derecha
+        UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
+        UBAgenda *agenda = new UBAgenda();
 
+        UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
+        paletaCarpetaPecs->registerWidget(carpetasPecs);
+        paletaCarpetaPecs->addTab(carpetasPecs);
+
+        UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
+        paletaAgenda->registerWidget(agenda);
+        paletaAgenda->addTab(agenda);  
+       //Fin de Paletas
     }
-
-
 
 }

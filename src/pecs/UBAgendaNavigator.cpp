@@ -25,52 +25,58 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
+#include "UBAgendaNavigator.h"
 
-#ifndef UBPECSCONTROLLER_H_
-#define UBPECSCONTROLLER_H_
+UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphicsView(parent)
+  , mScene(NULL)
 
-#include <QObject>
-#include "core/UBApplicationController.h"
-
-/*namespace Ui
 {
-    class pecswindow;
+    setObjectName(name);
+    mScene = new QGraphicsScene(this);
+
+    setScene(mScene);
+
+
 }
-*/
-class UBPecsController : public QObject
+
+UBAgendaNavigator::~UBAgendaNavigator()
 {
-    Q_OBJECT
+    if(NULL != mScene)
+    {
+        delete mScene;
+        mScene = NULL;
+    }
+    mPecs.clear();
+}
 
-    public:
-        UBPecsController(UBMainWindow* mainWindow);
-        virtual ~UBPecsController();
+void UBAgendaNavigator::mouseDoubleClickEvent(QMouseEvent *event)
+{
+ generateListPecs();
+}
 
-        void closing();
+void UBAgendaNavigator::refreshScene()
+{
 
-        void show();
+    for(int i = 0; i < mPecs.count(); i++)
+    {
+        // Get the item
+        QGraphicsItem *item = mPecs[i];
+        item->setPos(0,i*200);
+        mScene->addItem(item);
+    }
 
-
-    protected:
-        void setupViews ();
-    public slots:
-
-
-    private:
-        UBMainWindow *mMainWindow;
-        //Ui::pecswindow* mPecsUI;
-        QWidget *mPecsWidget;
-        QHBoxLayout *mControlLayout;
-
-        QGraphicsView *mCentralView;
-
-
-    private slots:
-
+}
 
 
-    signals:
+void UBAgendaNavigator::generateListPecs()
+{
+        QPixmap pix = QPixmap(":pecs/10236.png");
+        UBPecs *picto = new UBPecs(pix);
 
-};
+        //Añado a la lista de Items
+          mPecs.append(picto);
 
+        // Draw the items
+        refreshScene();
 
-#endif /* UBPECSCONTROLLER_H_ */
+}
