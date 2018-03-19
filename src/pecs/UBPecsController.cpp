@@ -112,8 +112,11 @@ void UBPecsController::setupViews()
         //Añado el widget a mainwindows
         mPecsWidget->setObjectName("ubPecsContainer");
         mMainWindow->addPecsWidget(mPecsWidget);
-
+        int ancho=mMainWindow->width();
+        int alto=mMainWindow->height();
+        mPecsWidget->resize(mMainWindow->width(),mMainWindow->height());
         PintaLineaComunicacion *kk = new PintaLineaComunicacion(mPecsWidget);
+        kk->setGeometry(0,0,mPecsWidget->width(),mPecsWidget->height());
 
 
         //QPushButton *kk2 = new QPushButton(mPecsWidget);
