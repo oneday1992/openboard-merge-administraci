@@ -26,7 +26,6 @@
 
 
 
-
 #include "UBBoardController.h"
 
 #include <QtWidgets>
@@ -89,6 +88,8 @@
 #include "core/UBSettings.h"
 
 #include "core/memcheck.h"
+
+
 
 UBBoardController::UBBoardController(UBMainWindow* mainWindow)
     : UBDocumentContainer(mainWindow->centralWidget())
@@ -377,7 +378,10 @@ void UBBoardController::setToolCursor(int tool)
     mControlView->setToolCursor(tool);
 }
 
-
+/*Added connect save button by rafael.garciap@juntaex.es
+ * 13-Marzo-2018
+ * Connect Save button.
+*/
 void UBBoardController::connectToolbar()
 {
     connect(mMainWindow->actionAdd, SIGNAL(triggered()), this, SLOT(addItem()));
@@ -398,6 +402,7 @@ void UBBoardController::connectToolbar()
     connect(mMainWindow->actionSleep, SIGNAL(triggered()), this, SLOT(blackout()));
     connect(mMainWindow->actionVirtualKeyboard, SIGNAL(triggered(bool)), this, SLOT(showKeyboard(bool)));
     connect(mMainWindow->actionImportPage, SIGNAL(triggered()), this, SLOT(importPage()));
+    connect(mMainWindow->actionSave, SIGNAL(triggered()), this, SLOT(saveDocument()));
 }
 
 void UBBoardController::startScript()
@@ -1922,6 +1927,13 @@ void UBBoardController::closing()
     lastWindowClosed();
 }
 
+
+
+/*Modified by rafael.garciap@juntaex.es
+ * 07-Marzo-2018
+ * purgeTmpDocuments() -> Delete Temp document directory
+*/
+
 void UBBoardController::lastWindowClosed()
 {
     if (!mCleanupDone)
@@ -1935,7 +1947,14 @@ void UBBoardController::lastWindowClosed()
             persistCurrentScene();
         }
 
-        UBPersistenceManager::persistenceManager()->purgeEmptyDocuments();
+        if (UBSettings::settings()->activateTempDoc->get().toBool())
+        {
+            UBPersistenceManager::persistenceManager()->purgeTmpDocuments();
+        }
+        else
+        {
+             UBPersistenceManager::persistenceManager()->purgeEmptyDocuments();
+        }
 
         mCleanupDone = true;
     }
@@ -2637,6 +2656,23 @@ void UBBoardController::addItem()
         QFileInfo source(filename);
         UBSettings::settings()->lastImportToLibraryPath->set(QVariant(source.absolutePath()));
     }
+}
+
+
+/*Added saveDocument by rafael.garciap@juntaex.es
+ * 13-Marzo-2018
+ * Connect Save button.
+*/
+void UBBoardController::saveDocument()
+{
+
+
+
+
+   UBApplication::documentController->saveDocument(selectedDocument());
+
+
+
 }
 
 void UBBoardController::importPage()

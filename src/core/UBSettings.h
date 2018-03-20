@@ -24,7 +24,10 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
+/*Modified by rafael.garciap@juntaex.es
+ * 07-Marzo-2018
+ * UBSettings::init() : Added option "activateTempDoc" to use only one temporal document directory, that is deleted on quit.
+*/
 
 
 #ifndef UBSETTINGS_H_
@@ -381,6 +384,7 @@ class UBSettings : public QObject
         UBSetting* swapControlAndDisplayScreens;
 
         UBSetting* angleTolerance;
+        UBSetting* activateTempDoc;
         UBSetting* historyLimit;
 
         UBSetting* libIconSize;

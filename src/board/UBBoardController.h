@@ -218,6 +218,7 @@ class UBBoardController : public UBDocumentContainer
         void addScene(UBGraphicsScene* scene, bool replaceActiveIfEmpty = false);
         void duplicateScene();
         void importPage();
+        void saveDocument();
         void clearScene();
         void clearSceneItems();
         void clearSceneAnnotation();

@@ -155,6 +155,9 @@
    <addaction name="separator"/>
    <addaction name="actionImport"/>
    <addaction name="actionExport"/>
+   <addaction name="separator"/>
+   <addaction name="actionSave"/>
+   <addaction name="separator"/>
    <addaction name="actionRename"/>
    <addaction name="separator"/>
    <addaction name="actionDuplicate"/>
@@ -168,6 +171,7 @@
    <addaction name="actionDocument"/>
    <addaction name="actionDesktop"/>
    <addaction name="actionMenu"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionStylus">
    <property name="checkable">
@@ -2342,6 +2346,18 @@
    </property>
    <property name="toolTip">
     <string>Specify a custom line width [1-120]</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/toolbar/floppy.png</normaloff>:/images/toolbar/floppy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Document</string>
    </property>
   </action>
  </widget>

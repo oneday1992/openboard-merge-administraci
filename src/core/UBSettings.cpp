@@ -25,6 +25,10 @@
  */
 
 
+/*Modified by rafael.garciap@juntaex.es
+ * 07-Marzo-2018
+ * UBSettings::init() : Added option "activateTempDoc" to use only one temporal document directory, that is deleted on quit.
+*/
 
 
 #include "UBSettings.h"
@@ -215,6 +219,11 @@ void UBSettings::ValidateKeyboardPaletteKeyBtnSize()
     boardKeyboardPaletteKeyBtnSize->set(supportedKeyboardSizes->at(0));
 }
 
+/*Added by rafael.garciap@juntaex.es
+ * 07-Marzo-2018
+ * Added option "activateTempDoc" to use only one temporal document directory, that is deleted on quit.
+*/
+
 void UBSettings::init()
 {
     productWebUrl =  new UBSetting(this, "App", "ProductWebAddress", "http://www.openboard.ch");
@@ -253,7 +262,7 @@ void UBSettings::init()
 
     appLookForOpenSankoreInstall = new UBSetting(this, "App", "LookForOpenSankoreInstall", true);
 
-    appStartMode = new UBSetting(this, "App", "StartMode", "");
+    appStartMode = new UBSetting(this, "App", "StartMode", "1");
 
     featureSliderPosition = new UBSetting(this, "Board", "FeatureSliderPosition", 40);
 
@@ -421,6 +430,8 @@ void UBSettings::init()
     swapControlAndDisplayScreens = new UBSetting(this, "App", "SwapControlAndDisplayScreens", false);
 
     angleTolerance = new UBSetting(this, "App", "AngleTolerance", 4);
+    activateTempDoc = new UBSetting(this, "App", "ActivateTempDoc", 1);
+
     historyLimit = new UBSetting(this, "Web", "HistoryLimit", 15);
 
     libIconSize = new UBSetting(this, "Library", "LibIconSize", defaultLibraryIconSize);

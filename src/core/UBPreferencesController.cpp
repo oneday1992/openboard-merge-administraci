@@ -463,6 +463,9 @@ void UBPreferencesController::systemOSKCheckBoxToggled(bool checked)
     mPreferencesUI->keyboardPaletteKeyButtonSize_Label->setVisible(!checked);
 }
 
+
+
+
 UBBrushPropertiesFrame::UBBrushPropertiesFrame(QFrame* owner, const QList<QColor>& lightBackgroundColors,
                                                const QList<QColor>& darkBackgroundColors, const QList<QColor>& lightBackgroundSelectedColors,
                                                const QList<QColor>& darkBackgroundSelectedColors, UBPreferencesController* controller)

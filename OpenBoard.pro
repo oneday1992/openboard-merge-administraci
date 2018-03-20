@@ -950,5 +950,7 @@ DISTFILES += \
     resources/images/unpin.svg \
     resources/images/vflipTool.svg \
     resources/images/z_layer_down.svg \
-    resources/images/z_layer_up.svg
+    resources/images/z_layer_up.svg \
+    resources/images/toolbar/mediaFloppy.png \
+    resources/images/toolbar/floppy.png
 
