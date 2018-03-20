@@ -35,6 +35,7 @@
 #include "gui/UBLeftPalette.h"
 #include "gui/UBDockPaletteWidget.h"
 #include "UBAgenda.h"
+#include "UBFoldersPecs.h"
 #include <QLayout>
 
 #include "board/UBBoardView.h"
@@ -112,7 +113,9 @@ void UBPecsController::setupViews()
 
        //Paleta selección de Pecs de la izquierda
        //Paleta de agenda de la derecha
-        UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
+       // UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
+        UBFoldersPecs *carpetasPecs = new UBFoldersPecs(); //Reimplementacion de UBFeaturesWidget en UBFoldersPecs
+
         UBAgenda *agenda = new UBAgenda();
 
         UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);

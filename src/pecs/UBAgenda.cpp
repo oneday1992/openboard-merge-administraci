@@ -49,7 +49,7 @@ UBAgenda::UBAgenda(QWidget *parent, const char *name) : UBDockPaletteWidget(pare
 //Main layout including all the widgets in palette
     mLayout = new QVBoxLayout(this);
     setLayout(mLayout);
-    mLayout->addWidget(mNavigator, 1);
+    mLayout->addWidget(mNavigator);
 
 }
 
