@@ -135,6 +135,10 @@ int main(int argc, char *argv[])
     qDebug() << "file name argument" << fileToOpen;
     int result = app.exec(fileToOpen);
 
+
+    qWarning()<<QApplication::desktop()->screenGeometry().height();
+    qWarning()<<QApplication::desktop()->screenGeometry().width();
+
     app.cleanup();
 
     qDebug() << "application is quitting";

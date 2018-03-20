@@ -36,8 +36,7 @@
 #include "gui/UBDownPalette.h"
 #include "gui/UBDockPaletteWidget.h"
 #include "UBAgenda.h"
-#include "UBLineaComunicacion.h"
-#include "PintaLineaComunicacion.h"
+#include "UBCommunicationLine.h"
 #include <QLayout>
 
 #include "board/UBBoardView.h"
@@ -112,28 +111,28 @@ void UBPecsController::setupViews()
         //Añado el widget a mainwindows
         mPecsWidget->setObjectName("ubPecsContainer");
         mMainWindow->addPecsWidget(mPecsWidget);
-        int ancho=mMainWindow->width();
-        int alto=mMainWindow->height();
-        mPecsWidget->resize(mMainWindow->width(),mMainWindow->height());
-        PintaLineaComunicacion *kk = new PintaLineaComunicacion(mPecsWidget);
-        kk->setGeometry(0,0,mPecsWidget->width(),mPecsWidget->height());
-
 
         //QPushButton *kk2 = new QPushButton(mPecsWidget);
         //kk2->setText("HOLA");
 
        //Paleta selección de Pecs de la izquierda
        //Paleta de agenda de la derecha
+        // Linea de comunicacion abajo
         UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBAgenda *agenda = new UBAgenda();
 
         UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
-        paletaCarpetaPecs->registerWidget(carpetasPecs);
+     //   paletaCarpetaPecs->registerWidget(carpetasPecs);
         paletaCarpetaPecs->addTab(carpetasPecs);
 
         UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
         paletaAgenda->registerWidget(agenda);
-        paletaAgenda->addTab(agenda);  
+        paletaAgenda->addTab(agenda);
+
+        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
+        lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenwidth(),lineaComunicacion->screenheight());
+
+
        //Fin de Paletas
     }
 
