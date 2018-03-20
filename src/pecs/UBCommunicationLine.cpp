@@ -12,13 +12,6 @@
 UBCommunicationLine::UBCommunicationLine(QWidget *parent) : QWidget(parent)
 {
 
- //   painter.setRenderHint(QPainter::Antialiasing);
-   // painter.setPen(Qt::NoPen);
-//    QPainterPath path;
-  //  painter.setBackground(Qt::black);
- //   path.addRect(20.0, 30.0, 300, 300);
-  //  painter.drawPath(path);
-
 }
 
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
@@ -26,14 +19,12 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     QPainter painter(this);
     mBackgroundBrush = QBrush(UBSettings::paletteColor);
     painter.setBrush(mBackgroundBrush);
-
-    painter.drawRect(40, 10,this->width()-80,this->height()-100 );
-    //path.addRect(40, 10,this->width()-80,this->height()-100 );
-    QPainterPath path;
-    path.setFillRule(Qt::WindingFill);
-    path.addRect(0, 0, width() / 2, 100);
-    path.addRoundedRect(20, 30, width(),100,10,10);
-    painter.drawPath(path);
+   // painter.drawRect(100,100,300,300 );
+    painter.drawRect(40, this->height()*0.60,this->width()-80,this->height()*0.30 );
+    //QPainterPath path;
+    //path.setFillRule(Qt::WindingFill);
+    //path.addRoundedRect(50,50,this->width() ,200,10,10);
+    //painter.drawPath(path);
 
 }
 

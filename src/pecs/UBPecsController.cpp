@@ -80,8 +80,7 @@ void UBPecsController::show()
 }
 
 void UBPecsController::setupViews()
-{
-
+{    
     if (!mPecsWidget)
     {
         mPecsWidget = new QWidget(mMainWindow->centralWidget());
@@ -130,8 +129,19 @@ void UBPecsController::setupViews()
         paletaAgenda->addTab(agenda);
 
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
-        lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenwidth(),lineaComunicacion->screenheight());
-
+        int ancho= lineaComunicacion->screenwidth();
+        int x=0;
+        if (paletaAgenda->width()>0)
+        {
+            ancho=ancho-paletaAgenda->width()-40;
+        }
+        if (paletaCarpetaPecs->width()>0)
+        {
+            x=paletaCarpetaPecs->width()+20;
+            ancho=ancho-paletaCarpetaPecs->width();
+        }
+        //lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenwidth(),lineaComunicacion->screenheight());
+        lineaComunicacion->setGeometry(x,0,ancho,lineaComunicacion->screenheight());
 
        //Fin de Paletas
     }

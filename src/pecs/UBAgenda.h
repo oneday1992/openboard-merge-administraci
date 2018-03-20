@@ -49,6 +49,7 @@ public:
         return mode == eUBDockPaletteWidget_BOARD
             || mode == eUBDockPaletteWidget_DESKTOP;
     }
+    int sizeWidget();
 private:
     UBAgendaNavigator* mNavigator;
     /** The layout */
