@@ -85,7 +85,7 @@ UBDesktopAnnotationController::UBDesktopAnnotationController(QObject *parent, UB
 #ifdef Q_OS_OSX
     mTransparentDrawingView->setAttribute(Qt::WA_MacNoShadow, true);
 #endif
-    mTransparentDrawingView->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Window | Qt::NoDropShadowWindowHint);
+    mTransparentDrawingView->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Window | Qt::NoDropShadowWindowHint| Qt::X11BypassWindowManagerHint);
     mTransparentDrawingView->setCacheMode(QGraphicsView::CacheNone);
     mTransparentDrawingView->resize(UBApplication::desktop()->width(), UBApplication::desktop()->height());
 
