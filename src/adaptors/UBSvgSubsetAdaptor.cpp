@@ -37,7 +37,7 @@
 
 #include "domain/UBGraphicsSvgItem.h"
 #include "domain/UBGraphicsPixmapItem.h"
-#include "domain/UBGraphicsProxyWidget.h"
+#include "domain/UBAbstractGraphicsProxyWidget.h"
 #include "domain/UBGraphicsPolygonItem.h"
 #include "domain/UBGraphicsMediaItem.h"
 #include "domain/UBGraphicsWidgetItem.h"
@@ -56,6 +56,8 @@
 #include "tools/UBGraphicsCurtainItem.h"
 #include "tools/UBGraphicsTriangle.h"
 #include "tools/UBGraphicsCache.h"
+
+#include "customWidgets/UBGraphicsItemAction.h"
 
 #include "document/UBDocumentProxy.h"
 
@@ -927,16 +929,12 @@ UBGraphicsScene* UBSvgSubsetAdaptor::UBSvgSubsetReader::loadScene(UBDocumentProx
 }
 
 
-UBGraphicsGroupContainerItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::readGroup()
+// Issue 13/03/2018 - OpenBoard - Custom Widgets.
+UBGraphicsGroupContainerItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::readGroup(UBGraphicsItemAction* action, QString uuid)
 {
+    bool isAnActionForStroke = false;
     UBGraphicsGroupContainerItem *group = new UBGraphicsGroupContainerItem();
     QList<QGraphicsItem *> groupContainer;
-
-    QString id = mXmlReader.attributes().value(aId).toString();
-    id = id.mid(1,id.length()-2);
-    bool shouldSkipSubElements = false;
-    if(mStrokesList.contains(id))
-        shouldSkipSubElements = true;
 
     mXmlReader.readNext();
     while (!mXmlReader.atEnd())
@@ -945,36 +943,49 @@ UBGraphicsGroupContainerItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::readGroup()
             mXmlReader.readNext();
             break;
         }
-        else if (mXmlReader.isStartElement()) {
-            if (mXmlReader.name() == tGroup) {
+        else if (mXmlReader.isStartElement()){
+            if (mXmlReader.name() == tGroup)
+            {
                 UBGraphicsGroupContainerItem *curGroup = readGroup();
+
                 if (curGroup)
                     groupContainer.append(curGroup);
+                else
+                    qDebug() << "this is an error if readGroup(UBGraphicsItemAction* action, QString uuid)";
             }
-            else if (mXmlReader.name() == tElement && !shouldSkipSubElements) {
+            else if (mXmlReader.name() == tElement){
                 QString id = mXmlReader.attributes().value(aId).toString();
+
+                if(id == uuid)
+                    isAnActionForStroke = true;
+
                 QGraphicsItem *curItem = readElementFromGroup();
 
-                // Explanation: the second condition discriminate the old storage version that should
-                // not be interpreted anymore
-                if(curItem && id.count("{") < 2)
+                if(curItem  && id.count("{") < 2)
                     groupContainer.append(curItem);
+                else
+                    qDebug() << "this is an error if readGroup(UBGraphicsItemAction* action, QString uuid)";
+
             }
-            else {
+            else
                 mXmlReader.skipCurrentElement();
-            }
         }
-        else {
+        else
             mXmlReader.readNext();
-        }
     }
 
     foreach(QGraphicsItem* item, groupContainer)
-        group->addToGroup(item);
+        group->addToGroup(item,false);
+
+    if(action && !isAnActionForStroke){
+        UBGraphicsGroupContainerItemDelegate* delegate = dynamic_cast<UBGraphicsGroupContainerItemDelegate*>(group->Delegate());
+        delegate->setAction(action);
+    }
+
 
     if (group->childItems().count())
     {
-//        mScene->addItem(group);
+        mScene->addItem(group);
 
         if (1 == group->childItems().count())
         {
@@ -992,18 +1003,19 @@ void UBSvgSubsetAdaptor::UBSvgSubsetReader::readGroupRoot()
             mXmlReader.readNext();
             break;
         }
-        else if (mXmlReader.isStartElement()) {
-            if (mXmlReader.name() == tGroup) {
+        else if (mXmlReader.isStartElement()){
+            if (mXmlReader.name() == tGroup){
+                UBGraphicsItemAction* action = readAction();
                 QString ubLocked = mXmlReader.attributes().value(UBSettings::uniboardDocumentNamespaceUri, "locked").toString();
-                UBGraphicsGroupContainerItem *curGroup = readGroup();
+                UBGraphicsGroupContainerItem *curGroup = readGroup(action, mXmlReader.attributes().value("id").toString());
                 if (!ubLocked.isEmpty())
                 {
                     bool isLocked = ubLocked.contains(xmlTrue);
                     curGroup->Delegate()->setLocked(isLocked);
                 }
-                if (curGroup) {
+                if (curGroup)
                     mScene->addGroup(curGroup);
-                }
+
             }
             else {
                 mXmlReader.skipCurrentElement();
@@ -1931,15 +1943,54 @@ void UBSvgSubsetAdaptor::UBSvgSubsetWriter::pixmapItemToLinkedImage(UBGraphicsPi
     mXmlWriter.writeEndElement();
 }
 
+// Issue 13/03/2018 - OpenBoard - Custom Widget.
 void UBSvgSubsetAdaptor::UBSvgSubsetWriter::writeAction(UBGraphicsItemAction* action)
 {
-    /*if(action){
+    if(action){
         QStringList actionParameters = action->save();
         mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri,"actionType",actionParameters.at(0));
         mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri,"actionFirstParameter",actionParameters.at(1));
         if(actionParameters.count()>2)
             mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri,"actionSecondParameter",actionParameters.at(2));
-    }*/
+    }
+}
+
+// Issue 13/03/2018 - OpenBoard - Custom Widget.
+UBGraphicsItemAction* UBSvgSubsetAdaptor::UBSvgSubsetReader::readAction()
+{
+    UBGraphicsItemAction* result = 0;
+    QXmlStreamAttributes attributes = mXmlReader.attributes();
+    QStringRef actionParameters = attributes.value(UBSettings::uniboardDocumentNamespaceUri, "actionType");
+    if(actionParameters.isEmpty())
+        return result;
+    switch (actionParameters.toString().toInt()) {
+    case eLinkToAudio:{
+        //NNE - 20141106 : Correction du bug lorsque l'on charge un ubz en cliquant dessus
+        qDebug() << mProxy->persistencePath();
+
+        QString audioPath = mProxy->persistencePath() + "/" + attributes.value(UBSettings::uniboardDocumentNamespaceUri, "actionFirstParameter").toString();
+
+        UBGraphicsItemPlayAudioAction *item = new UBGraphicsItemPlayAudioAction(audioPath, false);
+
+        result = item;
+        break;
+        //NNE - 20141106 : END
+    }case eLinkToPage:{
+        QString pageParameter = attributes.value(UBSettings::uniboardDocumentNamespaceUri, "actionSecondParameter").toString();
+        if(pageParameter.isEmpty())
+            result = new UBGraphicsItemMoveToPageAction((eUBGraphicsItemMovePageAction)attributes.value(UBSettings::uniboardDocumentNamespaceUri, "actionFirstParameter").toString().toInt());
+        else
+            result = new UBGraphicsItemMoveToPageAction((eUBGraphicsItemMovePageAction)attributes.value(UBSettings::uniboardDocumentNamespaceUri, "actionFirstParameter").toString().toInt(),pageParameter.toInt());
+        break;
+    }
+    case eLinkToWebUrl:
+        result = new UBGraphicsItemLinkToWebPageAction(mXmlReader.attributes().value(UBSettings::uniboardDocumentNamespaceUri, "actionFirstParameter").toString());
+        break;
+    default:
+        break;
+    }
+
+    return result;
 }
 
 UBGraphicsPixmapItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::pixmapItemFromSvg()
@@ -1962,6 +2013,8 @@ UBGraphicsPixmapItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::pixmapItemFromSvg()
     }
 
     graphicsItemFromSvg(pixmapItem);
+
+    pixmapItem->Delegate()->setAction(readAction()); // Issue 13/03/2018 - OpenBoard - Custom Widget.
 
     return pixmapItem;
 
@@ -2028,6 +2081,8 @@ UBGraphicsSvgItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::svgItemFromSvg()
     }
 
     graphicsItemFromSvg(svgItem);
+
+    svgItem->Delegate()->setAction(readAction()); // Issue 13/03/2018 - OpenBoard - Custom Widget.
 
     return svgItem;
 
@@ -2550,6 +2605,8 @@ void UBSvgSubsetAdaptor::UBSvgSubsetWriter::textItemToSvg(UBGraphicsTextItem* it
 
     graphicsItemToSvg(item);
 
+    writeAction(item->Delegate()->action()); // Issue 13/03/2018 - OpenBoard - Custom Widget.
+
     mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri, "width", QString("%1").arg(item->textWidth()));
     mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri, "height", QString("%1").arg(item->textHeight()));
     mXmlWriter.writeAttribute(UBSettings::uniboardDocumentNamespaceUri, "pixels-per-point", QString("%1").arg(item->pixelsPerPoint()));
@@ -2584,6 +2641,11 @@ UBGraphicsTextItem* UBSvgSubsetAdaptor::UBSvgSubsetReader::textItemFromSvg()
     UBGraphicsTextItem* textItem = new UBGraphicsTextItem();
 
     graphicsItemFromSvg(textItem);
+    //N/C - NNE - 20141211 : when importing a textItem, disable the text editor
+    textItem->activateTextEditor(false);
+
+    textItem->Delegate()->setAction(readAction()); // Issue 13/03/2018 - OpenBoard - Custom Widget.
+
 
     QStringRef ubFillOnDarkBackground = mXmlReader.attributes().value(mNamespaceUri, "fill-on-dark-background");
     QStringRef ubFillOnLightBackground = mXmlReader.attributes().value(mNamespaceUri, "fill-on-light-background");

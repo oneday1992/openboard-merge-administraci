@@ -44,6 +44,8 @@
 
 #include "board/UBBoardController.h"
 
+#include "customWidgets/UBGraphicsItemAction.h"
+
 #include "core/memcheck.h"
 
 UBGraphicsPixmapItem::UBGraphicsPixmapItem(QGraphicsItem* parent)
@@ -62,6 +64,7 @@ UBGraphicsPixmapItem::UBGraphicsPixmapItem(QGraphicsItem* parent)
     setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 
     setUuid(QUuid::createUuid()); //more logical solution is in creating uuid for element in element's constructor
+    Delegate()->setCanTrigAnAction(true); // Issue 12/03/2018 - OpenBoard - Custom Widgets
 }
 
 UBGraphicsPixmapItem::~UBGraphicsPixmapItem()
@@ -161,8 +164,18 @@ void UBGraphicsPixmapItem::copyItemParameters(UBItem *copy) const
         cp->setData(UBGraphicsItemData::ItemLayerType, this->data(UBGraphicsItemData::ItemLayerType));
         cp->setData(UBGraphicsItemData::ItemLocked, this->data(UBGraphicsItemData::ItemLocked));
         cp->setSourceUrl(this->sourceUrl());
-
         cp->setZValue(this->zValue());
+        // Issue 13/03/2018 - OpenBoard - Custom Widget.
+        if(Delegate()->action()){
+            if(Delegate()->action()->linkType() == eLinkToAudio){
+                UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(Delegate()->action());
+                UBGraphicsItemPlayAudioAction* action = new UBGraphicsItemPlayAudioAction(audioAction->fullPath());
+                cp->Delegate()->setAction(action);
+            }
+            else
+                cp->Delegate()->setAction(Delegate()->action());
+        }
+        // END Issue 13/03/2018 - OpenBoard - Custom Widget.
     }
 }
 

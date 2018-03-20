@@ -464,7 +464,6 @@ void UBApplicationController::showDesktop(bool dontSwitchFrontProcess)
     }
 
     mIsShowingDesktop = true;
-    emit desktopMode(true);
 
     if (!dontSwitchFrontProcess) {
         UBPlatformUtils::bringPreviousProcessToFront();
@@ -472,6 +471,8 @@ void UBApplicationController::showDesktop(bool dontSwitchFrontProcess)
 
     UBDrawingController::drawingController()->setInDestopMode(true);
     UBDrawingController::drawingController()->setStylusTool(UBStylusTool::Selector);
+
+    emit desktopMode(true);
 }
 
 

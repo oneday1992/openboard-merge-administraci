@@ -56,7 +56,7 @@
 #include "web/browser/WBWebView.h"
 
 #include "desktop/UBDesktopAnnotationController.h"
-
+#include "gui/UBCreateLinkPalette.h"
 
 #include "network/UBNetworkAccessManager.h"
 #include "network/UBServerXMLHttpRequest.h"
@@ -102,6 +102,7 @@ UBBoardPaletteManager::UBBoardPaletteManager(QWidget* container, UBBoardControll
     , mpCachePropWidget(NULL)
     , mpDownloadWidget(NULL)
     , mDownloadInProgress(false)
+    , mLinkPalette(0)
 {
     setupPalettes();
     connectPalettes();
@@ -1106,4 +1107,14 @@ void UBBoardPaletteManager::stopDownloads()
         mpDownloadWidget->setVisibleState(false);
         mRightPalette->removeTab(mpDownloadWidget);
     }
+}
+
+
+// Issue 12/03/2018 - OpenBoard - Custo Widget
+UBCreateLinkPalette* UBBoardPaletteManager::linkPalette()
+{
+    if(mLinkPalette)
+        delete mLinkPalette;
+    mLinkPalette = new UBCreateLinkPalette(mContainer);
+    return mLinkPalette;
 }

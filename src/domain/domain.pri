@@ -48,7 +48,8 @@ HEADERS += src/domain/UBGraphicsScene.h \
     $$PWD/UBHorizontalHandle.h \
     $$PWD/UBVerticalHandle.h \
     $$PWD/UBDiagonalHandle.h \
-    $$PWD/UBAlignObjectManager.h
+    $$PWD/UBAlignObjectManager.h \
+    $$PWD/UBAbstractGraphicsProxyWidget.h
 
 SOURCES += src/domain/UBGraphicsScene.cpp \
     src/domain/UBGraphicsItemUndoCommand.cpp \
@@ -100,4 +101,5 @@ SOURCES += src/domain/UBGraphicsScene.cpp \
     $$PWD/UBHorizontalHandle.cpp \
     $$PWD/UBVerticalHandle.cpp \
     $$PWD/UBDiagonalHandle.cpp \
-    $$PWD/UBAlignObjectManager.cpp
+    $$PWD/UBAlignObjectManager.cpp \
+    $$PWD/UBAbstractGraphicsProxyWidget.cpp

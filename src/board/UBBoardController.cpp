@@ -90,6 +90,8 @@
 #include "core/memcheck.h"
 
 
+#include "customWidgets/UBGraphicsItemAction.h"
+
 
 UBBoardController::UBBoardController(UBMainWindow* mainWindow)
     : UBDocumentContainer(mainWindow->centralWidget())
@@ -718,6 +720,36 @@ UBGraphicsItem *UBBoardController::duplicateItem(UBItem *item)
             }
         }
         duplicatedGroup = mActiveScene->createGroup(duplicatedItems);
+
+        // Issue 13/03/2018 - OpenBoard - Custom Widget.
+        UBGraphicsItemAction * pAction = groupItem->Delegate()->action();
+        if(NULL != pAction){
+            UBGraphicsItemAction* pNewAction = NULL;
+            switch(pAction->linkType()){
+                case eLinkToAudio:
+                {
+                    pNewAction = new UBGraphicsItemPlayAudioAction(pAction->path());
+                }
+                    break;
+                case eLinkToPage:
+                {
+                    UBGraphicsItemMoveToPageAction* pLinkAct = dynamic_cast<UBGraphicsItemMoveToPageAction*>(pAction);
+                    if(NULL != pLinkAct)
+                        pNewAction = new UBGraphicsItemMoveToPageAction(pLinkAct->actionType(), pLinkAct->page());
+                }
+                    break;
+                case eLinkToWebUrl:
+                {
+                    UBGraphicsItemLinkToWebPageAction* pWebAction = dynamic_cast<UBGraphicsItemLinkToWebPageAction*>(pAction);
+                    if(NULL != pWebAction)
+                        pNewAction = new UBGraphicsItemLinkToWebPageAction(pWebAction->url());
+                }
+                    break;
+            }
+            duplicatedGroup->Delegate()->setAction(pNewAction);
+        }
+        // END Issue 13/03/2018 - OpenBoard - Custom Widget.
+
         duplicatedGroup->setTransform(groupItem->transform());
         groupItem->setSelected(false);
 
@@ -1072,7 +1104,7 @@ void UBBoardController::groupButtonClicked()
         }
         UBGraphicsGroupContainerItem *currentGroup = dynamic_cast<UBGraphicsGroupContainerItem*>(selItems.first());
         if (currentGroup) {
-            /*currentGroup->Delegate()->setAction(0);*/
+            currentGroup->Delegate()->setAction(0); // Issue 13/03/2018 - OpenBoard - Custom Widget.
             currentGroup->destroy();
         }
     }

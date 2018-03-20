@@ -94,11 +94,14 @@ class UBApplication : public QtSingleApplication
         void decorateActionMenu(QAction* action);
         void insertSpaceToToolbarBeforeAction(QToolBar* toolbar, QAction* action, int width = -1);
 
+        void resetAppOptionsToDefault(); // Issue 12/03/2018 - OpenBoard - NEED to RESET ALL PARAMETERS TO DEFAULT.
+
         int toolBarHeight();
         bool eventFilter(QObject *obj, QEvent *event);
 
         bool isVerbose() { return mIsVerbose;}
         void setVerbose(bool verbose){mIsVerbose = verbose;}
+        static void loadUrl(const QString& url); // Issue 13/03/2018 - OpenBoard - Text Editor URL management.
         static QString urlFromHtml(QString html);
         static bool isFromWeb(QString url);
 

@@ -58,6 +58,8 @@
 #include "board/UBBoardController.h"
 #include "board/UBBoardPaletteManager.h"
 
+#include "domain/UBGraphicsProxyWidget.h"
+
 #ifdef Q_OS_OSX
 #include "core/UBApplicationController.h"
 #include "desktop/UBDesktopAnnotationController.h"
@@ -83,6 +85,8 @@
 #include "tools/UBGraphicsCache.h"
 #include "tools/UBGraphicsTriangle.h"
 #include "tools/UBGraphicsProtractor.h"
+
+#include "customWidgets/UBGraphicsItemAction.h"
 
 #include "core/memcheck.h"
 
@@ -144,6 +148,7 @@ UBBoardView::~UBBoardView ()
 
 void UBBoardView::init ()
 {
+
   connect (UBSettings::settings ()->boardPenPressureSensitive, SIGNAL (changed (QVariant)),
            this, SLOT (settingChanged (QVariant)));
 
@@ -189,7 +194,7 @@ UBGraphicsScene* UBBoardView::scene ()
 }
 
 
-void UBBoardView::keyPressEvent (QKeyEvent *event)
+/*void UBBoardView::keyPressEvent (QKeyEvent *event)
 {
     // send to the scene anyway
     QApplication::sendEvent (scene (), event);
@@ -307,7 +312,136 @@ void UBBoardView::keyReleaseEvent(QKeyEvent *event)
         setMultiselection(false);
 
     QGraphicsView::keyReleaseEvent(event);
+}*/
+
+void
+UBBoardView::keyPressEvent (QKeyEvent *event)
+{
+  // send to the scene anyway
+  QApplication::sendEvent (scene (), event);
+
+  if (!event->isAccepted ())
+    {
+      switch (event->key ())
+        {
+        case Qt::Key_Up:
+        case Qt::Key_PageUp:
+        case Qt::Key_Left:
+          {
+            mController->previousScene ();
+            break;
+          }
+
+        case Qt::Key_Down:
+        case Qt::Key_PageDown:
+        case Qt::Key_Right:
+        case Qt::Key_Space:
+          {
+            mController->nextScene ();
+            break;
+          }
+
+        case Qt::Key_Home:
+          {
+            mController->firstScene ();
+            break;
+          }
+        case Qt::Key_End:
+          {
+            mController->lastScene ();
+            break;
+          }
+        case Qt::Key_Insert:
+          {
+            mController->addScene ();
+            break;
+          }
+        case Qt::Key_Control:
+        case Qt::Key_Shift:
+          {
+            setMultiselection(true);
+          }break;
+        }
+
+
+      qDebug() << event->modifiers ();
+
+      if (event->modifiers () & Qt::ControlModifier) // keep only ctrl/cmd keys
+        {
+          switch (event->key ())
+            {
+            case Qt::Key_Plus:
+            case Qt::Key_I:
+              {
+                mController->zoomIn ();
+                event->accept ();
+                break;
+              }
+            case Qt::Key_Minus:
+            case Qt::Key_O:
+              {
+                mController->zoomOut ();
+                event->accept ();
+                break;
+              }
+            case Qt::Key_0:
+              {
+                mController->zoomRestore ();
+                event->accept ();
+                break;
+              }
+            case Qt::Key_Left:
+              {
+                mController->handScroll (-100, 0);
+                event->accept ();
+                break;
+              }
+            case Qt::Key_Right:
+              {
+                mController->handScroll (100, 0);
+                event->accept ();
+                break;
+              }
+            case Qt::Key_Up:
+              {
+                mController->handScroll (0, -100);
+                event->accept ();
+                break;
+              }
+            case Qt::Key_Down:
+              {
+                mController->handScroll (0, 100);
+                event->accept ();
+                break;
+              }
+            default:
+              {
+                // NOOP
+              }
+            }
+        }
+    }
+
+    // if ctrl of shift was pressed combined with other keys - we need to disable multiple selection.
+    if (event->isAccepted())
+        setMultiselection(false);
 }
+
+
+void UBBoardView::keyReleaseEvent(QKeyEvent *event)
+{
+   // if (!event->isAccepted ())
+    {
+        if (Qt::Key_Shift == event->key()
+          ||Qt::Key_Control == event->key())
+        {
+            setMultiselection(false);
+        }
+    }
+
+    QGraphicsView::keyReleaseEvent(event);
+}
+
 
 bool UBBoardView::event (QEvent * e)
 {
@@ -532,6 +666,21 @@ Here we determines cases when items should to get mouse press event at pressing 
     // some behavior depends on current tool.
     UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
+    //EV-7 - NNE - 20140103
+    if(UBShapeFactory::isShape(item)){
+        if (currentTool == UBStylusTool::Play)
+            return false;
+        if ((currentTool == UBStylusTool::Selector) && item->isSelected())
+            return true;
+        if ((currentTool == UBStylusTool::Selector) && item->parentItem() && item->parentItem()->isSelected())
+            return true;
+
+        if(UBShapeFactory::isInEditMode(item)){
+            return true;
+        }
+    }
+
+
     switch(item->type())
     {
     case UBGraphicsProtractor::Type:
@@ -586,8 +735,15 @@ Here we determines cases when items should to get mouse press event at pressing 
         break;
     case QGraphicsWebView::Type:
         return true;
-    case QGraphicsProxyWidget::Type:
-        return false;
+    case QGraphicsProxyWidget::Type: // Issue 1313 - CFA - 20131016 : If Qt sends this unexpected type, the event should not be triggered
+    {
+        QGraphicsItem *c = item;
+
+        while(c && dynamic_cast<UBGraphicsProxyWidget*>(c) == 0)
+            c = c->parentItem();
+
+        return c && dynamic_cast<UBGraphicsProxyWidget*>(c) != 0;
+    }
 
     case UBGraphicsWidgetItem::Type:
         if (currentTool == UBStylusTool::Selector && item->parentItem() && item->parentItem()->isSelected())
@@ -611,7 +767,7 @@ bool UBBoardView::itemShouldReceiveSuspendedMousePressEvent(QGraphicsItem *item)
     if (item == scene()->backgroundObject())
         return false;
 
-    UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
+    UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();    
 
     switch(item->type())
     {
@@ -657,6 +813,17 @@ bool UBBoardView::itemShouldBeMoved(QGraphicsItem *item)
 
     UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
+    //EV-7 - NNE - 20140103
+    if(UBShapeFactory::isShape(item)){
+        //if the item is selected or in edit mode
+        //we have to received the mouse event throught the QGraphicsView
+        if(item->isSelected() || UBShapeFactory::isInEditMode(item)){
+            return false;
+        }
+        return true;
+    }
+
+
     switch(item->type())
     {
     case UBGraphicsCurtainItem::Type:
@@ -695,12 +862,32 @@ QGraphicsItem* UBBoardView::determineItemToPress(QGraphicsItem *item)
     {
         UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
+        //TODO claudio
+        // another chuck of very good code
+        if(item->parentItem() && UBGraphicsGroupContainerItem::Type == item->parentItem()->type() && currentTool == UBStylusTool::Play){
+            UBGraphicsGroupContainerItem* group = qgraphicsitem_cast<UBGraphicsGroupContainerItem*>(item->parentItem());
+            if(group && group->Delegate()->action()){
+                group->Delegate()->action()->play();
+                return item;
+            }
+        }
+
         // if item is on group and group is not selected - group should take press.
         if (UBStylusTool::Selector == currentTool
                 && item->parentItem()
                 && UBGraphicsGroupContainerItem::Type == item->parentItem()->type()
                 && !item->parentItem()->isSelected())
             return item->parentItem();
+
+        // if item is on group and group is not selected - group should take press.
+        if ((UBStylusTool::Selector == currentTool
+             || currentTool == UBStylusTool::Play) // Issue 1509 - AOU - 20131113
+            && item->parentItem()
+            && UBGraphicsGroupContainerItem::Type == item->parentItem()->type())
+                /*&& !item->parentItem()->isSelected())*/ // Issue 1509 - AOU - 20131113
+        {
+            return item->parentItem();
+        }
 
         // items like polygons placed in two groups nested, so we need to recursive call.
         if(item->parentItem() && UBGraphicsStrokesGroup::Type == item->parentItem()->type())
@@ -996,6 +1183,9 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
     mMouseDownPos = event->pos ();
     movingItem = scene()->itemAt(this->mapToScene(event->localPos().toPoint()), QTransform());
 
+    if (!movingItem)
+        emit clickOnBoard();
+
     if (event->button () == Qt::LeftButton && isInteractive())
     {
         int currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController ()->stylusTool ();
@@ -1021,10 +1211,23 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
 
         case UBStylusTool::Selector :
         case UBStylusTool::Play :
+            qWarning()<<"PLAY";
             if (bIsDesktop) {
                 event->ignore();
                 return;
             }
+
+            // Issue 13/03/2018 - OpenBoard - Custom Widget.
+            if (currentTool == UBStylusTool::Play)
+            {
+                //UBGraphicsItem* shape = dynamic_cast<UBGraphicsItem*>(movingItem);
+                // Issue retours 2.4RC1 - CFA - 20140217 : No idea why "play action" is doing in determineItemToPress...)
+                UBAbstractGraphicsItem* shape = dynamic_cast<UBAbstractGraphicsItem*>(movingItem);
+
+                if (shape && shape->Delegate() && shape->Delegate()->action())
+                    shape->Delegate()->action()->play();
+            }
+            // END Issue 13/03/2018 - OpenBoard - Custom Widget.
 
             if (scene()->backgroundObject() == movingItem)
                 movingItem = NULL;
@@ -1038,6 +1241,7 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             break;
 
         case UBStylusTool::Text : {
+            qWarning()<<"Text";
             int frameWidth = UBSettings::settings ()->objectFrameWidth;
             QRectF fuzzyRect (0, 0, frameWidth * 4, frameWidth * 4);
             fuzzyRect.moveCenter (mapToScene (mMouseDownPos));
@@ -1057,8 +1261,9 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             {
                 scene()->deselectAllItems();
 
-                if (!mRubberBand)
+                if (!mRubberBand){
                     mRubberBand = new UBRubberBand (QRubberBand::Rectangle, this);
+                }
                 mRubberBand->setGeometry (QRect (mMouseDownPos, QSize ()));
                 mRubberBand->show();
                 mIsCreatingTextZone = true;
@@ -1107,6 +1312,7 @@ UBBoardView::mouseMoveEvent (QMouseEvent *event)
       return;
   }
 
+  mWidgetMoved = true;
   mIsDragInProgress = true;
   UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController ()->stylusTool ();
 
@@ -1212,9 +1418,6 @@ UBBoardView::mouseMoveEvent (QMouseEvent *event)
       }
       event->accept ();
     }
-
-  if((event->pos() - mLastPressedMousePos).manhattanLength() < QApplication::startDragDistance())
-      mWidgetMoved = true;
 
   //EV-7 - NNE - 20131231
   emit mouseMove(event);
@@ -1426,7 +1629,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
         mIsCreatingSceneGrabZone = false;
     }
     else
-    {        
+    {
         if (mPendingStylusReleaseEvent || mMouseButtonIsPressed)
         {
             event->accept ();

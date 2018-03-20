@@ -1,6 +1,6 @@
 #include "UBEditableGraphicsPolygonItem.h"
 
-/*#include <customWidgets/UBGraphicsItemAction.h>*/
+#include <customWidgets/UBGraphicsItemAction.h>
 #include "UBFreeHandle.h"
 #include "core/UBApplication.h"
 #include "board/UBBoardController.h"

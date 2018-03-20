@@ -1,7 +1,7 @@
 #include "UBAbstractGraphicsItem.h"
 #include "UBGraphicsItemDelegate.h"
 #include "UBGraphicsDelegateFrame.h"
-/*#include "customWidgets/UBGraphicsItemAction.h"*/
+#include "customWidgets/UBGraphicsItemAction.h"
 
 UBAbstractGraphicsItem::UBAbstractGraphicsItem(QGraphicsItem *parent):
     QAbstractGraphicsShapeItem(parent)
@@ -12,11 +12,11 @@ UBAbstractGraphicsItem::UBAbstractGraphicsItem(QGraphicsItem *parent):
 
     /*Delegate()->init();
     Delegate()->setFlippable(false);
-    Delegate()->setRotatable(true);
+    Delegate()->setRotatable(true);*/
     Delegate()->setCanTrigAnAction(true);
     Delegate()->setHorizontalMirror(true);
     Delegate()->setVerticalMirror(true);
-    Delegate()->frame()->setOperationMode(UBGraphicsDelegateFrame::NoResizing);*/
+    /*Delegate()->frame()->setOperationMode(UBGraphicsDelegateFrame::NoResizing);*/
 
     setUuid(QUuid::createUuid());
     //used for the podcast
@@ -28,6 +28,7 @@ UBAbstractGraphicsItem::UBAbstractGraphicsItem(QGraphicsItem *parent):
     setFlag(QGraphicsItem::ItemIsMovable, true);
     setFlag(QGraphicsItem::ItemIsFocusable, true);
 }
+
 
 UBAbstractGraphicsItem::~UBAbstractGraphicsItem()
 {
@@ -269,7 +270,7 @@ void UBAbstractGraphicsItem::copyItemParameters(UBItem *copy) const
     cp->setData(UBGraphicsItemData::ItemLayerType, this->data(UBGraphicsItemData::ItemLayerType));
     cp->setData(UBGraphicsItemData::ItemLocked, this->data(UBGraphicsItemData::ItemLocked));
 
-    /*if(Delegate()->action()){
+    if(Delegate()->action()){
         if(Delegate()->action()->linkType() == eLinkToAudio){
             UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(Delegate()->action());
             UBGraphicsItemPlayAudioAction* action = new UBGraphicsItemPlayAudioAction(audioAction->fullPath());
@@ -277,7 +278,7 @@ void UBAbstractGraphicsItem::copyItemParameters(UBItem *copy) const
         }
         else
             cp->Delegate()->setAction(Delegate()->action());
-    }*/
+    }
 
     cp->setBrush(brush());
     cp->setPen(pen());

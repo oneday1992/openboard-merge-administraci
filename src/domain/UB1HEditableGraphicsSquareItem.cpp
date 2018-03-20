@@ -1,6 +1,6 @@
 #include "UB1HEditableGraphicsSquareItem.h"
 
-/*#include "customWidgets/UBGraphicsItemAction.h"*/
+#include "customWidgets/UBGraphicsItemAction.h"
 #include "UBGraphicsDelegateFrame.h"
 
 #include "board/UBDrawingController.h"

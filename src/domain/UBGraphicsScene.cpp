@@ -62,9 +62,12 @@
 #include "board/UBDrawingController.h"
 #include "board/UBBoardView.h"
 
+#include "customWidgets/UBGraphicsItemAction.h"
+
 #include "UBGraphicsItemUndoCommand.h"
 #include "UBGraphicsItemGroupUndoCommand.h"
 #include "UBGraphicsTextItemUndoCommand.h"
+#include "UBAbstractGraphicsProxyWidget.h"
 #include "UBGraphicsProxyWidget.h"
 #include "UBGraphicsPixmapItem.h"
 #include "UBGraphicsSvgItem.h"
@@ -453,7 +456,7 @@ bool UBGraphicsScene::inputDevicePress(const QPointF& scenePos, const qreal& pre
             // hide the marker preview circle
             if (currentTool == UBStylusTool::Marker)
                 hideMarkerCircle();
-
+            qWarning()<<"*";
             // ---------------------------------------------------------------
             // Create a new Stroke. A Stroke is a collection of QGraphicsLines
             // ---------------------------------------------------------------
@@ -673,7 +676,6 @@ bool UBGraphicsScene::inputDeviceRelease()
             }
 
             // TODO LATER : Generate well pressure-interpolated polygons and create the line group with them
-
             mAddedItems.clear();
             mAddedItems << pStrokes;
             addItem(pStrokes);
@@ -1241,7 +1243,7 @@ UBGraphicsScene* UBGraphicsScene::sceneDeepCopy() const
             foreach(QGraphicsItem* eachItem ,group->childItems()){
                 QGraphicsItem* copiedChild = dynamic_cast<QGraphicsItem*>(dynamic_cast<UBItem*>(eachItem)->deepCopy());
                 copy->addItem(copiedChild);
-                groupCloned->addToGroup(copiedChild);
+                groupCloned->addToGroup(copiedChild,false);
             }
 
             if (locked)
@@ -1516,6 +1518,14 @@ UBGraphicsWidgetItem* UBGraphicsScene::addWidget(const QUrl& pWidgetUrl, const Q
     }
 }
 
+UBGraphicsProxyWidget* UBGraphicsScene::addWidget(QWidget *widget, Qt::WindowFlags wFlags)
+{
+    UBGraphicsProxyWidget *proxy = new UBGraphicsProxyWidget(0, wFlags);
+    proxy->setWidget(widget);
+    QGraphicsScene::addItem(proxy);
+    return proxy;
+}
+
 UBGraphicsAppleWidgetItem* UBGraphicsScene::addAppleWidget(const QUrl& pWidgetUrl, const QPointF& pPos)
 {
     UBGraphicsAppleWidgetItem *appleWidget = new UBGraphicsAppleWidgetItem(pWidgetUrl);
@@ -1606,11 +1616,11 @@ UBGraphicsGroupContainerItem *UBGraphicsScene::createGroup(QList<QGraphicsItem *
                 currentGroup->destroy();
             }
             foreach (QGraphicsItem *chItem, childItems) {
-                groupItem->addToGroup(chItem);
+                groupItem->addToGroup(chItem,false);
                 mFastAccessItems.removeAll(chItem);
             }
         } else {
-            groupItem->addToGroup(item);
+            groupItem->addToGroup(item,false);
             mFastAccessItems.removeAll(item);
         }
     }
@@ -2339,6 +2349,10 @@ QList<QUrl> UBGraphicsScene::relativeDependencies() const
             relativePathes << QUrl(UBPersistenceManager::imageDirectory + "/" + svgItem->uuid().toString() + ".svg");
             continue;
         }
+
+        UBGraphicsItem* ubItem = dynamic_cast<UBGraphicsItem*>(item);
+        if(ubItem && ubItem->Delegate()->action() && ubItem->Delegate()->action()->linkType() == eLinkToAudio)
+            relativePathes << QUrl(ubItem->Delegate()->action()->path().replace(document()->persistencePath(),""));
     }
 
     return relativePathes;

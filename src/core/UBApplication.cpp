@@ -29,6 +29,8 @@
 
 #include "UBApplication.h"
 
+#include <QThread>
+
 #include <QtGui>
 #include <QtWebKit>
 #include <QtXml>
@@ -144,6 +146,9 @@ UBApplication::UBApplication(const QString &id, int &argc, char **argv) : QtSing
     QApplication::setStartDragDistance(8); // default is 4, and is a bit small for tablets
 
     installEventFilter(this);
+
+    // Issue 12/03/2018 - OpenBoard - NEED to RESET ALL PARAMETERS TO DEFAULT.
+    resetAppOptionsToDefault();
 
 }
 
@@ -350,13 +355,19 @@ int UBApplication::exec(const QString& pFileToImport)
     if (pFileToImport.length() > 0)
         UBApplication::applicationController->importFile(pFileToImport);
 
-    if (UBSettings::settings()->appStartMode->get().toInt())
+    if (UBSettings::settings()->appStartMode->get().toInt()){
+        qWarning()<<"***************** DESKTOP MODE **********************************";
+        // Issue 15/03/2018 - OpenBoard - Launch Desktop Mode
+        emit applicationController->desktopMode(true);
         applicationController->showDesktop();
+        // END Issue 15/03/2018 - OpenBoard - Launch Desktop Mode
+    }
     else
         applicationController->showBoard();
 
     onScreenCountChanged(1);
-    connect(desktop(), SIGNAL(screenCountChanged(int)), this, SLOT(onScreenCountChanged(int)));
+    connect(desktop(), SIGNAL(screenCountChanged(int)), this, SLOT(onScreenCountChanged(int)));        
+
     return QApplication::exec();
 }
 
@@ -527,6 +538,33 @@ void UBApplication::decorateActionMenu(QAction* action)
     }
 }
 
+// Issue 12/03/2018 - OpenBoard - NEED to RESET ALL PARAMETERS TO DEFAULT.
+void UBApplication::resetAppOptionsToDefault(){
+    UBSettings *settings = UBSettings::settings();
+    settings->appToolBarPositionedAtTop->reset();
+    settings->appToolBarDisplayText->reset();
+    settings->appToolBarOrientationVertical->reset();
+    settings->appToolBarOrientationVertical->reset();
+    settings->useSystemOnScreenKeyboard->reset();
+    settings->boardPenFineWidth->reset();
+    settings->boardPenMediumWidth->reset();
+    settings->boardPenStrongWidth->reset();
+    settings->boardPenPressureSensitive->reset();
+    settings->boardPenLightBackgroundSelectedColors->reset();
+    settings->boardPenDarkBackgroundSelectedColors->reset();
+    settings->boardMarkerFineWidth->reset();
+    settings->boardMarkerMediumWidth->reset();
+    settings->boardMarkerStrongWidth->reset();
+    settings->boardMarkerPressureSensitive->reset();
+    settings->boardMarkerAlpha->reset();
+    settings->boardMarkerLightBackgroundSelectedColors->reset();
+    settings->boardMarkerDarkBackgroundSelectedColors->reset();
+    settings->appEnableAutomaticSoftwareUpdates->reset();
+    settings->appLookForOpenSankoreInstall->reset();
+    settings->webUseExternalBrowser->reset();
+    settings->webShowPageImmediatelyOnMirroredScreen->reset();
+    settings->webHomePage->reset();
+}
 
 void UBApplication::updateProtoActionsState()
 {
@@ -652,6 +690,13 @@ QString UBApplication::urlFromHtml(QString html)
     }
 
     return url;
+}
+
+// Issue 13/03/2018 - OpenBoard - Text Editor URL management.
+void UBApplication::loadUrl(const QString &url)
+{
+    if (webController)
+        webController->loadUrl(url);
 }
 
 bool UBApplication::isFromWeb(QString url)

@@ -73,6 +73,7 @@ signals:
     void resized(QResizeEvent* event);
     void shown();
     void mouseReleased();
+    void clickOnBoard();
 
     //EV-7 - NNE - 20131231
     void mouseMove(QMouseEvent* event);

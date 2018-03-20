@@ -59,8 +59,14 @@
 
 #include "frameworks/UBFileSystemUtils.h"
 #include "board/UBDrawingController.h"
+#include "gui/UBCreateLinkPalette.h"
+#include "board/UBBoardPaletteManager.h"
+
+#include "customWidgets/UBGraphicsItemAction.h"
 
 #include "core/memcheck.h"
+
+DelegateButton *DelegateButton::Spacer = 0;
 
 DelegateButton::DelegateButton(const QString & fileName, QGraphicsItem* pDelegated, QGraphicsItem * parent, Qt::WindowFrameSection section)
     : QGraphicsSvgItem(fileName, parent)
@@ -159,6 +165,12 @@ void DelegateButton::startShowProgress()
     }
 }
 
+DelegateSpacer::DelegateSpacer(QGraphicsItem * parent, Qt::WindowFrameSection section):
+    DelegateButton("", 0, parent, section)
+{
+
+}
+
 UBGraphicsItemDelegate::UBGraphicsItemDelegate(QGraphicsItem* pDelegated, QObject * parent, UBGraphicsFlags fls)
     : QObject(parent)
     , mDelegated(pDelegated)
@@ -176,15 +188,22 @@ UBGraphicsItemDelegate::UBGraphicsItemDelegate(QGraphicsItem* pDelegated, QObjec
     , mAntiScaleRatio(1.0)
     , mToolBarItem(NULL)
     , mMimeData(NULL)
+    , mCanTrigAnAction(false)
+    , mCanReturnInCreationMode(false)
 {
     setUBFlags(fls);
     connect(UBApplication::boardController, SIGNAL(zoomChanged(qreal)), this, SLOT(onZoomChanged()));
+    //N/C - NNE - 20140505 : add vertical and horizontal flip
+    mVerticalMirror = false;
+    mHorizontalMirror = false;    
 }
 
 void UBGraphicsItemDelegate::createControls()
 {
-    if (testUBFlags(GF_TOOLBAR_USED) && !mToolBarItem)
-        mToolBarItem = new UBGraphicsToolBarItem(mDelegated);
+    if (testUBFlags(GF_TOOLBAR_USED) && !mToolBarItem){
+         mToolBarItem = new UBGraphicsToolBarItem(mDelegated);
+    }
+
 
     if (!mFrame) {
         mFrame = new UBGraphicsDelegateFrame(this, QRectF(0, 0, 0, 0), mFrameWidth, testUBFlags(GF_RESPECT_RATIO), testUBFlags(GF_TITLE_BAR_USED));
@@ -224,8 +243,6 @@ void UBGraphicsItemDelegate::createControls()
         connect(mZOrderDownButton, SIGNAL(longClicked()), this, SLOT(increaseZlevelBottom()));
         mButtons << mZOrderDownButton;
     }
-
-
 
     buildButtons();
 
@@ -431,10 +448,10 @@ QGraphicsItem *UBGraphicsItemDelegate::delegated()
 
 void UBGraphicsItemDelegate::positionHandles()
 {
+    //qWarning()<<"UBGraphicsItemDelegate::positionHandles()";
     if (!controlsExist()) {
         return;
     }
-
     if (mDelegated->isSelected()) {
         bool shownOnDisplay = mDelegated->data(UBGraphicsItemData::ItemLayerType).toInt() != UBItemLayerType::Control;
         showHide(shownOnDisplay);
@@ -453,6 +470,7 @@ void UBGraphicsItemDelegate::positionHandles()
             mToolBarItem->show();
         }
     } else {
+
         foreach(DelegateButton* button, mButtons)
             button->hide();
 
@@ -689,6 +707,89 @@ void UBGraphicsItemDelegate::decorateMenu(QMenu* menu)
         sourceIcon.addPixmap(QPixmap(":/images/toolbar/internet.png"), QIcon::Normal, QIcon::On);
         mGotoContentSourceAction->setIcon(sourceIcon);
     }
+    if(mCanTrigAnAction)
+        mShowPanelToAddAnAction = menu->addAction(tr("Add an action"),this,SLOT(onAddActionClicked()));
+
+    if (mCanReturnInCreationMode)
+        menu->addAction(tr("Return to creation mode"), this, SLOT(onReturnToCreationModeClicked()));
+
+    //N/C - NNE - 20140505 : add vertical and horizontal flip
+    if(mHorizontalMirror)
+        menu->addAction(tr("Flip on horizontal axis"), this, SLOT(flipHorizontally()));
+
+    if(mVerticalMirror)
+        menu->addAction(tr("Flip on vertical axis"), this, SLOT(flipVertically()));
+    //N/C - NNE - 20140505 : END
+}
+
+//N/C - NNE - 20140505 : add vertical and horizontal flip
+void UBGraphicsItemDelegate::flipHorizontally()
+{
+    mDelegated->setTransform(QTransform::fromScale(1, -1), true);
+
+    qreal dy = 2.f*mDelegated->boundingRect().bottomLeft().y();
+
+    mDelegated->setTransform(QTransform::fromTranslate(0, -dy), true);
+}
+
+void UBGraphicsItemDelegate::flipVertically()
+{
+    mDelegated->setTransform(QTransform::fromScale(-1, 1), true);
+
+    qreal dx = 2.f*mDelegated->boundingRect().bottomRight().x();
+
+    mDelegated->setTransform(QTransform::fromTranslate(-dx, 0), true);
+}
+//N/C - NNE - 20140505 : END
+
+void UBGraphicsItemDelegate::onAddActionClicked()
+{
+    UBCreateLinkPalette* linkPalette = UBApplication::boardController->paletteManager()->linkPalette();
+    linkPalette->show();
+    connect(linkPalette,SIGNAL(definedAction(UBGraphicsItemAction*)),this,SLOT(saveAction(UBGraphicsItemAction*)));
+}
+
+void UBGraphicsItemDelegate::onReturnToCreationModeClicked()
+{
+    UBApplication::boardController->shapeFactory().returnToCreationMode(mDelegated);
+}
+
+void UBGraphicsItemDelegate::saveAction(UBGraphicsItemAction* action)
+{
+    mAction = action;
+    mMenu->removeAction(mShowPanelToAddAnAction);
+    QString actionLabel;
+    switch (mAction->linkType()) {
+    case eLinkToAudio:{
+        actionLabel= tr("Remove link to audio");
+        UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(action);
+        connect(mDeleteButton,SIGNAL(clicked()),audioAction,SLOT(onSourceHide()));
+        break;
+    }
+    case eLinkToPage:
+        actionLabel = tr("Remove link to page");
+        break;
+    case eLinkToWebUrl:
+        actionLabel = tr("Remove link to web url");
+    default:
+        break;
+    }
+
+    mRemoveAnAction = mMenu->addAction(actionLabel,this,SLOT(onRemoveActionClicked()));
+    mMenu->addAction(mRemoveAnAction);
+}
+
+void UBGraphicsItemDelegate::onRemoveActionClicked()
+{
+    if(mAction){
+        mAction->actionRemoved();
+        delete mAction;
+        mAction = NULL;
+    }
+    if(mRemoveAnAction && mMenu){
+        mMenu->removeAction(mRemoveAnAction);
+        mMenu->addAction(mShowPanelToAddAnAction);
+    }
 }
 
 void UBGraphicsItemDelegate::updateMenuActionState()
@@ -732,6 +833,11 @@ void UBGraphicsItemDelegate::setLocked(bool pLocked)
     if (mDelegated) {
         mDelegated->setData(UBGraphicsItemData::ItemLocked, QVariant(pLocked));
     }
+}
+
+void UBGraphicsItemDelegate::setCanTrigAnAction(bool canTrig)
+{
+    mCanTrigAnAction = canTrig;
 }
 
 void UBGraphicsItemDelegate::updateFrame()
@@ -844,6 +950,23 @@ void UBGraphicsItemDelegate::setUBFlag(UBGraphicsFlags pf, bool set)
     setUBFlags(fls);
 }
 
+void UBGraphicsItemDelegate::setAction(UBGraphicsItemAction* action)
+{
+    if(!action)
+        onRemoveActionClicked();
+    else
+    {
+        setCanTrigAnAction(true);
+        if(!mMenu){
+            //TODO claudio
+            // Remove this very bad chunk of code
+            mMenu = new QMenu(UBApplication::boardController->controlView());
+            decorateMenu(mMenu);
+        }
+        saveAction(action);
+    }
+}
+
 UBGraphicsToolBarItem::UBGraphicsToolBarItem(QGraphicsItem * parent) :
     QGraphicsRectItem(parent),
     mShifting(true),
@@ -863,16 +986,28 @@ UBGraphicsToolBarItem::UBGraphicsToolBarItem(QGraphicsItem * parent) :
     update();
 }
 
-
 void UBGraphicsToolBarItem::positionHandles()
 {
+    //qWarning()<<"UBGraphicsToolBarItem::positionHandles()";
     int itemXOffset = 0;
     foreach (QGraphicsItem* item, mItemsOnToolBar)
-    {
-        item->setPos(itemXOffset, 0);
-        itemXOffset += (item->boundingRect().width()+mElementsPadding);
-        item->show();
+    {                
+        if(item == DelegateButton::Spacer){
+            itemXOffset += 10;
+        }else{
+            item->setPos(itemXOffset, 0);
+
+            itemXOffset += item->boundingRect().width();
+
+            if(itemXOffset < rect().width())
+                item->show();
+            else
+                item->hide();            
+
+            itemXOffset += mElementsPadding;
+        }
     }
+    qWarning()<<itemXOffset - mElementsPadding;
 }
 
 void UBGraphicsToolBarItem::update()
@@ -904,6 +1039,7 @@ MediaTimer::~MediaTimer()
 {}
 void MediaTimer::positionHandles()
 {
+    qWarning()<<"MediaTimer::positionHandles()";
     digitSpace = smallPoint ? 2 : 1;
     ySegLen    = rect().height()*5/12;
     xSegLen    = ySegLen*2/3;
@@ -1339,6 +1475,7 @@ QPainterPath DelegateMediaControl::shape() const
 
 void DelegateMediaControl::positionHandles()
 {
+    qWarning()<<"DelegateMediaControl::positionHandles()";
     QTime tTotal;
     tTotal = tTotal.addMSecs(mTotalTimeInMs);
     mLCDTimerArea.setHeight(parentItem()->boundingRect().height());
