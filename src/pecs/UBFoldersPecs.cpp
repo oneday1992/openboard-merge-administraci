@@ -26,7 +26,7 @@ UBFoldersPecs::UBFoldersPecs(QWidget *parent, const char *name) : UBDockPaletteW
     controller->assignPathListView(pathListView);
 
     centralWidget = new UBFeaturesCentralWidget(this);
-    //controller->assignFeaturesListView(centralWidget->listView());
+    controller->assignFeaturesListView(centralWidget->listView());
     centralWidget->setSliderPosition(UBSettings::settings()->featureSliderPosition->get().toInt());
 
     //Bottom actionbar for DnD, quick search etc
@@ -41,5 +41,17 @@ UBFoldersPecs::UBFoldersPecs(QWidget *parent, const char *name) : UBDockPaletteW
 
 UBFoldersPecs::~UBFoldersPecs()
 {
+    if (controller)
+        delete controller;
+    if (layout)
+        delete layout;
+    if (pathListView)
+        delete pathListView;
+    if (centralWidget)
+        delete centralWidget;
+    if (mActionBar)
+        delete mActionBar;
+
 
 }
+

@@ -34,14 +34,6 @@
 #include "domain/UBGraphicsScene.h"
 
 
-/*UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsPixmapItem(parent)
-  , width(180)
-  , height(180)
-  , noPen(false)
-{
-   mScene = scene;
-}
-*/
 UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, Qt::GlobalColor color, QGraphicsScene *scene) : QGraphicsPixmapItem(pixmap,parent)
   , width(180)
   , height(180)
@@ -57,9 +49,8 @@ UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, Qt::GlobalColor col
 //Pinto el borde del picto con el color elegido
 void UBPecs::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    qWarning()<<"PAINT";
-    painter->setRenderHint(QPainter::Antialiasing,true);
-    painter->setRenderHint(QPainter::SmoothPixmapTransform,true);
+    //painter->setRenderHint(QPainter::Antialiasing,true);
+    //painter->setRenderHint(QPainter::SmoothPixmapTransform,true);
     if(noPen==true)
         painter->setPen(Qt::NoPen);
     else
@@ -73,7 +64,6 @@ void UBPecs::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 void UBPecs::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     noPen=true;
-    qWarning()<<"mousePressEvent";
     QGraphicsPixmapItem::mousePressEvent(event);
     mScene->update();
 }
@@ -81,7 +71,6 @@ void UBPecs::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void UBPecs::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     noPen=false;
-    qWarning()<<"mouseReleaseEvent";
     QGraphicsPixmapItem::mouseReleaseEvent(event);
     // force refresh, QT is a bit lazy and take a lot of time (nb item ^2 ?) to trigger repaint
     mScene->update();

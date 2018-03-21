@@ -7,6 +7,7 @@
 #include "gui/UBFeaturesActionBar.h"
 #include "gui/UBFeaturesWidget.h"
 
+class UBFoldersPecsCentralWidget;
 
 class UBFoldersPecs : public UBDockPaletteWidget
 {
@@ -31,5 +32,6 @@ private:
 
 
 };
+
 
 #endif // UBFOLDERSPECS_H
