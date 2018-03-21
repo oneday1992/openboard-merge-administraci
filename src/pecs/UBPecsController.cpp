@@ -87,6 +87,7 @@ void UBPecsController::setupViews()
 
 
         mControlLayout = new QHBoxLayout(mPecsWidget);
+        // si no se pone un setContentsMargins aparece un margen en el panel de la pizarra y no se extiende a la pantalla completa
         mControlLayout->setContentsMargins(0, 0, 0, 0);
 
         //Board del medio
@@ -111,12 +112,14 @@ void UBPecsController::setupViews()
         mPecsWidget->setObjectName("ubPecsContainer");
         mMainWindow->addPecsWidget(mPecsWidget);
 
-        //QPushButton *kk2 = new QPushButton(mPecsWidget);
-        //kk2->setText("HOLA");
-
-       //Paleta selección de Pecs de la izquierda
-       //Paleta de agenda de la derecha
         // Linea de comunicacion abajo
+        // tenemos que pintar primero la linea de comunicacion porque si no las paletas izda y dcha no despliegan
+        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
+        lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
+
+        //Paleta selección de Pecs de la izquierda
+        //Paleta de agenda de la derecha
+
         UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBAgenda *agenda = new UBAgenda();
 
@@ -128,20 +131,7 @@ void UBPecsController::setupViews()
         paletaAgenda->registerWidget(agenda);
         paletaAgenda->addTab(agenda);
 
-        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
-        int ancho= lineaComunicacion->screenwidth();
-        int x=0;
-        if (paletaAgenda->width()>0)
-        {
-            ancho=ancho-paletaAgenda->width()-40;
-        }
-        if (paletaCarpetaPecs->width()>0)
-        {
-            x=paletaCarpetaPecs->width()+20;
-            ancho=ancho-paletaCarpetaPecs->width();
-        }
-        //lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenwidth(),lineaComunicacion->screenheight());
-        lineaComunicacion->setGeometry(x,0,ancho,lineaComunicacion->screenheight());
+
 
        //Fin de Paletas
     }
