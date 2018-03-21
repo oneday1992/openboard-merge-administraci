@@ -173,8 +173,9 @@ class UBGraphicsTextItem : public QGraphicsTextItem, public UBItem, public UBRes
         bool toolbarExtended;
 
         // Issue 16/03/2018 - OpenBoard - Fixed width of the TEXEDITOR WINDOW to avoid problems with no-hidden icons
-        const qreal MIN_TEXT_WIDTH_EXTENDED = 618;
-        const qreal MIN_TEXT_WIDTH_REDUCED = 176;
+        qreal MIN_TEXT_WIDTH_EXTENDED = 618;
+        qreal MIN_TEXT_WIDTH_REDUCED = 176;
+        qreal MIN_TEXT_HEIGHT = 120;
 
         QString findAndReplaceAttribute(QString tag, QString oldAttribute, QString newAttribute, QString& source);
 

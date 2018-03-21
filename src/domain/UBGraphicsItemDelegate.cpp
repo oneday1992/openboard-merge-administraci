@@ -190,6 +190,7 @@ UBGraphicsItemDelegate::UBGraphicsItemDelegate(QGraphicsItem* pDelegated, QObjec
     , mMimeData(NULL)
     , mCanTrigAnAction(false)
     , mCanReturnInCreationMode(false)
+    , mAction(NULL)
 {
     setUBFlags(fls);
     connect(UBApplication::boardController, SIGNAL(zoomChanged(qreal)), this, SLOT(onZoomChanged()));

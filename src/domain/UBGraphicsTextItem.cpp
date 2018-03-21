@@ -525,7 +525,7 @@ QRectF UBGraphicsTextItem::boundingRect() const
     // Issue 16/03/2018 - OpenBoard - Fixed width of the TEXEDITOR WINDOW to avoid problems with no-hidden icons
     if((toolbarExtended == true) && (width < MIN_TEXT_WIDTH_EXTENDED) ) width=MIN_TEXT_WIDTH_EXTENDED;
     if((toolbarExtended == false) && (width < MIN_TEXT_WIDTH_REDUCED) ) width=MIN_TEXT_WIDTH_REDUCED;
-
+    if(height < MIN_TEXT_HEIGHT) height=MIN_TEXT_HEIGHT;
 
     return QRectF(QPointF(), QSizeF(width, height));
 }
@@ -750,6 +750,7 @@ void UBGraphicsTextItem::resize(qreal width, qreal height)
     qreal h = height;
     if(isToolbarExtended() == true && w < MIN_TEXT_WIDTH_EXTENDED ) w=MIN_TEXT_WIDTH_EXTENDED;
     if(isToolbarExtended() == false && w < MIN_TEXT_WIDTH_REDUCED ) w=MIN_TEXT_WIDTH_REDUCED;
+    if(h < MIN_TEXT_HEIGHT) h=MIN_TEXT_HEIGHT;
 
     setTextWidth(w);
     setTextHeight(h);

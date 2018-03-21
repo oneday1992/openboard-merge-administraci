@@ -510,5 +510,6 @@
         <file>images/textEditor/align-justify.svg</file>
         <file>images/textEditor/collapse.svg</file>
         <file>images/textEditor/expand.svg</file>
+        <file>images/toolbar/floppy.png</file>
     </qresource>
 </RCC>

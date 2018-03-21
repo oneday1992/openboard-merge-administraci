@@ -2350,7 +2350,7 @@
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset>
+    <iconset resource="../OpenBoard.qrc">
      <normaloff>:/images/toolbar/floppy.png</normaloff>:/images/toolbar/floppy.png</iconset>
    </property>
    <property name="text">
