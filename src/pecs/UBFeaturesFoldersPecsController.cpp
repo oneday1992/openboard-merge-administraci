@@ -1,0 +1,124 @@
+#include "UBFeaturesFoldersPecsController.h"
+#include "core/UBSettings.h"
+#include "board/UBBoardController.h"
+#include "tools/UBToolsManager.h"
+
+const QString UBFeaturesFoldersPecsController::virtualRootName = "root";
+const QString UBFeaturesFoldersPecsController::rootPath  = "/" + virtualRootName;
+
+const QString UBFeaturesFoldersPecsController::startPath = rootPath + "/Start";
+const QString UBFeaturesFoldersPecsController::toysPath = rootPath + "/Toys";
+const QString UBFeaturesFoldersPecsController::foodsPath = rootPath + "/Foods";
+const QString UBFeaturesFoldersPecsController::hygienePath = rootPath + "/Hygiene";
+
+
+
+
+UBFeaturesFoldersPecsController::UBFeaturesFoldersPecsController(QWidget *parentWidget) : QObject(parentWidget)
+    ,featuresList(0)
+    ,mLastItemOffsetIndex(0)
+{
+    //Inicializo directorios físicos de UBSettings
+    mLibStartDirectoryPath = QUrl::fromLocalFile(UBSettings::settings()->pecsStartDirectory());
+    mLibToysDirectoryPath = QUrl::fromLocalFile(UBSettings::settings()->pecsToysDirectory());
+    mLibFoodsDirectoryPath = QUrl::fromLocalFile(UBSettings::settings()->pecsFoodsDirectory());
+    mLibHygieneDirectoryPath = QUrl::fromLocalFile(UBSettings::settings()->pecsHygieneDirectory());
+
+    rootElement = UBFeature(rootPath, QImage( ":images/libpalette/home.png" ), "root", QUrl());
+    startElement = UBFeature( startPath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Inicio") , mLibStartDirectoryPath, FEATURE_CATEGORY);
+    toysElement = UBFeature( toysPath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Juguetes") , mLibToysDirectoryPath, FEATURE_CATEGORY);
+    foodsElement = UBFeature( foodsPath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Alimentos") , mLibFoodsDirectoryPath, FEATURE_CATEGORY);
+    hygieneElement = UBFeature( hygienePath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Higiene") , mLibHygieneDirectoryPath, FEATURE_CATEGORY);
+
+    featuresList = new QList <UBFeature>();
+    scanFS();
+
+    featuresModel = new UBFeaturesModel(featuresList, this);
+
+    featuresProxyModel = new UBFeaturesProxyModel(this);
+    featuresProxyModel->setFilterFixedString(rootPath);
+    featuresProxyModel->setSourceModel(featuresModel);
+    featuresProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
+
+    featuresSearchModel = new UBFeaturesSearchProxyModel(this);
+    featuresSearchModel->setSourceModel(featuresModel);
+    featuresSearchModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
+
+    featuresPathModel = new UBFeaturesPathProxyModel(this);
+    featuresPathModel->setPath(rootPath);
+    featuresPathModel->setSourceModel(featuresModel);
+
+        connect(featuresModel, SIGNAL(dataRestructured()), featuresProxyModel, SLOT(invalidate()));
+        connect(&mCThread, SIGNAL(sendFeature(UBFeature)), featuresModel, SLOT(addItem(UBFeature)));
+        connect(&mCThread, SIGNAL(featureSent()), this, SIGNAL(featureAddedFromThread()));
+        connect(&mCThread, SIGNAL(scanStarted()), this, SIGNAL(scanStarted()));
+        connect(&mCThread, SIGNAL(scanFinished()), this, SIGNAL(scanFinished()));
+        connect(&mCThread, SIGNAL(maxFilesCountEvaluated(int)), this, SIGNAL(maxFilesCountEvaluated(int)));
+        connect(&mCThread, SIGNAL(scanCategory(QString)), this, SIGNAL(scanCategory(QString)));
+        connect(&mCThread, SIGNAL(scanPath(QString)), this, SIGNAL(scanPath(QString)));
+        //connect(UBApplication::boardController, SIGNAL(npapiWidgetCreated(QString)), this, SLOT(createNpApiFeature(QString)));
+
+        QTimer::singleShot(0, this, SLOT(startThread()));
+
+}
+
+UBFeaturesFoldersPecsController::~UBFeaturesFoldersPecsController()
+{
+
+}
+
+void UBFeaturesFoldersPecsController::scanFS()
+{
+    featuresList->clear();
+    featuresList->append(rootElement);
+
+    *featuresList << startElement
+                   << toysElement
+                   << foodsElement
+                   << hygieneElement;
+
+        //filling favoriteList
+        loadFavoriteList();
+/*
+        QList <UBToolsManager::UBToolDescriptor> tools = UBToolsManager::manager()->allTools();
+
+        foreach (UBToolsManager::UBToolDescriptor tool, tools) {
+            featuresList->append(UBFeature(appPath + "/" + tool.label, tool.icon.toImage(), tool.label, QUrl(tool.id), FEATURE_INTERNAL));
+            if (favoriteSet->find(QUrl(tool.id)) != favoriteSet->end()) {
+                featuresList->append(UBFeature(favoritePath + "/" + tool.label, tool.icon.toImage(), tool.label, QUrl(tool.id), FEATURE_INTERNAL));
+            }
+        }
+*/
+}
+
+void UBFeaturesFoldersPecsController::startThread()
+{
+    QList<QPair<QUrl, UBFeature> > computingData;
+
+    computingData << QPair<QUrl, UBFeature>(mLibStartDirectoryPath, startElement)
+            <<  QPair<QUrl, UBFeature>(mLibToysDirectoryPath, toysElement)
+            <<  QPair<QUrl, UBFeature>(mLibFoodsDirectoryPath, foodsElement)
+            <<  QPair<QUrl, UBFeature>(mLibHygieneDirectoryPath, hygieneElement);
+
+        mCThread.compute(computingData, favoriteSet);
+}
+
+
+void UBFeaturesFoldersPecsController::loadFavoriteList()
+{
+    favoriteSet = new QSet<QUrl>();
+    QFile file( UBSettings::userDataDirectory() + "/favoritesPecs.dat" );
+    if ( file.exists() )
+    {
+        file.open(QIODevice::ReadOnly);
+        QDataStream in(&file);
+        int elementsNumber;
+        in >> elementsNumber;
+        for ( int i = 0; i < elementsNumber; ++i)
+        {
+            QUrl path;
+            in >> path;
+            favoriteSet->insert( path );
+        }
+    }
+}

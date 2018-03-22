@@ -1043,6 +1043,58 @@ QString UBSettings::applicationImageLibraryDirectory()
         return configPath;
     }
 }
+//PECS. Directorio que almacena los Pecs de la categoria Inicio
+QString UBSettings::pecsStartDirectory()
+{
+    QString defaultRelativePath = QString("./pecs/start");
+
+    QString configPath = value("Pecs/StartDirectory", QVariant(defaultRelativePath)).toString();
+
+    if (configPath.startsWith(".")) {
+        return UBPlatformUtils::applicationResourcesDirectory() + configPath.right(configPath.size() - 1);
+    }
+    else {
+        return configPath;
+    }
+}
+QString UBSettings::pecsToysDirectory()
+{
+    QString defaultRelativePath = QString("./pecs/toys");
+
+    QString configPath = value("Pecs/ToysDirectory", QVariant(defaultRelativePath)).toString();
+
+    if (configPath.startsWith(".")) {
+        return UBPlatformUtils::applicationResourcesDirectory() + configPath.right(configPath.size() - 1);
+    }
+    else {
+        return configPath;
+    }
+}QString UBSettings::pecsFoodsDirectory()
+{
+    QString defaultRelativePath = QString("./pecs/foods");
+
+    QString configPath = value("Pecs/FoodsDirectory", QVariant(defaultRelativePath)).toString();
+
+    if (configPath.startsWith(".")) {
+        return UBPlatformUtils::applicationResourcesDirectory() + configPath.right(configPath.size() - 1);
+    }
+    else {
+        return configPath;
+    }
+}QString UBSettings::pecsHygieneDirectory()
+{
+    QString defaultRelativePath = QString("./pecs/hygiene");
+
+    QString configPath = value("Pecs/HygieneDirectory", QVariant(defaultRelativePath)).toString();
+
+    if (configPath.startsWith(".")) {
+        return UBPlatformUtils::applicationResourcesDirectory() + configPath.right(configPath.size() - 1);
+    }
+    else {
+        return configPath;
+    }
+}
+// FIN PECS
 
 QString UBSettings::userAnimationDirectory()
 {

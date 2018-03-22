@@ -17,7 +17,7 @@ UBFoldersPecs::UBFoldersPecs(QWidget *parent, const char *name) : UBDockPaletteW
 
     //Main UBFeature functionality
     controller = new UBFeaturesController(this);
-
+    //controller = new UBFeaturesFoldersPecsController(this); // Nueva clase par acontrolar Pecs
     //Main layout including all the widgets in palette
     layout = new QVBoxLayout(this);
 
@@ -30,12 +30,12 @@ UBFoldersPecs::UBFoldersPecs(QWidget *parent, const char *name) : UBDockPaletteW
     centralWidget->setSliderPosition(UBSettings::settings()->featureSliderPosition->get().toInt());
 
     //Bottom actionbar for DnD, quick search etc
-    mActionBar = new UBFeaturesActionBar(controller, this);
+    //mActionBar = new UBFeaturesActionBar(controller, this);
 
     //Filling main layout
     layout->addWidget(pathListView);
     layout->addWidget(centralWidget);
-    layout->addWidget(mActionBar);
+    //layout->addWidget(mActionBar);
 
 }
 

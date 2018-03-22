@@ -155,6 +155,12 @@ class UBSettings : public QObject
         QString applicationAnimationsLibraryDirectory();
         QString applicationStartupHintsDirectory();
 
+        //Pecs Directory
+        QString pecsStartDirectory();
+        QString pecsToysDirectory();
+        QString pecsFoodsDirectory();
+        QString pecsHygieneDirectory();
+
         QNetworkProxy* httpProxy();
 
         static int pointerDiameter;
