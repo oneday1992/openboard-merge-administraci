@@ -115,7 +115,8 @@ void UBPecsController::setupViews()
         // Linea de comunicacion abajo
         // tenemos que pintar primero la linea de comunicacion porque si no las paletas izda y dcha no despliegan
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
-        lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
+  //      lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
+              lineaComunicacion->setGeometry(0,0,300,300);
 
         //Paleta selección de Pecs de la izquierda
         //Paleta de agenda de la derecha
