@@ -15,7 +15,7 @@
 class UBFeaturesFoldersPecsController : public QObject
 {
 
-    //friend class UBFeaturesWidget;
+    friend class UBFeaturesWidget;
     friend class UBFoldersPecs;
 
     Q_OBJECT
@@ -45,10 +45,10 @@ public:
         void moveExternalData(const QUrl &url, const UBFeature &destination);
 
         void rescanModel();
-        void siftElements(const QString &pSiftValue);
+    void siftElements(const QString &pSiftValue);
         //TODO make less complicated for betteer maintainence
-        UBFeature getFeature(const QModelIndex &index, const QString &listName);
-        void searchStarted(const QString &pattern, QListView *pOnView);
+    UBFeature getFeature(const QModelIndex &index, const QString &listName);
+    void searchStarted(const QString &pattern, QListView *pOnView);
         void refreshModels();
 
         void deleteItem( const QUrl &url );

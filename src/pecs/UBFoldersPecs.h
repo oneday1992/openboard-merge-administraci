@@ -30,6 +30,10 @@ public:
     static const char *objNamePathList;
     static const char *objNameFeatureList;
 
+private slots:
+    void currentSelected(const QModelIndex & current);
+
+
 private:
     //UBFeaturesController *controller;
     UBFeaturesFoldersPecsController *controller;

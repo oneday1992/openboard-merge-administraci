@@ -511,5 +511,9 @@
         <file>images/stylusPalette/pecsOn.png</file>
         <file>images/toolbar/pecsOn.png</file>
         <file>pecs/10236.png</file>
+        <file>images/libpalette/foods.svg</file>
+        <file>images/libpalette/start.svg</file>
+        <file>images/libpalette/toys.svg</file>
+        <file>images/libpalette/hygiene.svg</file>
     </qresource>
 </RCC>

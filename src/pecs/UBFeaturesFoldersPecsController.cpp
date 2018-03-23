@@ -25,10 +25,10 @@ UBFeaturesFoldersPecsController::UBFeaturesFoldersPecsController(QWidget *parent
     mLibHygieneDirectoryPath = QUrl::fromLocalFile(UBSettings::settings()->pecsHygieneDirectory());
 
     rootElement = UBFeature(rootPath, QImage( ":images/libpalette/home.png" ), "root", QUrl());
-    startElement = UBFeature( startPath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Inicio") , mLibStartDirectoryPath, FEATURE_CATEGORY);
-    toysElement = UBFeature( toysPath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Juguetes") , mLibToysDirectoryPath, FEATURE_CATEGORY);
-    foodsElement = UBFeature( foodsPath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Alimentos") , mLibFoodsDirectoryPath, FEATURE_CATEGORY);
-    hygieneElement = UBFeature( hygienePath, QImage(":images/libpalette/AudiosCategory.svg"), tr("Higiene") , mLibHygieneDirectoryPath, FEATURE_CATEGORY);
+    startElement = UBFeature( startPath, QImage(":images/libpalette/start.svg"), tr("Inicio") , mLibStartDirectoryPath, FEATURE_CATEGORY);
+    toysElement = UBFeature( toysPath, QImage(":images/libpalette/toys.svg"), tr("Juguetes") , mLibToysDirectoryPath, FEATURE_CATEGORY);
+    foodsElement = UBFeature( foodsPath, QImage(":images/libpalette/foods.svg"), tr("Alimentos") , mLibFoodsDirectoryPath, FEATURE_CATEGORY);
+    hygieneElement = UBFeature( hygienePath, QImage(":images/libpalette/hygiene.svg"), tr("Higiene") , mLibHygieneDirectoryPath, FEATURE_CATEGORY);
 
     featuresList = new QList <UBFeature>();
     scanFS();
@@ -80,7 +80,7 @@ void UBFeaturesFoldersPecsController::scanFS()
                    << hygieneElement;
 
         //filling favoriteList
-        loadFavoriteList();
+        loadFavoriteList(); // Hace falta implementar carpeta favorito
 /*
         QList <UBToolsManager::UBToolDescriptor> tools = UBToolsManager::manager()->allTools();
 
@@ -91,6 +91,50 @@ void UBFeaturesFoldersPecsController::scanFS()
             }
         }
 */
+}
+
+void UBFeaturesFoldersPecsController::siftElements(const QString &pSiftValue)
+{
+    featuresProxyModel->setFilterFixedString(pSiftValue);
+    featuresProxyModel->invalidate();
+
+    featuresPathModel->setPath(pSiftValue);
+    featuresPathModel->invalidate();
+}
+
+UBFeature UBFeaturesFoldersPecsController::getFeature(const QModelIndex &index, const QString &listName)
+{
+    //    QSortFilterProxyModel *model = qobject_cast<QSortFilterProxyModel *>(pOnView->model());
+    QAbstractItemModel *model = 0;
+    if (listName == UBFeaturesWidget::objNamePathList) {
+        model = featuresPathModel;
+    } else if (listName == UBFeaturesWidget::objNameFeatureList) {
+        model = curListModel;
+    }
+
+    if (model) {
+        return model->data(index, Qt::UserRole + 1).value<UBFeature>();
+    }
+
+    return UBFeature();
+    //    return pOnView->model()->data(index, Qt::UserRole + 1).value<UBFeature>();  /*featuresSearchModel->data(index, Qt::UserRole + 1).value<UBFeature>()*/;
+}
+
+void UBFeaturesFoldersPecsController::searchStarted(const QString &pattern, QListView *pOnView)
+{
+    if (pattern.isEmpty()) {
+
+       pOnView->setModel(featuresProxyModel);
+       featuresProxyModel->invalidate();
+       curListModel = featuresProxyModel;
+    } else if ( pattern.size() > 1 ) {
+
+       //        featuresSearchModel->setFilterPrefix(currentElement.getFullVirtualPath());
+       featuresSearchModel->setFilterWildcard( "*" + pattern + "*" );
+       pOnView->setModel(featuresSearchModel );
+       featuresSearchModel->invalidate();
+       curListModel = featuresSearchModel;
+    }
 }
 
 void UBFeaturesFoldersPecsController::assignFeaturesListView(UBFeaturesListView *pList)
@@ -140,11 +184,13 @@ void UBFeaturesFoldersPecsController::startThread()
             <<  QPair<QUrl, UBFeature>(mLibHygieneDirectoryPath, hygieneElement);
 
         mCThread.compute(computingData, favoriteSet);
+
 }
 
 
 void UBFeaturesFoldersPecsController::loadFavoriteList()
 {
+
     favoriteSet = new QSet<QUrl>();
     QFile file( UBSettings::userDataDirectory() + "/favoritesPecs.dat" );
     if ( file.exists() )
@@ -160,4 +206,5 @@ void UBFeaturesFoldersPecsController::loadFavoriteList()
             favoriteSet->insert( path );
         }
     }
+
 }
