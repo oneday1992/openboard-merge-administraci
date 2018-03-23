@@ -99,12 +99,13 @@ void UBPecsController::setupViews()
         mCentralView->setTransformationAnchor(QGraphicsView::NoAnchor);
         mControlLayout->addWidget(mCentralView);
 
-        //Escena
+        //Escena ppal
         QGraphicsScene *mScene = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mScene);
         QPixmap pix = QPixmap(":pecs/10236.png");
         UBPecs *picto = new UBPecs(pix,0,Qt::blue);
         mScene->addItem(picto);
+
         // Fin Escena
         //Fin de board del medio
 
@@ -112,11 +113,21 @@ void UBPecsController::setupViews()
         mPecsWidget->setObjectName("ubPecsContainer");
         mMainWindow->addPecsWidget(mPecsWidget);
 
+        // Creamos una escena diferente para añadir la linea de comunicacion
+        //Escena de la linea de comunicacion
+        QGraphicsScene *mSceneCommunication = new QGraphicsScene(mCentralView);
+        mCentralView->setScene(mSceneCommunication);
+        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
+        lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
+        mSceneCommunication->addWidget(lineaComunicacion);
+        // Fin Escena
+
+
         // Linea de comunicacion abajo
         // tenemos que pintar primero la linea de comunicacion porque si no las paletas izda y dcha no despliegan
-        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
-  //      lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
-              lineaComunicacion->setGeometry(0,0,300,300);
+
+
+         //      lineaComunicacion->setGeometry(0,0,300,300); //linea de geometria para hacer pruebas
 
         //Paleta selección de Pecs de la izquierda
         //Paleta de agenda de la derecha

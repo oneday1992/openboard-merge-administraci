@@ -16,25 +16,30 @@ UBCommunicationLine::UBCommunicationLine(QWidget *parent) : QWidget(parent)
 
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
 {
+    /**
+    // Usamos esta parte del codigo para hacer pruebas.
+
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     mBackgroundBrush = QBrush(UBSettings::paletteColor);
     painter.setPen(Qt::NoPen);
 
-// painter.setBrush(mBackgroundBrush);
-       painter.setBrush(mBackgroundBrush);
+    // painter.setBrush(mBackgroundBrush);
+    painter.setBrush(mBackgroundBrush);
 
-        QPainterPath borderPath;
-        borderPath.setFillRule(Qt::WindingFill);
+    QPainterPath borderPath;
+    borderPath.setFillRule(Qt::WindingFill);
 
 
-        borderPath.addRoundedRect(0, 0, width(), height(), 15,15);
-        borderPath.addRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
-        painter.drawPath(borderPath);
-        painter.setBrush(QBrush(QColor(170, 170 ,170)));
-        painter.drawRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
+    borderPath.addRoundedRect(0, 0, width(), height(), 15,15);
+    borderPath.addRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
+    painter.drawPath(borderPath);
+    painter.setBrush(QBrush(QColor(170, 170 ,170)));
+    painter.drawRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
+    */
 
-    /**
+
+     //codigo
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     mBackgroundBrush = QBrush(UBSettings::paletteColor);
@@ -49,7 +54,7 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     //pintamos el recuadro de relleno
     path.addRoundedRect(calculateX(1,20)+border(),calculateY(60)+border(),calculateWidth(1,-120),calculateHeight(30,-40),10,10);
     painter.drawPath(path);
-    */
+
 
 }
 
