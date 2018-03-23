@@ -5,11 +5,18 @@
 #include "gui/UBFeaturesWidget.h"
 
 
+/*
+ *
+ * Replica de UBFeaturesController
+ *
+ *
+ */
 
 class UBFeaturesFoldersPecsController : public QObject
 {
 
-    friend class UBFeaturesWidget;
+    //friend class UBFeaturesWidget;
+    friend class UBFoldersPecs;
 
     Q_OBJECT
 
@@ -66,8 +73,8 @@ public:
 
         static const QString virtualRootName;
 
-        void assignFeaturesListView(UBFeaturesListView *pList);
-        void assignPathListView(UBFeaturesListView *pList);
+    void assignFeaturesListView(UBFeaturesListView *pList);
+    void assignPathListView(UBFeaturesListView *pList);
 
 public:
     static const QString startPath;
@@ -97,9 +104,9 @@ signals:
     void scanPath(const QString &);
 
 private slots:
-        void addNewFolder(QString name);
+        //void addNewFolder(QString name);
     void startThread();
-        void createNpApiFeature(const QString &str);
+        //void createNpApiFeature(const QString &str);
 
 private:
 

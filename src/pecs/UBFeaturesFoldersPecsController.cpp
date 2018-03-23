@@ -64,7 +64,9 @@ UBFeaturesFoldersPecsController::UBFeaturesFoldersPecsController(QWidget *parent
 
 UBFeaturesFoldersPecsController::~UBFeaturesFoldersPecsController()
 {
-
+    if (featuresList){
+            delete featuresList;
+    }
 }
 
 void UBFeaturesFoldersPecsController::scanFS()
@@ -89,6 +91,43 @@ void UBFeaturesFoldersPecsController::scanFS()
             }
         }
 */
+}
+
+void UBFeaturesFoldersPecsController::assignFeaturesListView(UBFeaturesListView *pList)
+{
+    pList->setDragDropMode( QAbstractItemView::DragDrop );
+    pList->setSelectionMode( QAbstractItemView::ContiguousSelection );
+
+    pList->setResizeMode( QListView::Adjust );
+    pList->setViewMode( QListView::IconMode );
+
+    pList->setIconSize(QSize(UBFeaturesWidget::defaultThumbnailSize, UBFeaturesWidget::defaultThumbnailSize));
+    pList->setGridSize(QSize(UBFeaturesWidget::defaultThumbnailSize + 20, UBFeaturesWidget::defaultThumbnailSize + 20));
+
+    itemDelegate = new UBFeaturesItemDelegate(this, pList);
+    pList->setItemDelegate(itemDelegate);
+
+    pList->setModel(featuresProxyModel);
+    curListModel = featuresProxyModel;
+}
+
+void UBFeaturesFoldersPecsController::assignPathListView(UBFeaturesListView *pList)
+{
+    pList->setViewMode(QListView::IconMode );
+    pList->setIconSize(QSize(UBFeaturesWidget::defaultThumbnailSize - 10, UBFeaturesWidget::defaultThumbnailSize - 10));
+    pList->setGridSize(QSize(UBFeaturesWidget::defaultThumbnailSize + 10, UBFeaturesWidget::defaultThumbnailSize - 10));
+    pList->setFixedHeight(60);
+    pList->setSelectionMode(QAbstractItemView::NoSelection);
+    pList->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    pList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    pList->setFlow(QListView::LeftToRight);
+    pList->setWrapping(false);
+    pList->setDragDropMode(QAbstractItemView::DropOnly);
+
+    pList->setModel( featuresPathModel);
+
+    pathItemDelegate = new UBFeaturesPathItemDelegate(this);
+    pList->setItemDelegate(pathItemDelegate);
 }
 
 void UBFeaturesFoldersPecsController::startThread()

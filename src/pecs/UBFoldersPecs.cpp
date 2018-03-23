@@ -16,8 +16,8 @@ UBFoldersPecs::UBFoldersPecs(QWidget *parent, const char *name) : UBDockPaletteW
     setAcceptDrops(true);
 
     //Main UBFeature functionality
-    controller = new UBFeaturesController(this);
-    //controller = new UBFeaturesFoldersPecsController(this); // Nueva clase par acontrolar Pecs
+    //controller = new UBFeaturesController(this);
+    controller = new UBFeaturesFoldersPecsController(this); // Nueva clase par acontrolar Pecs
     //Main layout including all the widgets in palette
     layout = new QVBoxLayout(this);
 

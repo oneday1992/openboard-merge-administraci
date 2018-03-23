@@ -6,7 +6,13 @@
 #include <QVBoxLayout>
 #include "gui/UBFeaturesActionBar.h"
 #include "gui/UBFeaturesWidget.h"
-//#include "UBFeaturesFoldersPecsController.h"
+#include "UBFeaturesFoldersPecsController.h"
+/*
+ *
+ * Replica de UBFeaturesWidget
+ *
+ */
+
 
 class UBFoldersPecsCentralWidget;
 
@@ -25,8 +31,8 @@ public:
     static const char *objNameFeatureList;
 
 private:
-    UBFeaturesController *controller;
-    //UBFeaturesFoldersPecsController *controller;
+    //UBFeaturesController *controller;
+    UBFeaturesFoldersPecsController *controller;
     QVBoxLayout *layout;
     UBFeaturesListView *pathListView;
     UBFeaturesCentralWidget *centralWidget;
