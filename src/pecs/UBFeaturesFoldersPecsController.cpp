@@ -26,7 +26,7 @@ UBFeaturesFoldersPecsController::UBFeaturesFoldersPecsController(QWidget *parent
 
     rootElement = UBFeature(rootPath, QImage( ":images/libpalette/home.png" ), "root", QUrl());
     startElement = UBFeature( startPath, QImage(":images/libpalette/start.svg"), tr("Inicio") , mLibStartDirectoryPath, FEATURE_CATEGORY);
-    toysElement = UBFeature( toysPath, QImage(":images/libpalette/toys.svg"), tr("Juguetes") , mLibToysDirectoryPath, FEATURE_CATEGORY);
+    toysElement = UBFeature( toysPath, QImage(":images/libpalette/toys.png"), tr("Juguetes") , mLibToysDirectoryPath, FEATURE_CATEGORY);
     foodsElement = UBFeature( foodsPath, QImage(":images/libpalette/foods.svg"), tr("Alimentos") , mLibFoodsDirectoryPath, FEATURE_CATEGORY);
     hygieneElement = UBFeature( hygienePath, QImage(":images/libpalette/hygiene.svg"), tr("Higiene") , mLibHygieneDirectoryPath, FEATURE_CATEGORY);
 

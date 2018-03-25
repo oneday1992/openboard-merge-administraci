@@ -1,6 +1,6 @@
 #include "UBFoldersPecs.h"
 #include "globals/UBGlobals.h"
-#include "gui/UBFeaturesWidget.h"
+//#include "gui/UBFeaturesWidget.h"
 
 const char *UBFoldersPecs::objNamePathList = "PathList";
 const char *UBFoldersPecs::objNameFeatureList = "FeatureList";
@@ -85,7 +85,7 @@ void UBFoldersPecs::currentSelected(const QModelIndex &current)
            controller->siftElements(newPath);
 
            centralWidget->switchTo(UBFeaturesCentralWidget::MainList);
-
+      /*
            if ( feature.getType() == FEATURE_FAVORITE ) {
                //mActionBar->setCurrentState( IN_FAVORITE );
 
@@ -107,7 +107,7 @@ void UBFoldersPecs::currentSelected(const QModelIndex &current)
            } else  {
                //mActionBar->setCurrentState(IN_FOLDER);
            }
-
+      */
    //    } else if (feature.getType() == FEATURE_SEARCH) {
    //        centralWidget->showElement(feature, UBFeaturesCentralWidget::FeaturesWebView);
 

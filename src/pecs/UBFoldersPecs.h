@@ -5,7 +5,7 @@
 #include "board/UBFeaturesController.h"
 #include <QVBoxLayout>
 #include "gui/UBFeaturesActionBar.h"
-#include "gui/UBFeaturesWidget.h"
+//#include "gui/UBFeaturesWidget.h"
 #include "UBFeaturesFoldersPecsController.h"
 /*
  *
@@ -14,10 +14,11 @@
  */
 
 
-class UBFoldersPecsCentralWidget;
+//class UBFoldersPecsCentralWidget;
 
 class UBFoldersPecs : public UBDockPaletteWidget
 {
+    Q_OBJECT
 public:
     UBFoldersPecs(QWidget* parent=0, const char* name="UBFoldersPecs");
     ~UBFoldersPecs();

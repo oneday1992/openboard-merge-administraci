@@ -46,6 +46,11 @@ UBPecs::UBPecs(const QPixmap &pixmap, QGraphicsItem *parent, Qt::GlobalColor col
 
 }
 
+UBPecs::~UBPecs()
+{
+   qWarning()<<"Destructor Picto";
+}
+
 //Pinto el borde del picto con el color elegido
 void UBPecs::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {

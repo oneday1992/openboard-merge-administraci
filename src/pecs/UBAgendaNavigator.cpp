@@ -41,6 +41,7 @@ UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphic
 
 UBAgendaNavigator::~UBAgendaNavigator()
 {
+   qWarning()<<"Destructor UBAgendaNavigator";
     if(NULL != mScene)
     {
         delete mScene;

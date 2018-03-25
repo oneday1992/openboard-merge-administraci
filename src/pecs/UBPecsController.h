@@ -31,6 +31,7 @@
 
 #include <QObject>
 #include "core/UBApplicationController.h"
+#include "UBAgenda.h"
 
 /*namespace Ui
 {
@@ -61,7 +62,7 @@ class UBPecsController : public QObject
         QHBoxLayout *mControlLayout;
 
         QGraphicsView *mCentralView;
-
+        UBAgenda *agenda;
     private slots:
 
 

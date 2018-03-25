@@ -44,6 +44,7 @@ class UBPecs : public QGraphicsPixmapItem
 public:
  //   UBPecs(const QPixmap &pixmap, QGraphicsItem *parent = 0, QGraphicsScene *scene=0);
     UBPecs(const QPixmap &pixmap, QGraphicsItem *parent = 0, Qt::GlobalColor color=Qt::red, QGraphicsScene *scene=0);
+    ~UBPecs();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);

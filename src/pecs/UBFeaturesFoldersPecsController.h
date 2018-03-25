@@ -15,7 +15,7 @@
 class UBFeaturesFoldersPecsController : public QObject
 {
 
-    friend class UBFeaturesWidget;
+    //friend class UBFeaturesWidget;
     friend class UBFoldersPecs;
 
     Q_OBJECT

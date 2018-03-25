@@ -63,6 +63,8 @@ UBPecsController::~UBPecsController()
     /*if (mPecsUI)
         delete mPecsUI;
      */
+    if (agenda)
+        delete agenda;
 }
 
 
@@ -116,7 +118,8 @@ void UBPecsController::setupViews()
        //UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBFoldersPecs *carpetasPecs = new UBFoldersPecs(); //Reimplementacion de UBFeaturesWidget en UBFoldersPecs
 
-        UBAgenda *agenda = new UBAgenda();
+        //UBAgenda *agenda = new UBAgenda();
+        agenda = new UBAgenda();
 
         UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
         paletaCarpetaPecs->registerWidget(carpetasPecs);

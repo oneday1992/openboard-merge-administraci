@@ -55,6 +55,7 @@ UBAgenda::UBAgenda(QWidget *parent, const char *name) : UBDockPaletteWidget(pare
 
 UBAgenda::~UBAgenda()
 {
+    qWarning()<<"Destructor de UBAgenda";
     //Destructor
     if(NULL != mNavigator)
     {
