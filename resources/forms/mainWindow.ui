@@ -2360,6 +2360,22 @@
     <string>Save Document</string>
    </property>
   </action>
+  <action name="actionOCR">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../OpenBoard.qrc">
+     <normaloff>:/images/stylusPalette/ocr.png</normaloff>
+     <normalon>:/images/stylusPalette/ocrON.png</normalon>:/images/stylusPalette/ocr.png</iconset>
+   </property>
+   <property name="text">
+    <string>OCR</string>
+   </property>
+   <property name="toolTip">
+    <string>Convert Image to Text</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../OpenBoard.qrc"/>

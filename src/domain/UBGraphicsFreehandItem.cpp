@@ -68,6 +68,7 @@ void UBGraphicsFreehandItem::copyItemParameters(UBItem *copy) const
                 cp->Delegate()->setAction(Delegate()->action());
         }
 
+
         cp->setBrush(brush());
         cp->setPen(pen());
 

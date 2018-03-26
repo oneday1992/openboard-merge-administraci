@@ -1,6 +1,7 @@
 #include "UBAbstractGraphicsItem.h"
 #include "UBGraphicsItemDelegate.h"
 #include "UBGraphicsDelegateFrame.h"
+#include "board/UBDrawingController.h"
 #include "customWidgets/UBGraphicsItemAction.h"
 
 UBAbstractGraphicsItem::UBAbstractGraphicsItem(QGraphicsItem *parent):
@@ -16,6 +17,7 @@ UBAbstractGraphicsItem::UBAbstractGraphicsItem(QGraphicsItem *parent):
     Delegate()->setCanTrigAnAction(true);
     Delegate()->setHorizontalMirror(true);
     Delegate()->setVerticalMirror(true);
+
     /*Delegate()->frame()->setOperationMode(UBGraphicsDelegateFrame::NoResizing);*/
 
     setUuid(QUuid::createUuid());
@@ -274,10 +276,11 @@ void UBAbstractGraphicsItem::copyItemParameters(UBItem *copy) const
         if(Delegate()->action()->linkType() == eLinkToAudio){
             UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(Delegate()->action());
             UBGraphicsItemPlayAudioAction* action = new UBGraphicsItemPlayAudioAction(audioAction->fullPath());
-            cp->Delegate()->setAction(action);
+            cp->Delegate()->setAction(action);            
         }
         else
             cp->Delegate()->setAction(Delegate()->action());
+
     }
 
     cp->setBrush(brush());

@@ -340,7 +340,7 @@ void UBGraphicsItemDelegate::postpaint(QPainter *painter, const QStyleOptionGrap
         painter->setBrush(QColor(0x88, 0x88, 0x88, 0x77));
         painter->drawRect(option->rect);
 
-        painter->restore();
+        painter->restore();        
     }
 }
 
@@ -757,6 +757,7 @@ void UBGraphicsItemDelegate::onReturnToCreationModeClicked()
 
 void UBGraphicsItemDelegate::saveAction(UBGraphicsItemAction* action)
 {
+    QString tooltip;
     mAction = action;
     mMenu->removeAction(mShowPanelToAddAnAction);
     QString actionLabel;
@@ -765,23 +766,33 @@ void UBGraphicsItemDelegate::saveAction(UBGraphicsItemAction* action)
         actionLabel= tr("Remove link to audio");
         UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(action);
         connect(mDeleteButton,SIGNAL(clicked()),audioAction,SLOT(onSourceHide()));
+        tooltip="<audio>"; // 26/03/2018 -- OpenBoard -- tooltip ACTION
         break;
     }
-    case eLinkToPage:
+    case eLinkToPage:{
         actionLabel = tr("Remove link to page");
+        UBGraphicsItemMoveToPageAction* pageAction = dynamic_cast<UBGraphicsItemMoveToPageAction*>(action); // 26/03/2018 -- OpenBoard -- tooltip ACTION
+        tooltip="To page: "+pageAction->page(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
         break;
-    case eLinkToWebUrl:
+    }
+    case eLinkToWebUrl:{
         actionLabel = tr("Remove link to web url");
+        UBGraphicsItemLinkToWebPageAction* urlAction = dynamic_cast<UBGraphicsItemLinkToWebPageAction*>(action); // 26/03/2018 -- OpenBoard -- tooltip ACTION
+        tooltip=urlAction->url(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
+        break;
+    }
     default:
         break;
     }
 
+    delegated()->setToolTip(tooltip); // 26/03/2018 -- OpenBoard -- tooltip ACTION
     mRemoveAnAction = mMenu->addAction(actionLabel,this,SLOT(onRemoveActionClicked()));
     mMenu->addAction(mRemoveAnAction);
 }
 
 void UBGraphicsItemDelegate::onRemoveActionClicked()
 {
+    qWarning()<<"RemoveAction";
     if(mAction){
         mAction->actionRemoved();
         delete mAction;
@@ -791,6 +802,7 @@ void UBGraphicsItemDelegate::onRemoveActionClicked()
         mMenu->removeAction(mRemoveAnAction);
         mMenu->addAction(mShowPanelToAddAnAction);
     }
+    delegated()->setToolTip(0); // 26/03/2018 -- OpenBoard -- tooltip ACTION
 }
 
 void UBGraphicsItemDelegate::updateMenuActionState()
@@ -956,7 +968,7 @@ void UBGraphicsItemDelegate::setAction(UBGraphicsItemAction* action)
     if(!action)
         onRemoveActionClicked();
     else
-    {
+    {        
         setCanTrigAnAction(true);
         if(!mMenu){
             //TODO claudio
@@ -1024,7 +1036,7 @@ void UBGraphicsToolBarItem::paint(QPainter *painter, const QStyleOptionGraphicsI
     QPainterPath path;
     path.addRoundedRect(rect(), 10, 10);
 
-    setBrush(QBrush(UBSettings::paletteColor));
+    setBrush(QBrush(UBSettings::paletteColor));    
 
     painter->fillPath(path, brush());
 }

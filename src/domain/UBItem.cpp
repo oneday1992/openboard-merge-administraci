@@ -56,6 +56,7 @@ UBItem::UBItem()
     , mRenderingQuality(UBItem::RenderingQualityNormal)
 {
     // NOOP
+
 }
 
 UBItem::~UBItem()

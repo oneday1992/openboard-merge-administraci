@@ -78,8 +78,9 @@ void UBGraphicsGroupContainerItem::addToGroup(QGraphicsItem *item, bool removeAc
 
     // Issue 13/03/2018 - OpenBoard - Custom Widget.
     UBGraphicsItem* ubGraphics = dynamic_cast<UBGraphicsItem*>(item);
-    if(ubGraphics && ubGraphics->Delegate() && removeAction)
+    if(ubGraphics && ubGraphics->Delegate() && removeAction){
         ubGraphics->Delegate()->setAction(0);
+    }
 
     //Check if group is allready rotatable or flippable
     if (childItems().count()) {

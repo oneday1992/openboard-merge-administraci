@@ -511,5 +511,7 @@
         <file>images/textEditor/collapse.svg</file>
         <file>images/textEditor/expand.svg</file>
         <file>images/toolbar/floppy.png</file>
+        <file>images/stylusPalette/ocr.png</file>
+        <file>images/stylusPalette/ocrON.png</file>
     </qresource>
 </RCC>

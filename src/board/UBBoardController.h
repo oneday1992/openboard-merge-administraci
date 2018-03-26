@@ -41,6 +41,12 @@
 #include "core/UBApplicationController.h"
 #include "domain/UBShapeFactory.h"
 
+// Issue 22/03/2018 - OpenBoard - OCR recognition
+// Required to perform the OCR
+#include <tesseract/baseapi.h>
+#include <leptonica/allheaders.h>
+// ---
+
 class UBMainWindow;
 class UBApplication;
 class UBBoardView;
@@ -253,6 +259,11 @@ class UBBoardController : public UBDocumentContainer
         void setWidePageSize(bool checked);
         void setRegularPageSize(bool checked);
         void stylusToolChanged(int tool);
+
+        // Issue 22/03/2018 - OpenBoard - OCR recognition
+        PIX* qImage2PIX(const QImage &qImage);// Custom function to transform a QImage into a PIX: Qimage->Pix
+        void ocrRecognition(const QRectF& pSceneRect); // Method to pick a snapshot and apply an OCR procedure to save the TEXT returned in the clipboard
+
         void grabScene(const QRectF& pSceneRect);
         UBGraphicsMediaItem* addVideo(const QUrl& pUrl, bool startPlay, const QPointF& pos, bool bUseSource = false);
         UBGraphicsMediaItem* addAudio(const QUrl& pUrl, bool startPlay, const QPointF& pos, bool bUseSource = false);

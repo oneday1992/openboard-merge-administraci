@@ -108,6 +108,8 @@ class UBDrawingController : public QObject
         void textToolSelected(bool checked);
         void richTextToolSelected(bool checked);
         void captureToolSelected(bool checked);
+        // Issue 22/03/2018 - OpenBoard - OCR recognition
+        void ocrToolSelected(bool checked);
 };
 
 #endif /* UBDRAWINGCONTROLLER_H_ */

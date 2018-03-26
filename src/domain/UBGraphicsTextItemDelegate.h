@@ -64,6 +64,8 @@ class UBGraphicsTextItemDelegate : public UBGraphicsItemDelegate
         void buildButtonsReduced();
         // END Issue
 
+
+
         void changeDelegateButtonsMode(bool htmlMode);
 
     public slots:

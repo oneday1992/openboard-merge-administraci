@@ -121,6 +121,8 @@ win32 {
    LIBS += -lGdi32
    LIBS += -lAdvApi32
    LIBS += -lOle32
+   LIBS += -llept
+   LIBS += -ltesseract
 
    RC_FILE = resources/win/OpenBoard.rc
    CONFIG += axcontainer
@@ -129,6 +131,11 @@ win32 {
    QMAKE_CXXFLAGS += /MD
    QMAKE_CXXFLAGS_RELEASE += /Od /Zi
    QMAKE_LFLAGS += /VERBOSE:LIB
+
+    QMAKE_CFLAGS += -std=c++11
+    QMAKE_CXXFLAGS += -std=c++11
+    QMAKE_LFLAGS += -std=c++11
+
    UB_LIBRARY.path = $$DESTDIR
    UB_I18N.path = $$DESTDIR/i18n
    UB_ETC.path = $$DESTDIR
@@ -163,6 +170,8 @@ macx {
    LIBS += -framework AVFoundation
    LIBS += -framework CoreMedia
    LIBS += -lcrypto
+   LIBS += -llept
+   LIBS += -ltesseract
 
    CONFIG(release, debug|release):CONFIG += x86_64
    CONFIG(debug, debug|release):CONFIG += x86_64
@@ -183,6 +192,10 @@ macx {
    QMAKE_CXXFLAGS_RELEASE += -gdwarf-2 \
        -mdynamic-no-pic
 
+
+    QMAKE_CFLAGS += -std=c++11
+    QMAKE_CXXFLAGS += -std=c++11
+    QMAKE_LFLAGS += -std=c++11
 #    QMAKE_CFLAGS += -fopenmp
  #   QMAKE_CXXFLAGS += -fopenmp
   #  QMAKE_LFLAGS += -fopenmp
@@ -402,11 +415,18 @@ macx {
 linux-g++* {
     CONFIG += link_prl
     LIBS += -lcrypto
+    LIBS += -llept
+    LIBS += -ltesseract
     #LIBS += -lprofiler
     LIBS += -lX11
     QMAKE_CFLAGS += -fopenmp
     QMAKE_CXXFLAGS += -fopenmp
     QMAKE_LFLAGS += -fopenmp
+
+    QMAKE_CFLAGS += -std=c++11
+    QMAKE_CXXFLAGS += -std=c++11
+    QMAKE_LFLAGS += -std=c++11
+
     UB_LIBRARY.path = $$DESTDIR
     UB_I18N.path = $$DESTDIR/i18n
     UB_ETC.path = $$DESTDIR

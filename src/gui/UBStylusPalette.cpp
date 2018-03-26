@@ -66,6 +66,9 @@ UBStylusPalette::UBStylusPalette(QWidget *parent, Qt::Orientation orient)
 
     actions << UBApplication::mainWindow->actionCapture;
 
+    // Issue 22/03/2018 - OpenBoard - OCR recognition
+    actions << UBApplication::mainWindow->actionOCR;
+
     if(UBPlatformUtils::hasVirtualKeyboard())
         actions << UBApplication::mainWindow->actionVirtualKeyboard;
 

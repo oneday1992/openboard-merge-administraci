@@ -36,7 +36,7 @@
 UBGraphicsItemAction::UBGraphicsItemAction(eUBGraphicsItemLinkType linkType, QObject *parent):
     QObject(parent)
 {
-    mLinkType = linkType;
+    mLinkType = linkType;    
 }
 
  void UBGraphicsItemAction::actionRemoved()
@@ -72,6 +72,9 @@ UBGraphicsItemPlayAudioAction::UBGraphicsItemPlayAudioAction(QString audioFile, 
         mFullPath = mAudioPath;
     }
 
+    mMediaObject = new QMediaPlayer(this);
+    mMediaObject->setMedia(QUrl(audioFile));
+
     /*mAudioOutput = new Phonon::AudioOutput(Phonon::MusicCategory, this);
     mMediaObject = new Phonon::MediaObject(this);
     Phonon::createPath(mMediaObject, mAudioOutput);
@@ -92,6 +95,8 @@ void UBGraphicsItemPlayAudioAction::setPath(QString audioPath)
     Q_ASSERT(audioPath.length() > 0);
     mAudioPath = audioPath;
     mFullPath = mAudioPath;
+    mMediaObject = new QMediaPlayer(this);
+    mMediaObject->setMedia(QUrl(audioPath));
     /*mAudioOutput = new Phonon::AudioOutput(Phonon::MusicCategory, this);
     mMediaObject = new Phonon::MediaObject(this);
     Phonon::createPath(mMediaObject, mAudioOutput);
@@ -105,24 +110,26 @@ QString UBGraphicsItemPlayAudioAction::fullPath()
 
 UBGraphicsItemPlayAudioAction::~UBGraphicsItemPlayAudioAction()
 {
-    /*if(!mMediaObject && mMediaObject->state() == Phonon::PlayingState)
-        mMediaObject->stop();*/
+    if(mMediaObject && mMediaObject->state() == QMediaPlayer::PlayingState)
+        mMediaObject->stop();
 }
 
 void UBGraphicsItemPlayAudioAction::onSourceHide()
 {
-    /*if(mMediaObject && mMediaObject->state() == Phonon::PlayingState){
+    if(mMediaObject && mMediaObject->state() == QMediaPlayer::PlayingState){
         mMediaObject->stop();
-    }*/
+    }
 }
 
 void UBGraphicsItemPlayAudioAction::play()
 {
-    /*if(mMediaObject->state() == Phonon::PlayingState){
+    if(mMediaObject->state() == QMediaPlayer::PlayingState){
         mMediaObject->stop();
     }
-    mMediaObject->seek(0);
-    mMediaObject->play();*/
+    else{
+        //mMediaObject->seek(0);
+        mMediaObject->play();
+    }
 }
 
 

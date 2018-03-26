@@ -112,6 +112,9 @@ UBBoardView::UBBoardView (UBBoardController* pController, QWidget* pParent, bool
     mEndLayer = UBItemLayerType::Control;
     */
 
+    // Issue 23/03/2018 - OpenBoard - Highlight ACTION attached to ITEMS
+    setMouseTracking(true);
+    viewport()->setMouseTracking(true);
 
     mLongPressTimer.setInterval(mLongPressInterval);
     mLongPressTimer.setSingleShot(true);
@@ -590,6 +593,7 @@ bool UBBoardView::itemHaveParentWithType(QGraphicsItem *item, int type)
 
 bool UBBoardView::isUBItem(QGraphicsItem *item)
 {
+
     if ((UBGraphicsItemType::UserTypesCount > item->type()) && (item->type() > QGraphicsItem::UserType))
         return true;
 
@@ -1272,6 +1276,7 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             }
         } break;
 
+        case UBStylusTool::OCR : // Issue 22/03/2018 - OpenBoard - OCR recognition
         case UBStylusTool::Capture :
             scene ()->deselectAllItems ();
 
@@ -1397,7 +1402,7 @@ UBBoardView::mouseMoveEvent (QMouseEvent *event)
   {
       QGraphicsView::mouseMoveEvent (event);
   }
-  else if (currentTool == UBStylusTool::Text || currentTool == UBStylusTool::Capture)
+  else if (currentTool == UBStylusTool::Text || currentTool == UBStylusTool::Capture || currentTool == UBStylusTool::OCR ) // Issue 22/03/2018 - OpenBoard - OCR recognition
     {
       if (mRubberBand && (mIsCreatingTextZone || mIsCreatingSceneGrabZone))
         {
@@ -1491,7 +1496,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
                                     bReleaseIsNeed = true;
 
                                 UBGraphicsTextItem* textItem = dynamic_cast<UBGraphicsTextItem*>(movingItem);
-                                UBGraphicsMediaItem* movieItem = dynamic_cast<UBGraphicsMediaItem*>(movingItem);
+                                UBGraphicsMediaItem* movieItem = dynamic_cast<UBGraphicsMediaItem*>(movingItem);                                
                                 if(textItem)
                                     textItem->setSelected(true);
                                 else if(movieItem)
@@ -1513,6 +1518,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
     }
     else if (currentTool == UBStylusTool::Text)
     {
+        qWarning("Text");
         UBGraphicsItem *graphicsItem = dynamic_cast<UBGraphicsItem*>(movingItem);
         if (graphicsItem)
             graphicsItem->Delegate()->commitUndoStep();
@@ -1587,6 +1593,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
         }
     }
     else if (currentTool == UBStylusTool::Play) {
+        qWarning("Play");
         if (bIsDesktop) {
             event->ignore();
             return;
@@ -1607,9 +1614,9 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
         }
         QGraphicsView::mouseReleaseEvent (event);
     }
-    else if (currentTool == UBStylusTool::Capture)
+    else if ( (currentTool == UBStylusTool::Capture) || (currentTool == UBStylusTool::OCR) ) // Issue 22/03/2018 - OpenBoard - OCR recognition
     {
-
+        qWarning()<<"Capture";
         if (scene () && mRubberBand && mIsCreatingSceneGrabZone && mRubberBand->geometry ().width () > 16)
         {
             QRect rect = mRubberBand->geometry ();
@@ -1617,7 +1624,10 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
             QPointF sceneBottomRight = mapToScene (rect.bottomRight ());
             QRectF sceneRect (sceneTopLeft, sceneBottomRight);
 
-            mController->grabScene (sceneRect);
+            if (currentTool == UBStylusTool::OCR)
+                mController->ocrRecognition (sceneRect);
+            else
+                mController->grabScene (sceneRect);
 
             event->accept ();
         }
@@ -1630,6 +1640,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
     }
     else
     {
+        qWarning()<<"here we are...";
         if (mPendingStylusReleaseEvent || mMouseButtonIsPressed)
         {
             event->accept ();
@@ -1942,6 +1953,9 @@ void UBBoardView::setToolCursor (int tool)
         controlViewport->setCursor (UBResources::resources ()->textCursor);
         break;
     case UBStylusTool::Capture:
+        controlViewport->setCursor (UBResources::resources ()->penCursor);
+        break;
+    case UBStylusTool::OCR: // Issue 22/03/2018 - OpenBoard - OCR recognition
         controlViewport->setCursor (UBResources::resources ()->penCursor);
         break;
     default:

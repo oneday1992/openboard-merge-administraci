@@ -89,6 +89,11 @@
 
 #include "core/memcheck.h"
 
+// Issue 22/03/2018 - OpenBoard - OCR recognition
+// Required to perform the OCR
+#include <tesseract/baseapi.h>
+#include <leptonica/allheaders.h>
+// ---
 
 #include "customWidgets/UBGraphicsItemAction.h"
 
@@ -723,6 +728,7 @@ UBGraphicsItem *UBBoardController::duplicateItem(UBItem *item)
 
         // Issue 13/03/2018 - OpenBoard - Custom Widget.
         UBGraphicsItemAction * pAction = groupItem->Delegate()->action();
+        QString tooltip;
         if(NULL != pAction){
             UBGraphicsItemAction* pNewAction = NULL;
             switch(pAction->linkType()){
@@ -734,15 +740,17 @@ UBGraphicsItem *UBBoardController::duplicateItem(UBItem *item)
                 case eLinkToPage:
                 {
                     UBGraphicsItemMoveToPageAction* pLinkAct = dynamic_cast<UBGraphicsItemMoveToPageAction*>(pAction);
-                    if(NULL != pLinkAct)
+                    if(NULL != pLinkAct){
                         pNewAction = new UBGraphicsItemMoveToPageAction(pLinkAct->actionType(), pLinkAct->page());
+                    }
                 }
                     break;
                 case eLinkToWebUrl:
                 {
                     UBGraphicsItemLinkToWebPageAction* pWebAction = dynamic_cast<UBGraphicsItemLinkToWebPageAction*>(pAction);
-                    if(NULL != pWebAction)
+                    if(NULL != pWebAction){
                         pNewAction = new UBGraphicsItemLinkToWebPageAction(pWebAction->url());
+                    }
                 }
                     break;
             }
@@ -2276,6 +2284,71 @@ QUrl UBBoardController::expandWidgetToTempDir(const QByteArray& pZipedData, cons
 }
 
 
+// Issue 22/03/2018 - OpenBoard - OCR recognition
+// Custom function to transform a QImage into a PIX: Qimage->Pix (taken from
+PIX* UBBoardController::qImage2PIX(const QImage& qImage) {
+     QByteArray ba;
+     QBuffer buffer(&ba);
+     buffer.open(QIODevice::WriteOnly);
+     qImage.save(&buffer, "PNG"); // writes image into ba in PNG format
+     return pixReadMem((uchar*)ba.constData(),ba.size());
+}
+
+// Issue 22/03/2018 - OpenBoard - OCR recognition
+// Method to pick a snapshot and apply an OCR procedure to save the TEXT returned in the clipboard
+void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
+    qWarning()<<"ocrRecognition";
+    if (mActiveScene)
+    {
+        QImage image(pSceneRect.width(), pSceneRect.height(), QImage::Format_ARGB32);
+        image.fill(Qt::transparent);
+
+        QRectF targetRect(0, 0, pSceneRect.width(), pSceneRect.height());
+        QPainter painter(&image);
+        painter.setRenderHint(QPainter::SmoothPixmapTransform);
+        painter.setRenderHint(QPainter::Antialiasing);
+
+        mActiveScene->setRenderingContext(UBGraphicsScene::NonScreen);
+        mActiveScene->setRenderingQuality(UBItem::RenderingQualityHigh);
+
+        mActiveScene->render(&painter, targetRect, pSceneRect);
+
+        mActiveScene->setRenderingContext(UBGraphicsScene::Screen);
+//        mActiveScene->setRenderingQuality(UBItem::RenderingQualityNormal);
+        mActiveScene->setRenderingQuality(UBItem::RenderingQualityHigh);
+
+        // ----------------------------------------------------------------------- TEST
+        qWarning()<<"OCR recognition: ";
+        tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
+
+        // Initialize tesseract-ocr with Spanish, without specifying tessdata path
+        if (api->Init(NULL, "spa")) {
+            qWarning()<<"Could not initialize tesseract.";
+        }
+
+        // Open input image with leptonica library
+        PIX *PixImage = qImage2PIX(image);
+        api->SetImage(PixImage);
+        // Get OCR result
+        QString outText (api->GetUTF8Text());
+        qWarning()<<"OCR output: "<<outText;
+        if(!outText.isEmpty()){
+            if(outText.length() > 50)
+                UBApplication::showMessage(tr("                         Copied to Clipboard: %1...").arg(outText.left(50)));
+            else
+                UBApplication::showMessage(tr("                         Copied to Clipboard: %1").arg(outText));
+            QApplication::clipboard()->setText(outText);
+        }
+        else{
+            UBApplication::showMessage(tr("                         Nothing Saved!"));
+        }
+        // Destroy used object and release memory
+        api->End();
+        pixDestroy(&PixImage);
+        // -------------------------------------------------------------------
+    }
+}
+
 void UBBoardController::grabScene(const QRectF& pSceneRect)
 {
     if (mActiveScene)
@@ -2297,8 +2370,8 @@ void UBBoardController::grabScene(const QRectF& pSceneRect)
 //        mActiveScene->setRenderingQuality(UBItem::RenderingQualityNormal);
         mActiveScene->setRenderingQuality(UBItem::RenderingQualityHigh);
 
-
         mPaletteManager->addItem(QPixmap::fromImage(image));
+
         selectedDocument()->setMetaData(UBSettings::documentUpdatedAt, UBStringUtils::toUtcIsoDateTime(QDateTime::currentDateTime()));
     }
 }

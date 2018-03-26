@@ -77,6 +77,9 @@ UBDrawingController::UBDrawingController(QObject * parent)
     //connect(UBApplication::mainWindow->actionRichTextEditor, SIGNAL(triggered(bool)), this, SLOT(richTextToolSelected(bool))); ALTI/AOU - 20140606 : RichTextEditor tool isn't available anymore.
     connect(UBApplication::mainWindow->actionCapture, SIGNAL(triggered(bool)), this, SLOT(captureToolSelected(bool)));
 
+    // Issue 22/03/2018 - OpenBoard - OCR recognition
+    connect(UBApplication::mainWindow->actionOCR, SIGNAL(triggered(bool)), this, SLOT(ocrToolSelected(bool)));
+
     //EV-7 - NNE - 20140210 : Maybe is no the right place to do this...
     connect(UBApplication::boardController, SIGNAL(activeSceneChanged()), this, SLOT(onActiveSceneChanged()));
 }
@@ -167,6 +170,10 @@ void UBDrawingController::setStylusTool(int tool)
         */
         else if (mStylusTool == UBStylusTool::Capture)
             UBApplication::mainWindow->actionCapture->setChecked(true);
+
+        // Issue 22/03/2018 - OpenBoard - OCR recognition
+        else if (mStylusTool == UBStylusTool::OCR)
+            UBApplication::mainWindow->actionOCR->setChecked(true);
 
         if(mStylusTool != UBStylusTool::Drawing){            
             UBApplication::boardController->shapeFactory().desactivate();
@@ -487,3 +494,9 @@ void UBDrawingController::captureToolSelected(bool checked)
         setStylusTool(UBStylusTool::Capture);
 }
 
+// Issue 22/03/2018 - OpenBoard - OCR recognition
+void UBDrawingController::ocrToolSelected(bool checked)
+{
+    if (checked)
+        setStylusTool(UBStylusTool::OCR);
+}

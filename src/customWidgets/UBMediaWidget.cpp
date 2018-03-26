@@ -142,7 +142,7 @@ void UBMediaWidget::showEvent(QShowEvent* event)
 
 void UBMediaWidget::hideEvent(QHideEvent* event)
 {
-    /*if(mpMediaObject->state() == Phonon::PlayingState)
+    /*if(mpMediaObject->state() == QMediaPlayer::PlayingState)
         mpMediaObject->stop();*/
     UBActionableWidget::hideEvent(event);
 }

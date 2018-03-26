@@ -25,6 +25,7 @@
 #define UBGRAPHICSITEMSACTIONS_H
 
 #include <QObject>
+#include <QMediaPlayer>
 /*#include <phonon>*/
 
 
@@ -85,6 +86,8 @@ private:
     QString mAudioPath;
     /*Phonon::MediaObject *mMediaObject;
     Phonon::AudioOutput *mAudioOutput;*/
+    QMediaPlayer *mMediaObject;
+
     bool mIsLoading;
     QString mFullPath;
 };
