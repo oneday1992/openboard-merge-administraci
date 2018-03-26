@@ -2,12 +2,15 @@
 #define UBCOMMUNICATIONLINE_H
 
 #include <QWidget>
+#include <QLabel>
+#include <QFrame>
 
 class UBCommunicationLine : public QWidget
 {
     Q_OBJECT
 public:
     explicit UBCommunicationLine(QWidget *parent = 0);
+    //explicit UBCreateLinkLabel(QString labelText, QWidget* parent = 0);
     //retorna el alto de la pantalla
     // returns the height of the screen
     int screenHeight ();

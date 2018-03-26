@@ -132,11 +132,7 @@ void UBPecsController::setupViews()
 
          //      lineaComunicacion->setGeometry(0,0,300,300); //linea de geometria para hacer pruebas
 
-        //Paleta selección de Pecs de la izquierda
-        //Paleta de agenda de la derecha
 
-        UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
-        UBAgenda *agenda = new UBAgenda();
        //Paleta selección de Pecs de la izquierda
        //Paleta de agenda de la derecha
        //UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();

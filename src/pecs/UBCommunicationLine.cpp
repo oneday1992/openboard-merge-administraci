@@ -5,6 +5,9 @@
 #include "UBCommunicationLine.h"
 #include "core/UBApplication.h"
 #include "gui/UBFeaturesWidget.h"
+#include <QLabel>
+#include <QFrame>
+#include "gui/UBCreateLinkPalette.h"
 
 
 
@@ -49,11 +52,21 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     //pintamos el recuadro grande
     painter.drawRoundedRect(calculateX(1,20), calculateY(60),calculateWidth(1,-80),calculateHeight(30),10,10 );
     QPainterPath path;
+    QPainterPath path2;
     path.setFillRule(Qt::WindingFill);
+
 
     //pintamos el recuadro de relleno
     path.addRoundedRect(calculateX(1,20)+border(),calculateY(60)+border(),calculateWidth(1,-120),calculateHeight(30,-40),10,10);
     painter.drawPath(path);
+
+    //pintamos el cuadro de drag and drop
+    painter.setPen(Qt::DotLine);
+    path2.addRoundedRect(calculateX(1,20)+border()+border(),calculateY(60)+border()+border(),calculateWidth(1,-160),calculateHeight(30,-80),10,10);
+    painter.drawPath(path2);
+   // UBCreateLinkPalette * label=new UBCreateLinkPalette(this);
+   // label->show();
+
 
 
 }
@@ -107,3 +120,5 @@ int UBCommunicationLine::screenWidth()
 {
     return QApplication::desktop()->screenGeometry().width();
 }
+
+
