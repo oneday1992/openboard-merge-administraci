@@ -37,6 +37,7 @@
 #include "gui/UBDockPaletteWidget.h"
 #include "UBAgenda.h"
 #include "UBCommunicationLine.h"
+#include "UBFoldersPecs.h"
 #include <QLayout>
 
 #include "board/UBBoardView.h"
@@ -64,6 +65,8 @@ UBPecsController::~UBPecsController()
     /*if (mPecsUI)
         delete mPecsUI;
      */
+    if (agenda)
+        delete agenda;
 }
 
 
@@ -103,7 +106,7 @@ void UBPecsController::setupViews()
         QGraphicsScene *mScene = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mScene);
         QPixmap pix = QPixmap(":pecs/10236.png");
-        UBPecs *picto = new UBPecs(pix,0,Qt::blue);
+        UBPecs *picto = new UBPecs(pix,0,Qt::blue, mScene);
         mScene->addItem(picto);
 
         // Fin Escena
@@ -134,6 +137,13 @@ void UBPecsController::setupViews()
 
         UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBAgenda *agenda = new UBAgenda();
+       //Paleta selección de Pecs de la izquierda
+       //Paleta de agenda de la derecha
+       //UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
+        UBFoldersPecs *carpetasPecs = new UBFoldersPecs(); //Reimplementacion de UBFeaturesWidget en UBFoldersPecs
+
+        //UBAgenda *agenda = new UBAgenda();
+        agenda = new UBAgenda();
 
         UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
      //   paletaCarpetaPecs->registerWidget(carpetasPecs);
