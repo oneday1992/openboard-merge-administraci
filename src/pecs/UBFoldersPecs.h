@@ -5,7 +5,7 @@
 #include "board/UBFeaturesController.h"
 #include <QVBoxLayout>
 #include "gui/UBFeaturesActionBar.h"
-//#include "gui/UBFeaturesWidget.h"
+#include "gui/UBFeaturesWidget.h"
 #include "UBFeaturesFoldersPecsController.h"
 /*
  *

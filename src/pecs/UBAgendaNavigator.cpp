@@ -26,6 +26,11 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "UBAgendaNavigator.h"
+#include "domain/UBGraphicsWidgetItem.h"
+#include "gui/UBThumbnailWidget.h"
+#include <QWebView>
+#include <QList>
+#include <QUrl>
 
 UBAgendaNavigator::UBAgendaNavigator(QWidget *parent, const char *name):QGraphicsView(parent)
   , mScene(NULL)
@@ -52,7 +57,37 @@ UBAgendaNavigator::~UBAgendaNavigator()
 
 void UBAgendaNavigator::mouseDoubleClickEvent(QMouseEvent *event)
 {
- generateListPecs();
+    generateListPecs();
+}
+
+void UBAgendaNavigator::dropEvent(QDropEvent *event)
+{
+
+
+     QList<QUrl> urls;
+     urls = event->mimeData()->urls();
+     qWarning()<<urls;
+     QList<QUrl>::iterator i;
+     for (i=urls.begin();i!=urls.end();i++){
+         QPixmap pix = QPixmap(i->path());
+         UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
+         //Añado a la lista de Items
+           mPecs.append(picto);
+     }
+     // Draw the items
+     refreshScene();
+
+    //prevent features in UBFeaturesWidget deletion from the model when event is processing inside
+    //Qt base classes
+    if (event->dropAction() == Qt::MoveAction) {
+        event->setDropAction(Qt::CopyAction);
+    }
+}
+
+void UBAgendaNavigator::dragMoveEvent(QDragMoveEvent *event)
+{
+    QGraphicsView::dragMoveEvent(event);
+    event->acceptProposedAction();
 }
 
 void UBAgendaNavigator::refreshScene()

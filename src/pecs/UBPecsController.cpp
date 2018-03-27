@@ -83,7 +83,7 @@ void UBPecsController::show()
 }
 
 void UBPecsController::setupViews()
-{    
+{
     if (!mPecsWidget)
     {
         mPecsWidget = new QWidget(mMainWindow->centralWidget());
@@ -132,16 +132,12 @@ void UBPecsController::setupViews()
 
          //      lineaComunicacion->setGeometry(0,0,300,300); //linea de geometria para hacer pruebas
 
-        //Paleta selección de Pecs de la izquierda
-        //Paleta de agenda de la derecha
 
-        UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
-        UBAgenda *agenda = new UBAgenda();
        //Paleta selección de Pecs de la izquierda
-       //Paleta de agenda de la derecha
        //UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBFoldersPecs *carpetasPecs = new UBFoldersPecs(); //Reimplementacion de UBFeaturesWidget en UBFoldersPecs
 
+        //Paleta de agenda de la derecha
         //UBAgenda *agenda = new UBAgenda();
         agenda = new UBAgenda();
 

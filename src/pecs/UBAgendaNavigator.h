@@ -43,6 +43,10 @@ public:
 
     void mouseDoubleClickEvent(QMouseEvent *event);
 
+protected:
+    virtual void dropEvent(QDropEvent *event);
+    virtual void dragMoveEvent(QDragMoveEvent *event);
+
 private:
     void refreshScene();
 

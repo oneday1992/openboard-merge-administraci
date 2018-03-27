@@ -52,6 +52,7 @@ class UBPecsController : public QObject
 
     protected:
         void setupViews ();
+
     public slots:
 
 
