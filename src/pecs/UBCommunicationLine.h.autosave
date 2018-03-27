@@ -32,7 +32,7 @@ protected:
     /** Overloaded method that manages the drag and drop in the communication line.
     * Metodo sobrecargado que gestiona el drag and drop en la linea de comunicacion.
     */
-     virtual void dragMoveEvent(QDragMoveEvent *event);
+    virtual void dragMoveEvent(QDragMoveEvent *event);
 
 private:
     /** Method that returns an edge
