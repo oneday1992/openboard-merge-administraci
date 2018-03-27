@@ -1,5 +1,6 @@
 #include <QPoint>
 #include <QPointF>
+#include <QList>
 #include <QPainterPath>
 #include <QPainter>
 #include "UBCommunicationLine.h"
@@ -14,7 +15,7 @@
 
 UBCommunicationLine::UBCommunicationLine(QWidget *parent) : QWidget(parent)
 {
-
+setAcceptDrops(true);
 }
 
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
@@ -50,26 +51,27 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     painter.setBrush(mBackgroundBrush);
 
     //pintamos el recuadro grande
-    painter.drawRoundedRect(calculateX(1,20), calculateY(60),calculateWidth(1,-80),calculateHeight(30),10,10 );
+    painter.drawRoundedRect(calculateX(1,20), calculateY(),calculateWidth(1,-50),calculateHeight(1,-20),10,10);
     QPainterPath path;
     path.setFillRule(Qt::WindingFill);
 
 
     //pintamos el recuadro de relleno
-    path.addRoundedRect(calculateX(1,20)+border(),calculateY(60)+border(),calculateWidth(1,-120),calculateHeight(30,-40),10,10);
+    path.addRoundedRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),10,10);
     painter.drawPath(path); 
 
     //pintamos el cuadro de drag and drop
     painter.setPen(Qt::DotLine);
-    int ancho=calculateWidth(1,-160);
+    int ancho=calculateWidth(1,-100);
     int pos=posInit(ancho);
+    QList<QPainterPath*> listPath;
     for (int i=0; i<8; i++)
     {
-        QPainterPath path;
-        path.addRoundedRect(calculateX(1,20)+border()+border()+pos,calculateY(63)+border()+border(),pictoWidth(),pictoHeight(),10,10);
-        painter.drawPath(path);
+        QPainterPath *path =new QPainterPath();
+        path->addRoundedRect(calculateX(1,20)+border()+border()+pos,calculateY(1,20)+border()+border(),pictoWidth(),pictoHeight(),10,10);
+        painter.drawPath(*path);
         pos=pos+pictoWidth()+separatorPicto();
-
+        listPath.append(path);
     }
 }
 
@@ -151,4 +153,9 @@ void UBCommunicationLine::dragMoveEvent(QDragMoveEvent *event)
 {
     QWidget::dragMoveEvent(event);
     event->acceptProposedAction();
+}
+
+void UBCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
+{
+    event->accept();
 }
