@@ -9,13 +9,14 @@
 #include <QLabel>
 #include <QFrame>
 #include "gui/UBCreateLinkPalette.h"
-
-
+#include <QHBoxLayout>
+#include <QWidget>
 
 
 UBCommunicationLine::UBCommunicationLine(QWidget *parent) : QWidget(parent)
 {
-setAcceptDrops(true);
+//setAcceptDrops(true);
+
 }
 
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
@@ -42,6 +43,8 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     painter.drawRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
     */
 
+    //Tenemos que crear un layout horizontal donde añadir cada widget donde se va a alojar cada picto.
+    layout = new QHBoxLayout(this);
 
      //codigo
     QPainter painter(this);
@@ -64,18 +67,24 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     painter.setPen(Qt::DotLine);
     int ancho=calculateWidth(1,-100);
     int pos=posInit(ancho);
-    QList<QPainterPath*> listPath;
+    //Lista donde se añade cada casilla de pictos.
+    //QList<pictoCommunicationLine*> listPath;
+    //Añadida anterior lista como miembro de la clase. Atributo Privado
     for (int i=0; i<8; i++)
     {
-        QPainterPath *path =new QPainterPath();
-        path->addRoundedRect(calculateX(1,20)+border()+border()+pos,calculateY(1,20)+border()+border(),pictoWidth(),pictoHeight(),10,10);
-        painter.drawPath(*path);
+        QPainterPath *qpainter =new QPainterPath();
+        // Cada recuadro sera un widget que contendra un qPainterPath
+        pictoCommunicationLine *path2 =new pictoCommunicationLine(this,qpainter,i);
+
+        layout->addWidget(path2);
+        path2->addRoundedRect(calculateX(1,20)+border()+border()+pos,calculateY(1,20)+border()+border(),pictoWidth(),pictoHeight(),10,10);
+        //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
+        painter.drawPath(path2->path());
         pos=pos+pictoWidth()+separatorPicto();
-        listPath.append(path);
+        listPath.append(path2);
     }
+
 }
-
-
 
 int UBCommunicationLine::border()
 {
@@ -148,7 +157,7 @@ int UBCommunicationLine::screenWidth()
 {
     return QApplication::desktop()->screenGeometry().width();
 }
-
+/*
 void UBCommunicationLine::dragMoveEvent(QDragMoveEvent *event)
 {
     QWidget::dragMoveEvent(event);
@@ -158,4 +167,31 @@ void UBCommunicationLine::dragMoveEvent(QDragMoveEvent *event)
 void UBCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
 {
     event->accept();
+}
+*/
+pictoCommunicationLine::pictoCommunicationLine(QWidget *parent, QPainterPath *mqpainter, int i) : QWidget(parent)
+    ,mQPainterPath(mqpainter)
+    ,numero(i)
+{
+    setAcceptDrops(true);
+
+}
+
+void pictoCommunicationLine::addRoundedRect(int x, int y, int w, int h, int rx, int ry)
+{
+    mQPainterPath->addRoundedRect(x,y,w,h,rx,ry);
+
+}
+
+void pictoCommunicationLine::dragMoveEvent(QDragMoveEvent *event)
+{
+    QWidget::dragMoveEvent(event);
+    event->acceptProposedAction();
+}
+
+void pictoCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
+{
+    qWarning()<<"Picto en casilla: " << numero;
+    event->accept();
+
 }

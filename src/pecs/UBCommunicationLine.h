@@ -4,6 +4,12 @@
 #include <QWidget>
 #include <QLabel>
 #include <QFrame>
+#include <QPainterPath>
+#include <QHBoxLayout>
+#include <QList>
+#include <QPainter>
+
+class pictoCommunicationLine;
 
 class UBCommunicationLine : public QWidget
 {
@@ -32,10 +38,13 @@ protected:
     /** Overloaded method that manages the drag and drop in the communication line.
     * Metodo sobrecargado que gestiona el drag and drop en la linea de comunicacion.
     */
-     virtual void dragMoveEvent(QDragMoveEvent *event);
-    void dragEnterEvent(QDragEnterEvent *event);
+    //void dragMoveEvent(QDragMoveEvent *event);
+    //void dragEnterEvent(QDragEnterEvent *event);
 
 private:
+    QHBoxLayout *layout;
+    QList<pictoCommunicationLine*> listPath;
+
     /** Method that returns an edge
     * Metodo que nos devuelve un borde
     */
@@ -96,5 +105,26 @@ signals:
 
 public slots:
 };
+
+class pictoCommunicationLine : public QWidget
+{
+    Q_OBJECT
+ public:
+     pictoCommunicationLine (QWidget *parent=0, QPainterPath *mqpainter=0, int i=0);
+     //~pictoCommunicationLine();
+
+    void addRoundedRect (int x, int y, int w, int h, int rx, int ry);
+    QPainterPath path(){return *mQPainterPath;}
+ private:
+   int numero;
+   QPainterPath *mQPainterPath;
+
+ protected:
+   void dragMoveEvent(QDragMoveEvent *event);
+   void dragEnterEvent(QDragEnterEvent *event);
+
+};
+
+
 
 #endif // UBCOMMUNICATIONLINE_H
