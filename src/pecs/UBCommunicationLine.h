@@ -2,12 +2,15 @@
 #define UBCOMMUNICATIONLINE_H
 
 #include <QWidget>
+#include <QLabel>
+#include <QFrame>
 
 class UBCommunicationLine : public QWidget
 {
     Q_OBJECT
 public:
     explicit UBCommunicationLine(QWidget *parent = 0);
+    //explicit UBCreateLinkLabel(QString labelText, QWidget* parent = 0);
     //retorna el alto de la pantalla
     // returns the height of the screen
     int screenHeight ();
@@ -20,10 +23,17 @@ protected:
     * Metodo sobrecargado que pinta un evento
     */
     void paintEvent(QPaintEvent * e);
+
     /** The current background brush
     * El pincel de fondo actual
     */
     QBrush mBackgroundBrush;
+
+    /** Overloaded method that manages the drag and drop in the communication line.
+    * Metodo sobrecargado que gestiona el drag and drop en la linea de comunicacion.
+    */
+     virtual void dragMoveEvent(QDragMoveEvent *event);
+    void dragEnterEvent(QDragEnterEvent *event);
 
 private:
     /** Method that returns an edge
@@ -54,6 +64,32 @@ private:
      * por defecto si no se pasa ningun parametro sera 1 que significa que es el alto de la ventana
      */
     int calculateHeight(double percent=1, int displaced =0);
+
+
+    /**
+     * Method that returns in standard width of a pictogram.
+     * Metodo que devuelve en ancho estandar de un pictograma.
+     */
+    int pictoWidth ();
+
+    /**
+     * Method that returns in standard height of a pictogram.
+     * Metodo que devuelve el alto estandar de un pictograma.
+     */
+    int pictoHeight ();
+
+    /**
+     * Method that returns the standard separation between pictogram.
+     * Metodo que devuelve la separacion estandar entre pictograma.
+     */
+    int separatorPicto ();
+
+    /**
+     * Method that calculates the starting position where to place the pictograms in the communication line.
+     * Metodo que calcula la posicion de inicio donde colocar los pictogramas en la linea de comunicacion.
+     */
+    int posInit (int ancho);
+
 
 
 signals:

@@ -121,7 +121,11 @@ void UBPecsController::setupViews()
         QGraphicsScene *mSceneCommunication = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mSceneCommunication);
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
-        lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
+       int y=lineaComunicacion->screenHeight()*0.30;
+       int ancho= lineaComunicacion->screenWidth()-40;
+       int alto =lineaComunicacion->screenWidth()*0.30;
+        lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
+     //   lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
         mSceneCommunication->addWidget(lineaComunicacion);
         // Fin Escena
 
