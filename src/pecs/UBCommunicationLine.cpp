@@ -66,6 +66,11 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     path.addRoundedRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),10,10);
     painter.drawPath(path); 
 
+    mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
+    qWarning()<< calculateX(1,20)+border() << calculateY()+border() << calculateWidth(1,-90) << calculateHeight(1,-60);
+    layout->setGeometry(mScene->sceneRect().toRect());
+    qWarning()<< "Datos de Scene: " << mScene->sceneRect();
+
     //pintamos el cuadro de drag and drop
     painter.setPen(Qt::DotLine);
     int ancho=calculateWidth(1,-100);
@@ -95,7 +100,7 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
             painter.drawPath(listPath[i]->path());
         }
     }
-
+    e->accept();
 }
 
 int UBCommunicationLine::border()
@@ -140,12 +145,12 @@ int UBCommunicationLine::calculateHeight(double percent,int displaced)
 
 int UBCommunicationLine::pictoWidth()
 {
-    return 100;
+    return 180;
 }
 
 int UBCommunicationLine::pictoHeight()
 {
-    return 100;
+    return 180;
 }
 
 int UBCommunicationLine::separatorPicto()
@@ -221,6 +226,8 @@ void pictoCommunicationLine::dropEvent(QDropEvent *event)
         UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
         //Añado
         picto->setPos(mQPainterPath->currentPosition());
+
+        qWarning()<< picto->pos().x() << picto->pos().y() << picto->sceneBoundingRect() << picto->boundingRect();
         mScene->addItem(picto);
     }
     event->accept();
