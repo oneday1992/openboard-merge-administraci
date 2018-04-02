@@ -11,12 +11,15 @@
 #include "gui/UBCreateLinkPalette.h"
 #include <QHBoxLayout>
 #include <QWidget>
+#include "UBPecs.h"
 
 
-UBCommunicationLine::UBCommunicationLine(QWidget *parent) : QWidget(parent)
+UBCommunicationLine::UBCommunicationLine(QWidget *parent, QGraphicsScene *scene) : QWidget(parent)
+    ,mScene(scene)
 {
 //setAcceptDrops(true);
-
+    //Tenemos que crear un layout horizontal donde añadir cada widget donde se va a alojar cada picto.
+    layout = new QHBoxLayout(this);
 }
 
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
@@ -43,8 +46,8 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     painter.drawRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
     */
 
-    //Tenemos que crear un layout horizontal donde añadir cada widget donde se va a alojar cada picto.
-    layout = new QHBoxLayout(this);
+    qWarning()<<"Entrando en método paintEvent";
+
 
      //codigo
     QPainter painter(this);
@@ -70,11 +73,12 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     //Lista donde se añade cada casilla de pictos.
     //QList<pictoCommunicationLine*> listPath;
     //Añadida anterior lista como miembro de la clase. Atributo Privado
-    for (int i=0; i<8; i++)
-    {
+    if (listPath.count()==0){ //Si no hay elementos los añado
+      for (int i=0; i<8; i++)
+      {
         QPainterPath *qpainter =new QPainterPath();
         // Cada recuadro sera un widget que contendra un qPainterPath
-        pictoCommunicationLine *path2 =new pictoCommunicationLine(this,qpainter,i);
+        pictoCommunicationLine *path2 =new pictoCommunicationLine(this,qpainter,i,mScene);
 
         layout->addWidget(path2);
         path2->addRoundedRect(calculateX(1,20)+border()+border()+pos,calculateY(1,20)+border()+border(),pictoWidth(),pictoHeight(),10,10);
@@ -82,6 +86,14 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
         painter.drawPath(path2->path());
         pos=pos+pictoWidth()+separatorPicto();
         listPath.append(path2);
+      }
+    }else{
+        //Recorro la lista de QPainterPath
+        for(int i = 0; i < listPath.count(); i++)
+        {
+            //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
+            painter.drawPath(listPath[i]->path());
+        }
     }
 
 }
@@ -128,12 +140,12 @@ int UBCommunicationLine::calculateHeight(double percent,int displaced)
 
 int UBCommunicationLine::pictoWidth()
 {
-    return 180;
+    return 100;
 }
 
 int UBCommunicationLine::pictoHeight()
 {
-    return 180;
+    return 100;
 }
 
 int UBCommunicationLine::separatorPicto()
@@ -169,11 +181,13 @@ void UBCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
     event->accept();
 }
 */
-pictoCommunicationLine::pictoCommunicationLine(QWidget *parent, QPainterPath *mqpainter, int i) : QWidget(parent)
+pictoCommunicationLine::pictoCommunicationLine(QWidget *parent, QPainterPath *mqpainter, int i, QGraphicsScene *scene) : QWidget(parent)
     ,mQPainterPath(mqpainter)
     ,numero(i)
+    ,mScene(scene)
 {
     setAcceptDrops(true);
+    qWarning()<<"Constructor de pictoCommnication: "<<numero;
 
 }
 
@@ -194,4 +208,20 @@ void pictoCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
     qWarning()<<"Picto en casilla: " << numero;
     event->accept();
 
+}
+
+void pictoCommunicationLine::dropEvent(QDropEvent *event)
+{
+    QList<QUrl> urls;
+    urls = event->mimeData()->urls();
+    qWarning()<<urls;
+    QList<QUrl>::iterator i;
+    for (i=urls.begin();i!=urls.end();i++){
+        QPixmap pix = QPixmap(i->path());
+        UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
+        //Añado
+        picto->setPos(mQPainterPath->currentPosition());
+        mScene->addItem(picto);
+    }
+    event->accept();
 }

@@ -8,6 +8,7 @@
 #include <QHBoxLayout>
 #include <QList>
 #include <QPainter>
+#include <QGraphicsScene>
 
 class pictoCommunicationLine;
 
@@ -15,7 +16,7 @@ class UBCommunicationLine : public QWidget
 {
     Q_OBJECT
 public:
-    explicit UBCommunicationLine(QWidget *parent = 0);
+    explicit UBCommunicationLine(QWidget *parent = 0, QGraphicsScene *scene=0);
     //explicit UBCreateLinkLabel(QString labelText, QWidget* parent = 0);
     //retorna el alto de la pantalla
     // returns the height of the screen
@@ -44,6 +45,7 @@ protected:
 private:
     QHBoxLayout *layout;
     QList<pictoCommunicationLine*> listPath;
+    QGraphicsScene *mScene;
 
     /** Method that returns an edge
     * Metodo que nos devuelve un borde
@@ -110,7 +112,7 @@ class pictoCommunicationLine : public QWidget
 {
     Q_OBJECT
  public:
-     pictoCommunicationLine (QWidget *parent=0, QPainterPath *mqpainter=0, int i=0);
+     pictoCommunicationLine (QWidget *parent=0, QPainterPath *mqpainter=0, int i=0, QGraphicsScene *scene=0);
      //~pictoCommunicationLine();
 
     void addRoundedRect (int x, int y, int w, int h, int rx, int ry);
@@ -118,10 +120,12 @@ class pictoCommunicationLine : public QWidget
  private:
    int numero;
    QPainterPath *mQPainterPath;
+   QGraphicsScene *mScene;
 
  protected:
    void dragMoveEvent(QDragMoveEvent *event);
    void dragEnterEvent(QDragEnterEvent *event);
+   void dropEvent(QDropEvent *event);
 
 };
 

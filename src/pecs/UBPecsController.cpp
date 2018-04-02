@@ -120,7 +120,7 @@ void UBPecsController::setupViews()
         //Escena de la linea de comunicacion
         QGraphicsScene *mSceneCommunication = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mSceneCommunication);
-        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget);
+        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
        int y=lineaComunicacion->screenHeight()*0.30;
        int ancho= lineaComunicacion->screenWidth()-40;
        int alto =lineaComunicacion->screenWidth()*0.30;
