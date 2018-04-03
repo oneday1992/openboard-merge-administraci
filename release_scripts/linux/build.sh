@@ -26,9 +26,9 @@ initializeVariables()
   PRODUCT_PATH="$BUILD_DIR/product"
 
   # Qt installation path. This may vary across machines
-  QT_PATH="/usr/lib/x86_64-linux-gnu/qt5"
+  QT_PATH="/home/arubio/Qt/5.5/gcc_64"
   PLUGINS_PATH="$QT_PATH/plugins"
-  GUI_TRANSLATIONS_DIRECTORY_PATH="/usr/share/qt5/translations"
+  GUI_TRANSLATIONS_DIRECTORY_PATH="/home/arubio/Qt/5.5/gcc_64/translations"
   QMAKE_PATH="$QT_PATH/bin/qmake"
   LRELEASES="$QT_PATH/bin/lrelease"
 
@@ -36,10 +36,10 @@ initializeVariables()
   ZIP_PATH=`which zip`
 
   if [ -z $ARCHITECTURE ]; then
-    ARCHITECTURE=`uname -m`
-    if [ $ARCHITECTURE == "x86_64" ]; then
+    #ARCHITECTURE=`uname -m`
+    #if [ $ARCHITECTURE == "x86_64" ]; then
         ARCHITECTURE="amd64"
-    fi
+    #fi
   fi
 }
 

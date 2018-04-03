@@ -41,7 +41,6 @@ UBCryptoUtils* UBCryptoUtils::instance()
 {
     if(!sInstance)
         sInstance = new UBCryptoUtils(UBApplication::staticMemoryCleaner);
-
     return sInstance;
 }
 
@@ -63,9 +62,9 @@ UBCryptoUtils::UBCryptoUtils(QObject * pParent)
 UBCryptoUtils::~UBCryptoUtils()
 {
     // TODO UB 4.x aes destroy
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
     EVP_CIPHER_CTX_free(mAesEncryptContext);
     EVP_CIPHER_CTX_free(mAesDecryptContext);
-
 }
 
 
@@ -140,6 +139,7 @@ void UBCryptoUtils::aesInit()
     unsigned char *key_data = (unsigned char *)sAESKey.toLatin1().data();
     int key_data_len = sAESKey.length();
 
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
     mAesEncryptContext = EVP_CIPHER_CTX_new();
     mAesDecryptContext = EVP_CIPHER_CTX_new();
 

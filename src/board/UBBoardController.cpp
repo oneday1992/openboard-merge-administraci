@@ -54,6 +54,7 @@
 #include "gui/UBKeyboardPalette.h"
 #include "gui/UBMagnifer.h"
 #include "gui/UBDockPaletteWidget.h"
+#include "gui/UBPopUp.h"
 
 #include "domain/UBGraphicsPixmapItem.h"
 #include "domain/UBGraphicsItemUndoCommand.h"
@@ -2321,11 +2322,16 @@ void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
         qWarning()<<"OCR recognition: ";
         tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 
+        // UBUNTU 14.04 LTS: It fixes the Issue 910 in
+        // tesseract-ocr: Error: Illegal min or max
+        // specification! Maybe in latter version
+        // this will be no longer required.
+        setlocale(LC_NUMERIC, "C");
+
         // Initialize tesseract-ocr with Spanish, without specifying tessdata path
         if (api->Init(NULL, "spa")) {
             qWarning()<<"Could not initialize tesseract.";
-        }
-
+        }        
         // Open input image with leptonica library
         PIX *PixImage = qImage2PIX(image);
         api->SetImage(PixImage);
@@ -2333,14 +2339,18 @@ void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
         QString outText (api->GetUTF8Text());
         qWarning()<<"OCR output: "<<outText;
         if(!outText.isEmpty()){
-            if(outText.length() > 50)
-                UBApplication::showMessage(tr("                         Copied to Clipboard: %1...").arg(outText.left(50)));
+            UBPopUp* popup = new UBPopUp(0, QString("(%1 chars were copied to the clipboard)").arg(outText.length()), "OCR Recognition", ":images/stylusPalette/ocr.png");
+            if(outText.length() > 200)
+                popup->setPopupText(outText.left(200)+QString("\n\n...\n...\n(%1 chars were not shown)").arg(outText.length()-200));
             else
-                UBApplication::showMessage(tr("                         Copied to Clipboard: %1").arg(outText));
+                popup->setPopupText(outText);
+            popup->show();
             QApplication::clipboard()->setText(outText);
         }
         else{
-            UBApplication::showMessage(tr("                         Nothing Saved!"));
+            UBPopUp* popup = new UBPopUp(0, QString("(%1 chars were copied to the clipboard)").arg(outText.length()), "OCR Recognition", ":images/stylusPalette/ocr.png");
+            popup->setPopupText("NOTHING SAVED!");
+            popup->show();
         }
         // Destroy used object and release memory
         api->End();

@@ -88,9 +88,9 @@ initializeVariables()
   BUNDLE_QT=false
 
   # Qt installation path. This may vary across machines
-  QT_PATH="/usr/lib/x86_64-linux-gnu/qt5"
+  QT_PATH="/home/arubio/Qt/5.5/gcc_64"
   QT_PLUGINS_SOURCE_PATH="$QT_PATH/plugins"
-  GUI_TRANSLATIONS_DIRECTORY_PATH="/usr/share/qt5/translations"
+  GUI_TRANSLATIONS_DIRECTORY_PATH="/home/arubio/Qt/5.5/gcc_64/translations"
   QT_LIBRARY_SOURCE_PATH="$QT_PATH/.."
 
   NOTIFY_CMD=`which notify-send`

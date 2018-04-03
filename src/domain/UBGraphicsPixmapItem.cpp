@@ -118,6 +118,9 @@ void UBGraphicsPixmapItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void UBGraphicsPixmapItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    if(Delegate()->action()){
+        Delegate()->action()->play();
+    }
     Delegate()->mouseReleaseEvent(event);
     QGraphicsPixmapItem::mouseReleaseEvent(event);
 }

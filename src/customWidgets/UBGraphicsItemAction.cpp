@@ -52,6 +52,9 @@ UBGraphicsItemPlayAudioAction::UBGraphicsItemPlayAudioAction(QString audioFile, 
 {
     Q_ASSERT(audioFile.length() > 0);
 
+    QFileInfo fi(audioFile);    // 26/03/2018 -- OpenBoard -- tooltip ACTION
+    mAudioFile = fi.fileName(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
+
     if(onImport){
         QString extension = QFileInfo(audioFile).completeSuffix();
         QString destDir = UBApplication::boardController->selectedDocument()->persistencePath() + "/" + UBPersistenceManager::audioDirectory;
@@ -84,7 +87,7 @@ UBGraphicsItemPlayAudioAction::UBGraphicsItemPlayAudioAction(QString audioFile, 
 
 UBGraphicsItemPlayAudioAction::UBGraphicsItemPlayAudioAction() :
     UBGraphicsItemAction(eLinkToAudio,NULL)
-  /*, mMediaObject(0)*/
+  , mMediaObject(0)
   , mIsLoading(true)
 {
 }

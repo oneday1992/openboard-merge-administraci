@@ -214,6 +214,9 @@ class UBBoardController : public UBDocumentContainer
         QString actionGroupText(){ return mActionGroupText;}
         QString actionUngroupText(){ return mActionUngroupText;}
 
+        // Issue 22/03/2018 - OpenBoard - OCR recognition
+        PIX* qImage2PIX(const QImage &qImage);// Custom function to transform a QImage into a PIX: Qimage->Pix
+
     public slots:
         void showDocumentsDialog();
         void showKeyboard(bool show);
@@ -261,7 +264,6 @@ class UBBoardController : public UBDocumentContainer
         void stylusToolChanged(int tool);
 
         // Issue 22/03/2018 - OpenBoard - OCR recognition
-        PIX* qImage2PIX(const QImage &qImage);// Custom function to transform a QImage into a PIX: Qimage->Pix
         void ocrRecognition(const QRectF& pSceneRect); // Method to pick a snapshot and apply an OCR procedure to save the TEXT returned in the clipboard
 
         void grabScene(const QRectF& pSceneRect);

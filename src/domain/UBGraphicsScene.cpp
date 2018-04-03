@@ -30,7 +30,7 @@
 #include "UBGraphicsScene.h"
 
 #include <QtGui>
-#include <QtWebKit>
+#include <QtWebKitWidgets>
 #include <QtSvg>
 #include <QGraphicsView>
 #include <QGraphicsVideoItem>
@@ -1172,12 +1172,14 @@ void UBGraphicsScene::updateSelectionFrame()
     case 1: {
         mSelectionFrame->setVisible(false);
         mSelectionFrame->setEnclosedItems(QList<QGraphicsItem*>());
-
+        qWarning()<<selItems.count();
         UBGraphicsItemDelegate *itemDelegate = UBGraphicsItem::Delegate(selItems.first());
-        itemDelegate->createControls();
+        UBGraphicsMediaItem * mItem = dynamic_cast<UBGraphicsMediaItem*>(selItems.first());
+        if(!mItem){
+            itemDelegate->createControls();
+            itemDelegate->showControls();
+        }
         selItems.first()->setVisible(true);
-        itemDelegate->showControls();
-
     } break;
     default: {
         mSelectionFrame->setVisible(true);

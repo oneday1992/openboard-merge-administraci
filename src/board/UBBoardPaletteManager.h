@@ -31,7 +31,7 @@
 #define UBBOARDPALETTEMANAGER_H_
 
 #include <QtGui>
-#include <QtWebKit>
+#include <QtWebKitWidgets>
 
 #include "gui/UBLeftPalette.h"
 #include "gui/UBRightPalette.h"

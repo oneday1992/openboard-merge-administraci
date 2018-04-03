@@ -201,6 +201,7 @@ UBGraphicsItemDelegate::UBGraphicsItemDelegate(QGraphicsItem* pDelegated, QObjec
 
 void UBGraphicsItemDelegate::createControls()
 {
+
     if (testUBFlags(GF_TOOLBAR_USED) && !mToolBarItem){
          mToolBarItem = new UBGraphicsToolBarItem(mDelegated);
     }
@@ -766,19 +767,19 @@ void UBGraphicsItemDelegate::saveAction(UBGraphicsItemAction* action)
         actionLabel= tr("Remove link to audio");
         UBGraphicsItemPlayAudioAction* audioAction = dynamic_cast<UBGraphicsItemPlayAudioAction*>(action);
         connect(mDeleteButton,SIGNAL(clicked()),audioAction,SLOT(onSourceHide()));
-        tooltip="<audio>"; // 26/03/2018 -- OpenBoard -- tooltip ACTION
+        tooltip="Play: "+audioAction->audioFile(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
         break;
     }
     case eLinkToPage:{
         actionLabel = tr("Remove link to page");
         UBGraphicsItemMoveToPageAction* pageAction = dynamic_cast<UBGraphicsItemMoveToPageAction*>(action); // 26/03/2018 -- OpenBoard -- tooltip ACTION
-        tooltip="To page: "+pageAction->page(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
+        tooltip="Go to page: "+pageAction->page(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
         break;
     }
     case eLinkToWebUrl:{
         actionLabel = tr("Remove link to web url");
         UBGraphicsItemLinkToWebPageAction* urlAction = dynamic_cast<UBGraphicsItemLinkToWebPageAction*>(action); // 26/03/2018 -- OpenBoard -- tooltip ACTION
-        tooltip=urlAction->url(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
+        tooltip="URL: "+urlAction->url(); // 26/03/2018 -- OpenBoard -- tooltip ACTION
         break;
     }
     default:

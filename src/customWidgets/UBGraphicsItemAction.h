@@ -78,12 +78,14 @@ public:
     QString path() {return mAudioPath;}
     void setPath(QString audioPath);
     QString fullPath();
+    QString audioFile(){return mAudioFile;} // 26/03/2018 -- OpenBoard -- tooltip ACTION
 
 public slots:
     void onSourceHide();
 
 private:
     QString mAudioPath;
+    QString mAudioFile; // 26/03/2018 -- OpenBoard -- tooltip ACTION
     /*Phonon::MediaObject *mMediaObject;
     Phonon::AudioOutput *mAudioOutput;*/
     QMediaPlayer *mMediaObject;

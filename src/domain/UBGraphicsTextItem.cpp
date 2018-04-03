@@ -396,10 +396,15 @@ void UBGraphicsTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     {
         QPointF distance = event->pos() - event->lastPos();
         if( fabs(distance.x()) < 1 && fabs(distance.y()) < 1
-                && mCurrentLinkUrl.isEmpty()) // ALTI/AOU - 20140602 : make possible to click on Links with Play tool
+                && mCurrentLinkUrl.isEmpty()){ // ALTI/AOU - 20140602 : make possible to click on Links with Play tool
+            if(Delegate()->action()){
+                Delegate()->action()->play();
+            }
             Delegate()->mouseReleaseEvent(event);
-        else
+        }
+        else{
             QGraphicsTextItem::mouseReleaseEvent(event);
+        }
 
         event->accept();
         clearFocus();
