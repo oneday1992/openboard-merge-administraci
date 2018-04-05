@@ -63,6 +63,9 @@ UBCryptoUtils::UBCryptoUtils(QObject * pParent)
 UBCryptoUtils::~UBCryptoUtils()
 {
     // TODO UB 4.x aes destroy
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+    EVP_CIPHER_CTX_free(mAesEncryptContext);
+    EVP_CIPHER_CTX_free(mAesDecryptContext);
 }
 
 
@@ -74,18 +77,18 @@ QString UBCryptoUtils::symetricEncrypt(const QString& clear)
     int paddingLength = 0;
     unsigned char *ciphertext = (unsigned char *)malloc(cipheredLength);
 
-    if(!EVP_EncryptInit_ex(&mAesEncryptContext, NULL, NULL, NULL, NULL)){
+    if(!EVP_EncryptInit_ex(mAesEncryptContext, NULL, NULL, NULL, NULL)){
         free(ciphertext);
         return QString();
     }
 
-    if(!EVP_EncryptUpdate(&mAesEncryptContext, ciphertext, &cipheredLength, (unsigned char *)clearData.data(), clearData.length())){
+    if(!EVP_EncryptUpdate(mAesEncryptContext, ciphertext, &cipheredLength, (unsigned char *)clearData.data(), clearData.length())){
         free(ciphertext);
         return QString();
     }
 
     /* update ciphertext with the final remaining bytes */
-    if(!EVP_EncryptFinal_ex(&mAesEncryptContext, ciphertext + cipheredLength, &paddingLength)){
+    if(!EVP_EncryptFinal_ex(mAesEncryptContext, ciphertext + cipheredLength, &paddingLength)){
         free(ciphertext);
         return QString();
     }
@@ -106,17 +109,17 @@ QString UBCryptoUtils::symetricDecrypt(const QString& encrypted)
     int paddingLength = 0;
     unsigned char *plaintext = (unsigned char *)malloc(encryptedLength);
 
-    if(!EVP_DecryptInit_ex(&mAesDecryptContext, NULL, NULL, NULL, NULL)){
+    if(!EVP_DecryptInit_ex(mAesDecryptContext, NULL, NULL, NULL, NULL)){
         free(plaintext);
         return QString();
     }
 
-    if(!EVP_DecryptUpdate(&mAesDecryptContext, plaintext, &encryptedLength, (const unsigned char *)encryptedData.data(), encryptedData.length())){
+    if(!EVP_DecryptUpdate(mAesDecryptContext, plaintext, &encryptedLength, (const unsigned char *)encryptedData.data(), encryptedData.length())){
         free(plaintext);
         return QString();
     }
 
-    if(!EVP_DecryptFinal_ex(&mAesDecryptContext, plaintext + encryptedLength, &paddingLength)){
+    if(!EVP_DecryptFinal_ex(mAesDecryptContext, plaintext + encryptedLength, &paddingLength)){
         free(plaintext);
         return QString();
     }
@@ -137,6 +140,10 @@ void UBCryptoUtils::aesInit()
     unsigned char *key_data = (unsigned char *)sAESKey.toLatin1().data();
     int key_data_len = sAESKey.length();
 
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+    mAesEncryptContext = EVP_CIPHER_CTX_new();
+    mAesDecryptContext = EVP_CIPHER_CTX_new();
+
     i = EVP_BytesToKey(EVP_aes_256_cbc(), EVP_sha1(), (unsigned char *)sAESSalt.toLatin1().data(), key_data,
             key_data_len, nrounds, key, iv);
 
@@ -146,8 +153,8 @@ void UBCryptoUtils::aesInit()
         return;
     }
 
-    EVP_CIPHER_CTX_init(&mAesEncryptContext);
-    EVP_EncryptInit_ex(&mAesEncryptContext, EVP_aes_256_cbc(), NULL, key, iv);
-    EVP_CIPHER_CTX_init(&mAesDecryptContext);
-    EVP_DecryptInit_ex(&mAesDecryptContext, EVP_aes_256_cbc(), NULL, key, iv);
+    EVP_CIPHER_CTX_init(mAesEncryptContext);
+    EVP_EncryptInit_ex(mAesEncryptContext, EVP_aes_256_cbc(), NULL, key, iv);
+    EVP_CIPHER_CTX_init(mAesDecryptContext);
+    EVP_DecryptInit_ex(mAesDecryptContext, EVP_aes_256_cbc(), NULL, key, iv);
 }
