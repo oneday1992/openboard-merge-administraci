@@ -186,10 +186,11 @@ void UBPersistenceManager::errorString(QString error)
 
 void UBPersistenceManager::onSceneLoaded(QByteArray scene, UBDocumentProxy* proxy, int sceneIndex)
 {
+    Q_UNUSED(scene);
     qDebug() << "scene loaded " << sceneIndex;
     QTime time;
     time.start();
-    mSceneCache.insert(proxy,sceneIndex,UBSvgSubsetAdaptor::loadScene(proxy,scene));
+    mSceneCache.insert(proxy, sceneIndex, loadDocumentScene(proxy, sceneIndex, false));
     qDebug() << "millisecond for sceneCache " << time.elapsed();
 }
 
@@ -523,6 +524,7 @@ void UBPersistenceManager::deleteDocumentScenes(UBDocumentProxy* proxy, const QL
                 QFile::rename(source, target);
             }
 
+            UBApplication::showMessage(tr("Moving page to trash folder..."));
             insertDocumentSceneAt(trashDocProxy, scene, trashDocProxy->pageCount());
         }
     }
@@ -677,8 +679,9 @@ UBGraphicsScene* UBPersistenceManager::createDocumentSceneAt(UBDocumentProxy* pr
     UBGraphicsScene *newScene = mSceneCache.createScene(proxy, index, useUndoRedoStack);
 
     newScene->setBackground(UBSettings::settings()->isDarkBackground(),
-            UBSettings::settings()->UBSettings::isCrossedBackground());
+            UBSettings::settings()->UBSettings::pageBackground());
 
+    newScene->setBackgroundGridSize(UBSettings::settings()->crossSize);
     persistDocumentScene(proxy, newScene, index);
 
     proxy->incPageCount();
@@ -763,7 +766,6 @@ UBGraphicsScene* UBPersistenceManager::loadDocumentScene(UBDocumentProxy* proxy,
         if (scene)
             mSceneCache.insert(proxy, sceneIndex, scene);
     }
-
     if (cacheNeighboringScenes) {
         if(sceneIndex + 1 < proxy->pageCount() &&  !mSceneCache.contains(proxy, sceneIndex + 1))
             mWorker->readScene(proxy,sceneIndex+1);

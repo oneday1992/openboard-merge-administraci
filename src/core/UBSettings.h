@@ -90,9 +90,9 @@ class UBSettings : public QObject
 
         // Background related
         bool isDarkBackground();
-        bool isCrossedBackground();
+        UBPageBackground pageBackground();
         void setDarkBackground(bool isDarkBackground);
-        void setCrossedBackground(bool isCrossedBackground);
+        void setPageBackground(UBPageBackground background);
 
         // Stylus palette related
         bool isStylusPaletteVisible();
@@ -180,10 +180,21 @@ class UBSettings : public QObject
         static QColor markerCirclePenColorDarkBackground;
         static QColor markerCirclePenColorLightBackground;
 
+        static QColor penCircleBrushColorDarkBackground;
+        static QColor penCircleBrushColorLightBackground;
+
+        static QColor penCirclePenColorDarkBackground;
+        static QColor penCirclePenColorLightBackground;
+
         static QColor documentSizeMarkColorDarkBackground;
         static QColor documentSizeMarkColorLightBackground;
 
+        // Background grid
         static int crossSize;
+        static int defaultCrossSize;
+        static int minCrossSize;
+        static int maxCrossSize;
+
         static int colorPaletteSize;
         static int objectFrameWidth;
 
@@ -248,6 +259,7 @@ class UBSettings : public QObject
         UBSetting* appToolBarDisplayText;
         UBSetting* appEnableAutomaticSoftwareUpdates;
         UBSetting* appSoftwareUpdateURL;
+        UBSetting* appHideCheckForSoftwareUpdate;
         UBSetting* appToolBarOrientationVertical;
         UBSetting* appPreferredLanguage;
 
@@ -279,6 +291,13 @@ class UBSettings : public QObject
 
         UBSetting* boardUseHighResTabletEvent;
 
+        UBSetting* boardInterpolatePenStrokes;
+        UBSetting* boardSimplifyPenStrokes;
+        UBSetting* boardSimplifyPenStrokesThresholdAngle;
+        UBSetting* boardSimplifyPenStrokesThresholdWidthDifference;
+        UBSetting* boardInterpolateMarkerStrokes;
+        UBSetting* boardSimplifyMarkerStrokes;
+
         UBSetting* boardKeyboardPaletteKeyBtnSize;
 
         UBSetting* appStartMode;
@@ -287,6 +306,9 @@ class UBSettings : public QObject
 
         UBSetting* boardCrossColorDarkBackground;
         UBSetting* boardCrossColorLightBackground;
+
+        UBColorListSetting* boardGridLightBackgroundColors;
+        UBColorListSetting* boardGridDarkBackgroundColors;
 
         UBColorListSetting* boardPenLightBackgroundColors;
         UBColorListSetting* boardPenLightBackgroundSelectedColors;
@@ -304,6 +326,8 @@ class UBSettings : public QObject
 
         UBSetting* showEraserPreviewCircle;
         UBSetting* showMarkerPreviewCircle;
+        UBSetting* showPenPreviewCircle;
+        UBSetting* penPreviewFromSize;
 
         UBSetting* webUseExternalBrowser;
         UBSetting* webShowPageImmediatelyOnMirroredScreen;
@@ -365,6 +389,8 @@ class UBSettings : public QObject
         UBSetting* gipThumbnailWidth;
         UBSetting* soundThumbnailWidth;
 
+        UBSetting* libraryShowDetailsForLocalItems;
+
         UBSetting* rightLibPaletteBoardModeWidth;
         UBSetting* rightLibPaletteBoardModeIsCollapsed;
         UBSetting* rightLibPaletteDesktopModeWidth;
@@ -410,6 +436,8 @@ class UBSettings : public QObject
          void setStylusPaletteVisible(bool visible);
 
         void setPenPressureSensitive(bool sensitive);
+        void setPenPreviewCircle(bool sensitive);
+        void setPenPreviewFromSize(int size);
         void setMarkerPressureSensitive(bool sensitive);
 
         QVariant value ( const QString & key, const QVariant & defaultValue = QVariant() );

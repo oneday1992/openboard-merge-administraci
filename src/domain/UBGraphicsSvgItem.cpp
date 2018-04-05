@@ -88,6 +88,8 @@ void UBGraphicsSvgItem::init()
 
     setData(UBGraphicsItemData::itemLayerType, QVariant(itemLayerType::ObjectItem)); //Necessary to set if we want z value to be assigned correctly
 
+    setData(UBGraphicsItemData::ItemCanBeSetAsBackground, true);
+
     setUuid(QUuid::createUuid());
     Delegate()->setCanTrigAnAction(true); // Issue 12/03/2018 - OpenBoard - Custom Widgets
 }

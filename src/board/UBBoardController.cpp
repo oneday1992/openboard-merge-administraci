@@ -132,10 +132,6 @@ UBBoardController::UBBoardController(UBMainWindow* mainWindow)
     mMarkerColorOnDarkBackground = UBSettings::settings()->markerColors(true).at(markerColorIndex);
     mMarkerColorOnLightBackground = UBSettings::settings()->markerColors(false).at(markerColorIndex);
 
-    QDesktopWidget* desktop = UBApplication::desktop();
-    int dpiCommon = (desktop->physicalDpiX() + desktop->physicalDpiY()) / 2;
-    int sPixelsPerMillimeter = qRound(dpiCommon / UBGeometryUtils::inchSize);
-    UBSettings::settings()->crossSize = 10*sPixelsPerMillimeter;
 }
 
 
@@ -167,6 +163,7 @@ void UBBoardController::init()
     setActiveDocumentScene(doc);
 
     connect(UBApplication::mainWindow->actionGroupItems, SIGNAL(triggered()), this, SLOT(groupButtonClicked()));
+    initBackgroundGridSize();
 
     undoRedoStateChange(true);
 
@@ -181,6 +178,36 @@ UBBoardController::~UBBoardController()
     delete mDisplayView;
 }
 
+/**
+ * @brief Set the default background grid size to appear as roughly 1cm on screen
+ */
+void UBBoardController::initBackgroundGridSize()
+{
+    // Besides adjusting for DPI, we also need to scale the grid size by the ratio of the control view size
+    // to document size. However the control view isn't available as soon as the boardController is created,
+    // so we approximate this ratio as (document resolution) / (screen resolution).
+    // Later on, this is calculated by `updateSystemScaleFactor` and stored in `mSystemScaleFactor`.
+
+    QDesktopWidget* desktop = UBApplication::desktop();
+    qreal dpi = (desktop->physicalDpiX() + desktop->physicalDpiY()) / 2.;
+
+    //qDebug() << "dpi: " << dpi;
+
+    // The display manager isn't initialized yet so we have to just assume the control view is on the main display
+    qreal screenY = desktop->screenGeometry(mControlView).height();
+    qreal documentY = mActiveScene->nominalSize().height();
+    qreal resolutionRatio = documentY / screenY;
+
+    //qDebug() << "resolution ratio: " << resolutionRatio;
+
+    int gridSize = (resolutionRatio * 10. * dpi) / UBGeometryUtils::inchSize;
+
+    UBSettings::settings()->crossSize = gridSize;
+    UBSettings::settings()->defaultCrossSize = gridSize;
+    mActiveScene->setBackgroundGridSize(gridSize);
+
+    //qDebug() << "grid size: " << gridSize;
+}
 
 int UBBoardController::currentPage()
 {
@@ -216,10 +243,11 @@ void UBBoardController::setupViews()
     mDisplayView->setInteractive(false);
     mDisplayView->setTransformationAnchor(QGraphicsView::NoAnchor);
 
-    mMessageWindow = new UBMessageWindow(mControlView);
+    mPaletteManager = new UBBoardPaletteManager(mControlContainer, this);
+
+    mMessageWindow = new UBMessageWindow(mControlContainer);
     mMessageWindow->hide();
 
-    mPaletteManager = new UBBoardPaletteManager(mControlContainer, this);
     connect(this, SIGNAL(activeSceneChanged()), mPaletteManager, SLOT(activeSceneChanged()));
 }
 
@@ -521,8 +549,9 @@ void UBBoardController::stylusToolDoubleClicked(int tool)
 void UBBoardController::addScene()
 {
     QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+
     persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
-    persistCurrentScene();
+    persistCurrentScene(false,true);
 
     UBDocumentContainer::addPage(mActiveSceneIndex + 1);
 
@@ -573,6 +602,7 @@ void UBBoardController::addScene(UBGraphicsScene* scene, bool replaceActiveIfEmp
         if (replaceActiveIfEmpty && mActiveScene->isEmpty())
         {
             UBPersistenceManager::persistenceManager()->insertDocumentSceneAt(selectedDocument(), clone, mActiveSceneIndex);
+            emit addThumbnailRequired(this, mActiveSceneIndex);
             setActiveDocumentScene(mActiveSceneIndex);
             deleteScene(mActiveSceneIndex + 1);
         }
@@ -580,6 +610,7 @@ void UBBoardController::addScene(UBGraphicsScene* scene, bool replaceActiveIfEmp
         {
             persistCurrentScene(false,true);
             UBPersistenceManager::persistenceManager()->insertDocumentSceneAt(selectedDocument(), clone, mActiveSceneIndex + 1);
+            emit addThumbnailRequired(this, mActiveSceneIndex + 1);
             setActiveDocumentScene(mActiveSceneIndex + 1);
         }
 
@@ -608,6 +639,7 @@ void UBBoardController::duplicateScene(int nIndex)
     duplicatePages(scIndexes);
     insertThumbPage(nIndex);
     emit documentThumbnailsUpdated(this);
+    emit addThumbnailRequired(this, nIndex + 1);
     selectedDocument()->setMetaData(UBSettings::documentUpdatedAt, UBStringUtils::toUtcIsoDateTime(QDateTime::currentDateTime()));
 
     setActiveDocumentScene(nIndex + 1);
@@ -824,7 +856,7 @@ void UBBoardController::deleteScene(int nIndex)
         mDeletingSceneIndex = nIndex;
         QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
         persistCurrentScene();
-        showMessage(tr("Delete page %1 from document").arg(nIndex), true);
+        showMessage(tr("Deleting page %1").arg(nIndex+1), true);
 
         QList<int> scIndexes;
         scIndexes << nIndex;
@@ -834,7 +866,7 @@ void UBBoardController::deleteScene(int nIndex)
         if (nIndex >= pageCount())
             nIndex = pageCount()-1;
         setActiveDocumentScene(nIndex);
-        showMessage(tr("Page %1 deleted").arg(nIndex));
+        showMessage(tr("Page %1 deleted").arg(nIndex+1));
         QApplication::restoreOverrideCursor();
         mDeletingSceneIndex = -1;
     }
@@ -1038,6 +1070,7 @@ void UBBoardController::previousScene()
         persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(mActiveSceneIndex - 1);
+        mControlView->centerOn(mActiveScene->lastCenter());
         QApplication::restoreOverrideCursor();
     }
 
@@ -1053,6 +1086,7 @@ void UBBoardController::nextScene()
         persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(mActiveSceneIndex + 1);
+        mControlView->centerOn(mActiveScene->lastCenter());
         QApplication::restoreOverrideCursor();
     }
 
@@ -1068,6 +1102,7 @@ void UBBoardController::firstScene()
         persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(0);
+        mControlView->centerOn(mActiveScene->lastCenter());
         QApplication::restoreOverrideCursor();
     }
 
@@ -1083,6 +1118,7 @@ void UBBoardController::lastScene()
         persistViewPositionOnCurrentScene();// Issue 1598/1605 - CFA - 20131028
         persistCurrentScene();
         setActiveDocumentScene(selectedDocument()->pageCount() - 1);
+        mControlView->centerOn(mActiveScene->lastCenter());
         QApplication::restoreOverrideCursor();
     }
 
@@ -1506,7 +1542,6 @@ UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl 
 
         if (result){
             selectedDocument()->setMetaData(UBSettings::documentUpdatedAt, UBStringUtils::toUtcIsoDateTime(QDateTime::currentDateTime()));
-            reloadThumbnails();
         }
     }
     else if (UBMimeType::OpenboardTool == itemMimeType)
@@ -1641,12 +1676,11 @@ void UBBoardController::setActiveDocumentScene(UBDocumentProxy* pDocumentProxy, 
     {
         freezeW3CWidgets(true);
 
-        persistCurrentScene();
-
         ClearUndoStack();
 
         mActiveScene = targetScene;
         mActiveSceneIndex = index;
+
         setDocument(pDocumentProxy, forceReload);
 
         updateSystemScaleFactor();
@@ -1654,6 +1688,7 @@ void UBBoardController::setActiveDocumentScene(UBDocumentProxy* pDocumentProxy, 
         mControlView->setScene(mActiveScene);
         disconnect(mControlView, SIGNAL(mouseReleased()), mActiveScene, SLOT(updateSelectionFrame()));
         connect(mControlView, SIGNAL(mouseReleased()), mActiveScene, SLOT(updateSelectionFrame()));
+
         mDisplayView->setScene(mActiveScene);
         mActiveScene->setBackgroundZoomFactor(mControlView->transform().m11());
         pDocumentProxy->setDefaultDocumentSize(mActiveScene->nominalSize());
@@ -1662,20 +1697,24 @@ void UBBoardController::setActiveDocumentScene(UBDocumentProxy* pDocumentProxy, 
         adjustDisplayViews();
 
         UBSettings::settings()->setDarkBackground(mActiveScene->isDarkBackground());
-        UBSettings::settings()->setCrossedBackground(mActiveScene->isCrossedBackground());
+        UBSettings::settings()->setPageBackground(mActiveScene->pageBackground());
 
         freezeW3CWidgets(false);
     }
 
     selectionChanged();
 
-    updateBackgroundActionsState(mActiveScene->isDarkBackground(), mActiveScene->isCrossedBackground());
+    updateBackgroundActionsState(mActiveScene->isDarkBackground(), mActiveScene->pageBackground());
 
     if(documentChange)
+    {
         UBGraphicsTextItem::lastUsedTextColor = QColor();
+    }
 
     if (sceneChange)
+    {
         emit activeSceneChanged();
+    }
 }
 
 
@@ -1683,7 +1722,6 @@ void UBBoardController::moveSceneToIndex(int source, int target)
 {
     if (selectedDocument())
     {
-
         persistCurrentScene(false,true);
 
         UBDocumentContainer::movePageToIndex(source, target);
@@ -1691,9 +1729,12 @@ void UBBoardController::moveSceneToIndex(int source, int target)
         selectedDocument()->setMetaData(UBSettings::documentUpdatedAt, UBStringUtils::toUtcIsoDateTime(QDateTime::currentDateTime()));
         UBPersistenceManager::persistenceManager()->persistDocumentMetadata(selectedDocument());
         mMovingSceneIndex = source;
+        mActiveSceneIndex = target;
         setActiveDocumentScene(target);
         mMovingSceneIndex = -1;
 
+        emit activeSceneChanged();
+        emit updateThumbnailsRequired();
     }
 }
 
@@ -1807,17 +1848,17 @@ int UBBoardController::autosaveTimeoutFromSettings()
     return value * minute;
 }
 
-void UBBoardController::changeBackground(bool isDark, bool isCrossed)
+void UBBoardController::changeBackground(bool isDark, UBPageBackground pageBackground)
 {
     bool currentIsDark = mActiveScene->isDarkBackground();
-    bool currentIsCrossed = mActiveScene->isCrossedBackground();
+    UBPageBackground currentBackgroundType = mActiveScene->pageBackground();
 
-    if ((isDark != currentIsDark) || (currentIsCrossed != isCrossed))
+    if ((isDark != currentIsDark) || (currentBackgroundType != pageBackground))
     {
         UBSettings::settings()->setDarkBackground(isDark);
-        UBSettings::settings()->setCrossedBackground(isCrossed);
+        UBSettings::settings()->setPageBackground(pageBackground);
 
-        mActiveScene->setBackground(isDark, isCrossed);
+        mActiveScene->setBackground(isDark, pageBackground);
 
         emit backgroundChanged();
     }
@@ -1886,6 +1927,7 @@ void UBBoardController::selectionChanged()
 {
     updateActionStates();
     emit pageSelectionChanged(activeSceneIndex());
+    emit updateThumbnailsRequired();
 }
 
 
@@ -1927,6 +1969,7 @@ void UBBoardController::documentSceneChanged(UBDocumentProxy* pDocumentProxy, in
     if(selectedDocument() == pDocumentProxy)
     {
         setActiveDocumentScene(mActiveSceneIndex);
+        updatePage(pIndex);
     }
 }
 
@@ -1963,9 +2006,9 @@ void UBBoardController::appMainModeChanged(UBApplicationController::MainMode md)
 void UBBoardController::closing()
 {
     mIsClosing = true;
+    lastWindowClosed();
     ClearUndoStack();
     showKeyboard(false);
-    lastWindowClosed();
 }
 
 
@@ -2204,7 +2247,8 @@ void UBBoardController::saveViewState()
     {
         mActiveScene->setViewState(UBGraphicsScene::SceneViewState(currentZoom(),
                                                                    mControlView->horizontalScrollBar()->value(),
-                                                                   mControlView->verticalScrollBar()->value()));
+                                                                   mControlView->verticalScrollBar()->value(),
+                                                                   mActiveScene->lastCenter()));
     }
 }
 
@@ -2737,16 +2781,31 @@ void UBBoardController::moveToolWidgetToScene(UBToolWidget* toolWidget)
 }
 
 
-void UBBoardController::updateBackgroundActionsState(bool isDark, bool isCrossed)
+void UBBoardController::updateBackgroundActionsState(bool isDark, UBPageBackground pageBackground)
 {
-    if (isDark && !isCrossed)
-        mMainWindow->actionPlainDarkBackground->setChecked(true);
-    else if (isDark && isCrossed)
-        mMainWindow->actionCrossedDarkBackground->setChecked(true);
-    else if (!isDark && isCrossed)
-        mMainWindow->actionCrossedLightBackground->setChecked(true);
-    else
-        mMainWindow->actionPlainLightBackground->setChecked(true);
+    switch (pageBackground) {
+
+        case UBPageBackground::crossed:
+            if (isDark)
+                mMainWindow->actionCrossedDarkBackground->setChecked(true);
+            else
+                mMainWindow->actionCrossedLightBackground->setChecked(true);
+        break;
+
+        case UBPageBackground::ruled :
+            if (isDark)
+                mMainWindow->actionRuledDarkBackground->setChecked(true);
+            else
+                mMainWindow->actionRuledLightBackground->setChecked(true);
+        break;
+
+        default:
+            if (isDark)
+                mMainWindow->actionPlainDarkBackground->setChecked(true);
+            else
+                mMainWindow->actionPlainLightBackground->setChecked(true);
+        break;
+    }
 }
 
 

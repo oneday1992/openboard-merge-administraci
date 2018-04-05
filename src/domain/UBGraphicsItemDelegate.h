@@ -357,6 +357,7 @@ class UBGraphicsItemDelegate : public QObject
         virtual void updateMenuActionState();
 
         void showHideRecurs(const QVariant &pShow, QGraphicsItem *pItem);
+        void setLockedRecurs(const QVariant &pLock, QGraphicsItem *pItem);
 
         QList<DelegateButton*> buttons() {return mButtons;}
         QGraphicsItem* mDelegated;
@@ -374,6 +375,7 @@ class UBGraphicsItemDelegate : public QObject
 
         QAction* mLockAction;
         QAction* mShowOnDisplayAction;
+        QAction* mSetAsBackgroundAction;
         QAction* mGotoContentSourceAction;
         QAction* mShowPanelToAddAnAction; // Issue 12/03/2018 - OpenBoard - Custom Widgets
         QAction* mRemoveAnAction;  // Issue 12/03/2018 - OpenBoard - Custom Widgets
@@ -389,6 +391,7 @@ class UBGraphicsItemDelegate : public QObject
         UBGraphicsItemAction* mAction;        
 
 protected slots:
+        virtual void setAsBackground();
         virtual void gotoContentSource();
 
 private:

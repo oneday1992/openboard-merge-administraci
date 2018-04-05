@@ -51,6 +51,7 @@ class UBClockPalette;
 class UBPageNumberPalette;
 class UBZoomPalette;
 class UBActionPalette;
+class UBBackgroundPalette;
 class UBBoardController;
 class UBServerXMLHttpRequest;
 class UBKeyboardPalette;
@@ -124,7 +125,7 @@ class UBBoardPaletteManager : public QObject
         /** The right dock palette */
         UBRightPalette* mRightPalette;
 
-        UBActionPalette *mBackgroundsPalette;
+        UBBackgroundPalette *mBackgroundsPalette;
         UBActionPalette *mToolsPalette;
         UBActionPalette* mAddItemPalette;
         UBActionPalette* mErasePalette;

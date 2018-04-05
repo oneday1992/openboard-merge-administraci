@@ -141,6 +141,7 @@ struct UBGraphicsItemData
         //Duplicating delegate's functions to make possible working with pure QGraphicsItem
         , ItemFlippable // (bool)
         , ItemRotatable // (bool)
+        , ItemCanBeSetAsBackground
     };
 };
 
@@ -223,6 +224,13 @@ struct UBUndoType
     {
         undotype_UNKNOWN  = 0, undotype_DOCUMENT, undotype_GRAPHICITEMTRANSFORM, undotype_GRAPHICITEM, undotype_GRAPHICTEXTITEM, undotype_PAGESIZE, undotype_GRAPHICSGROUPITEM, undotype_GRAPHICITEMZVALUE
     };
+};
+
+enum UBPageBackground
+{
+    plain = 0,
+    crossed,
+    ruled
 };
 
 #endif /* UB_H_ */

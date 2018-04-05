@@ -171,6 +171,7 @@ void UBDocumentController::selectDocument(UBDocumentProxy* proxy, bool setAsCurr
     if (selected)
     {
         setDocument(proxy);
+        emit documentThumbnailsUpdated(this);
 
         selected->setSelected(true);
 
@@ -270,7 +271,7 @@ void UBDocumentController::itemSelectionChanged()
 {
     updateCurrentSelection();
 
-    reloadThumbnails();
+    emit documentThumbnailsUpdated(this);
 
     if (multipleSelection())
         mSelectionType = Multiple;
@@ -1496,7 +1497,7 @@ void UBDocumentController::documentSceneChanged(UBDocumentProxy* proxy, int pSce
 
     if (proxy == selectedDocumentProxy())
     {
-        reloadThumbnails();
+        emit documentThumbnailsUpdated(this);
     }
 }
 
@@ -1923,7 +1924,7 @@ void UBDocumentController::refreshDocumentThumbnailsView(UBDocumentContainer*)
     if (proxy)
     {
         setDocument(proxy);
-
+        initThumbPage();
         for (int i = 0; i < selectedDocument()->pageCount(); i++)
         {
             const QPixmap* pix = pageAt(i);

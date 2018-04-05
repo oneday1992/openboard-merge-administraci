@@ -141,6 +141,11 @@ class UBGraphicsTextItem : public QGraphicsTextItem, public UBItem, public UBRes
         virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
         virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
+        virtual void keyPressEvent(QKeyEvent *event);
+        virtual void keyReleaseEvent(QKeyEvent *event);
+
+        virtual void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
+
         virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
         virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
