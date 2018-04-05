@@ -276,16 +276,6 @@ class UBGraphicsScene: public UBCoreGraphicsScene, public UBItem
                     mLastSceneCenter = sceneCenter;
                 }
 
-                QPointF lastSceneCenter() // Save Scene Center to replace the view when the scene becomes active
-                {
-                    return mLastSceneCenter;
-                }
-
-                void setLastSceneCenter(QPointF center)
-                {
-                    mLastSceneCenter = center;
-                }
-
                 // Issue 1598/1605 - CFA - 20131028
                 QPointF lastSceneCenter() // Save Scene Center to replace the view when the scene becomes active
                 {

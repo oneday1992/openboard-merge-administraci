@@ -23,6 +23,7 @@
 #define UBFFMPEGVIDEOENCODER_H
 
 extern "C" {
+    #include <libswscale/swscale.h>
     #include <libavcodec/avcodec.h>
     #include <libavformat/avformat.h>
     #include <libavformat/avio.h>
@@ -33,7 +34,7 @@ extern "C" {
     #include <libavutil/mathematics.h>
     #include <libavutil/time.h>
     #include <libavutil/avstring.h>
-    #include <libswscale/swscale.h>
+
 
 // Due to the whole ffmpeg / libAV silliness, we have to support libavresample on some platforms
 #if LIBAVFORMAT_VERSION_MICRO > 100
@@ -44,6 +45,7 @@ extern "C" {
 #endif
 #include <libswresample/swresample.h>
 }
+
 
 #include <atomic>
 

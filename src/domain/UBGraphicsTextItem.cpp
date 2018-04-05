@@ -856,6 +856,16 @@ void UBGraphicsTextItem::keyPressEvent(QKeyEvent *event)
 }
 //issue 1539 - NNE - 20131018 : END
 
+void UBGraphicsTextItem::keyReleaseEvent(QKeyEvent *event)
+{
+    if (Delegate() && !Delegate()->keyReleaseEvent(event)) {
+        qDebug() << "UBGraphicsTextItem::keyPressEvent(QKeyEvent *event) has been rejected by delegate. Don't call base class method";
+        return;
+    }
+
+    QGraphicsTextItem::keyReleaseEvent(event);
+}
+
 //issue 1539 - NNE - 20131211
 void UBGraphicsTextItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {

@@ -2412,6 +2412,8 @@
    </property>
    <property name="toolTip">
     <string>Convert Image to Text</string>
+   </property>
+  </action>
   <action name="actionDefaultGridSize">
    <property name="icon">
     <iconset resource="../OpenBoard.qrc">

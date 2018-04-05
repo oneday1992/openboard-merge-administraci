@@ -63,6 +63,11 @@ UBCryptoUtils::~UBCryptoUtils()
 {
     // TODO UB 4.x aes destroy
     // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    // nothing
+
+    // Ubuntu 18.04
     EVP_CIPHER_CTX_free(mAesEncryptContext);
     EVP_CIPHER_CTX_free(mAesDecryptContext);
 }
@@ -76,17 +81,36 @@ QString UBCryptoUtils::symetricEncrypt(const QString& clear)
     int paddingLength = 0;
     unsigned char *ciphertext = (unsigned char *)malloc(cipheredLength);
 
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    //if(!EVP_EncryptInit_ex(&mAesEncryptContext, NULL, NULL, NULL, NULL)){
+
+    // Ubuntu 18.04
     if(!EVP_EncryptInit_ex(mAesEncryptContext, NULL, NULL, NULL, NULL)){
         free(ciphertext);
         return QString();
     }
 
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    //if(!EVP_EncryptUpdate(&mAesEncryptContext, ciphertext, &cipheredLength, (unsigned char *)clearData.data(), clearData.length())){
+
+    // Ubuntu 18.04
     if(!EVP_EncryptUpdate(mAesEncryptContext, ciphertext, &cipheredLength, (unsigned char *)clearData.data(), clearData.length())){
         free(ciphertext);
         return QString();
     }
 
-    /* update ciphertext with the final remaining bytes */
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    // /* update ciphertext with the final remaining bytes */
+    //if(!EVP_EncryptFinal_ex(&mAesEncryptContext, ciphertext + cipheredLength, &paddingLength)){
+
+    // Ubuntu 18.04
+     /* update ciphertext with the final remaining bytes */
     if(!EVP_EncryptFinal_ex(mAesEncryptContext, ciphertext + cipheredLength, &paddingLength)){
         free(ciphertext);
         return QString();
@@ -108,16 +132,35 @@ QString UBCryptoUtils::symetricDecrypt(const QString& encrypted)
     int paddingLength = 0;
     unsigned char *plaintext = (unsigned char *)malloc(encryptedLength);
 
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    //if(!EVP_DecryptInit_ex(&mAesDecryptContext, NULL, NULL, NULL, NULL)){
+
+    // Ubuntu 18.04
     if(!EVP_DecryptInit_ex(mAesDecryptContext, NULL, NULL, NULL, NULL)){
         free(plaintext);
         return QString();
     }
 
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    //if(!EVP_DecryptUpdate(&mAesDecryptContext, plaintext, &encryptedLength, (const unsigned char *)encryptedData.data(), encryptedData.length())){
+
+    // Ubuntu 18.04
     if(!EVP_DecryptUpdate(mAesDecryptContext, plaintext, &encryptedLength, (const unsigned char *)encryptedData.data(), encryptedData.length())){
         free(plaintext);
         return QString();
     }
 
+
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    //if(!EVP_DecryptFinal_ex(&mAesDecryptContext, plaintext + encryptedLength, &paddingLength)){
+
+    // Ubuntu 18.04
     if(!EVP_DecryptFinal_ex(mAesDecryptContext, plaintext + encryptedLength, &paddingLength)){
         free(plaintext);
         return QString();
@@ -140,8 +183,14 @@ void UBCryptoUtils::aesInit()
     int key_data_len = sAESKey.length();
 
     // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    // nothing
+
+    // Ubuntu 18.04
     mAesEncryptContext = EVP_CIPHER_CTX_new();
     mAesDecryptContext = EVP_CIPHER_CTX_new();
+
 
     i = EVP_BytesToKey(EVP_aes_256_cbc(), EVP_sha1(), (unsigned char *)sAESSalt.toLatin1().data(), key_data,
             key_data_len, nrounds, key, iv);
@@ -152,6 +201,15 @@ void UBCryptoUtils::aesInit()
         return;
     }
 
+    // Issue 02/04/2018 -- OpenBoard -- OpenSSL Update
+
+    // Ubuntu 16.04
+    //EVP_CIPHER_CTX_init(&mAesEncryptContext);
+    //EVP_EncryptInit_ex(&mAesEncryptContext, EVP_aes_256_cbc(), NULL, key, iv);
+    //EVP_CIPHER_CTX_init(&mAesDecryptContext);
+    //EVP_DecryptInit_ex(&mAesDecryptContext, EVP_aes_256_cbc(), NULL, key, iv);
+
+    // Ubuntu 18.04
     EVP_CIPHER_CTX_init(mAesEncryptContext);
     EVP_EncryptInit_ex(mAesEncryptContext, EVP_aes_256_cbc(), NULL, key, iv);
     EVP_CIPHER_CTX_init(mAesDecryptContext);
