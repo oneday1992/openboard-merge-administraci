@@ -64,11 +64,11 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
 
     //pintamos el recuadro de relleno
     path.addRoundedRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),10,10);
-    painter.drawPath(path); 
+    painter.drawPath(path);
 
     mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
     qWarning()<< calculateX(1,20)+border() << calculateY()+border() << calculateWidth(1,-90) << calculateHeight(1,-60);
-    layout->setGeometry(mScene->sceneRect().toRect());
+    //layout->setGeometry(mScene->sceneRect().toRect());
     qWarning()<< "Datos de Scene: " << mScene->sceneRect();
 
     //pintamos el cuadro de drag and drop
@@ -94,8 +94,13 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
         //path2->addRoundedRect(calculateX(1,20)+border()+border()+pos,calculateY(1,20)+border()+border(),pictoWidth(),pictoHeight(),10,10);
         //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
         //painter.drawPath(path2->path());
-       // pos=pos+pictoWidth()+separatorPicto();
+
+        qreal x = calculateX(1,20)+border()+border()+pos;
+        qreal y = calculateY(1,20)+border()+border();
+        path2->setPos(x,y);
+        pos=pos+pictoWidth()+separatorPicto();
         listPath.append(path2);
+        mScene->addItem(path2);
       }
     }else{
         //Recorro la lista de QPainterPath
