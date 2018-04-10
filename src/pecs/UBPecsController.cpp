@@ -121,32 +121,19 @@ void UBPecsController::setupViews()
         QGraphicsScene *mSceneCommunication = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mSceneCommunication);
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
-       int y=lineaComunicacion->screenHeight()*0.30;
-       int ancho= lineaComunicacion->screenWidth()-40;
-       int alto =lineaComunicacion->screenWidth()*0.30;
+//        int y=lineaComunicacion->screenHeight()*0.30;
+  //      int ancho= lineaComunicacion->screenWidth()-40;
+    //    int alto =lineaComunicacion->screenWidth()*0.30;
         lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
-     //   lineaComunicacion->setGeometry(0,0,lineaComunicacion->screenWidth(),lineaComunicacion->screenHeight());
         mSceneCommunication->addWidget(lineaComunicacion);
         // Fin Escena
 
-
-        // Linea de comunicacion abajo
-        // tenemos que pintar primero la linea de comunicacion porque si no las paletas izda y dcha no despliegan
-
-
-         //      lineaComunicacion->setGeometry(0,0,300,300); //linea de geometria para hacer pruebas
-
-
-       //Paleta selección de Pecs de la izquierda
-       //UBFeaturesWidget *carpetasPecs = new UBFeaturesWidget();
         UBFoldersPecs *carpetasPecs = new UBFoldersPecs(); //Reimplementacion de UBFeaturesWidget en UBFoldersPecs
 
         //Paleta de agenda de la derecha
-        //UBAgenda *agenda = new UBAgenda();
         agenda = new UBAgenda();
 
         UBLeftPalette *paletaCarpetaPecs =new UBLeftPalette(mPecsWidget);
-     //   paletaCarpetaPecs->registerWidget(carpetasPecs);
         paletaCarpetaPecs->addTab(carpetasPecs);
 
         UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);

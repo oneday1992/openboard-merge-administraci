@@ -954,6 +954,7 @@ DISTFILES += \
     resources/images/vflipTool.svg \
     resources/images/z_layer_down.svg \
     resources/images/z_layer_up.svg \
+    resources/pecs/pictoBlanco.png
 
 HEADERS +=
 

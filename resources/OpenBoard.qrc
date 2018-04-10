@@ -515,5 +515,6 @@
         <file>images/libpalette/start.svg</file>
         <file>images/libpalette/hygiene.svg</file>
         <file>images/libpalette/toys.png</file>
+        <file>pecs/pictoBlanco.png</file>
     </qresource>
 </RCC>

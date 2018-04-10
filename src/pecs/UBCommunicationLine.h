@@ -9,6 +9,7 @@
 #include <QList>
 #include <QPainter>
 #include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 
 class pictoCommunicationLine;
 
@@ -108,19 +109,17 @@ signals:
 public slots:
 };
 
-class pictoCommunicationLine : public QWidget
+class pictoCommunicationLine : public QGraphicsPixmapItem
 {
-    Q_OBJECT
+    //Q_OBJECT
  public:
-     pictoCommunicationLine (QWidget *parent=0, QPainterPath *mqpainter=0, int i=0, QGraphicsScene *scene=0);
+     pictoCommunicationLine (QGraphicsPixmapItem *parent=0, int i=0, QGraphicsScene *scene=0);
      //~pictoCommunicationLine();
 
-    void addRoundedRect (int x, int y, int w, int h, int rx, int ry);
-    QPainterPath path(){return *mQPainterPath;}
  private:
    int numero;
-   QPainterPath *mQPainterPath;
    QGraphicsScene *mScene;
+
 
  protected:
    void dragMoveEvent(QDragMoveEvent *event);

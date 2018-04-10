@@ -103,7 +103,7 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
         {
             //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
             //painter.drawPath(listPath[i]->path());
-            //mScene->addItem(listPath[i]);
+            mScene->addItem(listPath[i]);
         }
     }
     e->accept();
