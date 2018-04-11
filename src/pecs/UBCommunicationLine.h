@@ -122,9 +122,9 @@ class pictoCommunicationLine : public QGraphicsPixmapItem
 
 
  protected:
-   void dragMoveEvent(QDragMoveEvent *event);
-   void dragEnterEvent(QDragEnterEvent *event);
-   void dropEvent(QDropEvent *event);
+   void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
+   void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
+   void dropEvent(QGraphicsSceneDragDropEvent *event);
 
 };
 

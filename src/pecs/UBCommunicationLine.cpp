@@ -218,21 +218,21 @@ pictoCommunicationLine::pictoCommunicationLine(QGraphicsPixmapItem *parent, int 
 
 }
 */
-void pictoCommunicationLine::dragMoveEvent(QDragMoveEvent *event)
+void pictoCommunicationLine::dragMoveEvent(QGraphicsSceneDragDropEvent *event)
 {
     //QWidget::dragMoveEvent(event);
     //event->acceptProposedAction();
     event->accept();
 }
 
-void pictoCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
+void pictoCommunicationLine::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
 {
     qWarning()<<"Picto en casilla: " << numero;
     event->accept();
 
 }
 
-void pictoCommunicationLine::dropEvent(QDropEvent *event)
+void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
 {
     QList<QUrl> urls;
     urls = event->mimeData()->urls();
@@ -240,12 +240,15 @@ void pictoCommunicationLine::dropEvent(QDropEvent *event)
     QList<QUrl>::iterator i;
     for (i=urls.begin();i!=urls.end();i++){
         QPixmap pix = QPixmap(i->path());
-        UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
+        //UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
+        setPixmap(pix.scaled(180,180,Qt::KeepAspectRatio));
         //Añado
         //picto->setPos(mQPainterPath->currentPosition());
 
-        qWarning()<< picto->pos().x() << picto->pos().y() << picto->sceneBoundingRect() << picto->boundingRect();
-        mScene->addItem(picto);
+        //qWarning()<< picto->pos().x() << picto->pos().y() << picto->sceneBoundingRect() << picto->boundingRect();
+        //mScene->addItem(picto);
+     setFlag(QGraphicsItem::ItemIsMovable);
     }
+
     event->accept();
 }
