@@ -101,15 +101,6 @@ void UBPecsController::setupViews()
         mCentralView->grabGesture(Qt::SwipeGesture);
         mCentralView->setTransformationAnchor(QGraphicsView::NoAnchor);
         mControlLayout->addWidget(mCentralView);
-
-        //Escena ppal
-        QGraphicsScene *mScene = new QGraphicsScene(mCentralView);
-        mCentralView->setScene(mScene);
-        QPixmap pix = QPixmap(":pecs/10236.png");
-        UBPecs *picto = new UBPecs(pix,0,Qt::blue, mScene);
-        mScene->addItem(picto);
-
-        // Fin Escena
         //Fin de board del medio
 
         //Añado el widget a mainwindows
@@ -121,9 +112,6 @@ void UBPecsController::setupViews()
         QGraphicsScene *mSceneCommunication = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mSceneCommunication);
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
-//        int y=lineaComunicacion->screenHeight()*0.30;
-  //      int ancho= lineaComunicacion->screenWidth()-40;
-    //    int alto =lineaComunicacion->screenWidth()*0.30;
         lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
         mSceneCommunication->addWidget(lineaComunicacion);
         // Fin Escena
@@ -139,8 +127,6 @@ void UBPecsController::setupViews()
         UBRightPalette *paletaAgenda = new UBRightPalette(mPecsWidget);
         paletaAgenda->registerWidget(agenda);
         paletaAgenda->addTab(agenda);
-
-
 
        //Fin de Paletas
     }

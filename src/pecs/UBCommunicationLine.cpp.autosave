@@ -31,14 +31,20 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
    qWarning()<<"Entrando en método paintEvent";
 
     //codigo
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing,true);
-    mBackgroundBrush = QBrush(UBSettings::paletteColor);
-    painter.setPen(Qt::NoPen);
-    painter.setBrush(mBackgroundBrush);
+ //   QPainter painter(this);
+    //painter.setRenderHint(QPainter::Antialiasing,true);
+//    mBackgroundBrush = QBrush(UBSettings::paletteColor);
+  //  painter.setPen(Qt::NoPen);
+    //painter.setBrush(mBackgroundBrush);
 
     //pintamos el recuadro grande
+    pictoCommunicationLine *painter =new pictoCommunicationLine(0,i,mScene);
+    mScene->addRect(100,100,20,50);
+    QRectF *item = new QRectF;
+    item->set
+    scene.addItem(item);
 
+   // QGraphicsRectItem 
 /*    painter.drawRoundedRect(calculateX(1,20), calculateY(),calculateWidth(1,-50),calculateHeight(1,-20),10,10);
     QPainterPath path;
     path.setFillRule(Qt::WindingFill);
