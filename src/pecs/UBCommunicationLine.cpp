@@ -200,36 +200,46 @@ void UBCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
 pictoCommunicationLine::pictoCommunicationLine(QGraphicsPixmapItem *parent, int i, QGraphicsScene *scene) : QGraphicsPixmapItem(parent)
     ,numero(i)
     ,mScene(scene)
+    ,width(180)
+    ,height(180)
 {
-    //Esto deben ser atributos de clase y debe ser dinámico
-    int width=180;
-    int height=180;
-
     setAcceptDrops(true);
+
+    setCursor(Qt::OpenHandCursor);
+    //setAcceptedMouseButtons(Qt::LeftButton);
+
     QPixmap pixmap = QPixmap(":pecs/pictoBlanco.png");
     setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
     qWarning()<<"Constructor de pictoCommnication: "<<numero;
 
 }
 
-/*void pictoCommunicationLine::addRoundedRect(int x, int y, int w, int h, int rx, int ry)
-{
-    //mQPainterPath->addRoundedRect(x,y,w,h,rx,ry);
 
-}
-*/
+
+
 void pictoCommunicationLine::dragMoveEvent(QGraphicsSceneDragDropEvent *event)
 {
-    //QWidget::dragMoveEvent(event);
-    //event->acceptProposedAction();
+    event->setDropAction(Qt::MoveAction);
     event->accept();
+
 }
 
 void pictoCommunicationLine::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
 {
-    qWarning()<<"Picto en casilla: " << numero;
-    event->accept();
 
+        event->setDropAction(Qt::MoveAction);
+        event->accept();
+
+
+    qWarning()<<"Picto en casilla: " << numero;
+ //   event->accept();
+
+}
+
+void pictoCommunicationLine::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)
+{
+
+    event->accept();
 }
 
 void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
@@ -241,14 +251,76 @@ void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
     for (i=urls.begin();i!=urls.end();i++){
         QPixmap pix = QPixmap(i->path());
         //UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
-        setPixmap(pix.scaled(180,180,Qt::KeepAspectRatio));
+        setPixmap(pix.scaled(width,height,Qt::KeepAspectRatio));
         //Añado
         //picto->setPos(mQPainterPath->currentPosition());
 
         //qWarning()<< picto->pos().x() << picto->pos().y() << picto->sceneBoundingRect() << picto->boundingRect();
         //mScene->addItem(picto);
+     setAcceptDrops(false);
+     setFlag(QGraphicsItem::ItemIsSelectable);
      setFlag(QGraphicsItem::ItemIsMovable);
+     //setFlag(QGraphicsItem::ItemSendsGeometryChanges);
+
+
+     /*setFlag(QGraphicsItem::ItemIsMovable);
+     setFlag(QGraphicsItem::ItemClipsToShape,true);
+     setFlag(QGraphicsItem::ItemClipsChildrenToShape);
+*/
+
+
     }
 
     event->accept();
 }
+
+void pictoCommunicationLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    setCursor(Qt::ClosedHandCursor);
+
+    QPixmap pixmap = this->pixmap();
+    QByteArray itemData;
+    QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+    dataStream << pixmap << QPointF(event->pos() - this->pos());
+    QMimeData *mimeData = new QMimeData;
+
+    mimeData->setData("application/x-dnditemdata", itemData);
+//! [2]
+
+//! [3]
+    QDrag *drag = new QDrag(event->widget());
+    drag->setMimeData(mimeData);
+    drag->setPixmap(pixmap);
+    //QPointF aux =event->pos() - this->pos();
+    QPointF aux = event->pos();
+
+    drag->setHotSpot(aux.toPoint());
+//! [3]
+    QPixmap tempPixmap = QPixmap(":pecs/pictoBlanco.png");
+    setPixmap(tempPixmap.scaled(width,height,Qt::KeepAspectRatio));
+    //QPixmap tempPixmap = pixmap;
+    //QPainter painter;
+    //painter.begin(&tempPixmap);
+    //painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
+    //painter.end();
+    this->setPixmap(tempPixmap);
+
+    if (drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction) {
+        //child->close();
+    } else {
+        //child->show();
+        //child->setPixmap(pixmap);
+    }
+    QGraphicsPixmapItem::mousePressEvent(event);
+    event->accept();
+}
+
+
+void pictoCommunicationLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    qWarning()<<"Suelto tecla de picto: " << numero;
+    setCursor(Qt::OpenHandCursor);
+    QGraphicsPixmapItem::mouseReleaseEvent(event);
+    event->accept();
+}
+

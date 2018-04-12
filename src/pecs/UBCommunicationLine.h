@@ -116,15 +116,23 @@ class pictoCommunicationLine : public QGraphicsPixmapItem
      pictoCommunicationLine (QGraphicsPixmapItem *parent=0, int i=0, QGraphicsScene *scene=0);
      //~pictoCommunicationLine();
 
+
  private:
    int numero;
    QGraphicsScene *mScene;
+   int width;
+   int height;
 
 
  protected:
    void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
    void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
+   void dragLeaveEvent(QGraphicsSceneDragDropEvent *event);
    void dropEvent(QGraphicsSceneDragDropEvent *event);
+
+   void mousePressEvent(QGraphicsSceneMouseEvent *event);
+   //void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+   void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 };
 
