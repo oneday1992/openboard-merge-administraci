@@ -205,11 +205,11 @@ pictoCommunicationLine::pictoCommunicationLine(QGraphicsPixmapItem *parent, int 
 {
     setAcceptDrops(true);
 
-    setCursor(Qt::OpenHandCursor);
     //setAcceptedMouseButtons(Qt::LeftButton);
 
     QPixmap pixmap = QPixmap(":pecs/pictoBlanco.png");
     setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
+    setFlag(QGraphicsItem::ItemIsMovable,false);
     qWarning()<<"Constructor de pictoCommnication: "<<numero;
 
 }
@@ -226,6 +226,15 @@ void pictoCommunicationLine::dragMoveEvent(QGraphicsSceneDragDropEvent *event)
 
 void pictoCommunicationLine::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
 {
+
+        QPixmap pixmap = this->pixmap();
+        QPainter painter;
+        painter.begin(&pixmap);
+        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
+        //painter.setPen(QPen(Qt::red,8,Qt::SolidLine));
+        //painter.drawRect(pixmap.rect());
+        painter.end();
+        this->setPixmap(pixmap);
 
         event->setDropAction(Qt::MoveAction);
         event->accept();
@@ -244,83 +253,96 @@ void pictoCommunicationLine::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)
 
 void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
 {
-    QList<QUrl> urls;
-    urls = event->mimeData()->urls();
-    qWarning()<<urls;
-    QList<QUrl>::iterator i;
-    for (i=urls.begin();i!=urls.end();i++){
-        QPixmap pix = QPixmap(i->path());
-        //UBPecs *picto = new UBPecs(pix,0,Qt::red,mScene);
-        setPixmap(pix.scaled(width,height,Qt::KeepAspectRatio));
-        //Añado
-        //picto->setPos(mQPainterPath->currentPosition());
 
-        //qWarning()<< picto->pos().x() << picto->pos().y() << picto->sceneBoundingRect() << picto->boundingRect();
-        //mScene->addItem(picto);
-     setAcceptDrops(false);
-     setFlag(QGraphicsItem::ItemIsSelectable);
-     setFlag(QGraphicsItem::ItemIsMovable);
-     //setFlag(QGraphicsItem::ItemSendsGeometryChanges);
+    qWarning()<<"Intentando drop en casilla"<<numero;
 
-
-     /*setFlag(QGraphicsItem::ItemIsMovable);
-     setFlag(QGraphicsItem::ItemClipsToShape,true);
-     setFlag(QGraphicsItem::ItemClipsChildrenToShape);
-*/
-
-
+    if (event->mimeData()->hasFormat("PictoPecs")) {
+        QByteArray itemData = event->mimeData()->data("PictoPecs");
+        QDataStream dataStream(&itemData, QIODevice::ReadOnly);
+        QPixmap pixmap;
+        QPoint offset;
+        dataStream >> pixmap >> offset;
+        setPixmap(pixmap);
+        setAcceptDrops(false);
+        setFlag(QGraphicsItem::ItemIsMovable);
+        setCursor(Qt::OpenHandCursor);
+        event->setDropAction(Qt::MoveAction);
+        event->accept();
+        //event->acceptProposedAction();
+    }
+    else{
+        QList<QUrl> urls;
+        urls = event->mimeData()->urls();
+        qWarning()<<urls;
+        QList<QUrl>::iterator i;
+        for (i=urls.begin();i!=urls.end();i++){
+            QPixmap pix = QPixmap(i->path());
+            setPixmap(pix.scaled(width,height,Qt::KeepAspectRatio));
+            setAcceptDrops(false);
+            setFlag(QGraphicsItem::ItemIsMovable);
+            setCursor(Qt::OpenHandCursor);
+            event->accept();
+        }
     }
 
-    event->accept();
+
 }
 
 void pictoCommunicationLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    setCursor(Qt::ClosedHandCursor);
+    //setCursor(Qt::ClosedHandCursor);
 
-    QPixmap pixmap = this->pixmap();
-    QByteArray itemData;
-    QDataStream dataStream(&itemData, QIODevice::WriteOnly);
-    dataStream << pixmap << QPointF(event->pos() - this->pos());
-    QMimeData *mimeData = new QMimeData;
+    if (flags() & QGraphicsItem::ItemIsMovable){
+        QPixmap pixmap = this->pixmap();
+        QByteArray itemData;
+        QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+        dataStream << pixmap << QPointF(event->pos() - this->pos());
+        QMimeData *mimeData = new QMimeData;
 
-    mimeData->setData("application/x-dnditemdata", itemData);
-//! [2]
+        mimeData->setData("PictoPecs", itemData);
 
-//! [3]
-    QDrag *drag = new QDrag(event->widget());
-    drag->setMimeData(mimeData);
-    drag->setPixmap(pixmap);
-    //QPointF aux =event->pos() - this->pos();
-    QPointF aux = event->pos();
+        QDrag *drag = new QDrag(event->widget());
+        drag->setMimeData(mimeData);
+        drag->setPixmap(pixmap);
 
-    drag->setHotSpot(aux.toPoint());
-//! [3]
-    QPixmap tempPixmap = QPixmap(":pecs/pictoBlanco.png");
-    setPixmap(tempPixmap.scaled(width,height,Qt::KeepAspectRatio));
-    //QPixmap tempPixmap = pixmap;
-    //QPainter painter;
-    //painter.begin(&tempPixmap);
-    //painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
-    //painter.end();
-    this->setPixmap(tempPixmap);
+        QCursor cursor(Qt::WaitCursor);
+        drag->setDragCursor(cursor.pixmap(), Qt::MoveAction);
 
-    if (drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction) {
-        //child->close();
-    } else {
-        //child->show();
-        //child->setPixmap(pixmap);
+        QPointF aux = event->pos();
+
+        drag->setHotSpot(aux.toPoint());
+        QPixmap tempPixmap = pixmap;
+        QPainter painter;
+        painter.begin(&tempPixmap);
+        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
+        painter.end();
+        this->setPixmap(tempPixmap);
+
+        if (drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction) {
+            QPixmap original = QPixmap(":pecs/pictoBlanco.png");
+            this->setPixmap(original.scaled(width,height,Qt::KeepAspectRatio));
+            //Colocamos propiedades iniciales
+            setAcceptDrops(true);
+            setFlag(QGraphicsItem::ItemIsMovable,false);
+            setCursor(Qt::ArrowCursor);
+
+        } else {
+            this->setPixmap(pixmap);
+        }
+
     }
-    QGraphicsPixmapItem::mousePressEvent(event);
-    event->accept();
+        QGraphicsPixmapItem::mousePressEvent(event);
+        event->accept();
+
 }
 
 
 void pictoCommunicationLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    qWarning()<<"Suelto tecla de picto: " << numero;
+   /* qWarning()<<"Suelto tecla de picto: " << numero;
     setCursor(Qt::OpenHandCursor);
     QGraphicsPixmapItem::mouseReleaseEvent(event);
     event->accept();
+    */
 }
 
