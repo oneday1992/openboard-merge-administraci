@@ -121,13 +121,20 @@ void UBPecsController::setupViews()
         int alto=QApplication::desktop()->screenGeometry().height()*0.30-1;
         int pantallay=QApplication::desktop()->screenGeometry().height();
      //   mSceneCommunication->setSceneRect(0,68,QApplication::desktop()->screenGeometry().width(), QApplication::desktop()->screenGeometry().height()-68);
-        mSceneCommunication->setSceneRect(0,(QApplication::desktop()->screenGeometry().height()-68)*0.70,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
-     //   UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
+           //mSceneCommunication->setSceneRect(0,(QApplication::desktop()->screenGeometry().height()-68)*0.70,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
+        //mSceneCommunication->setSceneRect(0,(QApplication::desktop()->screenGeometry().height()-70)*0.70,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-70)*0.30);
+        mSceneCommunication->setSceneRect(0,538,1300,229);
+        qDebug () << mSceneCommunication-> sceneRect ();
+        //UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
      //   int x=lineaComunicacion->screenHeight()*0.60;
         mCentralView->setScene(mSceneCommunication);
-        qWarning()<<"*********************************************  "<<(QApplication::desktop()->screenGeometry().height()-68)*0.70;
+        qWarning()<<"*********************************************  "<<(QApplication::desktop()->screenGeometry().height()-70)*0.70;
     //    lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
-        mSceneCommunication->addRect(0,1080,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
+        //mSceneCommunication->addRect(0,700,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
+
+        QGraphicsRectItem *rectppal= mSceneCommunication->addRect(0,0,QApplication::desktop()->screenGeometry().width(),50);
+        rectppal->setPos(0,768);
+        qDebug()<<mSceneCommunication->sceneRect();
     //    mCentralView->show();
        //mSceneCommunication->addWidget(lineaComunicacion);
 
