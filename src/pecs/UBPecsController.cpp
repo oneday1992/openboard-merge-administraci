@@ -109,21 +109,28 @@ void UBPecsController::setupViews()
 
         // Creamos una escena diferente para añadir la linea de comunicacion y otra escena para la ventana ppal
         //Escena principal
-        QGraphicsScene *mScenePpal = new QGraphicsScene(mCentralView);
-        mCentralView->setScene(mScenePpal);
-        mScenePpal->setSceneRect(0,0,QApplication::desktop()->screenGeometry().width(),QApplication::desktop()->screenGeometry().height()*0.70);
+   //     QGraphicsScene *mScenePpal = new QGraphicsScene(mCentralView);
+    //    mCentralView->setScene(mScenePpal);
+      //  mScenePpal->setSceneRect(0,0,QApplication::desktop()->screenGeometry().width(),QApplication::desktop()->screenGeometry().height()*0.70);
+    //    mScenePpal->addRect(10,10,100,100);
         //Escena de la linea de comunicacion
         QGraphicsScene *mSceneCommunication = new QGraphicsScene(mCentralView);
         mCentralView->setScene(mSceneCommunication);
         int y=QApplication::desktop()->screenGeometry().height()*0.70+1;
         int ancho=QApplication::desktop()->screenGeometry().width();
         int alto=QApplication::desktop()->screenGeometry().height()*0.30-1;
-        mSceneCommunication->setSceneRect(0,QApplication::desktop()->screenGeometry().height()*0.70+1,QApplication::desktop()->screenGeometry().width(),QApplication::desktop()->screenGeometry().height()*0.30-1);
+        int pantallay=QApplication::desktop()->screenGeometry().height();
+     //   mSceneCommunication->setSceneRect(0,68,QApplication::desktop()->screenGeometry().width(), QApplication::desktop()->screenGeometry().height()-68);
+        mSceneCommunication->setSceneRect(0,(QApplication::desktop()->screenGeometry().height()-68)*0.70,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
      //   UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
      //   int x=lineaComunicacion->screenHeight()*0.60;
+        mCentralView->setScene(mSceneCommunication);
+        qWarning()<<"*********************************************  "<<(QApplication::desktop()->screenGeometry().height()-68)*0.70;
     //    lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
-        mSceneCommunication->addRect(100,100,20,20,Qt::NoPen,UBSettings::paletteColor);
+        mSceneCommunication->addRect(0,1080,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
+    //    mCentralView->show();
        //mSceneCommunication->addWidget(lineaComunicacion);
+
         // Fin Escena
 
         UBFoldersPecs *carpetasPecs = new UBFoldersPecs(); //Reimplementacion de UBFeaturesWidget en UBFoldersPecs
