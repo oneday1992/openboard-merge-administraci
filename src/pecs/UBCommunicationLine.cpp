@@ -230,9 +230,9 @@ void pictoCommunicationLine::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
         QPixmap pixmap = this->pixmap();
         QPainter painter;
         painter.begin(&pixmap);
-        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
-        //painter.setPen(QPen(Qt::red,8,Qt::SolidLine));
-        //painter.drawRect(pixmap.rect());
+        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 90));
+        painter.setPen(QPen(Qt::white,8,Qt::SolidLine));
+        painter.drawRoundRect(pixmap.rect());
         painter.end();
         this->setPixmap(pixmap);
 
@@ -247,7 +247,8 @@ void pictoCommunicationLine::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
 
 void pictoCommunicationLine::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)
 {
-
+    QPixmap pixmap = QPixmap(":pecs/pictoBlanco.png");
+    setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
     event->accept();
 }
 
@@ -262,6 +263,16 @@ void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
         QPixmap pixmap;
         QPoint offset;
         dataStream >> pixmap >> offset;
+        /*
+         //NO hace falta porque el pixmap ya lo tiene
+
+        QPainter painter;
+        painter.begin(&pixmap);
+        painter.setPen(QPen(Qt::red,8,Qt::SolidLine));
+        painter.drawRect(QRect(pixmap.rect().x()+4,pixmap.rect().y()+4,pixmap.rect().width()-8,pixmap.rect().height()-8));
+        painter.end();
+        */
+
         setPixmap(pixmap);
         setAcceptDrops(false);
         setFlag(QGraphicsItem::ItemIsMovable);
@@ -276,8 +287,18 @@ void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
         qWarning()<<urls;
         QList<QUrl>::iterator i;
         for (i=urls.begin();i!=urls.end();i++){
-            QPixmap pix = QPixmap(i->path());
-            setPixmap(pix.scaled(width,height,Qt::KeepAspectRatio));
+            QPixmap pixmap = QPixmap(i->path());
+            setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
+
+            pixmap=this->pixmap();
+            QPainter painter;
+            painter.begin(&pixmap);
+            painter.setPen(QPen(Qt::red,8,Qt::SolidLine));
+            painter.drawRect(QRect(pixmap.rect().x()+4,pixmap.rect().y()+4,pixmap.rect().width()-8,pixmap.rect().height()-8));
+            painter.end();
+            setPixmap(pixmap);
+            //setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
+
             setAcceptDrops(false);
             setFlag(QGraphicsItem::ItemIsMovable);
             setCursor(Qt::OpenHandCursor);
@@ -314,7 +335,7 @@ void pictoCommunicationLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
         QPixmap tempPixmap = pixmap;
         QPainter painter;
         painter.begin(&tempPixmap);
-        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
+        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 90));
         painter.end();
         this->setPixmap(tempPixmap);
 
@@ -337,12 +358,4 @@ void pictoCommunicationLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 
-void pictoCommunicationLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
-{
-   /* qWarning()<<"Suelto tecla de picto: " << numero;
-    setCursor(Qt::OpenHandCursor);
-    QGraphicsPixmapItem::mouseReleaseEvent(event);
-    event->accept();
-    */
-}
 
