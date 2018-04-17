@@ -62,7 +62,7 @@ class UBPecsController : public QObject
 
         //QGraphicsView *mPecsWidget;
         QWidget *mPecsWidget;
-        QHBoxLayout *mControlLayout;
+        QVBoxLayout *mControlLayout;
 
         QGraphicsView *mCentralView;
         UBAgenda *agenda;
