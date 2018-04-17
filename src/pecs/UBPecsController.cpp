@@ -88,22 +88,38 @@ void UBPecsController::setupViews()
     {
         mPecsWidget = new QWidget(mMainWindow->centralWidget());
 
-
         mControlLayout = new QVBoxLayout(mPecsWidget);
 
         // si no se pone un setContentsMargins aparece un margen en el panel de la pizarra y no se extiende a la pantalla completa
         mControlLayout->setContentsMargins(0, 0, 0, 0);
         mControlLayout->setSpacing(0);
 
-        //Board del medio
-        mCentralView = new QGraphicsView(mPecsWidget);
-        mCentralView->setObjectName("pecsCentralView");
-        mCentralView->setInteractive(true);
-        mCentralView->setMouseTracking(true);
-        mCentralView->grabGesture(Qt::SwipeGesture);
-        mCentralView->setTransformationAnchor(QGraphicsView::NoAnchor);
-        mControlLayout->addWidget(mCentralView);
-        //Fin de board del medio
+        //Board superior
+        mPpalView = new QGraphicsView(mPecsWidget);
+        mPpalView->setObjectName("pecsCentralView");
+        mPpalView->setInteractive(true);
+        mPpalView->setMouseTracking(true);
+        mPpalView->grabGesture(Qt::SwipeGesture);
+        mPpalView->setTransformationAnchor(QGraphicsView::NoAnchor);
+        mControlLayout->addWidget(mPpalView);
+        //Fin de board superior
+
+        //Creamos la escena ppal
+        QGraphicsScene *mScenePpal = new QGraphicsScene(mPpalView);
+        mPpalView->setScene(mScenePpal);
+
+        //aplicamos geometria a la vista y tamaño a la escena, tiene que ser en los dos el mismo para que no pinte cosas raras
+        mPpalView->setGeometry(0,0,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.70-1);
+        mScenePpal->setSceneRect(0,0,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.70-1);
+
+
+
+
+        //Board de Comunicacion
+
+
+
+        //Fin del board de Comunicacion
 
         //Añado el widget a mainwindows
         mPecsWidget->setObjectName("ubPecsContainer");
@@ -114,14 +130,13 @@ void UBPecsController::setupViews()
    //     QGraphicsScene *mScenePpal = new QGraphicsScene(mCentralView);
     //    mCentralView->setScene(mScenePpal);
       //  mScenePpal->setSceneRect(0,0,QApplication::desktop()->screenGeometry().width(),QApplication::desktop()->screenGeometry().height()*0.70);
-    //    mScenePpal->addRect(10,10,100,100);
         //Escena de la linea de comunicacion
-        QGraphicsScene *mSceneCentral = new QGraphicsScene(mCentralView);
-        mCentralView->setScene(mSceneCentral);
-        int y=QApplication::desktop()->screenGeometry().height()*0.70+1;
-        int ancho=QApplication::desktop()->screenGeometry().width();
-        int alto=QApplication::desktop()->screenGeometry().height()*0.30-1;
-        int pantallay=QApplication::desktop()->screenGeometry().height();
+   //     QGraphicsScene *mSceneCentral = new QGraphicsScene(mCentralView);
+     //   mCentralView->setScene(mSceneCentral);
+ //       int y=QApplication::desktop()->screenGeometry().height()*0.70+1;
+   //     int ancho=QApplication::desktop()->screenGeometry().width();
+     //   int alto=QApplication::desktop()->screenGeometry().height()*0.30-1;
+       // int pantallay=QApplication::desktop()->screenGeometry().height();
      //   mSceneCommunication->setSceneRect(0,68,QApplication::desktop()->screenGeometry().width(), QApplication::desktop()->screenGeometry().height()-68);
            //mSceneCommunication->setSceneRect(0,(QApplication::desktop()->screenGeometry().height()-68)*0.70,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
         //mSceneCommunication->setSceneRect(0,(QApplication::desktop()->screenGeometry().height()-70)*0.70,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-70)*0.30);
@@ -130,18 +145,18 @@ void UBPecsController::setupViews()
         //UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
      //   int x=lineaComunicacion->screenHeight()*0.60;
         //mCentralView->setScene(mSceneCommunication);
-
+/*
         mCentralView->setGeometry(0,0,1920-100,(1079-72)*0.7);
         mSceneCentral->setSceneRect(0,0,1920-100,(1079-72)*0.7);
-
-        mSceneCentral->setBackgroundBrush(Qt::red);
+*/
+        mScenePpal->setBackgroundBrush(Qt::red);
         qWarning()<<"*********************************************  "<<(QApplication::desktop()->screenGeometry().height()-70)*0.70;
     //    lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
         //mSceneCommunication->addRect(0,700,QApplication::desktop()->screenGeometry().width(),(QApplication::desktop()->screenGeometry().height()-68)*0.30);
 
         //QGraphicsRectItem *rectppal= mSceneCommunication->addRect(0,0,QApplication::desktop()->screenGeometry().width(),50);
         //QGraphicsRectItem *rectppal= mSceneCentral->addRect(0,0,QApplication::desktop()->screenGeometry().width()-20,50);
-        QGraphicsRectItem *rectppal= mSceneCentral->addRect(0,0,1920-100,500);
+        QGraphicsRectItem *rectppal= mScenePpal->addRect(0,0,1920-100,500);
         rectppal->setBrush(Qt::green);
         qWarning() << "Tamaño de rect principal" << rectppal->rect();
         rectppal->setPos(0,0);

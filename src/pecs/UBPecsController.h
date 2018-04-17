@@ -58,13 +58,13 @@ class UBPecsController : public QObject
 
     private:
         UBMainWindow *mMainWindow;
-        //Ui::pecswindow* mPecsUI;
 
-        //QGraphicsView *mPecsWidget;
         QWidget *mPecsWidget;
         QVBoxLayout *mControlLayout;
 
-        QGraphicsView *mCentralView;
+        QGraphicsView *mPpalView;
+        QGraphicsView *mCommunicationView;
+
         UBAgenda *agenda;
     private slots:
 
