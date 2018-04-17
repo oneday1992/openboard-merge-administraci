@@ -12,6 +12,10 @@
 #include <QHBoxLayout>
 #include <QWidget>
 #include "UBPecs.h"
+#include <QGraphicsRectItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QtGui>
 
 
 UBCommunicationLine::UBCommunicationLine(QWidget *parent, QGraphicsScene *scene) : QWidget(parent)
@@ -24,94 +28,61 @@ UBCommunicationLine::UBCommunicationLine(QWidget *parent, QGraphicsScene *scene)
 
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
 {
-    /**
-    // Usamos esta parte del codigo para hacer pruebas.
+   qWarning()<<"Entrando en método paintEvent";
 
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);
-    mBackgroundBrush = QBrush(UBSettings::paletteColor);
-    painter.setPen(Qt::NoPen);
-
-    // painter.setBrush(mBackgroundBrush);
-    painter.setBrush(mBackgroundBrush);
-
-    QPainterPath borderPath;
-    borderPath.setFillRule(Qt::WindingFill);
-
-
-    borderPath.addRoundedRect(0, 0, width(), height(), 15,15);
-    borderPath.addRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
-    painter.drawPath(borderPath);
-    painter.setBrush(QBrush(QColor(170, 170 ,170)));
-    painter.drawRoundedRect(border(), border(), width() - 2 * border(), height() - 2 * border(), 15,15);
-    */
-
-    qWarning()<<"Entrando en método paintEvent";
-
-
-     //codigo
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing,true);
-    mBackgroundBrush = QBrush(UBSettings::paletteColor);
-    painter.setPen(Qt::NoPen);
-    painter.setBrush(mBackgroundBrush);
+    //codigo
+ //   QPainter painter(this);
+    //painter.setRenderHint(QPainter::Antialiasing,true);
+//    mBackgroundBrush = QBrush(UBSettings::paletteColor);
+  //  painter.setPen(Qt::NoPen);
+    //painter.setBrush(mBackgroundBrush);
 
     //pintamos el recuadro grande
-    painter.drawRoundedRect(calculateX(1,20), calculateY(),calculateWidth(1,-50),calculateHeight(1,-20),10,10);
+//    pictoCommunicationLine *painter =new pictoCommunicationLine(0,i,mScene);
+ // mScene->addRect(100,100,20,20,Qt::NoPen,UBSettings::paletteColor);
+   // mScene->addRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),Qt::NoPen,UBSettings::paletteColor);
+  //  QRectF *item = new QRectF;
+  //  mScene->addRect(100,100,200,200);
+
+   // QGraphicsRectItem
+/*    painter.drawRoundedRect(calculateX(1,20), calculateY(),calculateWidth(1,-50),calculateHeight(1,-20),10,10);
     QPainterPath path;
     path.setFillRule(Qt::WindingFill);
 
-
+*/
     //pintamos el recuadro de relleno
-    path.addRoundedRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),10,10);
-    painter.drawPath(path);
+    //path.addRoundedRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),10,10);
+   // painter.drawPath(path);
 
-    mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
-    qWarning()<< calculateX(1,20)+border() << calculateY()+border() << calculateWidth(1,-90) << calculateHeight(1,-60);
-    //layout->setGeometry(mScene->sceneRect().toRect());
-    qWarning()<< "Datos de Scene: " << mScene->sceneRect();
+  //  mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
+  //  qWarning()<< calculateX(1,20)+border() << calculateY()+border() << calculateWidth(1,-90) << calculateHeight(1,-60);
+  //  qWarning()<< "Datos de Scene: " << mScene->sceneRect();
 
     //pintamos el cuadro de drag and drop
-    painter.setPen(Qt::DotLine);
-    int ancho=calculateWidth(1,-100);
-    int pos=posInit(ancho);
-    //Lista donde se añade cada casilla de pictos.
-    //QList<pictoCommunicationLine*> listPath;
+    //painter.setPen(Qt::DotLine);
+//    int ancho=calculateWidth(1,-100);
+  //  int pos=posInit(ancho);
     //Añadida anterior lista como miembro de la clase. Atributo Privado
-    if (listPath.count()==0){ //Si no hay elementos los añado
-      for (int i=0; i<8; i++)
-      {
-        //QPainterPath *qpainter =new QPainterPath();
-        // Cada recuadro sera un widget que contendra un qPainterPath
-        //pictoCommunicationLine *path2 =new pictoCommunicationLine(this,qpainter,i,mScene);
-
-        //QGraphicsPixmapItem *qpainter =new QGraphicsPixmapItem();
-        // Cada recuadro sera un widget que contendra un qPainterPath
-        pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
-
-
-        //layout->addWidget(path2);
-        //path2->addRoundedRect(calculateX(1,20)+border()+border()+pos,calculateY(1,20)+border()+border(),pictoWidth(),pictoHeight(),10,10);
-        //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
-        //painter.drawPath(path2->path());
-
-        qreal x = calculateX(1,20)+border()+border()+pos;
-        qreal y = calculateY(1,20)+border()+border();
-        path2->setPos(x,y);
-        pos=pos+pictoWidth()+separatorPicto();
-        listPath.append(path2);
-        mScene->addItem(path2);
-      }
-    }else{
+//    if (listPath.count()==0){ //Si no hay elementos los añado
+  //    for (int i=0; i<8; i++)
+    //  {
+      //  pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
+        //qreal x = calculateX(1,20)+border()+border()+pos;
+//        qreal y = calculateY(30,20)+border()+border();
+  //      path2->setPos(x,y);
+    //    pos=pos+pictoWidth()+separatorPicto();
+      //  listPath.append(path2);
+//        mScene->addItem(path2);
+  //    }
+//    }else{
         //Recorro la lista de QPainterPath
-        for(int i = 0; i < listPath.count(); i++)
-        {
+  //      for(int i = 0; i < listPath.count(); i++)
+    //    {
             //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
-            //painter.drawPath(listPath[i]->path());
-            //mScene->addItem(listPath[i]);
-        }
-    }
-    e->accept();
+      //    mScene->addItem(listPath[i]);
+//        }
+//    }
+  //  e->accept();
 }
 
 int UBCommunicationLine::border()
@@ -126,7 +97,7 @@ int UBCommunicationLine::calculateX(double percent, int displaced)
 
 int UBCommunicationLine::calculateY(double percent,int displaced)
 {
-    return this->height()*(percent/100)+displaced;
+    return QApplication::desktop()->height()*(percent/100)+displaced;
 }
 
 int UBCommunicationLine::calculateWidth(double percent,int displaced)
