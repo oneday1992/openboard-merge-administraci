@@ -66,6 +66,8 @@ class UBPecsController : public QObject
         QGraphicsView *mCommunicationView;
 
         UBAgenda *agenda;
+
+        int border();
     private slots:
 
 
