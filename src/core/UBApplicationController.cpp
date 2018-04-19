@@ -39,6 +39,7 @@
 #include "core/UBDisplayManager.h"
 #include "core/UBOpenSankoreImporter.h"
 
+#include <canvas/UBCanvasController.h>
 
 #include "board/UBBoardView.h"
 #include "board/UBBoardController.h"
@@ -188,9 +189,19 @@ void UBApplicationController::adaptToolBar()
 
     mMainWindow->actionClearPage->setVisible(Board == mMainMode && highResolution);
     mMainWindow->actionBoard->setVisible(Board != mMainMode || highResolution);
+
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    mMainWindow->actionCanvas->setVisible(Canvas != mMainMode || highResolution);
+
     mMainWindow->actionDocument->setVisible(Document != mMainMode || highResolution);
     mMainWindow->actionWeb->setVisible(Internet != mMainMode || highResolution);
     mMainWindow->boardToolBar->setIconSize(QSize(highResolution ? 48 : 42, mMainWindow->boardToolBar->iconSize().height()));
+
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    mMainWindow->canvasToolBar->setIconSize(QSize(highResolution ? 48 : 42, mMainWindow->boardToolBar->iconSize().height()));
+
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    mMainWindow->actionBoard->setEnabled(mMainMode != Canvas);
 
     mMainWindow->actionBoard->setEnabled(mMainMode != Board);
     mMainWindow->actionWeb->setEnabled(mMainMode != Internet);
@@ -347,6 +358,8 @@ void UBApplicationController::showBoard()
 {
     mMainWindow->webToolBar->hide();
     mMainWindow->documentToolBar->hide();
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    mMainWindow->canvasToolBar->hide();
     mMainWindow->boardToolBar->show();
 
     if (mMainMode == Document)
@@ -366,6 +379,9 @@ void UBApplicationController::showBoard()
 
     mMainWindow->switchToBoardWidget();
 
+    if (UBApplication::canvasController)
+        UBApplication::canvasController->hide();
+
     if (UBApplication::boardController)
         UBApplication::boardController->show();
 
@@ -381,6 +397,37 @@ void UBApplicationController::showBoard()
     UBApplication::boardController->freezeW3CWidgets(false);
 }
 
+void UBApplicationController::showCanvas()
+{
+    mMainWindow->webToolBar->hide();
+    mMainWindow->boardToolBar->hide();
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    mMainWindow->canvasToolBar->show();
+    mMainWindow->documentToolBar->hide();
+
+    mMainMode = Canvas;
+
+    adaptToolBar();
+
+    mirroringEnabled(false);
+
+    mMainWindow->switchToCanvasWidget();
+
+    if (UBApplication::boardController)
+    {
+        if (UBApplication::boardController->activeScene()->isModified())
+            UBApplication::boardController->persistCurrentScene();
+        UBApplication::boardController->hide();
+    }
+
+    UBApplication::canvasController->show();
+
+    mMainWindow->show();
+
+    mUninoteController->hideWindow();
+
+    emit mainModeChanged(Canvas);
+}
 
 void UBApplicationController::showInternet()
 {
@@ -391,6 +438,9 @@ void UBApplicationController::showInternet()
         UBApplication::boardController->hide();
     }
 
+    if (UBApplication::canvasController)
+        UBApplication::canvasController->hide();
+
     if (UBSettings::settings()->webUseExternalBrowser->get().toBool())
     {
         showDesktop(true);
@@ -400,6 +450,8 @@ void UBApplicationController::showInternet()
     {
         mMainWindow->boardToolBar->hide();
         mMainWindow->documentToolBar->hide();
+        // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+        mMainWindow->canvasToolBar->hide();
         mMainWindow->webToolBar->show();
 
         mMainMode = Internet;
@@ -420,6 +472,8 @@ void UBApplicationController::showDocument()
 {
     mMainWindow->webToolBar->hide();
     mMainWindow->boardToolBar->hide();
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    mMainWindow->canvasToolBar->hide();
     mMainWindow->documentToolBar->show();
 
     mMainMode = Document;
@@ -437,6 +491,9 @@ void UBApplicationController::showDocument()
         UBApplication::boardController->hide();
     }
 
+    if (UBApplication::canvasController)
+        UBApplication::canvasController->hide();
+
     if (UBApplication::documentController)
         UBApplication::documentController->show();
 
@@ -453,6 +510,9 @@ void UBApplicationController::showDesktop(bool dontSwitchFrontProcess)
 
     if (UBApplication::boardController)
         UBApplication::boardController->hide();
+
+    if (UBApplication::canvasController)
+        UBApplication::canvasController->hide();
 
     mMainWindow->hide();
     mUninoteController->showWindow();

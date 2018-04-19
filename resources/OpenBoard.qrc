@@ -521,5 +521,17 @@
         <file>images/stylusPalette/ocrON.png</file>
         <file>images/setAsBackground.svg</file>
         <file>images/backgroundPalette/resetDefaultGridSize.svg</file>
+        <file>images/toolbar/canvas.png</file>
+        <file>images/canvas/users1.png</file>
+        <file>images/canvas/users2.png</file>
+        <file>images/canvas/users3.png</file>
+        <file>images/canvas/users4.png</file>
+        <file>images/canvas/pbADD.png</file>
+        <file>images/canvas/pbREM.png</file>
+        <file>images/toolbar/saveCanvas.png</file>
+        <file>images/stylusPalette/saveRegion.png</file>
+        <file>images/stylusPalette/saveRegionOn.png</file>
+        <file>images/stylusPalette/clearRegion.png</file>
+        <file>images/stylusPalette/clearRegionOn.png</file>
     </qresource>
 </RCC>

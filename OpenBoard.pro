@@ -62,6 +62,7 @@ include(src/podcast/podcast.pri)
 include(src/tools/tools.pri)
 include(src/desktop/desktop.pri)
 include(src/web/web.pri)
+include(src/canvas/canvas.pri)
 include(src/customWidgets/customWidgets.pri)
 
 DEPENDPATH += src/pdf-merger

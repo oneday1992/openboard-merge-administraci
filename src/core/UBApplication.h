@@ -34,6 +34,7 @@
 #include <QUndoStack>
 #include <QToolBar>
 #include <QMenu>
+#include "canvas/UBCanvasController.h"
 
 #include "qtsingleapplication.h"
 
@@ -53,6 +54,7 @@ class UBPersistenceManager;
 class UBApplicationController;
 class UBDocumentController;
 class UBMainWindow;
+class UBCanvasController;
 
 class UBApplication : public QtSingleApplication
 {
@@ -69,6 +71,8 @@ class UBApplication : public QtSingleApplication
 
         static QPointer<QUndoStack> undoStack;
 
+        // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+        static UBCanvasController * canvasController;
         static UBApplicationController *applicationController;
         static UBBoardController* boardController;
         static UBWebController* webController;
@@ -113,6 +117,10 @@ class UBApplication : public QtSingleApplication
     public slots:
 
         void showBoard();
+
+        // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+        void showCanvas();
+
         void showInternet();
         void showDocument();
         void startScript();

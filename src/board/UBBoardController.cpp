@@ -472,6 +472,8 @@ void UBBoardController::initToolbarTexts()
     allToolbarActions << mMainWindow->boardToolBar->actions();
     allToolbarActions << mMainWindow->webToolBar->actions();
     allToolbarActions << mMainWindow->documentToolBar->actions();
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    allToolbarActions << mMainWindow->canvasToolBar->actions();
 
     foreach(QAction* action, allToolbarActions)
     {
@@ -493,6 +495,9 @@ void UBBoardController::setToolbarTexts()
         iconSize = QSize(48, 32);
     else
         iconSize = QSize(32, 32);
+
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    mMainWindow->canvasToolBar->setIconSize(iconSize);
 
     mMainWindow->boardToolBar->setIconSize(iconSize);
     mMainWindow->webToolBar->setIconSize(iconSize);

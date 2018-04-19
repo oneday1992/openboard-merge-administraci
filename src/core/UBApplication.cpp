@@ -55,6 +55,8 @@
 #include "board/UBBoardPaletteManager.h"
 #include "web/UBWebController.h"
 
+#include "canvas/UBCanvasController.h"
+
 #include "document/UBDocumentController.h"
 #include "document/UBDocumentProxy.h"
 
@@ -78,6 +80,8 @@ UBApplicationController* UBApplication::applicationController = 0;
 UBBoardController* UBApplication::boardController = 0;
 UBWebController* UBApplication::webController = 0;
 UBDocumentController* UBApplication::documentController = 0;
+// Issue 12/04/2018 - OpenBoard - CANVAS MODE
+UBCanvasController* UBApplication::canvasController = 0;
 
 UBMainWindow* UBApplication::mainWindow = 0;
 
@@ -299,6 +303,10 @@ int UBApplication::exec(const QString& pFileToImport)
     connect(mainWindow->actionWeb, SIGNAL(triggered()), this, SLOT(stopScript()));
     connect(mainWindow->actionDocument, SIGNAL(triggered()), this, SLOT(showDocument()));
     connect(mainWindow->actionDocument, SIGNAL(triggered()), this, SLOT(stopScript()));
+
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    connect(mainWindow->actionCanvas, SIGNAL(triggered()), this, SLOT(showCanvas()));
+
     connect(mainWindow->actionQuit, SIGNAL(triggered()), this, SLOT(closing()));
     connect(mainWindow, SIGNAL(closeEvent_Signal(QCloseEvent*)), this, SLOT(closeEvent(QCloseEvent*)));
 
@@ -307,6 +315,9 @@ int UBApplication::exec(const QString& pFileToImport)
 
     webController = new UBWebController(mainWindow);
     documentController = new UBDocumentController(mainWindow);
+
+    // Issue 12/04/2018 - OpenBoard - CANVAS MODE
+    canvasController = new UBCanvasController(mainWindow);
 
     UBDrawingController::drawingController()->setStylusTool((int)UBStylusTool::Pen);
 
@@ -407,6 +418,12 @@ void UBApplication::stopScript()
 void UBApplication::showBoard()
 {
     applicationController->showBoard();
+}
+
+// Issue 12/04/2018 - OpenBoard - CANVAS MODE
+void UBApplication::showCanvas()
+{
+    applicationController->showCanvas();
 }
 
 void UBApplication::showInternet()
