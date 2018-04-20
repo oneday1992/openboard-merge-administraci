@@ -21,42 +21,32 @@
 UBCommunicationLine::UBCommunicationLine(QWidget *parent, QGraphicsScene *scene) : QWidget(parent)
     ,mScene(scene)
 {
-//setAcceptDrops(true);
-    //Tenemos que crear un layout horizontal donde añadir cada widget donde se va a alojar cada picto.
-    //layout = new QHBoxLayout(this);
+    int ancho=calculateWidth(1,-100);
+    int pos=posInit(ancho) + 850;
+
+    //Añadida anterior lista como miembro de la clase. Atributo Privado
+    if (listPath.count()==0){ //Si no hay elementos los añado
+      for (int i=0; i<8; i++)
+      {
+        pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
+        qreal x = calculateX(1,20)+border()+border()+pos;
+        //qreal y = calculateY(30,20)+border()+border();
+        qreal y = 100;
+
+        path2->setPos(x,y);
+        pos=pos+pictoWidth()+separatorPicto();
+        listPath.append(path2);
+        mScene->addItem(path2);
+      }
+    }
+
+
 }
 
+/*
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
 {
    qWarning()<<"Entrando en método paintEvent";
-
-    //codigo
- //   QPainter painter(this);
- //   painter.setRenderHint(QPainter::Antialiasing,true);
- //   mBackgroundBrush = QBrush(UBSettings::paletteColor);
- //   painter.setPen(Qt::NoPen);
- //   painter.setBrush(mBackgroundBrush);
-
-    //pintamos el recuadro grande
-//    pictoCommunicationLine *painter =new pictoCommunicationLine(0,i,mScene);
- // mScene->addRect(100,100,20,20,Qt::NoPen,UBSettings::paletteColor);
- //   mScene->addRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),Qt::NoPen,UBSettings::paletteColor);
-  //  QRectF *item = new QRectF;
-  //  mScene->addRect(100,100,200,200);
-
-   // QGraphicsRectItem
-   // painter.drawRoundedRect(calculateX(1,20), calculateY(),calculateWidth(1,-50),calculateHeight(1,-20),10,10);
-/*    QPainterPath path;
-    path.setFillRule(Qt::WindingFill);
-
-*/
-    //pintamos el recuadro de relleno
-    //path.addRoundedRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),10,10);
-   // painter.drawPath(path);
-
-   // mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
-  //  qWarning()<< calculateX(1,20)+border() << calculateY()+border() << calculateWidth(1,-90) << calculateHeight(1,-60);
-  //  qWarning()<< "Datos de Scene: " << mScene->sceneRect();
 
     //pintamos el cuadro de drag and drop
     //painter.setPen(Qt::DotLine);
@@ -86,8 +76,9 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
         }
     }
     e->accept();
-}
 
+}
+*/
 int UBCommunicationLine::border()
 {
     return 20;
@@ -159,18 +150,7 @@ int UBCommunicationLine::screenWidth()
 {
     return QApplication::desktop()->screenGeometry().width();
 }
-/*
-void UBCommunicationLine::dragMoveEvent(QDragMoveEvent *event)
-{
-    QWidget::dragMoveEvent(event);
-    event->acceptProposedAction();
-}
 
-void UBCommunicationLine::dragEnterEvent(QDragEnterEvent *event)
-{
-    event->accept();
-}
-*/
 pictoCommunicationLine::pictoCommunicationLine(QGraphicsPixmapItem *parent, int i, QGraphicsScene *scene) : QGraphicsPixmapItem(parent)
     ,numero(i)
     ,mScene(scene)
@@ -180,7 +160,6 @@ pictoCommunicationLine::pictoCommunicationLine(QGraphicsPixmapItem *parent, int 
     setAcceptDrops(true);
 
     //setAcceptedMouseButtons(Qt::LeftButton);
-
     QPixmap pixmap = QPixmap(":pecs/pictoBlanco.png");
     setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
     setFlag(QGraphicsItem::ItemIsMovable,false);
@@ -215,7 +194,6 @@ void pictoCommunicationLine::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
 
 
     qWarning()<<"Picto en casilla: " << numero;
- //   event->accept();
 
 }
 
@@ -237,9 +215,9 @@ void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
         QPixmap pixmap;
         QPoint offset;
         dataStream >> pixmap >> offset;
+
         /*
          //NO hace falta porque el pixmap ya lo tiene
-
         QPainter painter;
         painter.begin(&pixmap);
         painter.setPen(QPen(Qt::red,8,Qt::SolidLine));
@@ -271,7 +249,6 @@ void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
             painter.drawRect(QRect(pixmap.rect().x()+4,pixmap.rect().y()+4,pixmap.rect().width()-8,pixmap.rect().height()-8));
             painter.end();
             setPixmap(pixmap);
-            //setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
 
             setAcceptDrops(false);
             setFlag(QGraphicsItem::ItemIsMovable);

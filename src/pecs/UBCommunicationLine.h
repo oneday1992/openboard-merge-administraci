@@ -30,7 +30,7 @@ protected:
     /** Overloaded method that paints an event
     * Metodo sobrecargado que pinta un evento
     */
-    void paintEvent(QPaintEvent * e);
+    //void paintEvent(QPaintEvent * e);
 
     /** The current background brush
     * El pincel de fondo actual

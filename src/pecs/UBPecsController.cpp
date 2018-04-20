@@ -44,6 +44,7 @@
 
 //#include "ui_pecswindow.h"
 #include "ui_mainWindow.h"
+#include "UBMainPanelPecs.h"
 
 UBPecsController::UBPecsController(UBMainWindow* mainWindow)
     : QObject(mainWindow->centralWidget())
@@ -149,13 +150,23 @@ void UBPecsController::setupViews()
 // Pintamos pecs
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
         //lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
-        lineaComunicacion->setGeometry(0,0,1800,300);
-        mSceneCommunication->addWidget(lineaComunicacion);
+        //lineaComunicacion->setGeometry(0,0,1800,300);
+        //mSceneCommunication->addWidget(lineaComunicacion);
 
-        UBCommunicationLine *lineaComunicacion2 = new UBCommunicationLine(mPecsWidget,mScenePpal);
-        lineaComunicacion2->setGeometry(0,lineaComunicacion2->screenHeight()*0.60,lineaComunicacion2->screenWidth()-40,lineaComunicacion2->screenHeight()*0.30);
+
+
+        UBMainPanelPecs *pecsBoard = new UBMainPanelPecs(mPecsWidget);
+        pecsBoard->setGeometry(mScenePpal->sceneRect().toRect());
+        mScenePpal->addWidget(pecsBoard);
+
+
+        //UBCommunicationLine *lineaComunicacion2 = new UBCommunicationLine(mPecsWidget,mScenePpal);
+        //lineaComunicacion2->setGeometry(0,lineaComunicacion2->screenHeight()*0.60,lineaComunicacion2->screenWidth()-40,lineaComunicacion2->screenHeight()*0.30);
         //lineaComunicacion2->setGeometry(0,0,500,100);
-        mScenePpal->addWidget(lineaComunicacion2);
+        //mScenePpal->addWidget(lineaComunicacion2);
+
+
+
 
 // Fin pintamos pecs
 
