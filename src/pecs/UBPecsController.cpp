@@ -124,16 +124,14 @@ void UBPecsController::setupViews()
 
         //Fin del board de Comunicacion
 
-        //Añado el widget a mainwindows
-        mPecsWidget->setObjectName("ubPecsContainer");
-        mMainWindow->addPecsWidget(mPecsWidget);
+
 
         //QGraphicsRectItem *rectppal= mScenePpal->addRect(0,0,QApplication::desktop()->screenGeometry().width()-200,QApplication::desktop()->screenGeometry().height()*0.70-100);
         //rectppal->setBrush(Qt::green);
         //rectppal->setPos(0,0);
 
-        QGraphicsView *mCommunicationView = new QGraphicsView(mPecsWidget);
-        mCommunicationView->setObjectName("pecsCentralView");
+        mCommunicationView = new QGraphicsView(mPecsWidget);
+        mCommunicationView->setObjectName("pecsCommunicationView");
         mCommunicationView->setInteractive(true);
         mCommunicationView->setMouseTracking(true);
         mCommunicationView->grabGesture(Qt::SwipeGesture);
@@ -148,20 +146,29 @@ void UBPecsController::setupViews()
         mSceneCommunication->setSceneRect(0,0,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.30-2);
         mSceneCommunication->setBackgroundBrush(Qt::gray);
 
+// Pintamos pecs
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
-        lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
-
+        //lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
+        lineaComunicacion->setGeometry(0,0,1800,300);
         mSceneCommunication->addWidget(lineaComunicacion);
 
+        UBCommunicationLine *lineaComunicacion2 = new UBCommunicationLine(mPecsWidget,mScenePpal);
+        lineaComunicacion2->setGeometry(0,lineaComunicacion2->screenHeight()*0.60,lineaComunicacion2->screenWidth()-40,lineaComunicacion2->screenHeight()*0.30);
+        //lineaComunicacion2->setGeometry(0,0,500,100);
+        mScenePpal->addWidget(lineaComunicacion2);
+
+// Fin pintamos pecs
 
         QPainterPath rectppal;
         rectppal.addRoundedRect(0+border(),0,QApplication::desktop()->screenGeometry().width()-100-border(),QApplication::desktop()->screenGeometry().height()*0.30-border(),10,10);
         mSceneCommunication->addPath(rectppal);
 
 
-        mPecsWidget->setLayout(mControlLayout);
         qDebug()<<mSceneCommunication->sceneRect();
 
+        //Añado el widget a mainwindows
+        mPecsWidget->setObjectName("ubPecsContainer");
+        mMainWindow->addPecsWidget(mPecsWidget);
 
 
         // Fin Escena

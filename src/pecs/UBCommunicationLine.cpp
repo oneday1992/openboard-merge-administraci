@@ -23,7 +23,7 @@ UBCommunicationLine::UBCommunicationLine(QWidget *parent, QGraphicsScene *scene)
 {
 //setAcceptDrops(true);
     //Tenemos que crear un layout horizontal donde añadir cada widget donde se va a alojar cada picto.
-    layout = new QHBoxLayout(this);
+    //layout = new QHBoxLayout(this);
 }
 
 void UBCommunicationLine::paintEvent(QPaintEvent *e)
@@ -32,21 +32,21 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
 
     //codigo
  //   QPainter painter(this);
-    //painter.setRenderHint(QPainter::Antialiasing,true);
-//    mBackgroundBrush = QBrush(UBSettings::paletteColor);
-  //  painter.setPen(Qt::NoPen);
-    //painter.setBrush(mBackgroundBrush);
+ //   painter.setRenderHint(QPainter::Antialiasing,true);
+ //   mBackgroundBrush = QBrush(UBSettings::paletteColor);
+ //   painter.setPen(Qt::NoPen);
+ //   painter.setBrush(mBackgroundBrush);
 
     //pintamos el recuadro grande
 //    pictoCommunicationLine *painter =new pictoCommunicationLine(0,i,mScene);
  // mScene->addRect(100,100,20,20,Qt::NoPen,UBSettings::paletteColor);
-   // mScene->addRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),Qt::NoPen,UBSettings::paletteColor);
+ //   mScene->addRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),Qt::NoPen,UBSettings::paletteColor);
   //  QRectF *item = new QRectF;
   //  mScene->addRect(100,100,200,200);
 
    // QGraphicsRectItem
-/*    painter.drawRoundedRect(calculateX(1,20), calculateY(),calculateWidth(1,-50),calculateHeight(1,-20),10,10);
-    QPainterPath path;
+   // painter.drawRoundedRect(calculateX(1,20), calculateY(),calculateWidth(1,-50),calculateHeight(1,-20),10,10);
+/*    QPainterPath path;
     path.setFillRule(Qt::WindingFill);
 
 */
@@ -54,7 +54,7 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     //path.addRoundedRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60),10,10);
    // painter.drawPath(path);
 
-  //  mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
+   // mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
   //  qWarning()<< calculateX(1,20)+border() << calculateY()+border() << calculateWidth(1,-90) << calculateHeight(1,-60);
   //  qWarning()<< "Datos de Scene: " << mScene->sceneRect();
 
@@ -62,13 +62,16 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
     //painter.setPen(Qt::DotLine);
     int ancho=calculateWidth(1,-100);
     int pos=posInit(ancho);
+
     //Añadida anterior lista como miembro de la clase. Atributo Privado
     if (listPath.count()==0){ //Si no hay elementos los añado
       for (int i=0; i<8; i++)
       {
         pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
         qreal x = calculateX(1,20)+border()+border()+pos;
-        qreal y = calculateY(30,20)+border()+border();
+        //qreal y = calculateY(30,20)+border()+border();
+        qreal y = 200;
+
         path2->setPos(x,y);
         pos=pos+pictoWidth()+separatorPicto();
         listPath.append(path2);
@@ -79,7 +82,7 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
         for(int i = 0; i < listPath.count(); i++)
         {
             //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
-          mScene->addItem(listPath[i]);
+          //mScene->addItem(listPath[i]);
         }
     }
     e->accept();
