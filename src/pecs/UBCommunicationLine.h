@@ -132,7 +132,7 @@ class pictoCommunicationLine : public QGraphicsPixmapItem
 
    void mousePressEvent(QGraphicsSceneMouseEvent *event);
    //void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-   void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+   //void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 };
 
