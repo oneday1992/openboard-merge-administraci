@@ -60,29 +60,29 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
 
     //pintamos el cuadro de drag and drop
     //painter.setPen(Qt::DotLine);
-//    int ancho=calculateWidth(1,-100);
-  //  int pos=posInit(ancho);
+    int ancho=calculateWidth(1,-100);
+    int pos=posInit(ancho);
     //Añadida anterior lista como miembro de la clase. Atributo Privado
-//    if (listPath.count()==0){ //Si no hay elementos los añado
-  //    for (int i=0; i<8; i++)
-    //  {
-      //  pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
-        //qreal x = calculateX(1,20)+border()+border()+pos;
-//        qreal y = calculateY(30,20)+border()+border();
-  //      path2->setPos(x,y);
-    //    pos=pos+pictoWidth()+separatorPicto();
-      //  listPath.append(path2);
-//        mScene->addItem(path2);
-  //    }
-//    }else{
+    if (listPath.count()==0){ //Si no hay elementos los añado
+      for (int i=0; i<8; i++)
+      {
+        pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
+        qreal x = calculateX(1,20)+border()+border()+pos;
+        qreal y = calculateY(30,20)+border()+border();
+        path2->setPos(x,y);
+        pos=pos+pictoWidth()+separatorPicto();
+        listPath.append(path2);
+        mScene->addItem(path2);
+      }
+    }else{
         //Recorro la lista de QPainterPath
-  //      for(int i = 0; i < listPath.count(); i++)
-    //    {
+        for(int i = 0; i < listPath.count(); i++)
+        {
             //Hay que pasarle un qPainterPath, no se puede pasar un QWidget
-      //    mScene->addItem(listPath[i]);
-//        }
-//    }
-  //  e->accept();
+          mScene->addItem(listPath[i]);
+        }
+    }
+    e->accept();
 }
 
 int UBCommunicationLine::border()
