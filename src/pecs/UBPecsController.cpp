@@ -108,13 +108,12 @@ void UBPecsController::setupViews()
         QGraphicsScene *mScenePpal = new QGraphicsScene(mPpalView);
         mPpalView->setScene(mScenePpal);
 
-        int x=QApplication::desktop()->screenGeometry().width()-100;
-        int y=QApplication::desktop()->screenGeometry().height()*0.70-69;
+
+
         //aplicamos geometria a la vista y tamaño a la escena, tiene que ser en los dos el mismo para que no pinte cosas raras
         //al alto se le resta uno menos por el redondeo que hace.
         mPpalView->setGeometry(0,69,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.70-69);
         mScenePpal->setSceneRect(0,69,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.70-70);
-
         mScenePpal->setBackgroundBrush(Qt::red);
 
 
@@ -147,17 +146,18 @@ void UBPecsController::setupViews()
 
         mCommunicationView->setGeometry(0,QApplication::desktop()->screenGeometry().height()*0.70+1,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.30-2);
         mSceneCommunication->setSceneRect(0,0,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.30-2);
-        int z=QApplication::desktop()->screenGeometry().height()*0.70-69+1;
-        int w=QApplication::desktop()->screenGeometry().height()*0.30-1;
         mSceneCommunication->setBackgroundBrush(Qt::gray);
+
+        UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
+        lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
+
+        mSceneCommunication->addWidget(lineaComunicacion);
+
 
         QPainterPath rectppal;
         rectppal.addRoundedRect(0+border(),0,QApplication::desktop()->screenGeometry().width()-100-border(),QApplication::desktop()->screenGeometry().height()*0.30-border(),10,10);
         mSceneCommunication->addPath(rectppal);
 
-        //QGraphicsRectItem *rectppal2= mSceneCommunication->addRect(0,0,QApplication::desktop()->screenGeometry().width()-200,QApplication::desktop()->screenGeometry().height()*0.30-100);
-        //rectppal2->setBrush(Qt::blue);
-        //rectppal2->setPos(0,0);
 
         mPecsWidget->setLayout(mControlLayout);
         qDebug()<<mSceneCommunication->sceneRect();
