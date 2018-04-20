@@ -36,10 +36,10 @@ initializeVariables()
   ZIP_PATH=`which zip`
 
   if [ -z $ARCHITECTURE ]; then
-    #ARCHITECTURE=`uname -m`
-    #if [ $ARCHITECTURE == "x86_64" ]; then
+    ARCHITECTURE=`uname -m`
+    if [ $ARCHITECTURE == "x86_64" ]; then
         ARCHITECTURE="amd64"
-    #fi
+    fi
   fi
 }
 
