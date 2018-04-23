@@ -4,7 +4,8 @@ HEADERS += src/pecs/UBPecsController.h \
     $$PWD/UBPecs.h \
     $$PWD/UBCommunicationLine.h \
     $$PWD/UBFoldersPecs.h \
-    $$PWD/UBFeaturesFoldersPecsController.h
+    $$PWD/UBFeaturesFoldersPecsController.h \
+    $$PWD/UBMainPanelPecs.h
 
 
 SOURCES += src/pecs/UBPecsController.cpp \
@@ -13,4 +14,5 @@ SOURCES += src/pecs/UBPecsController.cpp \
     $$PWD/UBPecs.cpp \
     $$PWD/UBCommunicationLine.cpp \
     $$PWD/UBFoldersPecs.cpp \
-    $$PWD/UBFeaturesFoldersPecsController.cpp
+    $$PWD/UBFeaturesFoldersPecsController.cpp \
+    $$PWD/UBMainPanelPecs.cpp
