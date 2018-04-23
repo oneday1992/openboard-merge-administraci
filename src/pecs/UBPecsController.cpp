@@ -144,9 +144,8 @@ void UBPecsController::setupViews()
 
 // Pintamos pecs
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
-        UBMainPanelPecs *pecsBoard = new UBMainPanelPecs(mPecsWidget);
+        UBMainPanelPecs *pecsBoard = new UBMainPanelPecs(mPecsWidget,mScenePpal);
         pecsBoard->setGeometry(mScenePpal->sceneRect().toRect());
-        mScenePpal->addWidget(pecsBoard);
 
 // Fin pintamos pecs
 

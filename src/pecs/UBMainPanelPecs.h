@@ -2,13 +2,15 @@
 #define UBMAINPANELPECS_H
 
 #include <QWidget>
+#include <QGraphicsScene>
 
 class UBMainPanelPecs : public QWidget
 {
     Q_OBJECT
 public:
-    explicit UBMainPanelPecs(QWidget *parent = 0);
-
+    UBMainPanelPecs(QWidget *parent = 0, QGraphicsScene *scene=0);
+private:
+    QGraphicsScene *mScene;
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
