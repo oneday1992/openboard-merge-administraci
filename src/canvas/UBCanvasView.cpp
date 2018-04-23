@@ -36,6 +36,7 @@ void UBCanvasView::setupBoards(int numberOfIndependentBoards){
 
     independentBoards.clear();
     eraserMode.clear();
+    eraserGesture.clear();
 
     int i = 0;
     int incWidth = this->geometry().width() / numberOfIndependentBoards;
@@ -48,6 +49,7 @@ void UBCanvasView::setupBoards(int numberOfIndependentBoards){
         x = (i+1)*incWidth;
         independentBoards.append(r);
         eraserMode.append(false);
+        eraserGesture.append(false);
         //qWarning()<<r->x()<<"  "<<r->y()<<"  "<<r->width()<<"  "<<r->height();
     }
     update();
@@ -69,6 +71,7 @@ int UBCanvasView::getNumberRegion(QPoint p)
         }
         i++;
     }
+    return 0;
 }
 
 void UBCanvasView::setEraserMode(int region, bool isEraser)
@@ -201,9 +204,12 @@ void UBCanvasView::print()
 }
 
 void UBCanvasView::drawLineTo(const QPoint &endPoint){
+    qWarning()<<"drawLineTo";
     QRect rect(lastPoint,endPoint);
     //int penWidth = 5;
     QPainter painter(&image);
+    painter.setRenderHint(QPainter::Antialiasing,true);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
     painter.setPen(QPen(bgColor, 5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     int i=0;
     foreach (QRect* r, independentBoards){
@@ -225,9 +231,17 @@ void UBCanvasView::drawLineTo(const QPoint &endPoint){
 }
 
 void UBCanvasView::drawLineToTouch(int id, const QPoint &endPoint){
+    qWarning()<<"drawLineToTouch";
+    qWarning()<<lastPointHash[id]<<"  ###  "<<endPoint;
+
+    // Avoid senseless lines.
+    if(lastPointHash[id] == endPoint) return;
+
     QRect rect(lastPointHash[id],endPoint);
     //int penWidth = 5;
     QPainter painter(&image);
+    painter.setRenderHint(QPainter::Antialiasing,true);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
     painter.setPen(QPen(bgColor, 5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     int i=0;
     foreach (QRect* r, independentBoards){
@@ -258,6 +272,33 @@ void UBCanvasView::leaveEvent(QEvent *event)
 {
     QWidget::leaveEvent(event);
     QApplication::restoreOverrideCursor();
+}
+
+
+QRect* UBCanvasView::maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints)
+{
+     if(touchPoints.count() < 2) return NULL;
+     qreal maxDistance = 0;
+     int x1, y1, x2, y2;
+     foreach (const QTouchEvent::TouchPoint &touchPoint1, touchPoints) {
+         foreach (const QTouchEvent::TouchPoint &touchPoint2, touchPoints) {
+             qreal d = euclideanDistance(touchPoint1.rect().x(), touchPoint1.rect().y(), touchPoint2.rect().x(), touchPoint2.rect().y());
+             if ( d > maxDistance )
+             {
+                 maxDistance = d;
+                 x1 = touchPoint1.rect().x();
+                 y1 = touchPoint1.rect().y();
+                 x2 = touchPoint2.rect().x();
+                 y2 = touchPoint2.rect().y();
+             }
+         }
+     }
+     qWarning()<<touchPoints.count()<<"  --> MAX ED: "<<maxDistance;
+     if(maxDistance < 120)
+         return (new QRect(QPoint(x1,y1),QPoint(x2,y2)));
+     else
+         return NULL;
+     //return maxDistance;
 }
 
 bool UBCanvasView::event(QEvent *event)
@@ -309,33 +350,59 @@ bool UBCanvasView::event(QEvent *event)
     {
         //qWarning()<<"e: "<<event->type();
         QList<QTouchEvent::TouchPoint> touchPoints = static_cast<QTouchEvent *>(event)->touchPoints();
-        foreach (const QTouchEvent::TouchPoint &touchPoint, touchPoints) {
-            switch (touchPoint.state()) {
-             case Qt::TouchPointPressed:
-                //qWarning()<<"Pressed: "<<touchPoint.rect().x()<<", "<<touchPoint.rect().y()<<", "<<touchPoint.id();
-                lastPointHash[touchPoint.id()]=QPoint(touchPoint.pos().x(), touchPoint.pos().y());
-                if(eraserMode.at(getNumberRegion(QPoint(touchPoint.pos().x(), touchPoint.pos().y()))) == true){
-                    QApplication::setOverrideCursor(*cursorEraser);
+        QRect* rectED = maxEuclideanDistance(touchPoints);
+        if(rectED != NULL)
+        {
+          int region = getNumberRegion(rectED->center());
+          if (eraserMode.at(region) == false)
+          {
+            qWarning()<<" ***************** ERASE GESTURE *****************";
+            QPainter painter(&image);
+            painter.setPen(Qt::NoPen);
+            painter.setBrush(Qt::white);
+            painter.drawEllipse(*rectED);
+            painter.end();
+            int rad = 10;
+            update(rectED->adjusted(-rad,-rad, +rad, +rad));
+            eraserMode.replace(region,true);
+            eraserGesture.replace(region,true);
+            emit gestureErase(region);
+          }
+        }
+        else{
+            foreach (const QTouchEvent::TouchPoint &touchPoint, touchPoints) {
+                switch (touchPoint.state()) {
+                 case Qt::TouchPointPressed:
+                    //qWarning()<<"Pressed: "<<touchPoint.rect().x()<<", "<<touchPoint.rect().y()<<", "<<touchPoint.id();
+                    lastPointHash[touchPoint.id()]=QPoint(touchPoint.pos().x(), touchPoint.pos().y());
+                    if(eraserMode.at(getNumberRegion(QPoint(touchPoint.pos().x(), touchPoint.pos().y()))) == true){
+                        QApplication::setOverrideCursor(*cursorEraser);
+                    }
+                    else{
+                        QApplication::setOverrideCursor(Qt::BlankCursor);
+                    }
+                    break;
+                 case Qt::TouchPointReleased:
+                 {
+                    int region = getNumberRegion(QPoint(touchPoint.pos().x(), touchPoint.pos().y()));
+                    QApplication::restoreOverrideCursor();
+                    drawLineToTouch(touchPoint.id(),QPoint(touchPoint.pos().x(),touchPoint.pos().y()));
+                    update();
+                    if(eraserGesture.at(region) == true)
+                    {
+                        emit endGestureErase(region); // to switch back to pen style.
+                    }
+                    break;
+                 }
+                 case Qt::TouchPointMoved:
+                 {
+                    drawLineToTouch(touchPoint.id(),QPoint(touchPoint.pos().x(),touchPoint.pos().y()));
+                    break;
+                 }
+                 case Qt::TouchPointStationary:
+                    // don't do anything if this touch point hasn't moved
+                    continue;
                 }
-                else{
-                    QApplication::setOverrideCursor(Qt::BlankCursor);
-                }
-                break;
-             case Qt::TouchPointReleased:
-             {
-                QApplication::restoreOverrideCursor();
-                drawLineToTouch(touchPoint.id(),QPoint(touchPoint.pos().x(),touchPoint.pos().y()));
-                update();
-                break;
-             }
-             case Qt::TouchPointMoved:
-             {
-                drawLineToTouch(touchPoint.id(),QPoint(touchPoint.pos().x(),touchPoint.pos().y()));
-                break;
-             }
-             case Qt::TouchPointStationary:
-                // don't do anything if this touch point hasn't moved
-                continue;
             }
         }
         break;

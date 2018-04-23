@@ -186,6 +186,9 @@ void UBCanvasController::setupToolbar()
        connect(palette,SIGNAL(eraseRegionSelected(int)),this,SLOT(eraseRegionToolSelected(int)));
     }
 
+    connect(mControlView, SIGNAL(gestureErase(int)), this, SLOT(eraserToolSelectedGesture(int)));
+    connect(mControlView, SIGNAL(endGestureErase(int)), this, SLOT(restorePenToolGesture(int)));
+
     // To move the pre-defined ACTIONS, we need to add them again!!
     mMainWindow->canvasToolBar->addAction(mMainWindow->actionEraseCanvas);
     mMainWindow->canvasToolBar->addAction(mMainWindow->actionSaveCanvas);
@@ -218,6 +221,18 @@ void UBCanvasController::penToolSelected(int idPalette)
 {
     qWarning()<<"clicked on pen-tool action in palette "<<idPalette;
     mControlView->setEraserMode(idPalette, false);
+}
+
+void UBCanvasController::eraserToolSelectedGesture(int idPalette)
+{
+    listOfPalettes.at(idPalette)->eraserToolSelected(true);
+    eraserToolSelected(idPalette);
+}
+
+void UBCanvasController::restorePenToolGesture(int idPalette)
+{
+    listOfPalettes.at(idPalette)->penToolSelected(true);
+    penToolSelected(idPalette);
 }
 
 void UBCanvasController::eraserToolSelected(int idPalette)

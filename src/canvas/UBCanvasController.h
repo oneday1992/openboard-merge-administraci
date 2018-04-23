@@ -59,6 +59,8 @@ public slots:
     void decreaseNumberOfBoards();
     void choiceColorDialog();
     void penToolSelected(int idPalette);
+    void eraserToolSelectedGesture(int idPalette);
+    void restorePenToolGesture(int idPalette);
     void eraserToolSelected(int idPalette);
     void saveToolSelected(int idPalette);
     void eraseRegionToolSelected(int idPalette);

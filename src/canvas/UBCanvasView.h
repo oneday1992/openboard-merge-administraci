@@ -5,6 +5,7 @@
 #include <QImage>
 #include <QPoint>
 #include <QWidget>
+#include <QTouchEvent>
 
 class UBCanvasView : public QWidget
 {
@@ -19,6 +20,9 @@ public:
     bool saveImage();
     bool saveRegionImage(int region);
     QImage createSubImage(QRect *rect);
+
+    qreal euclideanDistance(int x1, int y1, int x2, int y2) { return sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))); }
+    QRect* maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints);
 
     QRect getRegion(int pos);
     int getNumberRegion(QPoint p);
@@ -44,6 +48,8 @@ public slots:
 
 signals:
     void viewVisibilityChanged(bool state);
+    void gestureErase(int idPalette);
+    void endGestureErase(int idPalette);
 
 private:
     void resizeImage(QImage *image, const QSize &newSize);
@@ -58,6 +64,7 @@ private:
     QHash<int, QPoint> lastPointHash;
     QColor bgColor;
     QList<bool> eraserMode;
+    QList<bool> eraserGesture;
     QCursor *cursorEraser;
     //QRect user1;
     //QRect user2;
