@@ -231,11 +231,14 @@ void UBCanvasView::drawLineTo(const QPoint &endPoint){
 }
 
 void UBCanvasView::drawLineToTouch(int id, const QPoint &endPoint){
-    qWarning()<<"drawLineToTouch";
-    qWarning()<<lastPointHash[id]<<"  ###  "<<endPoint;
 
-    // Avoid senseless lines.
-    if(lastPointHash[id] == endPoint) return;
+    // Avoid senseless lines.   
+    if( ( (lastPointHash[id].x() == endPoint.x()) &&
+          (lastPointHash[id].y() == endPoint.y()) )
+        ||
+        ( euclideanDistance(lastPointHash[id].x(), lastPointHash[id].y(), endPoint.x(), endPoint.y()) > 100 )
+      )
+      return;
 
     QRect rect(lastPointHash[id],endPoint);
     //int penWidth = 5;
