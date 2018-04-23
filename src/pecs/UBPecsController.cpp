@@ -155,7 +155,7 @@ void UBPecsController::setupViews()
 
 
 
-        UBMainPanelPecs *pecsBoard = new UBMainPanelPecs(mPecsWidget);
+        UBMainPanelPecs *pecsBoard = new UBMainPanelPecs(mPecsWidget,mScenePpal);
         pecsBoard->setGeometry(mScenePpal->sceneRect().toRect());
         mScenePpal->addWidget(pecsBoard);
 

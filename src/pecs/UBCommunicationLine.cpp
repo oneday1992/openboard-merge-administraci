@@ -28,19 +28,17 @@ UBCommunicationLine::UBCommunicationLine(QWidget *parent, QGraphicsScene *scene)
     if (listPath.count()==0){ //Si no hay elementos los añado
       for (int i=0; i<8; i++)
       {
-        pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
+        pictoCommunicationLine *picto =new pictoCommunicationLine();
         qreal x = calculateX(1,20)+border()+border()+pos;
         //qreal y = calculateY(30,20)+border()+border();
         qreal y = 100;
 
-        path2->setPos(x,y);
+        picto->setPos(x,y);
         pos=pos+pictoWidth()+separatorPicto();
-        listPath.append(path2);
-        mScene->addItem(path2);
+        listPath.append(picto);
+        mScene->addItem(picto);
       }
     }
-
-
 }
 
 /*
@@ -151,20 +149,32 @@ int UBCommunicationLine::screenWidth()
     return QApplication::desktop()->screenGeometry().width();
 }
 
-pictoCommunicationLine::pictoCommunicationLine(QGraphicsPixmapItem *parent, int i, QGraphicsScene *scene) : QGraphicsPixmapItem(parent)
-    ,numero(i)
-    ,mScene(scene)
+
+/*
+ *
+ *
+ *
+ * Implementación de la clase pictoCommunicationLine
+ *
+ *
+ *
+ */
+
+
+pictoCommunicationLine::pictoCommunicationLine(QGraphicsPixmapItem *parent) : QGraphicsPixmapItem(parent)
     ,width(180)
     ,height(180)
 {
     setAcceptDrops(true);
 
-    //setAcceptedMouseButtons(Qt::LeftButton);
     QPixmap pixmap = QPixmap(":pecs/pictoBlanco.png");
     setPixmap(pixmap.scaled(width,height,Qt::KeepAspectRatio));
     setFlag(QGraphicsItem::ItemIsMovable,false);
-    qWarning()<<"Constructor de pictoCommnication: "<<numero;
+}
 
+pictoCommunicationLine::~pictoCommunicationLine()
+{
+    qWarning() << "Destructor de pictoCommunicationLine";
 }
 
 
@@ -192,9 +202,6 @@ void pictoCommunicationLine::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
         event->setDropAction(Qt::MoveAction);
         event->accept();
 
-
-    qWarning()<<"Picto en casilla: " << numero;
-
 }
 
 void pictoCommunicationLine::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)
@@ -207,8 +214,6 @@ void pictoCommunicationLine::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)
 void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
 {
 
-    qWarning()<<"Intentando drop en casilla"<<numero;
-
     if (event->mimeData()->hasFormat("PictoPecs")) {
         QByteArray itemData = event->mimeData()->data("PictoPecs");
         QDataStream dataStream(&itemData, QIODevice::ReadOnly);
@@ -216,14 +221,6 @@ void pictoCommunicationLine::dropEvent(QGraphicsSceneDragDropEvent *event)
         QPoint offset;
         dataStream >> pixmap >> offset;
 
-        /*
-         //NO hace falta porque el pixmap ya lo tiene
-        QPainter painter;
-        painter.begin(&pixmap);
-        painter.setPen(QPen(Qt::red,8,Qt::SolidLine));
-        painter.drawRect(QRect(pixmap.rect().x()+4,pixmap.rect().y()+4,pixmap.rect().width()-8,pixmap.rect().height()-8));
-        painter.end();
-        */
 
         setPixmap(pixmap);
         setAcceptDrops(false);

@@ -113,13 +113,11 @@ class pictoCommunicationLine : public QGraphicsPixmapItem
 {
     //Q_OBJECT
  public:
-     pictoCommunicationLine (QGraphicsPixmapItem *parent=0, int i=0, QGraphicsScene *scene=0);
-     //~pictoCommunicationLine();
+     pictoCommunicationLine (QGraphicsPixmapItem *parent=0);
+     ~pictoCommunicationLine();
 
 
  private:
-   int numero;
-   QGraphicsScene *mScene;
    int width;
    int height;
 
