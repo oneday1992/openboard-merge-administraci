@@ -39,6 +39,7 @@
 #include "UBCommunicationLine.h"
 #include "UBFoldersPecs.h"
 #include <QLayout>
+#include <QPen>
 
 #include "board/UBBoardView.h"
 
@@ -114,7 +115,7 @@ void UBPecsController::setupViews()
         //al alto se le resta uno menos por el redondeo que hace.
         mPpalView->setGeometry(0,69,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.70-69);
         mScenePpal->setSceneRect(0,69,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.70-70);
-        mScenePpal->setBackgroundBrush(Qt::red);
+ //       mScenePpal->setBackgroundBrush(Qt::red);
 
 
 
@@ -144,25 +145,72 @@ void UBPecsController::setupViews()
 
         mCommunicationView->setGeometry(0,QApplication::desktop()->screenGeometry().height()*0.70+1,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.30-2);
         mSceneCommunication->setSceneRect(0,0,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.30-2);
-        mSceneCommunication->setBackgroundBrush(Qt::gray);
+    //    mSceneCommunication->setBackgroundBrush(Qt::gray);
+     //   mSceneCommunication->setStyle("background-color: gray;");
+        QBrush *brush = new QBrush();
+        brush->setColor(QColor(191,191,191));
+        brush->setStyle(Qt::SolidPattern);
+        mSceneCommunication->setBackgroundBrush(*brush);
 
 // Pintamos pecs
         UBCommunicationLine *lineaComunicacion = new UBCommunicationLine(mPecsWidget,mSceneCommunication);
         //lineaComunicacion->setGeometry(0,lineaComunicacion->screenHeight()*0.60,lineaComunicacion->screenWidth()-40,lineaComunicacion->screenHeight()*0.30);
-        lineaComunicacion->setGeometry(0,0,1800,300);
+        lineaComunicacion->setGeometry(0,QApplication::desktop()->screenGeometry().height()*0.70+1,QApplication::desktop()->screenGeometry().width()-100,QApplication::desktop()->screenGeometry().height()*0.30-2);
+      //  lineaComunicacion->setGeometry(0,0,1600,100);
         mSceneCommunication->addWidget(lineaComunicacion);
 
-        UBCommunicationLine *lineaComunicacion2 = new UBCommunicationLine(mPecsWidget,mScenePpal);
-        lineaComunicacion2->setGeometry(0,lineaComunicacion2->screenHeight()*0.60,lineaComunicacion2->screenWidth()-40,lineaComunicacion2->screenHeight()*0.30);
+      //  UBCommunicationLine *lineaComunicacion2 = new UBCommunicationLine(mPecsWidget,mScenePpal);
+     //   lineaComunicacion2->setGeometry(0,lineaComunicacion2->screenHeight()*0.60,lineaComunicacion2->screenWidth()-40,lineaComunicacion2->screenHeight()*0.30);
         //lineaComunicacion2->setGeometry(0,0,500,100);
-        mScenePpal->addWidget(lineaComunicacion2);
+     //   mScenePpal->addWidget(lineaComunicacion2);
 
 // Fin pintamos pecs
 
-        QPainterPath rectppal;
-        rectppal.addRoundedRect(0+border(),0,QApplication::desktop()->screenGeometry().width()-100-border(),QApplication::desktop()->screenGeometry().height()*0.30-border(),10,10);
-        mSceneCommunication->addPath(rectppal);
+      //  QPainter painter;
+      //  painter.setRenderHint(QPainter::Antialiasing,true);
+      //  mBackgroundBrush = QBrush(UBSettings::paletteColor);
+      //  painter.setPen(Qt::NoPen);
+      //  painter.setBrush(mBackgroundBrush);
 
+        //pintamos el recuadro grande
+      //  QPainterPath path;
+      //  path.setFillRule(Qt::WindingFill);
+
+        //pintamos el recuadro de relleno
+     //   path.addRoundedRect(0+border()+border(),5+5,QApplication::desktop()->screenGeometry().width()-100-border()-border(),QApplication::desktop()->screenGeometry().height()*0.30-border()-border(),10,10);
+       // painter.drawPath(path);
+     //   mSceneCommunication->addPath(path);
+        //mScene->setSceneRect(calculateX(1,20)+border(),calculateY()+border(),calculateWidth(1,-90),calculateHeight(1,-60));
+
+
+
+
+      //  QPainter painter;
+      //  painter.setRenderHint(QPainter::Antialiasing);
+    //    mBackgroundBrush = QBrush(UBSettings::paletteColor);
+      /*  QPen pen2;
+        pen2.setColor(Qt::gray);
+        painter.setPen(pen2);
+        QBrush brush;
+        brush.setColor(Qt::gray);
+        painter.setBrush(brush);*/
+        //painter.setBrush(QBrush(Qt::green,Qt::SolidPattern));
+
+       // QRectF *rect1= new QRectF(10,10,100,100);
+     //   painter.background(Qt::gray);
+
+       // mSceneCommunication->addRect(QRectF(10,10,200,200),pen2,brush);
+      //  painter.setBackground(Qt::gray);
+      //  QPainterPath borderPath;
+      //  borderPath.setFillRule(Qt::WindingFill);
+   //     borderPath.addRect();
+     //   borderPath.addRoundedRect(0+border(),border(),QApplication::desktop()->screenGeometry().width()-100-border()*2,QApplication::desktop()->screenGeometry().height()*0.30-border()*2,10,10);
+     //   borderPath.addRoundedRect(0+border()*2, border()*2, QApplication::desktop()->screenGeometry().width()-100-border()*4,QApplication::desktop()->screenGeometry().height()*0.30-border()*4, 10,10);
+
+
+       // painter.drawPath(borderPath);
+
+     //   mSceneCommunication->addPath(borderPath);
 
         qDebug()<<mSceneCommunication->sceneRect();
 

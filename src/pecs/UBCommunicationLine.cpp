@@ -69,8 +69,8 @@ void UBCommunicationLine::paintEvent(QPaintEvent *e)
       {
         pictoCommunicationLine *path2 =new pictoCommunicationLine(0,i,mScene);
         qreal x = calculateX(1,20)+border()+border()+pos;
-        //qreal y = calculateY(30,20)+border()+border();
-        qreal y = 200;
+        qreal y = calculateY(1,20)+border()+border();
+        //qreal y = 200;
 
         path2->setPos(x,y);
         pos=pos+pictoWidth()+separatorPicto();

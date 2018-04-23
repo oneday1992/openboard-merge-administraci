@@ -67,6 +67,8 @@ class UBPecsController : public QObject
 
         UBAgenda *agenda;
 
+        QBrush mBackgroundBrush;
+
         int border();
     private slots:
 
