@@ -233,11 +233,11 @@ void UBCanvasView::drawLineTo(const QPoint &endPoint){
 void UBCanvasView::drawLineToTouch(int id, const QPoint &endPoint){
 
     // Avoid senseless lines.   
-    if( ( (lastPointHash[id].x() == endPoint.x()) &&
+    /*if( ( (lastPointHash[id].x() == endPoint.x()) &&
           (lastPointHash[id].y() == endPoint.y()) )
-        ||
-        ( euclideanDistance(lastPointHash[id].x(), lastPointHash[id].y(), endPoint.x(), endPoint.y()) > 100 )
-      )
+        ||*/
+       if ( euclideanDistance(lastPointHash[id].x(), lastPointHash[id].y(), endPoint.x(), endPoint.y()) > 100 )
+      //)
       return;
 
     QRect rect(lastPointHash[id],endPoint);
@@ -249,7 +249,7 @@ void UBCanvasView::drawLineToTouch(int id, const QPoint &endPoint){
     int i=0;
     foreach (QRect* r, independentBoards){
         if(r->intersects(rect) == true){
-            if(eraserMode.at(i) == false)
+            if( (eraserMode.at(i) == false) && (eraserGesture.at(i) == false) )
                 painter.setPen(*pens.at(i));//myPenColors.at(i), penWidth,Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
             else
                 painter.setPen(QPen(bgColor, 36, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));//myPenColors.at(i), penWidth,Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
@@ -288,16 +288,18 @@ QRect* UBCanvasView::maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPo
              qreal d = euclideanDistance(touchPoint1.rect().x(), touchPoint1.rect().y(), touchPoint2.rect().x(), touchPoint2.rect().y());
              if ( d > maxDistance )
              {
-                 maxDistance = d;
-                 x1 = touchPoint1.rect().x();
-                 y1 = touchPoint1.rect().y();
-                 x2 = touchPoint2.rect().x();
-                 y2 = touchPoint2.rect().y();
+                   maxDistance = d;
+                   x1 = touchPoint1.rect().x();
+                   y1 = touchPoint1.rect().y();
+                   x2 = touchPoint2.rect().x();
+                   y2 = touchPoint2.rect().y();
              }
          }
      }
-     qWarning()<<touchPoints.count()<<"  --> MAX ED: "<<maxDistance;
-     if(maxDistance < 120)
+     int r1 = getNumberRegion(QPoint(x1,y1));
+     int r2 = getNumberRegion(QPoint(x2,y2));
+     qWarning()<<touchPoints.count()<<"  --> MAX ED: "<<maxDistance <<r1<<" ## "<<r2;
+     if( (maxDistance < 220) && (r1 == r2) )
          return (new QRect(QPoint(x1,y1),QPoint(x2,y2)));
      else
          return NULL;
@@ -367,12 +369,15 @@ bool UBCanvasView::event(QEvent *event)
             painter.end();
             int rad = 10;
             update(rectED->adjusted(-rad,-rad, +rad, +rad));
-            eraserMode.replace(region,true);
-            eraserGesture.replace(region,true);
-            emit gestureErase(region);
+            if(eraserGesture.at(region) == false)
+            {
+              eraserMode.replace(region,true);
+              eraserGesture.replace(region,true);
+              emit gestureErase(region);
+            }
           }
         }
-        else{
+        //else{
             foreach (const QTouchEvent::TouchPoint &touchPoint, touchPoints) {
                 switch (touchPoint.state()) {
                  case Qt::TouchPointPressed:
@@ -393,6 +398,7 @@ bool UBCanvasView::event(QEvent *event)
                     update();
                     if(eraserGesture.at(region) == true)
                     {
+                        eraserGesture.replace(region,false);
                         emit endGestureErase(region); // to switch back to pen style.
                     }
                     break;
@@ -407,7 +413,7 @@ bool UBCanvasView::event(QEvent *event)
                     continue;
                 }
             }
-        }
+        //}
         break;
     }
     default:
