@@ -8,6 +8,8 @@ UBCanvasView::UBCanvasView(int numberOfIndepedentBoards, int toolBarHeight, QCol
 {
     bgColor = background;
 
+    discardNextTouch = false;
+
     setAttribute(Qt::WA_AcceptTouchEvents);
     setAttribute(Qt::WA_StaticContents);
     modified = false;
@@ -353,6 +355,9 @@ bool UBCanvasView::event(QEvent *event)
     case QEvent::TouchUpdate:
     case QEvent::TouchEnd:
     {
+        // discard a touch after eraser-gesture to make it smoother
+        if (discardNextTouch == true){ discardNextTouch = false; return true; }
+
         //qWarning()<<"e: "<<event->type();
         QList<QTouchEvent::TouchPoint> touchPoints = static_cast<QTouchEvent *>(event)->touchPoints();
         QRect* rectED = maxEuclideanDistance(touchPoints);
@@ -398,9 +403,11 @@ bool UBCanvasView::event(QEvent *event)
                     update();
                     if(eraserGesture.at(region) == true)
                     {
+                        discardNextTouch = true;
                         eraserGesture.replace(region,false);
                         emit endGestureErase(region); // to switch back to pen style.
                     }
+
                     break;
                  }
                  case Qt::TouchPointMoved:

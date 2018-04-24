@@ -66,6 +66,7 @@ private:
     QList<bool> eraserMode;
     QList<bool> eraserGesture;
     QCursor *cursorEraser;
+    bool discardNextTouch;
     //QRect user1;
     //QRect user2;
 protected:
