@@ -210,8 +210,7 @@ void UBCanvasView::drawLineTo(const QPoint &endPoint){
     QRect rect(lastPoint,endPoint);
     //int penWidth = 5;
     QPainter painter(&image);
-    painter.setRenderHint(QPainter::Antialiasing,true);
-    painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
+    painter.setRenderHints (QPainter::Antialiasing | QPainter::SmoothPixmapTransform | QPainter::TextAntialiasing);
     painter.setPen(QPen(bgColor, 5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     int i=0;
     foreach (QRect* r, independentBoards){
@@ -245,8 +244,7 @@ void UBCanvasView::drawLineToTouch(int id, const QPoint &endPoint){
     QRect rect(lastPointHash[id],endPoint);
     //int penWidth = 5;
     QPainter painter(&image);
-    painter.setRenderHint(QPainter::Antialiasing,true);
-    painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
+    painter.setRenderHints (QPainter::Antialiasing | QPainter::SmoothPixmapTransform | QPainter::TextAntialiasing);
     painter.setPen(QPen(bgColor, 5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     int i=0;
     foreach (QRect* r, independentBoards){

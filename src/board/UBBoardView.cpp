@@ -149,6 +149,32 @@ UBBoardView::~UBBoardView ()
     }
 }
 
+void UBBoardView::createTextItem(QString text)
+{
+    scene()->deselectAllItems();
+
+    /*if (!mRubberBand){
+        mRubberBand = new UBRubberBand (QRubberBand::Rectangle, this);
+    }
+    mRubberBand->setGeometry (QRect (mMouseDownPos, QSize ()));
+    mRubberBand->show();*/
+    mIsCreatingTextZone = true;
+
+    if (scene () && mRubberBand && mIsCreatingTextZone) {
+        QRect rubberRect = mRubberBand->geometry ();
+        mRubberBand->show();
+
+        UBGraphicsTextItem* textItem = scene()->addTextHtml (text, mapToScene (rubberRect.topLeft ()));
+
+        UBDrawingController::drawingController ()->setStylusTool (UBStylusTool::Selector);
+
+        textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
+        textItem->setSelected (true);
+        textItem->setTextWidth(0);
+        textItem->setFocus();
+    }
+}
+
 void UBBoardView::init ()
 {
 
@@ -160,6 +186,8 @@ void UBBoardView::init ()
 
   connect (UBSettings::settings ()->boardUseHighResTabletEvent, SIGNAL (changed (QVariant)),
            this, SLOT (settingChanged (QVariant)));
+
+  connect(mController, SIGNAL(ocrRecognized(QString)), this, SLOT(createTextItem(QString)));
 
   setWindowFlags (Qt::FramelessWindowHint);
   setFrameStyle (QFrame::NoFrame);

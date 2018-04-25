@@ -6,6 +6,7 @@
 #include <QPoint>
 #include <QWidget>
 #include <QTouchEvent>
+#include <QtMath>
 
 class UBCanvasView : public QWidget
 {
