@@ -336,8 +336,8 @@ QColor UBDrawingController::toolColor(bool onDarkBackground)
 
 void UBDrawingController::setColorIndex(int index)
 {
-    qWarning()<<"INDEX:";
-    qWarning()<<index;
+    //qWarning()<<"INDEX:";
+    //qWarning()<<index;
 
         Q_ASSERT(index >= 0 && index < UBSettings::settings()->colorPaletteSize);
 

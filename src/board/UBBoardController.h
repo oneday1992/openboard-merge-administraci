@@ -299,6 +299,7 @@ class UBBoardController : public UBDocumentContainer
         void pageSelectionChanged(int index);
         void npapiWidgetCreated(const QString &Url);
         void customColorUpdated();
+        void ocrRecognized(QString text);
 
 
     protected:

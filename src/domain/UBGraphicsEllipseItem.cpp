@@ -72,12 +72,12 @@ QPointF UB3HEditableGraphicsEllipseItem::center() const
 
 void UB3HEditableGraphicsEllipseItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    qWarning()<<"painting ellipse";
+    //qWarning()<<"painting ellipse";
     Q_UNUSED(option)
     Q_UNUSED(widget)
 
     /*qWarning()<< painter->pen().width();
-    qWarning()<< painter->pen().style();*/
+    //qWarning()<< painter->pen().style();*/
     painter->setBrush(Qt::red);
 
     setStyle(painter);
@@ -99,7 +99,7 @@ void UB3HEditableGraphicsEllipseItem::paint(QPainter *painter, const QStyleOptio
         p.setColor(QColor(128, 128, 200));
         p.setStyle(Qt::DotLine);
         p.setWidth(pen().width());
-        qWarning() << pen().width();
+        //qWarning() << pen().width();
         painter->setPen(p);
         painter->setBrush(QBrush());
 

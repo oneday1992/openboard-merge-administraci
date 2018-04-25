@@ -2298,7 +2298,7 @@ PIX* UBBoardController::qImage2PIX(const QImage& qImage) {
 // Issue 22/03/2018 - OpenBoard - OCR recognition
 // Method to pick a snapshot and apply an OCR procedure to save the TEXT returned in the clipboard
 void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
-    qWarning()<<"ocrRecognition";
+    //qWarning()<<"ocrRecognition";
     if (mActiveScene)
     {
         QImage image(pSceneRect.width(), pSceneRect.height(), QImage::Format_ARGB32);
@@ -2319,7 +2319,7 @@ void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
         mActiveScene->setRenderingQuality(UBItem::RenderingQualityHigh);
 
         // ----------------------------------------------------------------------- TEST
-        qWarning()<<"OCR recognition: ";
+        //qWarning()<<"OCR recognition: ";
         tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 
         // UBUNTU 14.04 LTS: It fixes the Issue 910 in
@@ -2337,7 +2337,7 @@ void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
         api->SetImage(PixImage);
         // Get OCR result
         QString outText (api->GetUTF8Text());
-        qWarning()<<"OCR output: "<<outText;
+        //qWarning()<<"OCR output: "<<outText;
         if(!outText.isEmpty()){
             UBPopUp* popup = new UBPopUp(0, QString("(%1 chars were copied to the clipboard)").arg(outText.length()), "OCR Recognition", ":images/stylusPalette/ocr.png");
             if(outText.length() > 200)
@@ -2346,6 +2346,7 @@ void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
                 popup->setPopupText(outText);
             popup->show();
             QApplication::clipboard()->setText(outText);
+            emit ocrRecognized(outText);
         }
         else{
             UBPopUp* popup = new UBPopUp(0, QString("(%1 chars were copied to the clipboard)").arg(outText.length()), "OCR Recognition", ":images/stylusPalette/ocr.png");

@@ -793,7 +793,7 @@ void UBGraphicsItemDelegate::saveAction(UBGraphicsItemAction* action)
 
 void UBGraphicsItemDelegate::onRemoveActionClicked()
 {
-    qWarning()<<"RemoveAction";
+    //qWarning()<<"RemoveAction";
     if(mAction){
         mAction->actionRemoved();
         delete mAction;
@@ -1021,7 +1021,7 @@ void UBGraphicsToolBarItem::positionHandles()
             itemXOffset += mElementsPadding;
         }
     }
-    qWarning()<<itemXOffset - mElementsPadding;
+    //qWarning()<<itemXOffset - mElementsPadding;
 }
 
 void UBGraphicsToolBarItem::update()
@@ -1053,7 +1053,7 @@ MediaTimer::~MediaTimer()
 {}
 void MediaTimer::positionHandles()
 {
-    qWarning()<<"MediaTimer::positionHandles()";
+    //qWarning()<<"MediaTimer::positionHandles()";
     digitSpace = smallPoint ? 2 : 1;
     ySegLen    = rect().height()*5/12;
     xSegLen    = ySegLen*2/3;
@@ -1489,7 +1489,7 @@ QPainterPath DelegateMediaControl::shape() const
 
 void DelegateMediaControl::positionHandles()
 {
-    qWarning()<<"DelegateMediaControl::positionHandles()";
+    //qWarning()<<"DelegateMediaControl::positionHandles()";
     QTime tTotal;
     tTotal = tTotal.addMSecs(mTotalTimeInMs);
     mLCDTimerArea.setHeight(parentItem()->boundingRect().height());

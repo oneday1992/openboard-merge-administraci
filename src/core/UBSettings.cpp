@@ -883,7 +883,7 @@ QString UBSettings::userDataDirectory()
 QString UBSettings::userImageDirectory()
 {
     static QString imageDirectory = "";
-    qWarning()<<imageDirectory;
+    //qWarning()<<imageDirectory;
     if(imageDirectory.isEmpty()){
         if (sAppSettings && getAppSettings()->contains("App/UserImageDirectory")) {
             imageDirectory = getAppSettings()->value("App/UserImageDirectory").toString();

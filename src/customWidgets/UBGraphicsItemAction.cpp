@@ -212,8 +212,8 @@ UBGraphicsItemLinkToWebPageAction::UBGraphicsItemLinkToWebPageAction(QString url
 
 void UBGraphicsItemLinkToWebPageAction::play()
 {
-    qWarning()<<"URL:";
-    qWarning()<<mUrl;
+    //qWarning()<<"URL:";
+    //qWarning()<<mUrl;
     if (mUrl.length() > 0)
         UBApplication::webController->loadUrl(QUrl(mUrl));
 }

@@ -456,7 +456,7 @@ bool UBGraphicsScene::inputDevicePress(const QPointF& scenePos, const qreal& pre
             // hide the marker preview circle
             if (currentTool == UBStylusTool::Marker)
                 hideMarkerCircle();
-            qWarning()<<"*";
+            //qWarning()<<"*";
             // ---------------------------------------------------------------
             // Create a new Stroke. A Stroke is a collection of QGraphicsLines
             // ---------------------------------------------------------------
@@ -613,7 +613,7 @@ bool UBGraphicsScene::inputDeviceMove(const QPointF& scenePos, const qreal& pres
 
 bool UBGraphicsScene::inputDeviceRelease()
 {
-    qWarning()<<"inputDeviceRelease ******************************** ";
+    //qWarning()<<"inputDeviceRelease ******************************** ";
 
     bool accepted = false;
 
@@ -625,7 +625,7 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
-    qWarning()<<currentTool;
+    //qWarning()<<currentTool;
 
     if (currentTool == UBStylusTool::Eraser)
         redrawEraser(false);
@@ -635,9 +635,9 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     if (dc->isDrawingTool() || mDrawWithCompass)
     {
-        qWarning()<<"### [1] ####";
+        //qWarning()<<"### [1] ####";
         if(mArcPolygonItem){
-            qWarning()<<"### [2] ####";
+            //qWarning()<<"### [2] ####";
             UBGraphicsStrokesGroup* pStrokes = new UBGraphicsStrokesGroup();
 
             // Add the arc
@@ -663,7 +663,7 @@ bool UBGraphicsScene::inputDeviceRelease()
             mDrawWithCompass = false;
         }
         else if (mCurrentStroke){
-            qWarning()<<"### [3] ####";
+            //qWarning()<<"### [3] ####";
             UBGraphicsStrokesGroup* pStrokes = new UBGraphicsStrokesGroup();
 
             // Remove the strokes that were just drawn here and replace them by a stroke item
@@ -690,13 +690,13 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     if (mRemovedItems.size() > 0 || mAddedItems.size() > 0)
     {
-        qWarning()<<"### [4] ####";
+        //qWarning()<<"### [4] ####";
         if (mUndoRedoStackEnabled) { //should be deleted after scene own undo stack implemented
-            qWarning()<<"### [5] ####";
+            //qWarning()<<"### [5] ####";
             UBGraphicsItemUndoCommand* udcmd = new UBGraphicsItemUndoCommand(this, mRemovedItems, mAddedItems); //deleted by the undoStack
 
             if(UBApplication::undoStack){
-                qWarning()<<"### [6] ####";
+                //qWarning()<<"### [6] ####";
                 UBApplication::undoStack->push(udcmd);
             }
         }
@@ -1172,7 +1172,7 @@ void UBGraphicsScene::updateSelectionFrame()
     case 1: {
         mSelectionFrame->setVisible(false);
         mSelectionFrame->setEnclosedItems(QList<QGraphicsItem*>());
-        qWarning()<<selItems.count();
+        //qWarning()<<selItems.count();
         UBGraphicsItemDelegate *itemDelegate = UBGraphicsItem::Delegate(selItems.first());
         UBGraphicsMediaItem * mItem = dynamic_cast<UBGraphicsMediaItem*>(selItems.first());
         if(!mItem){
@@ -1307,8 +1307,8 @@ void UBGraphicsScene::clearContent(clearCase pCase)
     QSet<QGraphicsItem*> removedItems;
     UBGraphicsItemUndoCommand::GroupDataTable groupsMap;
 
-    qWarning() << "@$% @$% @$% @$% @$% @$% @$% @$% @$% @$% @$% @$%";
-    qWarning() << mBackgroundObject;
+    //qWarning() << "@$% @$% @$% @$% @$% @$% @$% @$% @$% @$% @$% @$%";
+    //qWarning() << mBackgroundObject;
 
     switch (pCase) {
     case clearBackground :
@@ -1321,10 +1321,10 @@ void UBGraphicsScene::clearContent(clearCase pCase)
     case clearItemsAndAnnotations :
     case clearItems :
     case clearAnnotations :
-        qWarning () << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
-        qWarning () << "CLEAR ANNOTATIONS AND/OR ITEMS";
-        qWarning() << static_cast<int>(pCase);
-        qWarning() << items().count();
+        //qWarning () << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
+        //qWarning () << "CLEAR ANNOTATIONS AND/OR ITEMS";
+        //qWarning() << static_cast<int>(pCase);
+        //qWarning() << items().count();
 
         foreach(QGraphicsItem* item, items()) {
 
@@ -1339,8 +1339,8 @@ void UBGraphicsScene::clearContent(clearCase pCase)
             bool isGroup = item->type() == UBGraphicsGroupContainerItem::Type;
             bool isStrokesGroup = item->type() == UBGraphicsStrokesGroup::Type;
 
-            qWarning() << "isStrokeGroup?:";
-            qWarning() << isStrokesGroup;
+            //qWarning() << "isStrokeGroup?:";
+            //qWarning() << isStrokesGroup;
 
             bool shouldDelete = false;
             switch (static_cast<int>(pCase)) {

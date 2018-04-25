@@ -149,6 +149,28 @@ UBBoardView::~UBBoardView ()
     }
 }
 
+void UBBoardView::createTextItem(QString text)
+{
+    scene()->deselectAllItems();
+    /*if (!mRubberBand){
+        mRubberBand = new UBRubberBand (QRubberBand::Rectangle, this);
+    }
+    mRubberBand->setGeometry (QRect (mMouseDownPos, QSize ()));
+    mRubberBand->show();*/
+    mIsCreatingTextZone = true;
+    if (scene () && mRubberBand && mIsCreatingTextZone) {
+        QRect rubberRect = mRubberBand->geometry ();
+        mRubberBand->show();
+        UBGraphicsTextItem* textItem = scene()->addTextHtml ("", mapToScene (rubberRect.topLeft ()));
+        textItem->setPlainText(text);
+        UBDrawingController::drawingController ()->setStylusTool (UBStylusTool::Selector);
+        textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
+        textItem->setSelected (true);
+        textItem->setTextWidth(0);
+        textItem->setFocus();
+    }
+}
+
 void UBBoardView::init ()
 {
 
@@ -160,6 +182,8 @@ void UBBoardView::init ()
 
   connect (UBSettings::settings ()->boardUseHighResTabletEvent, SIGNAL (changed (QVariant)),
            this, SLOT (settingChanged (QVariant)));
+
+  connect(mController, SIGNAL(ocrRecognized(QString)), this, SLOT(createTextItem(QString)));
 
   setWindowFlags (Qt::FramelessWindowHint);
   setFrameStyle (QFrame::NoFrame);
@@ -1175,7 +1199,7 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
         return;
     }
 
-    qWarning() << "mousePressEvent %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
+    //qWarning() << "mousePressEvent %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
 
     mIsDragInProgress = false;
 
@@ -1215,7 +1239,7 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
 
         case UBStylusTool::Selector :
         case UBStylusTool::Play :
-            qWarning()<<"PLAY";
+            //qWarning()<<"PLAY";
             if (bIsDesktop) {
                 event->ignore();
                 return;
@@ -1244,7 +1268,7 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             break;
 
         case UBStylusTool::Text : {
-            qWarning()<<"Text";
+            //qWarning()<<"Text";
             int frameWidth = UBSettings::settings ()->objectFrameWidth;
             QRectF fuzzyRect (0, 0, frameWidth * 4, frameWidth * 4);
             fuzzyRect.moveCenter (mapToScene (mMouseDownPos));
@@ -1290,7 +1314,7 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             break;
 
         default:
-            qWarning() << "default %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
+            //qWarning() << "default %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
             if(UBDrawingController::drawingController()->mActiveRuler==NULL) {
                 viewport()->setCursor (QCursor (Qt::BlankCursor));
             }
@@ -1430,7 +1454,7 @@ UBBoardView::mouseMoveEvent (QMouseEvent *event)
 void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
 {
 
-    qWarning() << "mouseReleaseEvent";
+    //qWarning() << "mouseReleaseEvent";
     //EV-7 - NNE - 20131231
     emit mouseRelease(event);
 
@@ -1615,7 +1639,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
     }
     else if ( (currentTool == UBStylusTool::Capture) || (currentTool == UBStylusTool::OCR) ) // Issue 22/03/2018 - OpenBoard - OCR recognition
     {
-        qWarning()<<"Capture";
+        //qWarning()<<"Capture";
         if (scene () && mRubberBand && mIsCreatingSceneGrabZone && mRubberBand->geometry ().width () > 16)
         {
             QRect rect = mRubberBand->geometry ();
@@ -1639,7 +1663,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
     }
     else
     {
-        qWarning()<<"here we are...";
+        //qWarning()<<"here we are...";
         if (mPendingStylusReleaseEvent || mMouseButtonIsPressed)
         {
             event->accept ();

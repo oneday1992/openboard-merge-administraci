@@ -91,7 +91,7 @@ void UBAbstractGraphicsItem::setStrokeColor(const QColor& color)
 void UBAbstractGraphicsItem::setStrokeSize(int size)
 {
     /*if(hasStrokeProperty()){*/
-        qWarning()<<"setStrokeSize";
+        //qWarning()<<"setStrokeSize";
         QPen p = pen();
         p.setWidth(size);
         setPen(p);

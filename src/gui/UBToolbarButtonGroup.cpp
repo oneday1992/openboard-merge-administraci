@@ -164,7 +164,7 @@ UBToolbarButtonGroup::~UBToolbarButtonGroup()
 
 void UBToolbarButtonGroup::updatePenMarkerWidth(double value)
 {
-    qWarning()<<value;
+    //qWarning()<<value;
     if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
         || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line)
     {
@@ -264,23 +264,23 @@ void UBToolbarButtonGroup::customColorHandle(){
 
 // Issue 05/03/2018 - OpenBoard - CUSTOM WIDTH
 void UBToolbarButtonGroup::lineWidthHandlePredefined(){
-    qWarning() << "customLineWidthHandle";
+    //qWarning() << "customLineWidthHandle";
     lineWidthSpinBox->setEnabled(false);
     emit clickOnLineWidthButton();
 }
 
 // Issue 05/03/2018 - OpenBoard - CUSTOM WIDTH
 void UBToolbarButtonGroup::lineWidthHandleCustom(){
-    qWarning() << "customLineWidthHandle";
+    //qWarning() << "customLineWidthHandle";
     if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Pen
         || UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Line)
     {
-        qWarning() << "Pen";
+        //qWarning() << "Pen";
         lineWidthSpinBox->setValue(customPenLineWidth);
     }
     else if (UBDrawingController::drawingController()->stylusTool() == UBStylusTool::Marker)
     {
-        qWarning() << "Marker";
+        //qWarning() << "Marker";
         lineWidthSpinBox->setValue(customMarkerLineWidth);
     }
     lineWidthSpinBox->setEnabled(true);
@@ -327,7 +327,7 @@ void UBToolbarButtonGroup::setCurrentIndex(int index)
             mButtons.at(i)->setChecked(i == index);
         }
         mCurrentIndex = index;
-        qWarning()<<isLineWidthTool;
+        //qWarning()<<isLineWidthTool;
         if(isLineWidthTool == true){
             if(index+1 < 4)
             {

@@ -190,6 +190,7 @@ public slots:
 
     void virtualKeyboardActivated(bool b);
     void longPressEvent();
+    void createTextItem(QString text);
 
 };
 

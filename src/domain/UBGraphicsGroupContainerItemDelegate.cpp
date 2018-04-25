@@ -122,7 +122,7 @@ void UBGraphicsGroupContainerItemDelegate::saveAction(UBGraphicsItemAction* acti
 
 void UBGraphicsGroupContainerItemDelegate::setAction(UBGraphicsItemAction* action)
 {
-    qWarning()<<"setAction.................................................. @@";
+    //qWarning()<<"setAction.................................................. @@";
     UBGraphicsItemDelegate::setAction(action);
 }
 

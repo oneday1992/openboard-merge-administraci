@@ -804,7 +804,7 @@ void UBGraphicsTextItem::activateTextEditor(bool activateTextEditor)
     this->isActivatedTextEditor = activateTextEditor;
 
     if(!activateTextEditor){
-        qWarning()<<activateTextEditor;
+        //qWarning()<<activateTextEditor;
         setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextBrowserInteraction);
         if(htmlMode()){
             UBGraphicsTextItemDelegate *d = dynamic_cast<UBGraphicsTextItemDelegate*>(Delegate());
@@ -1025,8 +1025,8 @@ QString UBGraphicsTextItem::findAndReplaceAttribute(QString tag, QString oldAttr
 
 void UBGraphicsTextItem::changeHTMLMode()
 {
-    qWarning()<<"changeHTMLMode";
-    qWarning()<<isActivatedTextEditor;
+    //qWarning()<<"changeHTMLMode";
+    //qWarning()<<isActivatedTextEditor;
     if(isActivatedTextEditor)
         activateTextEditor(false);
 

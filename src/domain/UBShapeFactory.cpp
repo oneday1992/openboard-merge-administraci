@@ -267,8 +267,8 @@ UBAbstractGraphicsItem* UBShapeFactory::instanciateCurrentShape()
 
     mCurrentShape->setStrokeColor(mCurrentStrokeColor);
 
-    qWarning()<<"mThickness: ";
-    qWarning()<<mThickness;
+    //qWarning()<<"mThickness: ";
+    //qWarning()<<mThickness;
     mCurrentShape->setStrokeSize(mThickness);
 
     UBAbstractGraphicsPathItem * abstractGraphicsPathItem  = dynamic_cast<UBAbstractGraphicsPathItem*>(mCurrentShape);
@@ -378,11 +378,11 @@ void UBShapeFactory::onMouseMove(QMouseEvent *event)
                 UB3HEditableGraphicsEllipseItem* shape = dynamic_cast<UB3HEditableGraphicsEllipseItem*>(mCurrentShape);
                 QRectF rect = QRectF(shape->pos(), cursorPosition);
 
-                qWarning() << "before setting radius";
+                //qWarning() << "before setting radius";
                 shape->setRadiusX(rect.width()/2);
                 shape->setRadiusY(rect.height()/2);
                 /*QThread::msleep(50);*/
-                qWarning() << "after setting radius";
+                //qWarning() << "after setting radius";
             }
             else if(mShapeType == Circle)
             {

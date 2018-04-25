@@ -464,7 +464,7 @@ PIX* UBDesktopAnnotationController::qImage2PIX(const QImage& qImage) {
 // Issue 02/04/2018 -- OpenBoard -- OCR recognition in Desktop mode.
 void UBDesktopAnnotationController::OCRrecognition()
 {
-    qWarning()<<"OCR recognition in Desktop mode";
+    //qWarning()<<"OCR recognition in Desktop mode";
     onToolClicked();
     mIsFullyTransparent = true;
     updateBackground();
@@ -480,9 +480,9 @@ void UBDesktopAnnotationController::OCRrecognition()
     if (customCaptureWindow.execute(getScreenPixmap()) == QDialog::Accepted)
     {
         QPixmap selectedPixmap = customCaptureWindow.getSelectedPixmap();
-        qWarning()<<"Captured";
+        //qWarning()<<"Captured";
         // ----------------------------------------------------------------------- TEST
-        qWarning()<<"OCR recognition: ";
+        //qWarning()<<"OCR recognition: ";
         tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 
         // UBUNTU 14.04 LTS: It fixes the Issue 910 in
@@ -501,7 +501,7 @@ void UBDesktopAnnotationController::OCRrecognition()
         api->SetImage(PixImage);
         // Get OCR result
         QString outText (api->GetUTF8Text());
-        qWarning()<<"OCR output: "<<outText;
+        //qWarning()<<"OCR output: "<<outText;
         if(!outText.isEmpty()){
             UBPopUp* popup = new UBPopUp(0, QString("(%1 chars were copied to the clipboard)").arg(outText.length()), "OCR Recognition", ":images/stylusPalette/ocr.png");
             if(outText.length() > 200)
