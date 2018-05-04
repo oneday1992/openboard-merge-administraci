@@ -87,7 +87,6 @@ initializeVariables()
   # (this is necessary if the target system doesn't provide Qt 5.5.1)
   BUNDLE_QT=false
 
-
   # Qt installation path. This may vary across machines
   QT_PATH="/usr/lib/x86_64-linux-gnu/qt5"
   QT_PLUGINS_SOURCE_PATH="$QT_PATH/plugins"
@@ -348,8 +347,8 @@ for ((i=0;i<${#tab[@]};i++)); do
     if [ $i -ne "0" ]; then
         echo -n ",    " >> "$CONTROL_FILE"
     fi
-
-    echo -n "${tab[$i]} (>= "`apt-cache show ${tab[$i]} | grep "Version: " | head -1 | awk '{      print $2 }' | sed -e 's/\([:. 0-9?]*\).*/\1/g' | sed -e 's/\.$//'`") " >> "$CONTROL_FILE"
+    echo -n "${tab[$i]} (>= "`apt-cache show ${tab[$i]} | grep "Version: " |  cut -d":" -f2-`") " >> "$CONTROL_FILE"
+    #echo -n "${tab[$i]} (>= "`apt-cache show ${tab[$i]} | grep "Version: " | head -1 | awk '{      print $2 }' | sed -e 's/\([:. 0-9?]*\).*/\1/g' | sed -e 's/\.$//'`") " >> "$CONTROL_FILE"
 done
 echo -n ",  onboard" >> "$CONTROL_FILE"
 
