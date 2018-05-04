@@ -10,8 +10,8 @@ CONFIG += debug_and_release \
 
 VERSION_MAJ = 1
 VERSION_MIN = 3
-VERSION_PATCH = 6
-VERSION_TYPE = r # a = alpha, b = beta, rc = release candidate, r = release, other => error
+VERSION_PATCH = 7
+VERSION_TYPE = b # a = alpha, b = beta, rc = release candidate, r = release, other => error
 VERSION_BUILD = 0
 
 VERSION = "$${VERSION_MAJ}.$${VERSION_MIN}.$${VERSION_PATCH}-$${VERSION_TYPE}.$${VERSION_BUILD}"
@@ -31,7 +31,6 @@ VERSION_RC = $$replace(VERSION_RC, "rc", "192" ) # 0xC0
 VERSION_RC = $$replace(VERSION_RC, "r", "240") # 0xF0
 
 QT += webkit
-QT += webengine
 QT += svg
 QT += network
 QT += xml
@@ -40,7 +39,6 @@ QT += xmlpatterns
 QT += uitools
 QT += multimedia
 QT += webkitwidgets
-QT += webenginewidgets
 QT += multimediawidgets
 QT += printsupport
 QT += core
