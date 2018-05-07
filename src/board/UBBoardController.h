@@ -300,6 +300,7 @@ class UBBoardController : public UBDocumentContainer
         void centerOnThumbnailRequired(int index);
         void npapiWidgetCreated(const QString &Url);
         void customColorUpdated();
+        void ocrRecognized(QString text);
 
 
     protected:

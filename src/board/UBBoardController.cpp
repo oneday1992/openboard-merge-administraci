@@ -2390,6 +2390,7 @@ void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
                 popup->setPopupText(outText);
             popup->show();
             QApplication::clipboard()->setText(outText);
+            emit ocrRecognized(outText);
         }
         else{
             UBPopUp* popup = new UBPopUp(0, QString("(%1 chars were copied to the clipboard)").arg(outText.length()), "OCR Recognition", ":images/stylusPalette/ocr.png");
