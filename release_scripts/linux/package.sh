@@ -342,14 +342,19 @@ else
     done;
 fi
 
-
 for ((i=0;i<${#tab[@]};i++)); do
     if [ $i -ne "0" ]; then
         echo -n ",    " >> "$CONTROL_FILE"
     fi
-    echo -n "${tab[$i]} (>= "`apt-cache show ${tab[$i]} | grep "Version: " |  cut -d":" -f2-`") " >> "$CONTROL_FILE"
+    echo -n "${tab[$i]} (>= "`apt-cache show ${tab[$i]} | grep "Version: " | head -1 | tr -d ' ' |  cut -d":" -f2-`") " >> "$CONTROL_FILE"
     #echo -n "${tab[$i]} (>= "`apt-cache show ${tab[$i]} | grep "Version: " | head -1 | awk '{      print $2 }' | sed -e 's/\([:. 0-9?]*\).*/\1/g' | sed -e 's/\.$//'`") " >> "$CONTROL_FILE"
 done
+######################################### 
+# --> Include package tesseract-ocr-spa 
+#########################################
+echo -n ",    " >> "$CONTROL_FILE"
+echo -n "tesseract-ocr-spa (>= "`apt-cache show tesseract-ocr-spa | grep "Version: " | head -1 | tr -d ' ' |  cut -d":" -f2-`") " >> "$CONTROL_FILE"
+######################################################################################################################################################
 echo -n ",  onboard" >> "$CONTROL_FILE"
 
 if $BUNDLE_QT; then
