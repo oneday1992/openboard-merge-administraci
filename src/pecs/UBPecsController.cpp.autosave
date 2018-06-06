@@ -109,7 +109,7 @@ void UBPecsController::setupViews()
         pictoList->setAcceptDrops(true);
         pictoList->setDropIndicatorShown(true);
 
-        PecsModel *model = new PecsModel(pictoWidget->pieceSize(),this);
+        PecsModel *model = new PecsModel(pictoWidget->pieceSize(), this);
 
 
      /*   mPecsWidget = new QWidget(mMainWindow->centralWidget());

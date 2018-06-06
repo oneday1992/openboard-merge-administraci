@@ -32,6 +32,7 @@
 #include <QObject>
 #include "core/UBApplicationController.h"
 #include "UBAgenda.h"
+#include "PictoWidget.h"
 
 /*namespace Ui
 {
@@ -70,6 +71,10 @@ class UBPecsController : public QObject
         QBrush mBackgroundBrush;
 
         int border();
+        //nuevo
+        PictoWidget *pictoWidget;
+        QListView *pictoList;
+
     private slots:
 
 
