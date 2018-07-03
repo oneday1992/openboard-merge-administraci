@@ -4,6 +4,7 @@
 #include <core/UBApplication.h>
 #include <QCheckBox>
 #include <QPushButton>
+#include <QTouchDevice>
 #include "canvas/UBCanvasPalette.h"
 
 UBCanvasController::UBCanvasController(UBMainWindow *mainWindow)
@@ -11,7 +12,10 @@ UBCanvasController::UBCanvasController(UBMainWindow *mainWindow)
     , mControlContainer(0)
     , mControlView (0)
     , numberBoards(4)
-{        
+{
+    QTouchDevice t;
+    qWarning()<<" @@@@@ #### ----- MAXIMUM TOUCH POINTS: "<<t.maximumTouchPoints();
+    qWarning()<<" @@@@@ #### ----- MAXIMUM TOUCH POINTS: "<<t.capabilities();
     penColors
             << Qt::black //QColor("red")
             << Qt::red //QColor("blue")

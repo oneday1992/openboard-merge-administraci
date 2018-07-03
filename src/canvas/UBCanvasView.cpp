@@ -1,5 +1,6 @@
 #include "UBCanvasView.h"
 #include "gui/UBResources.h"
+#include "core/UBApplication.h"
 
 #include <QtWidgets>
 
@@ -9,11 +10,15 @@ UBCanvasView::UBCanvasView(int numberOfIndepedentBoards, int toolBarHeight, QCol
     bgColor = background;
 
     discardNextTouch = false;
+    counterNextTouch = 0;
 
     setAttribute(Qt::WA_AcceptTouchEvents);
     setAttribute(Qt::WA_StaticContents);
     modified = false;
     scribbling = false;
+
+    qWarning()<<"SCREEN PHYSICAL SIZE:" << UBApplication::desktop()->widthMM() << "  " << UBApplication::desktop()->heightMM();
+    qWarning()<<"PIXEL: "<< UBApplication::desktop()->logicalDpiX() << "  " << UBApplication::desktop()->logicalDpiY();
 
     QPixmap px (36,36);
     px.fill(Qt::transparent);
@@ -277,8 +282,33 @@ void UBCanvasView::leaveEvent(QEvent *event)
     QApplication::restoreOverrideCursor();
 }
 
-
-QRect* UBCanvasView::maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints)
+QList<QRect*> UBCanvasView::maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints)
+{
+    QList<QRect*> listRect;
+    foreach (const QTouchEvent::TouchPoint &touchPoint1, touchPoints) {
+        //if (touchPoint1.state() == Qt::TouchPointPressed){
+          foreach (const QTouchEvent::TouchPoint &touchPoint2, touchPoints) {
+            int x1, y1, x2, y2;
+            x1 = touchPoint1.rect().x();
+            y1 = touchPoint1.rect().y();
+            x2 = touchPoint2.rect().x();
+            y2 = touchPoint2.rect().y();
+            if( (x1 != x2) && (y1 != y2) )// && (touchPoint2.state() == Qt::TouchPointPressed) )
+            {
+              qreal d = euclideanDistance(x1,y1,x2,y2);
+              qreal dcm = 2.54*(d/UBApplication::desktop()->logicalDpiX());
+              qWarning()<<x1<<","<<y1<<" "<<x2<<","<<y2<<"   "<<d<<"px  "<<dcm<<"cm ";
+              int r1 = getNumberRegion(QPoint(x1,y1));
+              int r2 = getNumberRegion(QPoint(x2,y2));
+              if( (dcm < 2.0) && (r1 == r2) ) listRect.append(new QRect(QPoint(x1,y1),QPoint(x2,y2)));
+              //if (r1 == r2) listRect.append(new QRect(QPoint(x1,y1),QPoint(x2,y2)));
+            }
+          }
+        //}
+    }
+    return listRect;
+}
+/*QRect* UBCanvasView::maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints)
 {
      if(touchPoints.count() < 2) return NULL;
      qreal maxDistance = 0;
@@ -304,13 +334,14 @@ QRect* UBCanvasView::maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPo
      else
          return NULL;
      //return maxDistance;
-}
+}*/
 
 bool UBCanvasView::event(QEvent *event)
 {
     switch (event->type()) {
     case QEvent::MouseButtonPress:
     {
+        qWarning()<<"MOUSE BUTTON PRESS";
         //qWarning()<<event->type();
         const QMouseEvent* me = static_cast<const QMouseEvent *>(event);
         qWarning()<<eraserMode.at(getNumberRegion(me->pos()));
@@ -329,6 +360,7 @@ bool UBCanvasView::event(QEvent *event)
     case QEvent::MouseMove:
     {
         //qWarning()<<event->type();
+        qWarning()<<"MOUSE MOVE";
         const QMouseEvent* me = static_cast<const QMouseEvent *>(event);
 
         drawLineTo(me->pos());
@@ -340,6 +372,7 @@ bool UBCanvasView::event(QEvent *event)
     }
     case QEvent::MouseButtonRelease:
     {
+        qWarning()<<"MOUSE BUTTON RELEASE";
         QApplication::restoreOverrideCursor();
         const QMouseEvent* me = static_cast<const QMouseEvent *>(event);
         if( (me->button() == Qt::LeftButton) && (scribbling == true) ){
@@ -353,13 +386,23 @@ bool UBCanvasView::event(QEvent *event)
     case QEvent::TouchUpdate:
     case QEvent::TouchEnd:
     {
-        // discard a touch after eraser-gesture to make it smoother
-        if (discardNextTouch == true){ discardNextTouch = false; return true; }
+        // discard a few touch after eraser-gesture to make it smoother
+        /*if ( (discardNextTouch == true) && (counterNextTouch < 8) )
+        {
+            qWarning()<<"  --> discarding "<<counterNextTouch;
+            counterNextTouch++;
+            if(counterNextTouch > 8) discardNextTouch = false;
+            // It is bad-practice but make the eraser mode smoother
+            for (int i=0; i<100000; i++);
+            return true;
+        }*/
 
         //qWarning()<<"e: "<<event->type();
         QList<QTouchEvent::TouchPoint> touchPoints = static_cast<QTouchEvent *>(event)->touchPoints();
-        QRect* rectED = maxEuclideanDistance(touchPoints);
-        if(rectED != NULL)
+        QList<QRect*> listRectED = maxEuclideanDistance(touchPoints);
+        foreach(QRect* rectED, listRectED)
+        /*QRect* rectED = maxEuclideanDistance(touchPoints);
+        if(rectED != NULL)*/
         {
           int region = getNumberRegion(rectED->center());
           if (eraserMode.at(region) == false)
@@ -384,7 +427,7 @@ bool UBCanvasView::event(QEvent *event)
             foreach (const QTouchEvent::TouchPoint &touchPoint, touchPoints) {
                 switch (touchPoint.state()) {
                  case Qt::TouchPointPressed:
-                    //qWarning()<<"Pressed: "<<touchPoint.rect().x()<<", "<<touchPoint.rect().y()<<", "<<touchPoint.id();
+                    //qWarning()<<"Pressed: "<<touchPoint.rect().x()<<", "<<touchPoint.rect().y()<<", "<<touchPoint.pressure();
                     lastPointHash[touchPoint.id()]=QPoint(touchPoint.pos().x(), touchPoint.pos().y());
                     if(eraserMode.at(getNumberRegion(QPoint(touchPoint.pos().x(), touchPoint.pos().y()))) == true){
                         QApplication::setOverrideCursor(*cursorEraser);
@@ -402,6 +445,7 @@ bool UBCanvasView::event(QEvent *event)
                     if(eraserGesture.at(region) == true)
                     {
                         discardNextTouch = true;
+                        counterNextTouch = 0;
                         eraserGesture.replace(region,false);
                         emit endGestureErase(region); // to switch back to pen style.
                     }
@@ -410,6 +454,7 @@ bool UBCanvasView::event(QEvent *event)
                  }
                  case Qt::TouchPointMoved:
                  {
+                    //qWarning()<<"Move: "<<touchPoint.rect().x()<<", "<<touchPoint.rect().y()<<", "<<touchPoint.pressure();
                     drawLineToTouch(touchPoint.id(),QPoint(touchPoint.pos().x(),touchPoint.pos().y()));
                     break;
                  }
@@ -418,7 +463,7 @@ bool UBCanvasView::event(QEvent *event)
                     continue;
                 }
             }
-        //}
+        /*}*/
         break;
     }
     default:

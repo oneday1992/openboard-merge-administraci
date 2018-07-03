@@ -54,7 +54,7 @@
 #include "api/UBWidgetUniboardAPI.h"
 #include "UBFeaturesActionBar.h"
 #include "UBRubberBand.h"
-#include <QtWebEngine>
+//#include <QtWebEngine>
 #include <QWebView>
 #include <QWebSettings>
 

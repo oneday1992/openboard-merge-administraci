@@ -23,7 +23,8 @@ public:
     QImage createSubImage(QRect *rect);
 
     qreal euclideanDistance(int x1, int y1, int x2, int y2) { return sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))); }
-    QRect* maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints);
+    QList<QRect*> maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints);
+    //QRect* maxEuclideanDistance(QList<QTouchEvent::TouchPoint> touchPoints);
 
     QRect getRegion(int pos);
     int getNumberRegion(QPoint p);
@@ -68,6 +69,7 @@ private:
     QList<bool> eraserGesture;
     QCursor *cursorEraser;
     bool discardNextTouch;
+    int counterNextTouch;
     //QRect user1;
     //QRect user2;
 protected:
