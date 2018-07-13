@@ -909,7 +909,11 @@
     </message>
     <message>
         <source>Board drawing...</source>
+<<<<<<< HEAD
         <translation>Dessin du tableau...</translation>
+=======
+        <translation type="vanished">Dessin du tableau...</translation>
+>>>>>>> pr/2
     </message>
 </context>
 <context>
@@ -1273,6 +1277,16 @@
     </message>
 </context>
 <context>
+<<<<<<< HEAD
+=======
+    <name>UBDraggableThumbnail</name>
+    <message>
+        <source>Page %0</source>
+        <translation>Page %0</translation>
+    </message>
+</context>
+<context>
+>>>>>>> pr/2
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
@@ -2031,7 +2045,11 @@ Voulez-vous ignorer les erreurs pour ce serveur ?</translation>
     </message>
     <message>
         <source>loading thumbnail of page %1</source>
+<<<<<<< HEAD
         <translation>Chargement aperçu page %1</translation>
+=======
+        <translation type="vanished">Chargement aperçu page %1</translation>
+>>>>>>> pr/2
     </message>
 </context>
 <context>
@@ -2733,6 +2751,13 @@ p, li { white-space: pre-wrap; }
         <source>On Light Background</source>
         <translation>Sur fond clair</translation>
     </message>
+<<<<<<< HEAD
+=======
+    <message>
+        <source>Swap first and second view displays</source>
+        <translation>Inverser les écrans élèves</translation>
+    </message>
+>>>>>>> pr/2
 </context>
 <context>
     <name>trapFlashDialog</name>

@@ -294,6 +294,8 @@ QString UBMicrophoneInput::getErrorString(QAudio::Error errorCode)
         case QAudio::FatalError :
             return "Fatal error; audio device unusable";
 
+        default:
+            return "unhandled error...";
     }
     return "";
 }

@@ -41,11 +41,10 @@ extern "C" {
     #include <libswresample/swresample.h>
 #else
     #include <libavresample/avresample.h>
-    #define SwrContext AVAudioResampleContext 
+    #define SwrContext AVAudioResampleContext
 #endif
-#include <libswresample/swresample.h>
-}
 
+}
 
 #include <atomic>
 

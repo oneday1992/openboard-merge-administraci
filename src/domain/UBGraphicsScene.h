@@ -288,6 +288,8 @@ class UBGraphicsScene: public UBCoreGraphicsScene, public UBItem
                 }
                 // Fin issue 1598/1605 - CFA - 20131028
 
+                QPointF mLastSceneCenter;
+
                 qreal zoomFactor;
                 int horizontalPosition;
                 int verticalPostition;

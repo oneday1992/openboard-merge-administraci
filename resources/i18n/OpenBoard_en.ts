@@ -907,6 +907,13 @@
     </message>
 </context>
 <context>
+    <name>UBBackgroundPalette</name>
+    <message>
+        <source>Grid size</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UBBoardController</name>
     <message>
         <source>Downloading content %1 failed</source>
@@ -1242,6 +1249,19 @@
     </message>
 </context>
 <context>
+<<<<<<< HEAD
+    <name>UBDraggableThumbnailView</name>
+=======
+    <name>UBDraggableThumbnail</name>
+>>>>>>> pr/2
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+<<<<<<< HEAD
+=======
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
@@ -1249,6 +1269,7 @@
     </message>
 </context>
 <context>
+>>>>>>> pr/2
     <name>UBExportAdaptor</name>
     <message>
         <source>Warnings during export was appeared</source>
@@ -1885,6 +1906,13 @@ Do you want to ignore these errors for this host?</source>
     </message>
     <message>
         <source>loading thumbnail of page %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UBThumbnailTextItem</name>
+    <message>
+        <source>Page %0</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2569,6 +2597,13 @@ p, li { white-space: pre-wrap; }
         <source>On Light Background</source>
         <translation type="unfinished"></translation>
     </message>
+<<<<<<< HEAD
+=======
+    <message>
+        <source>Swap first and second view displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+>>>>>>> pr/2
 </context>
 <context>
     <name>trapFlashDialog</name>

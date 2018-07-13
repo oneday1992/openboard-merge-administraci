@@ -915,6 +915,13 @@
     </message>
 </context>
 <context>
+    <name>UBBackgroundPalette</name>
+    <message>
+        <source>Grid size</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UBBoardController</name>
     <message>
         <source>Downloading content %1 failed</source>
@@ -1263,6 +1270,16 @@
     </message>
 </context>
 <context>
+<<<<<<< HEAD
+=======
+    <name>UBDraggableThumbnail</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Pejy %0</translation>
+    </message>
+</context>
+<context>
+>>>>>>> pr/2
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
@@ -1997,6 +2014,13 @@ Tena tsy te hiraharaha an&apos;ireo tsy mety ho an&apos;ilay milina ve ianao?</t
     </message>
 </context>
 <context>
+    <name>UBThumbnailTextItem</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Pejy %0</translation>
+    </message>
+</context>
+<context>
     <name>UBToolsManager</name>
     <message>
         <source>Compass</source>
@@ -2679,6 +2703,13 @@ p, li { white-space: pre-wrap; }
         <source>On Light Background</source>
         <translation type="unfinished">Amin&apos;ny ambadika mazava</translation>
     </message>
+<<<<<<< HEAD
+=======
+    <message>
+        <source>Swap first and second view displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+>>>>>>> pr/2
 </context>
 <context>
     <name>trapFlashDialog</name>

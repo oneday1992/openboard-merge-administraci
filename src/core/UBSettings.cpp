@@ -249,6 +249,7 @@ void UBSettings::init()
     appEnableAutomaticSoftwareUpdates = new UBSetting(this, "App", "EnableAutomaticSoftwareUpdates", false);
     appSoftwareUpdateURL = new UBSetting(this, "App", "SoftwareUpdateURL", "http://www.openboard.ch/update.json");
     appHideCheckForSoftwareUpdate = new UBSetting(this, "App", "HideCheckForSoftwareUpdate", false);
+    appHideSwapDisplayScreens = new UBSetting(this, "App", "HideSwapDisplayScreens", true);
     appToolBarOrientationVertical = new UBSetting(this, "App", "ToolBarOrientationVertical", false);
     appPreferredLanguage = new UBSetting(this,"App","PreferredLanguage", "");
 
@@ -684,7 +685,7 @@ void UBSettings::setMarkerColorIndex(int index)
     if (index != markerColorIndex())
     {
         setValue("Board/MarkerColorIndex", index);
-    }    
+    }
 }
 
 QColor UBSettings::currentMarkerColor()
@@ -1436,7 +1437,7 @@ void UBSettings::removeSetting(const QString &setting)
 }
 
 void UBSettings::checkNewSettings()
-{    
+{
     /*
      * Some settings were modified in new versions and OpenBoard can crash
      * if an old settings file is used. This function checks these settings and

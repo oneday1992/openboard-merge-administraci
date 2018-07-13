@@ -260,6 +260,7 @@ class UBSettings : public QObject
         UBSetting* appEnableAutomaticSoftwareUpdates;
         UBSetting* appSoftwareUpdateURL;
         UBSetting* appHideCheckForSoftwareUpdate;
+        UBSetting* appHideSwapDisplayScreens;
         UBSetting* appToolBarOrientationVertical;
         UBSetting* appPreferredLanguage;
 

@@ -798,7 +798,7 @@ bool UBBoardView::itemShouldReceiveSuspendedMousePressEvent(QGraphicsItem *item)
     if (item == scene()->backgroundObject())
         return false;
 
-    UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();    
+    UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
     switch(item->type())
     {
@@ -1522,7 +1522,7 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
                                     bReleaseIsNeed = true;
 
                                 UBGraphicsTextItem* textItem = dynamic_cast<UBGraphicsTextItem*>(movingItem);
-                                UBGraphicsMediaItem* movieItem = dynamic_cast<UBGraphicsMediaItem*>(movingItem);                                
+                                UBGraphicsMediaItem* movieItem = dynamic_cast<UBGraphicsMediaItem*>(movingItem);
                                 if(textItem)
                                     textItem->setSelected(true);
                                 else if(movieItem)
@@ -1555,6 +1555,10 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
             movingItem = NULL;
             bReleaseIsNeed = false;
         }
+
+        UBGraphicsItem *graphicsItem = dynamic_cast<UBGraphicsItem*>(movingItem);
+        if (graphicsItem)
+            graphicsItem->Delegate()->commitUndoStep();
 
         if (mWidgetMoved)
         {

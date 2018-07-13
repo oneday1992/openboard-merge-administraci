@@ -977,4 +977,6 @@ DISTFILES += \
     resources/images/z_layer_up.svg \
     resources/images/toolbar/mediaFloppy.png \
     resources/images/toolbar/floppy.png
+    resources/images/moveDown.svg \
+    resources/images/moveDownDisabled.svg
 

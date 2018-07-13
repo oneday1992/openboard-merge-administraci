@@ -121,4 +121,3 @@ macx:OBJECTIVE_SOURCES += src/gui/UBKeyboardPalette_mac.mm
 linux-g++:SOURCES += src/gui/UBKeyboardPalette_linux.cpp
 linux-g++-32:SOURCES += src/gui/UBKeyboardPalette_linux.cpp
 linux-g++-64:SOURCES += src/gui/UBKeyboardPalette_linux.cpp
-

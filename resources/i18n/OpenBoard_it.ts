@@ -904,7 +904,11 @@
     </message>
     <message>
         <source>Board drawing...</source>
+<<<<<<< HEAD
         <translation>Disegno della lavagna...</translation>
+=======
+        <translation type="vanished">Disegno della lavagna...</translation>
+>>>>>>> pr/2
     </message>
 </context>
 <context>
@@ -1263,6 +1267,16 @@
     </message>
 </context>
 <context>
+<<<<<<< HEAD
+=======
+    <name>UBDraggableThumbnail</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Pagina %0</translation>
+    </message>
+</context>
+<context>
+>>>>>>> pr/2
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
@@ -2014,7 +2028,11 @@ Vuoi ignorare gli errori per questo host?</translation>
     </message>
     <message>
         <source>loading thumbnail of page %1</source>
+<<<<<<< HEAD
         <translation>Caricamento miniatura della pagina %1</translation>
+=======
+        <translation type="vanished">Caricamento miniatura della pagina %1</translation>
+>>>>>>> pr/2
     </message>
 </context>
 <context>
@@ -2707,6 +2725,13 @@ p, li { white-space: pre-wrap; }
         <source>On Dark Background</source>
         <translation>Su sfondo scuro</translation>
     </message>
+<<<<<<< HEAD
+=======
+    <message>
+        <source>Swap first and second view displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+>>>>>>> pr/2
 </context>
 <context>
     <name>trapFlashDialog</name>

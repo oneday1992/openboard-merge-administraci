@@ -904,7 +904,11 @@
     </message>
     <message>
         <source>Board drawing...</source>
+<<<<<<< HEAD
         <translation>Brettzeichnung...</translation>
+=======
+        <translation type="vanished">Brettzeichnung...</translation>
+>>>>>>> pr/2
     </message>
 </context>
 <context>
@@ -1263,6 +1267,16 @@
     </message>
 </context>
 <context>
+<<<<<<< HEAD
+=======
+    <name>UBDraggableThumbnail</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Seite %0</translation>
+    </message>
+</context>
+<context>
+>>>>>>> pr/2
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
@@ -2018,7 +2032,11 @@ Möchten Sie diese Fehler für diesen Computer ignorieren?</translation>
     </message>
     <message>
         <source>loading thumbnail of page %1</source>
+<<<<<<< HEAD
         <translation>
+=======
+        <translation type="vanished">
+>>>>>>> pr/2
 Miniaturansicht der Seite %1 wird geladen</translation>
     </message>
 </context>
@@ -2713,6 +2731,13 @@ p, li { white-space: pre-wrap; }
         <source>On Light Background</source>
         <translation>Auf hellem Hintergrund</translation>
     </message>
+<<<<<<< HEAD
+=======
+    <message>
+        <source>Swap first and second view displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+>>>>>>> pr/2
 </context>
 <context>
     <name>trapFlashDialog</name>

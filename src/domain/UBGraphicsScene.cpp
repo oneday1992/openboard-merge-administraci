@@ -268,7 +268,7 @@ qreal UBZLayerController::changeZLevelTo(QGraphicsItem *item, moveDestination de
     }
 
     //Return new z value assigned to item
-    
+
     // experimental
     item->setZValue(item->data(UBGraphicsItemData::ItemOwnZValue).toReal());
 
@@ -464,6 +464,10 @@ bool UBGraphicsScene::inputDevicePress(const QPointF& scenePos, const qreal& pre
             if (currentTool == UBStylusTool::Marker)
                 hideMarkerCircle();
             //qWarning()<<"*";
+
+            // hide the pen preview circle
+            if (currentTool == UBStylusTool::Pen)
+                hidePenCircle();
 
             // hide the pen preview circle
             if (currentTool == UBStylusTool::Pen)
@@ -799,7 +803,7 @@ bool UBGraphicsScene::inputDeviceRelease()
 
     setDocumentUpdated();
 
-    if (mCurrentStroke && mCurrentStroke->polygons().empty()){        
+    if (mCurrentStroke && mCurrentStroke->polygons().empty()){
         delete mCurrentStroke;
     }
 
@@ -1335,7 +1339,7 @@ void UBGraphicsScene::notifyZChanged(QGraphicsItem *item, qreal zValue)
 }
 
 void UBGraphicsScene::updateSelectionFrame()
-{    
+{
     if (!mSelectionFrame) {
         mSelectionFrame = new UBSelectionFrame();
         addItem(mSelectionFrame);

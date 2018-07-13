@@ -324,7 +324,7 @@ void UBBoardController::setupToolbar()
     colorActions.append(mMainWindow->actionColor1);
     colorActions.append(mMainWindow->actionColor2);
     colorActions.append(mMainWindow->actionColor3);
-    colorActions.append(mMainWindow->actionColor4);    
+    colorActions.append(mMainWindow->actionColor4);
     // Issue Open-Board 27/02/2018 - Custom color
     colorActions.append(mMainWindow->actionColorCustom);
 
@@ -1237,7 +1237,7 @@ void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, c
     }
 
     if (isBackground && oldBackgroundObject != mActiveScene->backgroundObject())
-    {        
+    {
         mActiveScene->setURStackEnable(true);
         if (mActiveScene->isURStackIsEnabled()) { //should be deleted after scene own undo stack implemented
             UBGraphicsItemUndoCommand* uc = new UBGraphicsItemUndoCommand(mActiveScene, oldBackgroundObject, mActiveScene->backgroundObject());
@@ -2381,7 +2381,7 @@ void UBBoardController::ocrRecognition(const QRectF& pSceneRect){
         // Initialize tesseract-ocr with Spanish, without specifying tessdata path
         if (api->Init(NULL, "eng")) {
             qWarning()<<"Could not initialize tesseract.";
-        }        
+        }
         // Open input image with leptonica library
         PIX *PixImage = qImage2PIX(image);
         api->SetImage(PixImage);

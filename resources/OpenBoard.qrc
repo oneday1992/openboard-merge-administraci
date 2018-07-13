@@ -533,5 +533,7 @@
         <file>images/stylusPalette/saveRegionOn.png</file>
         <file>images/stylusPalette/clearRegion.png</file>
         <file>images/stylusPalette/clearRegionOn.png</file>
+        <file>images/setAsBackground.svg</file>
+        <file>images/backgroundPalette/resetDefaultGridSize.svg</file>
     </qresource>
 </RCC>

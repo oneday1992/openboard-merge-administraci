@@ -270,7 +270,7 @@ class UBBoardController : public UBDocumentContainer
         UBGraphicsMediaItem* addVideo(const QUrl& pUrl, bool startPlay, const QPointF& pos, bool bUseSource = false);
         UBGraphicsMediaItem* addAudio(const QUrl& pUrl, bool startPlay, const QPointF& pos, bool bUseSource = false);
         UBGraphicsWidgetItem *addW3cWidget(const QUrl& pUrl, const QPointF& pos);
-
+        void adjustDisplayViews();
         void cut();
         void copy();
         void paste();
@@ -325,7 +325,6 @@ class UBBoardController : public UBDocumentContainer
         void initBackgroundGridSize();
         void updatePageSizeState();
         void saveViewState();
-        void adjustDisplayViews();
         int autosaveTimeoutFromSettings();
 
         UBMainWindow *mMainWindow;

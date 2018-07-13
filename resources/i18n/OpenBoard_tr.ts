@@ -915,6 +915,13 @@
     </message>
 </context>
 <context>
+    <name>UBBackgroundPalette</name>
+    <message>
+        <source>Grid size</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UBBoardController</name>
     <message>
         <source>Downloading content %1 failed</source>
@@ -1262,6 +1269,16 @@
     </message>
 </context>
 <context>
+<<<<<<< HEAD
+=======
+    <name>UBDraggableThumbnail</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Sayfa %0</translation>
+    </message>
+</context>
+<context>
+>>>>>>> pr/2
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
@@ -1995,6 +2012,13 @@ Bu host için yukarıdaki hatalar yok sayılsın mı?</translation>
     </message>
 </context>
 <context>
+    <name>UBThumbnailTextItem</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Sayfa %0</translation>
+    </message>
+</context>
+<context>
     <name>UBToolsManager</name>
     <message>
         <source>Mask</source>
@@ -2677,6 +2701,13 @@ p, li { white-space: pre-wrap; }
         <source>On Light Background</source>
         <translation type="unfinished">Açık Arkaplan Üzerine</translation>
     </message>
+<<<<<<< HEAD
+=======
+    <message>
+        <source>Swap first and second view displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+>>>>>>> pr/2
 </context>
 <context>
     <name>trapFlashDialog</name>

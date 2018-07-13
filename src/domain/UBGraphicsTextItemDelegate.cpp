@@ -58,7 +58,7 @@ UBGraphicsTextItemDelegate::UBGraphicsTextItemDelegate(UBGraphicsTextItem* pDele
     w->setParentItem(delegated());
     w->hide();
     w->setZValue(1); // ALTI/AOU - 20140610 : this widget appears on top of DelegateFrame and TextEditor Menu.
-	
+
     UBGraphicsProxyWidget* w2 = UBApplication::boardController->activeScene()->addWidget(mLinkPalette);
     w2->setParentItem(delegated());
     w2->hide();
@@ -168,7 +168,7 @@ void UBGraphicsTextItemDelegate::buildButtonsReduced()
 }
 
 void UBGraphicsTextItemDelegate::buildButtonsExtended()
-{    
+{
     mFontButton = new DelegateButton(":/images/textEditor/font.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
     mFontBoldButton = new DelegateButton(":/images/textEditor/bold.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
     mFontItalicButton = new DelegateButton(":/images/textEditor/italic.svg", mDelegated, mToolBarItem, Qt::TitleBarArea);
@@ -194,10 +194,10 @@ void UBGraphicsTextItemDelegate::buildButtonsExtended()
     connect(mFontBoldButton, SIGNAL(clicked()), this, SLOT(setFontBold()));
     connect(mFontItalicButton, SIGNAL(clicked()), this, SLOT(setFontItalic()));
     connect(mFontUnderlineButton, SIGNAL(clicked()), this, SLOT(setFontUnderline()));
-    connect(mColorButton, SIGNAL(clicked(bool)), this, SLOT(pickColor()));    
+    connect(mColorButton, SIGNAL(clicked(bool)), this, SLOT(pickColor()));
     connect(mDecreaseSizeButton, SIGNAL(clicked(bool)), this, SLOT(decreaseSize()));
     connect(mIncreaseSizeButton, SIGNAL(clicked(bool)), this, SLOT(increaseSize()));
-    connect(mBackgroundColorButton, SIGNAL(clicked(bool)), this, SLOT(pickBackgroundColor()));    
+    connect(mBackgroundColorButton, SIGNAL(clicked(bool)), this, SLOT(pickBackgroundColor()));
     connect(mLeftAlignmentButton, SIGNAL(clicked(bool)), this, SLOT(setAlignmentToLeft()));
     connect(mCenterAlignmentButton, SIGNAL(clicked(bool)), this, SLOT(setAlignmentToCenter()));
     connect(mJustifyAlignmentButton, SIGNAL(clicked(bool)), this, SLOT(setAlignmentToJustify())); // Issue 12/03/2018 - OpenBoard - TEXT EDITOR - NEW JUSTIFY BUTTON
@@ -263,7 +263,7 @@ void UBGraphicsTextItemDelegate::buildButtonsExtended()
 void UBGraphicsTextItemDelegate::contentsChanged()
 {
     delegated()->contentsChanged();
-    positionHandles();    
+    positionHandles();
 }
 
 //Issue N/C - NNE - 20140528
@@ -489,7 +489,7 @@ void UBGraphicsTextItemDelegate::pickColor()
 
             UBGraphicsTextItem::lastUsedTextColor = selectedColor;
 
-            delegated()->setSelected(true);            
+            delegated()->setSelected(true);
             delegated()->contentsChanged();
             delegated()->setFocus();
         }
@@ -521,7 +521,7 @@ void UBGraphicsTextItemDelegate::pickBackgroundColor()
 void UBGraphicsTextItemDelegate::insertTable()
 {
     if (mDelegated && mDelegated->scene() && mDelegated->scene()->views().size() > 0)
-    {                
+    {
         delegated()->insertTable(mTablePalette->lines(), mTablePalette->columns());
         mTablePalette->hide();
     }
@@ -811,7 +811,7 @@ void UBGraphicsTextItemDelegate::setAlignmentToLeft()
 {
     if (mDelegated && mDelegated->scene() && mDelegated->scene()->views().size() > 0)
     {
-        delegated()->setAlignmentToLeft();        
+        delegated()->setAlignmentToLeft();
     }
 
     delegated()->setFocus();
@@ -902,7 +902,7 @@ void UBGraphicsTextItemDelegate::insertLink()
 }
 
 void UBGraphicsTextItemDelegate::alternHtmlMode()
-{    
+{
     if (!delegated()->htmlMode())
     {
         delegated()->setPlainText(delegated()->toHtml());
@@ -992,7 +992,7 @@ void UBGraphicsTextItemDelegate::updateMenuActionState()
 }
 
 void UBGraphicsTextItemDelegate::positionHandles()
-{    
+{
     //qWarning()<<"UBGraphicsTextItemDelegate::positionHandles()";
 
     if (mDelegated->isSelected() || (mDelegated->parentItem() && UBGraphicsGroupContainerItem::Type == mDelegated->parentItem()->type()))
@@ -1084,7 +1084,7 @@ void UBGraphicsTextItemDelegate::changeDelegateButtonsMode(bool htmlMode)
 }
 
 void UBGraphicsTextItemDelegate::ChangeTextSize(qreal factor, textChangeMode changeMode)
-{    
+{
     if (scaleSize == changeMode)
     {
         if (1 == factor)
@@ -1141,7 +1141,7 @@ void UBGraphicsTextItemDelegate::ChangeTextSize(qreal factor, textChangeMode cha
 
         cursor.setPosition (iCursorPos+1, QTextCursor::KeepAnchor);
         iPointSize = cursor.charFormat().font().pointSize();
-        curFont = cursor.charFormat().font();        
+        curFont = cursor.charFormat().font();
         isUnderline = cursor.charFormat().fontUnderline();
         isItalic = cursor.charFormat().fontItalic();
         isBold = cursor.charFormat().fontWeight() == QFont::Bold;

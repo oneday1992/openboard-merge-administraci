@@ -916,6 +916,13 @@
     </message>
 </context>
 <context>
+    <name>UBBackgroundPalette</name>
+    <message>
+        <source>Grid size</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UBBoardController</name>
     <message>
         <source>All Supported (%1)</source>
@@ -1266,6 +1273,16 @@
     </message>
 </context>
 <context>
+<<<<<<< HEAD
+=======
+    <name>UBDraggableThumbnail</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Stránka %0</translation>
+    </message>
+</context>
+<context>
+>>>>>>> pr/2
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
@@ -2000,6 +2017,13 @@ Chcete ignorovat tyto chyby na tomto serveru?</translation>
     </message>
 </context>
 <context>
+    <name>UBThumbnailTextItem</name>
+    <message>
+        <source>Page %0</source>
+        <translation type="unfinished">Stránka %0</translation>
+    </message>
+</context>
+<context>
     <name>UBToolsManager</name>
     <message>
         <source>Mask</source>
@@ -2682,6 +2706,13 @@ p, li { white-space: pre-wrap; }
         <source>On Light Background</source>
         <translation type="unfinished">Na světlém pozadí</translation>
     </message>
+<<<<<<< HEAD
+=======
+    <message>
+        <source>Swap first and second view displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+>>>>>>> pr/2
 </context>
 <context>
     <name>trapFlashDialog</name>
