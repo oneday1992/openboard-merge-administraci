@@ -811,6 +811,326 @@
         <source>Reset grid size</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Canvas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rich Text Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write Rich Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ellipse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw an Ellipse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change Filling Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Polygon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a Polygon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Drawing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Circle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a Circle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rectangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a Rectangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Square</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a Square</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Freehand Drawing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Freehand drawing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Shapes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a regular shape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Triangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a regular triangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Square</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a regular square</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Pentagon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a regular pentagon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Hexagon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a regular hexagon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Heptagon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a regular heptagon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Octogon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Draw a regular octogon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke Properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filling Properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filling properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke Thickness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke thickness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke Style Solid Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke style : Solid Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke Style Dot Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke style : Dot Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filling Style : Transparent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filling Style : Gradient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filling Style : Full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filling Style : Dense</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filling Style : Diagonal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke Style Dot Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stroke style : Dot Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align objects to the left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align Center Vertically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align the center of the objects vertically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align objects to the right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align objects to the top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align Center Horizontally</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align the center of the objects horizontally</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align Bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align objects to the bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End arrow style : Arrow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start arrow style : Arrow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End arrow style : Round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start arrow style : Round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End arrow style : None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start arrow style : None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Arrows Properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Arrows properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Group items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Specify a custom line width [1-120]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select any color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OCR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Convert Image to Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Canvas (multi-touch)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Erase Canvas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save canvas</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PasswordDialog</name>
@@ -1011,6 +1331,139 @@
     </message>
 </context>
 <context>
+    <name>UBCanvasController</name>
+    <message>
+        <source>Color</source>
+        <translation type="unfinished">Color</translation>
+    </message>
+</context>
+<context>
+    <name>UBCanvasPalette</name>
+    <message>
+        <source>Pen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eraser</source>
+        <translation type="unfinished">Esborrador</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Erase region</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UBCellPropertiesPalette</name>
+    <message>
+        <source>Width (%) :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UBCreateHyperLinkPalette</name>
+    <message>
+        <source>Link :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UBCreateLinkLabel</name>
+    <message>
+        <source>&lt;drop content&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images are not accepted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot display data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dropped file isn&apos;t reconized to be an audio file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UBCreateLinkPalette</name>
+    <message>
+        <source>Play an audio file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Link to Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Link to a Web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Drag and drop the audio file from the library in this box</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation type="unfinished">D&apos;acord</translation>
+    </message>
+    <message>
+        <source>Next Page</source>
+        <translation type="unfinished">Pàgina següent</translation>
+    </message>
+    <message>
+        <source>Previous Page</source>
+        <translation type="unfinished">Pàgina anterior</translation>
+    </message>
+    <message>
+        <source>Title Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Page Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert url text here</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UBCreateTablePalette</name>
+    <message>
+        <source>Number of lines :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of columns :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UBDesktopPalette</name>
     <message>
         <source>Capture Part of the Screen</source>
@@ -1034,6 +1487,10 @@
     </message>
     <message>
         <source>Show OpenBoard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recognize text from image</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1178,6 +1635,22 @@
         <source>Remove multiple documents</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name of document:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saved done!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Document name %1 allready exists!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UBDocumentManager</name>
@@ -1270,6 +1743,17 @@
     <message>
         <source>Page %0</source>
         <translation type="unfinished">Pàgina %0</translation>
+    </message>
+</context>
+<context>
+    <name>UBDrawingFillPropertiesPalette</name>
+    <message>
+        <source>Select and set filling color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select and set second filling color</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1551,6 +2035,22 @@
         <source>Visible on Extended Screen</source>
         <translation>Visible a la pantalla estesa</translation>
     </message>
+    <message>
+        <source>Add an action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove link to audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove link to page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove link to web url</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UBGraphicsItemDelegate</name>
@@ -1569,6 +2069,34 @@
     <message>
         <source>Set as background</source>
         <translation type="unfinished">Estableix com a fons</translation>
+    </message>
+    <message>
+        <source>Add an action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Return to creation mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flip on horizontal axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flip on vertical axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove link to audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove link to page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove link to web url</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1606,6 +2134,54 @@
     <message>
         <source>Editable</source>
         <translation>Editable</translation>
+    </message>
+    <message>
+        <source>Insert table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert column after</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert column before</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Row</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert row after</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert row before</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete row</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cell properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Evenly distribute the columns</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Background Color</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2561,11 +3137,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Horizontal</source>
-        <translation>Horitzontal</translation>
+        <translation type="vanished">Horitzontal</translation>
     </message>
     <message>
         <source>Vertical</source>
-        <translation>Vertical</translation>
+        <translation type="vanished">Vertical</translation>
     </message>
     <message>
         <source>Pen</source>
@@ -2673,6 +3249,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Swap first and second view displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hori&amp;zontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Vertical</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
