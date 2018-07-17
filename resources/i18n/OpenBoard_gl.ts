@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sv_SE">
+<TS version="2.1" language="gl_GL">
 <context>
     <name>BlackoutWidget</name>
     <message>
         <source>Click to Return to Application</source>
-        <translation>Klicka för att återgå till applikationen</translation>
+        <translation type="unfinished">Faga clic para voltar á aplicación</translation>
     </message>
 </context>
 <context>
     <name>DownloadDialog</name>
     <message>
         <source>Downloads</source>
-        <translation>Hämtningar</translation>
+        <translation>Descargas</translation>
     </message>
     <message>
         <source>Clean Up</source>
-        <translation>Rensa</translation>
+        <translation>Limpar</translation>
     </message>
     <message>
         <source>0 Items</source>
-        <translation>0 objekt</translation>
+        <translation>0 Elementos</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
         <source>Form</source>
-        <translation>Formulär</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation>Filnamn</translation>
+        <translation>Nome de arquivo</translation>
     </message>
     <message>
         <source>Try Again</source>
-        <translation>Försök igen</translation>
+        <translation>Volva a intentalo</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stopp</translation>
+        <translation>Deter</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>Öppna</translation>
+        <translation>Abrir</translation>
     </message>
 </context>
 <context>
     <name>IntranetPodcastPublishingDialog</name>
     <message>
         <source>Publish Podcast to YouTube</source>
-        <translation>Publicera Podcast på YouTube</translation>
+        <translation>Publicar Podcast en YouTube</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivning</translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Författare</translation>
+        <translation>Autor</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
         <source>Board</source>
-        <translation>Tavla</translation>
+        <translation>Encerado</translation>
     </message>
     <message>
         <source>Web</source>
-        <translation>Nät</translation>
+        <translation>Web</translation>
     </message>
     <message>
         <source>Documents</source>
-        <translation>Dokument</translation>
+        <translation>Documentos</translation>
     </message>
     <message>
         <source>Stylus</source>
-        <translation>Pekpenna</translation>
+        <translation>Lapis</translation>
     </message>
     <message>
         <source>Ctrl+T</source>
@@ -89,15 +89,15 @@
     </message>
     <message>
         <source>Backgrounds</source>
-        <translation>Bakgrund</translation>
+        <translation>Fondos</translation>
     </message>
     <message>
         <source>Change Background</source>
-        <translation>Ändra bakgrund</translation>
+        <translation>Cambiar Fondo</translation>
     </message>
     <message>
         <source>Undo</source>
-        <translation>Ångra</translation>
+        <translation>Desfacer</translation>
     </message>
     <message>
         <source>Ctrl+Z</source>
@@ -105,7 +105,7 @@
     </message>
     <message>
         <source>Redo</source>
-        <translation>Gör om inmatning</translation>
+        <translation>Repetir</translation>
     </message>
     <message>
         <source>Ctrl+Y</source>
@@ -113,31 +113,31 @@
     </message>
     <message>
         <source>Previous</source>
-        <translation>Föregående</translation>
+        <translation>Anterior</translation>
     </message>
     <message>
         <source>Previous Page</source>
-        <translation>Föregående sida</translation>
+        <translation>Páxina anterior</translation>
     </message>
     <message>
         <source>PgUp</source>
-        <translation>Rulla uppåt</translation>
+        <translation>PxArriba</translation>
     </message>
     <message>
         <source>Next</source>
-        <translation>Nästa</translation>
+        <translation>Seguinte</translation>
     </message>
     <message>
         <source>Next Page</source>
-        <translation>Nästa sida</translation>
+        <translation>Páxina siguiente</translation>
     </message>
     <message>
         <source>PgDown</source>
-        <translation>Rulla nedåt</translation>
+        <translation>PxAbaixo</translation>
     </message>
     <message>
         <source>Manage Documents</source>
-        <translation>Hantera dokument</translation>
+        <translation>Xestionar documentos</translation>
     </message>
     <message>
         <source>Ctrl+D</source>
@@ -145,7 +145,7 @@
     </message>
     <message>
         <source>Web Browsing</source>
-        <translation>Bläddra</translation>
+        <translation>Exploración web</translation>
     </message>
     <message>
         <source>Ctrl+W</source>
@@ -153,95 +153,95 @@
     </message>
     <message>
         <source>Line</source>
-        <translation>Linje</translation>
+        <translation>Liña</translation>
     </message>
     <message>
         <source>Small Line</source>
-        <translation>Liten linje</translation>
+        <translation>Liña pequena</translation>
     </message>
     <message>
         <source>Medium Line</source>
-        <translation>Medium linje</translation>
+        <translation>Liña media</translation>
     </message>
     <message>
         <source>Large Line</source>
-        <translation>stor linje</translation>
+        <translation>Liña grande</translation>
     </message>
     <message>
         <source>Quit</source>
-        <translation>Avsluta</translation>
+        <translation>Saír</translation>
     </message>
     <message>
         <source>Eraser</source>
-        <translation>Sudd</translation>
+        <translation>Borrador</translation>
     </message>
     <message>
         <source>Smalle Eraser</source>
-        <translation>Litet sudd</translation>
+        <translation>Borrador pequeno</translation>
     </message>
     <message>
         <source>Medium Eraser</source>
-        <translation>Medium sudd</translation>
+        <translation>Borrador mediano</translation>
     </message>
     <message>
         <source>Large Eraser</source>
-        <translation>Stort sudd</translation>
+        <translation>Borrador grande</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation>Färg</translation>
+        <translation>Cor</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation>Backa</translation>
+        <translation>Atrás</translation>
     </message>
     <message>
         <source>Left</source>
-        <translation>Vänster</translation>
+        <translation>Esquerda</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation>Framåt</translation>
+        <translation>Cara a diante</translation>
     </message>
     <message>
         <source>Right</source>
-        <translation>Höger</translation>
+        <translation>Dereita</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation>Uppdatera</translation>
+        <translation>Volver a cargar</translation>
     </message>
     <message>
         <source>Reload Current Page</source>
-        <translation>Uppdatera aktuell sida</translation>
+        <translation>Volver a cargar páxina actual</translation>
     </message>
     <message>
         <source>Home</source>
-        <translation>Hem</translation>
+        <translation>Inicio</translation>
     </message>
     <message>
         <source>Load Home Page</source>
-        <translation>Ladda startsida</translation>
+        <translation>Cargar páxina de inicio</translation>
     </message>
     <message>
         <source>Bookmarks</source>
-        <translation>Bokmärken</translation>
+        <translation>Favoritos</translation>
     </message>
     <message>
         <source>Show Bookmarks</source>
-        <translation>Visa bokmärken</translation>
+        <translation>Mostrar favoritos</translation>
     </message>
     <message>
         <source>Bookmark</source>
-        <translation>Lägg till bokmärke</translation>
+        <translation>Favorito</translation>
     </message>
     <message>
         <source>Add Bookmark</source>
-        <translation>Lägg till bokmärke</translation>
+        <translation>Engadir a favoritos</translation>
     </message>
     <message>
         <source>Display Board</source>
-        <translation>Visa tavla</translation>
+        <translation>Mostrar encerado</translation>
     </message>
     <message>
         <source>Ctrl+B</source>
@@ -249,27 +249,27 @@
     </message>
     <message>
         <source>Erase</source>
-        <translation>Radera</translation>
+        <translation>Borrar</translation>
     </message>
     <message>
         <source>Erase Content</source>
-        <translation>Radera innehåll</translation>
+        <translation>Borrar contido</translation>
     </message>
     <message>
         <source>Preferences</source>
-        <translation>Inställningar</translation>
+        <translation>Preferencias</translation>
     </message>
     <message>
         <source>Display Preferences</source>
-        <translation>Visa inställningar</translation>
+        <translation>Mostrar preferencias</translation>
     </message>
     <message>
         <source>Library</source>
-        <translation>Bibliotek</translation>
+        <translation>Biblioteca</translation>
     </message>
     <message>
         <source>Show Library</source>
-        <translation>Visa bibliotek</translation>
+        <translation>Mostrar biblioteca</translation>
     </message>
     <message>
         <source>Ctrl+L</source>
@@ -277,11 +277,11 @@
     </message>
     <message>
         <source>Show Desktop</source>
-        <translation>Visa skrivbord</translation>
+        <translation>Mostrar escritorio</translation>
     </message>
     <message>
         <source>Show Computer Desktop</source>
-        <translation>Visa datorns skrivbord</translation>
+        <translation>Mostrar escritorio do ordenador</translation>
     </message>
     <message>
         <source>Ctrl+Shift+H</source>
@@ -289,11 +289,11 @@
     </message>
     <message>
         <source>Bigger</source>
-        <translation>Förstora</translation>
+        <translation>Máis grande</translation>
     </message>
     <message>
         <source>Zoom In</source>
-        <translation>Zooma in</translation>
+        <translation>Achegar</translation>
     </message>
     <message>
         <source>Ctrl++</source>
@@ -301,11 +301,11 @@
     </message>
     <message>
         <source>Smaller</source>
-        <translation>Förminska</translation>
+        <translation>Máis pequeno</translation>
     </message>
     <message>
         <source>Zoom Out</source>
-        <translation>Zooma ut</translation>
+        <translation>Afastar</translation>
     </message>
     <message>
         <source>Ctrl+-</source>
@@ -313,43 +313,43 @@
     </message>
     <message>
         <source>New Folder</source>
-        <translation>Ny mapp</translation>
+        <translation>Novo cartafol</translation>
     </message>
     <message>
         <source>Create a New Folder</source>
-        <translation>Skapa ny mapp</translation>
+        <translation>Crear un novo cartafol</translation>
     </message>
     <message>
         <source>New Document</source>
-        <translation>Nytt dokument</translation>
+        <translation>Novo documento</translation>
     </message>
     <message>
         <source>Create a New Document</source>
-        <translation>Skapa nytt dokument</translation>
+        <translation>Crear un novo documento</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Importera</translation>
+        <translation>Importar</translation>
     </message>
     <message>
         <source>Import a Document</source>
-        <translation>Importera ett dokument</translation>
+        <translation>Importar un documento</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Exportera</translation>
+        <translation>Exportar</translation>
     </message>
     <message>
         <source>Export a Document</source>
-        <translation>Exportera ett dokument</translation>
+        <translation>Exportar un Documento</translation>
     </message>
     <message>
         <source>Open in Board</source>
-        <translation>Öppna i tavla</translation>
+        <translation>Abrir no encerado</translation>
     </message>
     <message>
         <source>Open Page in Board</source>
-        <translation>Öppna sida i tavla</translation>
+        <translation>Abrir a páxina no encerado</translation>
     </message>
     <message>
         <source>Ctrl+O</source>
@@ -357,143 +357,143 @@
     </message>
     <message>
         <source>Duplicate</source>
-        <translation>Duplicera</translation>
+        <translation>Duplicar</translation>
     </message>
     <message>
         <source>Duplicate Selected Content</source>
-        <translation>Duplicera markerat innehåll</translation>
+        <translation>Duplicar o contido seleccionado</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Radera</translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <source>Delete Selected Content</source>
-        <translation>Radera markerat innehåll</translation>
+        <translation>Eliminar o contido seleccionado</translation>
     </message>
     <message>
         <source>Del</source>
-        <translation>Radera</translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <source>Add to Working Document</source>
-        <translation>Lägg till i arbetsdokumentet</translation>
+        <translation>Engadir ao documento de traballo</translation>
     </message>
     <message>
         <source>Add Selected Content to Open Document</source>
-        <translation>Lägg till markerat innehåll i öppet dokument</translation>
+        <translation>Engadir o contido seleccionado ao documento aberto</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Lägg till</translation>
+        <translation>Engadir</translation>
     </message>
     <message>
         <source>Add Content to Document</source>
-        <translation>Lägg till innehåll till dokument</translation>
+        <translation>Engadir contido ao documento</translation>
     </message>
     <message>
         <source>Rename</source>
-        <translation>Byt namn</translation>
+        <translation>Cambiar nome</translation>
     </message>
     <message>
         <source>Rename Content</source>
-        <translation>Byt namn på innehåll</translation>
+        <translation>Cambiar nome ao documento</translation>
     </message>
     <message>
         <source>Tools</source>
-        <translation>Verktyg</translation>
+        <translation>Ferramentas</translation>
     </message>
     <message>
         <source>Display Tools</source>
-        <translation>Visa verktyg</translation>
+        <translation>Mostrar Ferramentas</translation>
     </message>
     <message>
         <source>Multi Screen</source>
-        <translation>Multi skärm</translation>
+        <translation>Multipantalla</translation>
     </message>
     <message>
         <source>Wide Size (16/9)</source>
-        <translation>Bred storlek (16/9)</translation>
+        <translation>Tamaño ancho (16/9)</translation>
     </message>
     <message>
         <source>Use Document Wide Size (16/9)</source>
-        <translation>Använd bred dokumentstorlek (16/9)</translation>
+        <translation>Usar tamaño ancho de documento (16/9)</translation>
     </message>
     <message>
         <source>Regular Size (4/3)</source>
-        <translation>Normal storlek (4/3)</translation>
+        <translation>Tamaño regular (4/3)</translation>
     </message>
     <message>
         <source>Use Document Regular Size (4/3)</source>
-        <translation>Använd normal dokumentstorlek (4/3)</translation>
+        <translation>Usar tamaño regular de documento (4/3)</translation>
     </message>
     <message>
         <source>Custom Size</source>
-        <translation>Anpassad storlek</translation>
+        <translation>Tamaño personalizado</translation>
     </message>
     <message>
         <source>Use Custom Document Size</source>
-        <translation>Använd anpassad dokumentstorlek</translation>
+        <translation>Usar tamaño personalizado de documento</translation>
     </message>
     <message>
         <source>Stop Loading</source>
-        <translation>Sluta ladda</translation>
+        <translation>Deter carga</translation>
     </message>
     <message>
         <source>Stop Loading Web Page</source>
-        <translation>Sluta ladda web sida</translation>
+        <translation>Deter carga da páxina web</translation>
     </message>
     <message>
         <source>Cut</source>
-        <translation>Klipp</translation>
+        <translation>Cortar</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>Kopiera</translation>
+        <translation>Copiar</translation>
     </message>
     <message>
         <source>Paste</source>
-        <translation>Klistra in</translation>
+        <translation>Pegar</translation>
     </message>
     <message>
         <source>Sleep</source>
-        <translation>Viloläge</translation>
+        <translation>Durmir</translation>
     </message>
     <message>
         <source>Put Presentation to Sleep</source>
-        <translation>Sätt presentation i viloläge</translation>
+        <translation>Poñer a presentación en modo durmir</translation>
     </message>
     <message>
         <source>Virtual Keyboard</source>
-        <translation>Virtuellt tangentbord</translation>
+        <translation>Teclado virtual</translation>
     </message>
     <message>
         <source>Display Virtual Keyboard</source>
-        <translation>Visa virtuellt tangentbord</translation>
+        <translation>Mostrar teclado virtual</translation>
     </message>
     <message>
         <source>Plain Light Background</source>
-        <translation>Enkel ljus bakgrund</translation>
+        <translation>Fondo claro liso</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>Ljus</translation>
+        <translation>Claro</translation>
     </message>
     <message>
         <source>Grid Light Background</source>
-        <translation>Rutig ljus bakgrund</translation>
+        <translation>Fondo claro cuadriculado</translation>
     </message>
     <message>
         <source>Plain Dark Background</source>
-        <translation>Enkel mörk bakgrund</translation>
+        <translation>Fondo escuro liso</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>Mörk</translation>
+        <translation>Escuro</translation>
     </message>
     <message>
         <source>Grid Dark Background</source>
-        <translation>Rutig mörk bakgrund</translation>
+        <translation>Fondo escuro cuadriculado</translation>
     </message>
     <message>
         <source>Podcast</source>
@@ -501,47 +501,47 @@
     </message>
     <message>
         <source>Record Presentation to Video</source>
-        <translation>Spela in presentation till video</translation>
+        <translation>Grabar presentación en vídeo</translation>
     </message>
     <message>
         <source>Record</source>
-        <translation>Spela in</translation>
+        <translation>Grabar</translation>
     </message>
     <message>
         <source>Start Screen Recording</source>
-        <translation>Starta skärminspelning</translation>
+        <translation>Iniciar grabación de pantalla</translation>
     </message>
     <message>
         <source>Erase Items</source>
-        <translation>Radra objekt</translation>
+        <translation>Borrar elementos</translation>
     </message>
     <message>
         <source>Erase All Items</source>
-        <translation>Radera alla objekt</translation>
+        <translation>Borrar tódolos elementos</translation>
     </message>
     <message>
         <source>Erase Annotations</source>
-        <translation>Radera kommetarer</translation>
+        <translation>Borrar anotacións</translation>
     </message>
     <message>
         <source>Erase All Annotations</source>
-        <translation>Radera alla kommentarer</translation>
+        <translation>Borrar tódalas anotacións</translation>
     </message>
     <message>
         <source>Clear Page</source>
-        <translation>Rensa sida</translation>
+        <translation>Borrar páxina</translation>
     </message>
     <message>
         <source>Clear All Elements</source>
-        <translation>Rensa alla element</translation>
+        <translation>Borrar tódolos elementos</translation>
     </message>
     <message>
         <source>Pen</source>
-        <translation>Penna</translation>
+        <translation>Bolígrafo</translation>
     </message>
     <message>
         <source>Annotate Document</source>
-        <translation>Kommentera dokument</translation>
+        <translation>Anotar documento</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
@@ -549,7 +549,7 @@
     </message>
     <message>
         <source>Erase Annotation</source>
-        <translation>Radera kommetar</translation>
+        <translation>Borrar anotación</translation>
     </message>
     <message>
         <source>Ctrl+E</source>
@@ -557,11 +557,11 @@
     </message>
     <message>
         <source>Marker</source>
-        <translation>Markör</translation>
+        <translation>Marcador</translation>
     </message>
     <message>
         <source>Highlight </source>
-        <translation>Markera</translation>
+        <translation>Destacar</translation>
     </message>
     <message>
         <source>Ctrl+M</source>
@@ -569,11 +569,11 @@
     </message>
     <message>
         <source>Selector</source>
-        <translation>Väljare</translation>
+        <translation>Selector</translation>
     </message>
     <message>
         <source>Select And Modify Objects</source>
-        <translation>Markera och ändra objekt</translation>
+        <translation>Seleccionar e modificar obxectos</translation>
     </message>
     <message>
         <source>Ctrl+F</source>
@@ -581,19 +581,19 @@
     </message>
     <message>
         <source>Hand</source>
-        <translation>Hand</translation>
+        <translation>Man</translation>
     </message>
     <message>
         <source>Scroll Page</source>
-        <translation>Rulla sida</translation>
+        <translation>Desplazar páxina</translation>
     </message>
     <message>
         <source>Laser Pointer</source>
-        <translation>Laser pekare</translation>
+        <translation>Punteiro láser</translation>
     </message>
     <message>
         <source>Virtual Laser Pointer</source>
-        <translation>Virtuellt laserpekare</translation>
+        <translation>Punteiro láser virtual</translation>
     </message>
     <message>
         <source>Ctrl+G</source>
@@ -601,7 +601,7 @@
     </message>
     <message>
         <source>Draw Lines</source>
-        <translation>Rita linjer</translation>
+        <translation>Debuxar líneas</translation>
     </message>
     <message>
         <source>Ctrl+J</source>
@@ -609,11 +609,11 @@
     </message>
     <message>
         <source>Text</source>
-        <translation>Text</translation>
+        <translation>Texto</translation>
     </message>
     <message>
         <source>Write Text</source>
-        <translation>Skriv text</translation>
+        <translation>Escribir texto</translation>
     </message>
     <message>
         <source>Ctrl+K</source>
@@ -621,139 +621,139 @@
     </message>
     <message>
         <source>Capture</source>
-        <translation>Fånga</translation>
+        <translation>Captura</translation>
     </message>
     <message>
         <source>Capture Part of the Screen</source>
-        <translation>Fånga en del av skärmen</translation>
+        <translation>Capturar parte da pantalla</translation>
     </message>
     <message>
         <source>Add To Current Page</source>
-        <translation>Lägg till aktuell sida</translation>
+        <translation>Engadir á páxina actual</translation>
     </message>
     <message>
         <source>Add Item To Current Page</source>
-        <translation>Lägg objekt till aktuell sida</translation>
+        <translation>Engadir elemento á páxina actual</translation>
     </message>
     <message>
         <source>Add To New Page</source>
-        <translation>Lägg till ny sida</translation>
+        <translation>Engadir á nova páxina</translation>
     </message>
     <message>
         <source>Add Item To New Page</source>
-        <translation>Lägg objekt till ny sida</translation>
+        <translation>Engadir elemento á nova páxina</translation>
     </message>
     <message>
         <source>Add To Library</source>
-        <translation>Lägg till bibliotek</translation>
+        <translation>Engadir á biblioteca</translation>
     </message>
     <message>
         <source>Add Item To Library</source>
-        <translation>Lägg objekt till bibliotek</translation>
+        <translation>Engadir elemento á biblioteca</translation>
     </message>
     <message>
         <source>Pages</source>
-        <translation>Sidor</translation>
+        <translation>Páxinas</translation>
     </message>
     <message>
         <source>Create a New Page</source>
-        <translation>Skapa ny sida</translation>
+        <translation>Crear unha nova páxina</translation>
     </message>
     <message>
         <source>New Page</source>
-        <translation>Ny sida</translation>
+        <translation>Nova páxina</translation>
     </message>
     <message>
         <source>Duplicate Page</source>
-        <translation>Duplicera sida</translation>
+        <translation>Duplicar páxina</translation>
     </message>
     <message>
         <source>Duplicate the Current Page</source>
-        <translation>Duplicera aktuell sida</translation>
+        <translation>Duplicar a páxina actual</translation>
     </message>
     <message>
         <source>Import Page</source>
-        <translation>Importera sida</translation>
+        <translation>Importar páxina</translation>
     </message>
     <message>
         <source>Import an External Page</source>
-        <translation>Importera extern sida</translation>
+        <translation>Importar unha páxina externa</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Paus</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Pause Podcast Recording</source>
-        <translation>Pausa inspelning av podcast</translation>
+        <translation>Pausar a grabación de Podcast</translation>
     </message>
     <message>
         <source>Podcast Config</source>
-        <translation>Anpassa Podcast</translation>
+        <translation>Config de podcast</translation>
     </message>
     <message>
         <source>Configure Podcast Recording</source>
-        <translation>Anpassa inspelning av Podcast</translation>
+        <translation>Configurar grabación de podcast</translation>
     </message>
     <message>
         <source>Flash Trap</source>
-        <translation>Lagra flash</translation>
+        <translation>Captura de elemento Flash</translation>
     </message>
     <message>
         <source>Trap Flash Content</source>
-        <translation>Lagra flash innehål</translation>
+        <translation>Capturar contido Flash</translation>
     </message>
     <message>
         <source>Web Trap</source>
-        <translation>Lagra web</translation>
+        <translation>Captura de contido web</translation>
     </message>
     <message>
         <source>Trap Web Content</source>
-        <translation>Lagra webinnehål</translation>
+        <translation>Capturar contido web</translation>
     </message>
     <message>
         <source>Custom Capture</source>
-        <translation>Anpassa fånga</translation>
+        <translation>Captura personalizada</translation>
     </message>
     <message>
         <source>Window Capture</source>
-        <translation>Fönster fånga</translation>
+        <translation>Captura de ventana</translation>
     </message>
     <message>
         <source>Capture a Window</source>
-        <translation>Fånga ett fönster</translation>
+        <translation>Capturar unha ventana</translation>
     </message>
     <message>
         <source>Embed Web Content</source>
-        <translation>Inbäddat webinnehåll</translation>
+        <translation>Integrar contido web</translation>
     </message>
     <message>
         <source>Capture Embeddable Web Content</source>
-        <translation>Fånga inbäddat webinnehåll</translation>
+        <translation>Capturar contido web integrable</translation>
     </message>
     <message>
         <source>Show on Display</source>
-        <translation>Visa på skärm</translation>
+        <translation>Mostrar en pantalla</translation>
     </message>
     <message>
         <source>Show Main Screen on Display Screen</source>
-        <translation>Visa primärskärm på visningsskärm</translation>
+        <translation>Mostrar pantalla principal na pantalla do monitor</translation>
     </message>
     <message>
         <source>Erase all Annotations</source>
-        <translation>Radera alla kommentarer</translation>
+        <translation>Borrar tódalas anotacións</translation>
     </message>
     <message>
         <source>eduMedia</source>
-        <translation>utbMedia</translation>
+        <translation>eduMedia</translation>
     </message>
     <message>
         <source>Import eduMedia simulation</source>
-        <translation>Importera utbMedia simulation</translation>
+        <translation>Importar simulación eduMedia</translation>
     </message>
     <message>
         <source>Check Update</source>
-        <translation>Kontrollera uppdatering</translation>
+        <translation>Comprobar actualizacións</translation>
     </message>
     <message>
         <source>Ctrl+H</source>
@@ -761,119 +761,119 @@
     </message>
     <message>
         <source>OpenBoard</source>
-        <translation>Öppna Sankoré</translation>
+        <translation>OpenBoard</translation>
     </message>
     <message>
         <source>Quit OpenBoard</source>
-        <translation>Lämna öppen Sankoré</translation>
+        <translation>Salir de OpenBoard</translation>
     </message>
     <message>
         <source>Hide OpenBoard</source>
-        <translation>Göm öppen Sankoré</translation>
+        <translation>Ocultar OpenBoard</translation>
     </message>
     <message>
         <source>Hide OpenBoard Application</source>
-        <translation>Göm öppen Sankoré applikation</translation>
+        <translation>Ocultar aplicación OpenBoard</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Spela</translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <source>Interact with items</source>
-        <translation>Interagera med objekt</translation>
+        <translation>Interactuar cos elementos</translation>
     </message>
     <message>
         <source>Erase Background</source>
-        <translation>Radera bakgrund</translation>
+        <translation>Borrar o fondo</translation>
     </message>
     <message>
         <source>Remove the backgound</source>
-        <translation>Ta bort bakgrund</translation>
+        <translation>Eliminar o fondo</translation>
     </message>
     <message>
         <source>Open Tutorial</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir Titorial</translation>
     </message>
     <message>
         <source>Open the tutorial web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir o titorial en páxina web</translation>
     </message>
     <message>
         <source>Ruled Light Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo claro con cuadrícula</translation>
     </message>
     <message>
         <source>Ruled Dark Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo escuro con cuadrícula</translation>
     </message>
     <message>
         <source>Reset grid size</source>
-        <translation type="unfinished"></translation>
+        <translation>Restablecer o tamaño da cuadrícula</translation>
     </message>
 </context>
 <context>
     <name>PasswordDialog</name>
     <message>
         <source>Authentication Required</source>
-        <translation>Inloggning krävs</translation>
+        <translation>Requirese autentificación</translation>
     </message>
     <message>
         <source>Username:</source>
-        <translation>Användarnamn:</translation>
+        <translation>Nome de usuario:</translation>
     </message>
     <message>
         <source>Password:</source>
-        <translation>Lösenord:</translation>
+        <translation>Contrasinal:</translation>
     </message>
 </context>
 <context>
     <name>ProxyDialog</name>
     <message>
         <source>Proxy Authentication</source>
-        <translation>Proxy verifiering</translation>
+        <translation>Autentificación de proxy</translation>
     </message>
     <message>
         <source>Connect to Proxy</source>
-        <translation>Anslut till proxy</translation>
+        <translation>Conectar ao Proxy</translation>
     </message>
     <message>
         <source>Username:</source>
-        <translation>Användarnamn:</translation>
+        <translation>Nome de usuario:</translation>
     </message>
     <message>
         <source>Password:</source>
-        <translation>Lösenord:</translation>
+        <translation>Contrasinal:</translation>
     </message>
     <message>
         <source>Save username and password for future use</source>
-        <translation>Sapara användarnamn och lösenord för framtida användning</translation>
+        <translation>Gardar nome de usuario e contrasinal para uso futuro</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <source>Element ID = </source>
-        <translation type="vanished">Element ID=</translation>
+        <translation type="vanished">Elemento ID = </translation>
     </message>
     <message>
         <source>Content is not supported in destination format.</source>
-        <translation type="vanished">Innehållet stöds inte i destinationsformatet</translation>
+        <translation type="vanished">O formato de destino non permite este contido</translation>
     </message>
     <message>
         <source>Remove Page</source>
-        <translation>Ta bort sida</translation>
+        <translation>Eliminar páxina</translation>
     </message>
     <message>
         <source>Are you sure you want to remove 1 page from the selected document &apos;%0&apos;?</source>
-        <translation>Är du säker på att du vill ta bort 1 sida från det valda dokumentet &apos;%0&apos;?</translation>
+        <translation>¿Está seguro de que quere eliminar 1 páxina do documento seleccionado.&apos;%0?</translation>
     </message>
 </context>
 <context>
     <name>UBApplication</name>
     <message>
         <source>Page Size</source>
-        <translation>Storlek på sida</translation>
+        <translation>Tamaño de páxina</translation>
     </message>
     <message>
         <source>Podcast</source>
@@ -884,366 +884,369 @@
     <name>UBApplicationController</name>
     <message>
         <source>Web</source>
-        <translation>Nät</translation>
+        <translation>Web</translation>
     </message>
     <message>
         <source>New update available, would you go to the web page ?</source>
-        <translation>Ny uppdatering tillgänglig, vill du besöka web sidan?</translation>
+        <translation>Nova actualización dispoñible, ¿desexa visitar a páxina web?</translation>
     </message>
     <message>
         <source>No update available</source>
-        <translation>Inga uppdateringar tillgängliga</translation>
+        <translation>Ningunha actualización disponible</translation>
     </message>
     <message>
         <source>Update available</source>
-        <translation>Uppdateringar tillgängliga</translation>
+        <translation>Actualización dispoñible</translation>
     </message>
     <message>
         <source>Update</source>
-        <translation>Uppdatera</translation>
+        <translation>Actualizar</translation>
+    </message>
+    <message>
+        <source>Board drawing...</source>
+        <translation>Debuxo de encerado..</translation>
     </message>
 </context>
 <context>
     <name>UBBackgroundPalette</name>
     <message>
         <source>Grid size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño da cuadrícula</translation>
     </message>
 </context>
 <context>
     <name>UBBoardController</name>
     <message>
         <source>Downloading content %1 failed</source>
-        <translation>Hämtning av innehåll %1 misslyckades</translation>
+        <translation>Fallo ao descargar contido %1</translation>
     </message>
     <message>
         <source>Download finished</source>
-        <translation>Hämtning avslutad</translation>
+        <translation>Descarga terminada</translation>
     </message>
     <message>
         <source>Unknown tool type %1</source>
-        <translation>Okänd verktygstyp %1</translation>
+        <translation>Tipo de ferramenta descoñecida %1</translation>
     </message>
     <message>
         <source>Unknown content type %1</source>
-        <translation>Okänd innehållstyp %1</translation>
+        <translation>Tipo de contido descoñecido %1</translation>
     </message>
     <message>
         <source>Add Item</source>
-        <translation>Lägg till objekt</translation>
+        <translation>Engadir elemento</translation>
     </message>
     <message>
         <source>All Supported (%1)</source>
-        <translation>Alla stöds (%1)</translation>
+        <translation>Todos compatibles (%1)</translation>
     </message>
     <message>
         <source>Delete page %1 from document</source>
-        <translation type="vanished">Radera sida %1 från dokument</translation>
+        <translation type="vanished">Borrar a páxina %1 do documento</translation>
     </message>
     <message>
         <source>Page %1 deleted</source>
-        <translation>Sida %1 raderad</translation>
+        <translation>Páxina %1 eliminada</translation>
     </message>
     <message>
         <source>Add file operation failed: file copying error</source>
-        <translation>Lägg till fil åtgärd misslyckad: filkopieringsfel</translation>
+        <translation>Tódalas operacións con ficheiros fallaron. Erro ao copiar os ficheiros</translation>
     </message>
     <message>
         <source>Group</source>
-        <translatorcomment>Verb our a noun? Next segement is Ungorup = verb. If &quot;Group&quot; is a verb it should be &quot;Gruppera&quot; in sv.</translatorcomment>
-        <translation>Grupp</translation>
+        <translation>Agrupar</translation>
     </message>
     <message>
         <source>Ungroup</source>
-        <translation>Avgruppera</translation>
+        <translation>Desagrupar</translation>
     </message>
     <message>
         <source>Saving document...</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardando documento...</translation>
     </message>
     <message>
         <source>Document has just been saved...</source>
-        <translation type="unfinished"></translation>
+        <translation>Acaba de gardarse o documento...</translation>
     </message>
     <message>
         <source>Deleting page %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrando páxina %1</translation>
     </message>
 </context>
 <context>
     <name>UBBoardPaletteManager</name>
     <message>
         <source>Error Adding Image to Library</source>
-        <translation>Fel vid lägg bild bibliotek </translation>
+        <translation>Error ao engadir a imaxe á biblioteca</translation>
     </message>
     <message>
         <source>CapturedImage</source>
-        <translation>FångadBild</translation>
+        <translation>Imaxe capturada</translation>
     </message>
 </context>
 <context>
     <name>UBBoardThumbnailsView</name>
     <message>
         <source>Loading page (%1/%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargando páxina (%1/%2)</translation>
     </message>
 </context>
 <context>
     <name>UBCachePropertiesWidget</name>
     <message>
         <source>Cache Properties</source>
-        <translation>Cacheinställningar</translation>
+        <translation>Almacenar propiedades en caché</translation>
     </message>
     <message>
         <source>Color:</source>
-        <translation>Färg:</translation>
+        <translation>Cor:</translation>
     </message>
     <message>
         <source>Shape:</source>
-        <translation>Form:</translation>
+        <translation>Forma:</translation>
     </message>
     <message>
         <source>Size:</source>
-        <translation>Storlek:</translation>
+        <translation>Tamaño:</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Stäng</translation>
+        <translation>Pechar</translation>
     </message>
 </context>
 <context>
     <name>UBDesktopPalette</name>
     <message>
         <source>Capture Part of the Screen</source>
-        <translation>Fånga en del av skärmen</translation>
+        <translation>Capturar parte da pantalla</translation>
     </message>
     <message>
         <source>Capture the Screen</source>
-        <translation>Fånga skärmen</translation>
+        <translation>Capturar a pantalla</translation>
     </message>
     <message>
         <source>Show the stylus palette</source>
-        <translation>Visa pekpennans palett</translation>
+        <translation>Mostrar a paleta do lapis</translation>
     </message>
     <message>
         <source>Show Board on Secondary Screen</source>
-        <translation>Visa taval på den sekundära skärmen</translation>
+        <translation>Mostrar o encerado na pantalla secundaria</translation>
     </message>
     <message>
         <source>Show Desktop on Secondary Screen</source>
-        <translation>Visa skrivbordet på den sekundära skärmen</translation>
+        <translation>Mostrar escritorio na pantalla secundaria</translation>
     </message>
     <message>
         <source>Show OpenBoard</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar OpenBoard</translation>
     </message>
 </context>
 <context>
     <name>UBDocumentController</name>
     <message>
         <source>New Folder</source>
-        <translation>Ny mapp</translation>
+        <translation>Novo cartafol</translation>
     </message>
     <message>
         <source>Page %1</source>
-        <translation>Sida %1</translation>
+        <translation>Páxina %1</translation>
     </message>
     <message>
         <source>Add Folder of Images</source>
-        <translation>Lägg till mapp med bilder</translation>
+        <translation>Engadir cartafol de imaxes</translation>
     </message>
     <message>
         <source>Add Images</source>
-        <translation>Lägg till bilder</translation>
+        <translation>Engadir imaxes</translation>
     </message>
     <message>
         <source>Add Pages from File</source>
-        <translation>Lägg till sida från fil</translation>
+        <translation>Engadir páxina dende arquivo</translation>
     </message>
     <message>
         <source>Duplicating Document %1</source>
-        <translation>Duplicera dokument %1</translation>
+        <translation>Duplicando documento %1</translation>
     </message>
     <message>
         <source>Document %1 copied</source>
-        <translation>Dokument %1 kopierad</translation>
+        <translation>Documento %1 copiado</translation>
     </message>
     <message>
         <source>Remove Page</source>
-        <translation>Ta bort sida</translation>
+        <translation>Eliminar páxina</translation>
     </message>
     <message>
         <source>Remove Document</source>
-        <translation>Ta bort dokument</translation>
+        <translation>Eliminar documento</translation>
     </message>
     <message>
         <source>Are you sure you want to remove the document &apos;%1&apos;?</source>
-        <translation>Är du säker på att du vill ta bort dokument &apos;%1&apos;?</translation>
+        <translation>¿Está seguro de que desexa eliminar o documento &apos;%1&apos;?</translation>
     </message>
     <message>
         <source>Empty Trash</source>
-        <translation>Töm papperskorgen</translation>
+        <translation>Baleirar papeleira</translation>
     </message>
     <message>
         <source>Are you sure you want to empty trash?</source>
-        <translation>Är du säker på att du vill tömma papperskorgen?</translation>
+        <translation>¿Está seguro de que desexa baleirar a papeleira?</translation>
     </message>
     <message>
         <source>Emptying trash</source>
-        <translation>Tömmer papperskorgen</translation>
+        <translation>Baleirando papeleira</translation>
     </message>
     <message>
         <source>Emptied trash</source>
-        <translation>Papperskorgen tömd</translation>
+        <translation>Papelera baleirada</translation>
     </message>
     <message>
         <source>Remove Folder</source>
-        <translation>Tabort mapp</translation>
+        <translation>Eliminar cartafol</translation>
     </message>
     <message>
         <source>Are you sure you want to remove the folder &apos;%1&apos; and all its content?</source>
-        <translation>Är du säker på att du vill ta bort mapp &apos;%1&apos; och all dess innehåll?</translation>
+        <translation>¿Está seturo de que desexa eliminar o cartafol &apos;%1&apos; e todo o seu contido?</translation>
     </message>
     <message>
         <source>No document selected!</source>
-        <translation>Inget dokument markerat!</translation>
+        <translation>¡Ningún documento seleccionado!</translation>
     </message>
     <message>
         <source>Open Supported File</source>
-        <translation>Öppna filer som stödjes</translation>
+        <translation>Abrir arquivo compatible</translation>
     </message>
     <message>
         <source>Importing file %1...</source>
-        <translation>Imporeterar fil %1...</translation>
+        <translation>Importando arquivo %1...</translation>
     </message>
     <message>
         <source>Failed to import file ... </source>
-        <translation>Import av fil misslyckades ...</translation>
+        <translation>Fallo ao importar arquivo ...</translation>
     </message>
     <message>
         <source>Import all Images from Folder</source>
-        <translation>Importera amm bilder från mapp</translation>
+        <translation>Importar tódalas imaxes dende o cartafol</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Radera</translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <source>Empty</source>
-        <translation>Tömd</translation>
+        <translation>Baleirar</translation>
     </message>
     <message>
         <source>Trash</source>
-        <translation>Papperskorg</translation>
+        <translation>Papeleira</translation>
     </message>
     <message>
         <source>Open Document</source>
-        <translation>Öppna dokument</translation>
+        <translation>Abrir documento</translation>
     </message>
     <message>
         <source>Add all Images to Document</source>
-        <translation>Lägg till alla bilder till dokument</translation>
+        <translation>Engadir tódalas imaxes ao documento</translation>
     </message>
     <message>
         <source>All Images (%1)</source>
-        <translation>All bilder (%1)</translation>
+        <translation>Tódalas imaxes (%1)</translation>
     </message>
     <message>
         <source>Selection does not contain any image files!</source>
-        <translation>Markeringen innehåller inga bildfiler!</translation>
+        <translation>¡A selección non contén ningún arquivo de imaxes!</translation>
     </message>
     <message numerus="yes">
         <source>Are you sure you want to remove %n page(s) from the selected document &apos;%1&apos;?</source>
         <translation>
-            <numerusform>Är du säker på att du vill ta bort mapp %n sida/sidor från det makrerade dokumentet &apos;%1&apos;?</numerusform>
+            <numerusform>¿Está seguro de que desexa eliminar %n páxina(s) do documento seleccionado &apos;%1&apos;?</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <source>Folder does not contain any image files</source>
-        <translation>Foldern innehåller inga bildfiler</translation>
+        <translation>O cartafol non contén ningún ficheiro con imaxes</translation>
     </message>
     <message>
         <source>Untitled Documents</source>
-        <translation>Namnlösa dokument</translation>
+        <translation>Documentos sen título</translation>
     </message>
     <message>
         <source>The document &apos;%1&apos; has been generated with a newer version of OpenBoard (%2). By opening it, you may lose some information. Do you want to proceed?</source>
-        <translation type="unfinished"></translation>
+        <translation>O documento &apos;%1&apos; foi xerado cunha nova versión de OpenBoard (%2). Ao abrilo, pode perder información. Desexa continuar?</translation>
     </message>
     <message>
         <source>Are you sure you want to remove all selected documents?</source>
-        <translation type="unfinished"></translation>
+        <translation>Está seguro de querer eliminar tódolos documentos seleccionados? </translation>
     </message>
     <message>
         <source>Remove multiple documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar varios documentos</translation>
     </message>
 </context>
 <context>
     <name>UBDocumentManager</name>
     <message>
         <source>images</source>
-        <translation>bilder</translation>
+        <translation>Imaxes</translation>
     </message>
     <message>
         <source>videos</source>
-        <translation>videos</translation>
+        <translation>Vídeos</translation>
     </message>
     <message>
         <source>objects</source>
-        <translation>objekt</translation>
+        <translation>Obxectos</translation>
     </message>
     <message>
         <source>widgets</source>
-        <translation>widgets</translation>
+        <translation>Widgets</translation>
     </message>
     <message>
         <source>All supported files (*.%1)</source>
-        <translation>All filer som stödjes (*.%1)</translation>
+        <translation>Tódolos arquivos compatibles (*.%1)</translation>
     </message>
     <message>
         <source>File %1 saved</source>
-        <translation>Fil %1 sparad</translation>
+        <translation>Arquivo %1 gardado</translation>
     </message>
     <message>
         <source>Inserting page %1 of %2</source>
-        <translation>Infoga sida %1 av %2</translation>
+        <translation>Inserindo páxina %1 de %2</translation>
     </message>
     <message>
         <source>Import successful.</source>
-        <translation>Import lyckades.</translation>
+        <translation>Importación correcta</translation>
     </message>
     <message>
         <source>Import of file %1 successful.</source>
-        <translation>Import av fil %1 lyckades.</translation>
+        <translation>O arquivo %1 importouse correctamente</translation>
     </message>
     <message>
         <source>Importing file %1</source>
-        <translation>Importerar fil %1</translation>
+        <translation>Importando o ficheiro %1</translation>
     </message>
 </context>
 <context>
     <name>UBDocumentNavigator</name>
     <message>
         <source>Page %0</source>
-        <translation>Sida %0</translation>
+        <translation type="vanished">Páxina %0</translation>
     </message>
 </context>
 <context>
     <name>UBDocumentTreeWidget</name>
     <message>
         <source>%1 (copy)</source>
-        <translation>%1 (kopiera)</translation>
+        <translation>%1 (copia)</translation>
     </message>
     <message>
         <source>Copying page %1/%2</source>
-        <translation>Kopierar sida %1/%2</translation>
+        <translation>Copiando páxina %1/%2</translation>
     </message>
     <message numerus="yes">
         <source>%1 pages copied</source>
         <translation>
-            <numerusform>%1 sidor kopierade</numerusform>
+            <numerusform>%1 páxinas copiadas</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -1252,486 +1255,479 @@
     <name>UBDownloadWidget</name>
     <message>
         <source>Downloading files</source>
-        <translation>Hämtning av filer</translation>
+        <translation>Descargando arquivos</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Avsluta</translation>
-    </message>
-</context>
-<context>
-    <name>UBDraggableThumbnail</name>
-    <message>
-        <source>Page %0</source>
-        <translation type="unfinished">Sida %0</translation>
+        <translation>Cancelar</translation>
     </message>
 </context>
 <context>
     <name>UBDraggableThumbnailView</name>
     <message>
         <source>Page %0</source>
-        <translation type="unfinished">Sida %0</translation>
+        <translation>Páxina %0</translation>
     </message>
 </context>
 <context>
     <name>UBExportAdaptor</name>
     <message>
         <source>Warnings during export was appeared</source>
-        <translation>Varningar unde export dök upp</translation>
+        <translation>Apareceron advertencias durante a exportación</translation>
     </message>
     <message>
         <source>Exporting document...</source>
-        <translation type="unfinished">Exporterar dokument...</translation>
+        <translation>Exportando documento...</translation>
     </message>
     <message>
         <source>Export failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Fallou a exportación</translation>
     </message>
     <message>
         <source>Unable to export to the selected location. You do not have the permissions necessary to save the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non foi posible exportar ao lugar seleccionado. Non ten os permisos necesarios para gardar o ficheiro</translation>
     </message>
     <message>
         <source>Export failed: location not writable</source>
-        <translation type="unfinished"></translation>
+        <translation>Fallou a exportación: non se pode escribir no lugar seleccionado</translation>
     </message>
     <message>
         <source>Export successful.</source>
-        <translation type="unfinished">Export lyckades.</translation>
+        <translation>Exportación satisfactoria.</translation>
     </message>
 </context>
 <context>
     <name>UBExportCFF</name>
     <message>
         <source>Export to IWB</source>
-        <translation type="vanished">Exporter till IWB</translation>
+        <translation type="vanished">Exportar a IWB</translation>
     </message>
     <message>
         <source>Export as IWB File</source>
-        <translation type="vanished">Exportera som IWB-fil</translation>
+        <translation type="vanished">Exportar como ficheiro IWB</translation>
     </message>
     <message>
         <source>Exporting document...</source>
-        <translation type="vanished">Exporterar dokument...</translation>
+        <translation type="vanished">Exportando documento...</translation>
     </message>
     <message>
         <source>Export successful.</source>
-        <translation type="vanished">Export lyckades.</translation>
+        <translation type="vanished">Exportación satisfactoria.</translation>
     </message>
     <message>
         <source>Export failed.</source>
-        <translation type="vanished">Export misslyckades.</translation>
+        <translation type="vanished">Fallo na exportación</translation>
     </message>
 </context>
 <context>
     <name>UBExportDocument</name>
     <message>
         <source>Page</source>
-        <translation>Sida</translation>
+        <translation>Páxina</translation>
     </message>
     <message>
         <source>Export as UBZ File</source>
-        <translation>Exportera som ABZ fil</translation>
+        <translation>Exportar como arquivo UBZ</translation>
     </message>
     <message>
         <source>Exporting document...</source>
-        <translation type="vanished">Exporterar dokument...</translation>
+        <translation type="vanished">Exportando documento...</translation>
     </message>
     <message>
         <source>Export successful.</source>
-        <translation type="vanished">Export lyckades.</translation>
+        <translation type="vanished">Exportación satisfactoria.</translation>
     </message>
     <message>
         <source>Exporting %1 %2 of %3</source>
-        <translation>Exporterar %1 %2 av %3</translation>
+        <translation>Exportando %1 %2 de %3</translation>
     </message>
     <message>
         <source>Export to OpenBoard Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar ao formato OpenBoard</translation>
     </message>
 </context>
 <context>
     <name>UBExportFullPDF</name>
     <message>
         <source>Export as PDF File</source>
-        <translation>Exportera som PDF fil</translation>
+        <translation>Exportar como arquivo PDF</translation>
     </message>
     <message>
         <source>Exporting document...</source>
-        <translation type="vanished">Exporterar dokument...</translation>
+        <translation type="vanished">Exportando documento...</translation>
     </message>
     <message>
         <source>Export successful.</source>
-        <translation type="vanished">Export lyckades.</translation>
+        <translation type="vanished">Exportación satisfactoria.</translation>
     </message>
     <message>
         <source>Export to PDF</source>
-        <translation>Exportera till PDF</translation>
+        <translation>Exportar a PDF</translation>
     </message>
 </context>
 <context>
     <name>UBExportPDF</name>
     <message>
         <source>Export as PDF File</source>
-        <translation>Exportera som PDF fil</translation>
+        <translation>Exportar como arquivo PDF</translation>
     </message>
     <message>
         <source>Exporting document...</source>
-        <translation type="vanished">Exporterar dokument...</translation>
+        <translation type="vanished">Exportando documento...</translation>
     </message>
     <message>
         <source>Export successful.</source>
-        <translation type="vanished">Export lyckades.</translation>
+        <translation type="vanished">Exportación satisfactoria.</translation>
     </message>
     <message>
         <source>Exporting page %1 of %2</source>
-        <translation>Exporterar sida %1 av %2</translation>
+        <translation>Exportando páxina %1 de %2</translation>
     </message>
     <message>
         <source>Export to PDF</source>
-        <translation>Exportera till PDF</translation>
+        <translation>Exportación a PDF</translation>
     </message>
 </context>
 <context>
     <name>UBExportWeb</name>
     <message>
         <source>Page</source>
-        <translation>Sida</translation>
+        <translation>Páxina</translation>
     </message>
     <message>
         <source>Export as Web data</source>
-        <translation>Exporter som nätdata</translation>
+        <translation>Exportar como datos web</translation>
     </message>
     <message>
         <source>Exporting document...</source>
-        <translation>Exporterar dokument...</translation>
+        <translation>Exportando documento...</translation>
     </message>
     <message>
         <source>Export successful.</source>
-        <translation>Export lyckades.</translation>
+        <translation>Exportación satisfactoria.</translation>
     </message>
     <message>
         <source>Export failed.</source>
-        <translation>Export misslyckades.</translation>
+        <translation>Fallo da exportación.</translation>
     </message>
     <message>
         <source>Export to Web Browser</source>
-        <translation>Exportera till Webläsare</translation>
+        <translation>Exportar ao explorador web</translation>
     </message>
 </context>
 <context>
     <name>UBFeatureProperties</name>
     <message>
         <source>Add to page</source>
-        <translation>Lägg till sida</translation>
+        <translation>Engadir á páxina</translation>
     </message>
     <message>
         <source>Set as background</source>
-        <translation type="vanished">Infoga som bakgrund</translation>
+        <translation type="vanished">Definir como fondo</translation>
     </message>
     <message>
         <source>Add to library</source>
-        <translation>Lägg till bibliotek</translation>
+        <translation>Engadir á biblioteca</translation>
     </message>
     <message>
         <source>Object informations</source>
-        <translation>Objektinformation</translation>
+        <translation>Información do obxecto</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesActionBar</name>
     <message>
         <source>Add to favorites</source>
-        <translation>Lägg till favoriter</translation>
+        <translation>Engadir a favoritos</translation>
     </message>
     <message>
         <source>Share</source>
-        <translation>Dela</translation>
+        <translation>Compartir</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Sök</translation>
+        <translation>Buscar</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Radera</translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <source>Back to folder</source>
-        <translation>Tillbaka till mapp</translation>
+        <translation>Regresar ao cartafol</translation>
     </message>
     <message>
         <source>Remove from favorites</source>
-        <translation>Ta bort från favoriter</translation>
+        <translation>Eliminar de favoritos</translation>
     </message>
     <message>
         <source>Create new folder</source>
-        <translation>Skapa ny mapp</translation>
+        <translation>Crear novo cartafol</translation>
     </message>
     <message>
         <source>Rescan file system</source>
-        <translation>Scanna filsystemet igen</translation>
+        <translation>Comprobar os ficheiros do sistema</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesController</name>
     <message>
         <source>ImportedImage</source>
-        <translation>ImporteradBild</translation>
+        <translation>Imaxe importada</translation>
     </message>
     <message>
         <source>Audios</source>
-        <translation>Ljudspår</translation>
+        <translation>Ficheiros de Audio</translation>
     </message>
     <message>
         <source>Movies</source>
-        <translation>Filmer</translation>
+        <translation>Películas</translation>
     </message>
     <message>
         <source>Pictures</source>
-        <translation>Foton</translation>
+        <translation>Imaxes</translation>
     </message>
     <message>
         <source>Animations</source>
-        <translation>Animationer</translation>
+        <translation>Animacións</translation>
     </message>
     <message>
         <source>Interactivities</source>
-        <translation>Interaktiviteter</translation>
+        <translation>Interactividades</translation>
     </message>
     <message>
         <source>Applications</source>
-        <translation>Applikationer</translation>
+        <translation>Aplicacións</translation>
     </message>
     <message>
         <source>Shapes</source>
-        <translation>Former</translation>
+        <translation>Formas</translation>
     </message>
     <message>
         <source>Favorites</source>
-        <translation>Favoriter</translation>
+        <translation>Favoritos</translation>
     </message>
     <message>
         <source>Web search</source>
-        <translation>webbsökning</translation>
+        <translation>Búsqueda Web</translation>
     </message>
     <message>
         <source>Trash</source>
-        <translation>Papperskorg</translation>
+        <translation>Papeleira</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesNewFolderDialog</name>
     <message>
         <source>Accept</source>
-        <translation>Acceptera</translation>
+        <translation>Aceptar</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Avsluta</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <source>Enter a new folder name</source>
-        <translation>Ange ett nytt mappnamn</translation>
+        <translation>Introduza un novo nome para o cartafol</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesProgressInfo</name>
     <message>
         <source>Loading </source>
-        <translation>Laddar</translation>
+        <translation>Cargando </translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsGroupContainerItemDelegate</name>
     <message>
         <source>Locked</source>
-        <translation>Låst</translation>
+        <translation>Bloqueado</translation>
     </message>
     <message>
         <source>Visible on Extended Screen</source>
-        <translation>Synlig på utvidgad skärm</translation>
+        <translation>Visible en pantalla extendida</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsItemDelegate</name>
     <message>
         <source>Locked</source>
-        <translation>Låst</translation>
+        <translation>Bloqueado</translation>
     </message>
     <message>
         <source>Visible on Extended Screen</source>
-        <translation>Synlig på utvidgad skärm</translation>
+        <translation>Visible en pantalla extendida</translation>
     </message>
     <message>
         <source>Go to Content Source</source>
-        <translation>Gå till innehållskällan</translation>
+        <translation>Ir á fonte de contido</translation>
     </message>
     <message>
         <source>Set as background</source>
-        <translation type="unfinished">Infoga som bakgrund</translation>
+        <translation>Definir como fondo</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsMediaItem</name>
     <message>
         <source>Media resource couldn&apos;t be resolved</source>
-        <translation type="unfinished"></translation>
+        <translation>Non se puido resolver o recurso multimedia</translation>
     </message>
     <message>
         <source>Unsupported media format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formato multimedia non soportado</translation>
     </message>
     <message>
         <source>Media playback service not found</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Servizo de reprodución multimedia non atopado</translation>
     </message>
     <message>
         <source>Media error: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erro multimedia</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsTextItem</name>
     <message>
         <source>&lt;Type Text Here&gt;</source>
-        <translation>&lt;Skriv Text Här&gt;</translation>
+        <translation>&lt;Teclear Texto aquí&gt;</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsTextItemDelegate</name>
     <message>
         <source>Text Color</source>
-        <translation>Text färg</translation>
+        <translation>Cor de texto</translation>
     </message>
     <message>
         <source>Editable</source>
-        <translation>Redigerbar</translation>
+        <translation>Editable</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsW3CWidgetItem</name>
     <message>
         <source>Web</source>
-        <translation>Nät</translation>
+        <translation>Web</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsWidgetItem</name>
     <message>
         <source>Loading ...</source>
-        <translation>Laddar ...</translation>
+        <translation>Cargando...</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsWidgetItemDelegate</name>
     <message>
         <source>Frozen</source>
-        <translation>Frusen</translation>
+        <translation>Conxelado</translation>
     </message>
     <message>
         <source>Transform as Tool </source>
-        <translation>Omforma till verkytg</translation>
+        <translation>Transformar como ferramenta</translation>
     </message>
 </context>
 <context>
     <name>UBImportCFF</name>
     <message>
         <source>Common File Format (</source>
-        <translation type="vanished">Gemensamt filformat</translation>
+        <translation type="vanished">Formato de arquivo común (</translation>
     </message>
     <message>
         <source>Importing file %1...</source>
-        <translation type="vanished">Importerar fil %1...</translation>
+        <translation type="vanished">Importando arquivo %1...</translation>
     </message>
     <message>
         <source>Import of file %1 failed.</source>
-        <translation type="vanished">Import av fil %1 misslyckades.</translation>
+        <translation type="vanished">Fallo na importanción do arquivo %1.</translation>
     </message>
     <message>
         <source>Import successful.</source>
-        <translation type="vanished">Import lyckades.</translation>
+        <translation type="vanished">Importación satisfactoria.</translation>
     </message>
     <message>
         <source>Import failed.</source>
-        <translation type="vanished">Import msslyckades.</translation>
+        <translation type="vanished">Fallo da importación.</translation>
     </message>
 </context>
 <context>
     <name>UBImportDocument</name>
     <message>
         <source>Importing file %1...</source>
-        <translation>Importerar fil %1...</translation>
+        <translation>Importando arquivo %1...</translation>
     </message>
     <message>
         <source>Import successful.</source>
-        <translation>Import lyckades.</translation>
+        <translation>Importación satisfactoria.</translation>
     </message>
     <message>
         <source>Import of file %1 failed.</source>
-        <translation>Import av fil %1 misslyckades.</translation>
+        <translation>Fallo da importación do arquivo %1.</translation>
     </message>
     <message>
         <source>OpenBoard (*.ubz)</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenBoard (*.ubz)</translation>
     </message>
 </context>
 <context>
     <name>UBImportImage</name>
     <message>
         <source>Image Format (</source>
-        <translation>Bild format (</translation>
+        <translation>Formato de imaxe (</translation>
     </message>
 </context>
 <context>
     <name>UBImportPDF</name>
     <message>
         <source>Portable Document Format (*.pdf)</source>
-        <translation>Portable Document Format (*.pdf)</translation>
+        <translation>Formato de documento portátil (*.pdf)</translation>
     </message>
     <message>
         <source>PDF import failed.</source>
-        <translation>PDF import misslyckades.</translation>
+        <translation>Fallo da importación de PDF.</translation>
     </message>
     <message>
         <source>Importing page %1 of %2</source>
-        <translation>Importerar sida %1 av %2</translation>
+        <translation>Importando páxina %1 de %2</translation>
     </message>
 </context>
 <context>
     <name>UBIntranetPodcastPublisher</name>
     <message>
         <source>Error while publishing video to intranet (%1)</source>
-        <translation>Ett fel inträffade när video publicerades på intranet (%1)</translation>
+        <translation>Produciuse un erro ao publicar vídeo na intranet (%1)</translation>
     </message>
     <message>
         <source>Publishing to Intranet in progress %1 %</source>
-        <translation>Publicering till Intranet pågår %1 %</translation>
+        <translation>Publicación na Intranet en progreso %1 %</translation>
     </message>
 </context>
 <context>
     <name>UBIntranetPodcastPublishingDialog</name>
     <message>
         <source>Publish</source>
-        <translation>Publicera</translation>
+        <translation>Publicar</translation>
     </message>
 </context>
 <context>
     <name>UBKeyboardPalette</name>
     <message>
         <source>Enter</source>
-        <translation>Enter</translation>
+        <translation>Entrar</translation>
     </message>
 </context>
 <context>
     <name>UBMainWindow</name>
     <message>
         <source>Yes</source>
-        <translation>Ja</translation>
+        <translation>Sí</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>Nej</translation>
+        <translation>Non</translation>
     </message>
     <message>
         <source>Ok</source>
@@ -1742,18 +1738,18 @@
     <name>UBMessagesDialog</name>
     <message>
         <source>Close</source>
-        <translation>Stäng</translation>
+        <translation>Pechar</translation>
     </message>
 </context>
 <context>
     <name>UBNetworkAccessManager</name>
     <message>
         <source>&lt;qt&gt;Enter username and password for &quot;%1&quot; at %2&lt;/qt&gt;</source>
-        <translation>&lt;qt&gt;Ange användarnamn och lösenordför &quot;%1&quot; på %2&lt;/qt&gt;</translation>
+        <translation>&lt;qt&gt;Introduza o nome de usuario e o contrasinal para &quot;%1&quot; en %2&lt;/qt&gt;</translation>
     </message>
     <message>
         <source>Failed to log to Proxy</source>
-        <translation>Inlogg till Proxy misslyckades</translation>
+        <translation>Fallo ao iniciar sesión en proxy</translation>
     </message>
     <message>
         <source>SSL Errors:
@@ -1763,212 +1759,206 @@
 %2
 
 Do you want to ignore these errors for this host?</source>
-        <translation>SSL fel:
-
-%1
-
-%2
-
-Vill du ignorera felen för den här värden?</translation>
+        <translation>Errores SSL: %1 %2 ¿Desexa ignorar estos erros para este servidor?</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>Ja</translation>
+        <translation>Sí</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>Nej</translation>
+        <translation>Non</translation>
     </message>
 </context>
 <context>
     <name>UBOpenSankoreImporterWidget</name>
     <message>
         <source>Open-Sankore Documents Detected</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrados Documentos Open-Sankore</translation>
     </message>
     <message>
         <source>Show this panel next time</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar este panel a próxima vez</translation>
     </message>
     <message>
         <source>You can always access the OpenBoard Document Importer through the Preferences panel in the About tab. Warning, if you have already imported your Open-Sankore datas, you might loose your current OpenBoard documents.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sempre pode acceder ao importador de documentos OpenBoard a través do panel Preferencias na lapela Sobre. Aviso, se xa importou os seus datos Open-Sankore, pode perder documentos OpenBoard actuais</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Avsluta</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <source>Proceed</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Open-Sankoré documents are present on your computer. It is possible to import them to OpenBoard by pressing the “Proceed” button to launch the importer application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Os documentos de Open-Sankoré do seu computador. É posible importalos a OpenBoard premendo no botón &quot;Continuar&quot; da aplicación importadora.</translation>
     </message>
 </context>
 <context>
     <name>UBPersistenceManager</name>
     <message>
         <source>(copy)</source>
-        <translation>(kopiera)</translation>
+        <translation>(copiar)</translation>
     </message>
     <message>
         <source>Document Repository Loss</source>
-        <translation>Dokumentarkiv förlust</translation>
+        <translation>Pérdida de documentos do Repositorio</translation>
     </message>
     <message>
         <source>has lost access to the document repository &apos;%1&apos;. Unfortunately the application must shut down to avoid data corruption. Latest changes may be lost as well.</source>
-        <translation type="unfinished"></translation>
+        <translation>perdeu o acceso ao repositorio de documentos &apos;%1&apos;. Desafortunadamente, a aplicación debe pecharse para evitar a corrrupción de datos. Tamén se poden perder os últimos cambios. </translation>
     </message>
     <message>
         <source>Moving page to trash folder...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover a páxina ao lixo</translation>
     </message>
 </context>
 <context>
     <name>UBPlatformUtils</name>
     <message>
         <source>English</source>
-        <translation>Engelska</translation>
+        <translation>Inglés</translation>
     </message>
     <message>
         <source>Russian</source>
-        <translation>Ryska</translation>
+        <translation>Ruso</translation>
     </message>
     <message>
         <source>German</source>
-        <translation>Tyska</translation>
+        <translation>Alemán</translation>
     </message>
     <message>
         <source>French</source>
-        <translation>Franska</translation>
+        <translation>Francés</translation>
     </message>
     <message>
         <source>Swiss French</source>
-        <translation>Schweizisk franska</translation>
+        <translation>Francés-Suizo</translation>
     </message>
 </context>
 <context>
     <name>UBPodcastController</name>
     <message>
         <source>Failed to start encoder ...</source>
-        <translation>Start av kodomvadlare misslyckades ...</translation>
+        <translation>Fallo ao iniciar o codificador...</translation>
     </message>
     <message>
         <source>No Podcast encoder available ...</source>
-        <translation>Ingen kodomvandlarare för podcast tillgänglig ...</translation>
+        <translation>Ningún condificador de Podcast dispoñible...</translation>
     </message>
     <message>
         <source>Part %1</source>
-        <translation>Del %1</translation>
+        <translation>Parte %1</translation>
     </message>
     <message>
         <source>on your desktop ...</source>
-        <translation>på ditt skrivbord ...</translation>
+        <translation>no seu escritorio...</translation>
     </message>
     <message>
         <source>in folder %1</source>
-        <translation>i mapp %1</translation>
+        <translation>en cartafol %1</translation>
     </message>
     <message>
         <source>Podcast created %1</source>
-        <translation>Podcast skapad %1</translation>
+        <translation>Podcast creado %1</translation>
     </message>
     <message>
         <source>Podcast recording error (%1)</source>
-        <translation>Fel vi inspelning av podcast (%1)</translation>
+        <translation>Erro na grabación de podcast (%1)</translation>
     </message>
     <message>
         <source>Default Audio Input</source>
-        <translation>Förvalda ljudingång</translation>
+        <translation>Entrada de audio predeterminada</translation>
     </message>
     <message>
         <source>No Audio Recording</source>
-        <translation>Ingen inspelning av ljud</translation>
+        <translation>Ningunha grabación de audio</translation>
     </message>
     <message>
         <source>Small</source>
-        <translation>Liten</translation>
+        <translation>Pequeno</translation>
     </message>
     <message>
         <source>Medium</source>
-        <translation>Medium</translation>
+        <translation>Medio</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation>Stor</translation>
+        <translation>Completo</translation>
     </message>
     <message>
         <source>Publish to Intranet</source>
-        <translation>Publicera på Internet</translation>
+        <translation>Publicar na Intranet</translation>
     </message>
     <message>
         <source>Publish to Youtube</source>
-        <translation>Publicera på YouTube</translation>
+        <translation>Publicar en Youtube</translation>
     </message>
     <message>
         <source>OpenBoard Cast</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenBoard Cast</translation>
     </message>
 </context>
 <context>
     <name>UBPreferencesController</name>
     <message>
         <source>version: </source>
-        <translation>version: </translation>
+        <translation>versión:</translation>
     </message>
     <message>
         <source>Marker is pressure sensitive</source>
-        <translation>Markören är tryckkänslig</translation>
+        <translation>O marcador é sensible á presión</translation>
     </message>
 </context>
 <context>
     <name>UBProxyLoginDlg</name>
     <message>
         <source>Proxy Login</source>
-        <translation>Proxy inloggning</translation>
+        <translation>Inicio de sesión en proxy</translation>
     </message>
     <message>
         <source>Username:</source>
-        <translation>Användarnamn:</translation>
+        <translation>Nome de usuario:</translation>
     </message>
     <message>
         <source>Password:</source>
-        <translation>Lösenord:</translation>
+        <translation>Contrasinal:</translation>
     </message>
 </context>
 <context>
     <name>UBPublicationDlg</name>
     <message>
         <source>Publish document on the web</source>
-        <translation>Publicera dokumentet på nätet</translation>
+        <translation>Publicar documento na web</translation>
     </message>
     <message>
         <source>Title:</source>
-        <translation>Titel:</translation>
+        <translation>Título:</translation>
     </message>
     <message>
         <source>Description:</source>
-        <translation>Beskrivning:</translation>
+        <translation>Descripción:</translation>
     </message>
     <message>
         <source>Publish</source>
-        <translation>Publicera</translation>
+        <translation>Publicar</translation>
     </message>
 </context>
 <context>
     <name>UBSettings</name>
     <message>
         <source>My Movies</source>
-        <translation>Mina filmer</translation>
+        <translation>As miñas películas</translation>
     </message>
 </context>
 <context>
     <name>UBStartupHintsPalette</name>
     <message>
         <source>Visible next time</source>
-        <translation type="unfinished"></translation>
+        <translation>Visible a próxima vez</translation>
     </message>
 </context>
 <context>
@@ -1982,205 +1972,209 @@ Vill du ignorera felen för den här värden?</translation>
     <name>UBThumbnailAdaptor</name>
     <message>
         <source>Generating preview thumbnails ...</source>
-        <translation>Generera förhandsgranskning av miniatyrbilder...</translation>
+        <translation>Xerando miniaturas de previsualización...</translation>
     </message>
     <message>
         <source>%1 thumbnails generated ...</source>
-        <translation>%1 miniatybil genererad ...</translation>
+        <translation>%1 miniaturas xeradas...</translation>
+    </message>
+    <message>
+        <source>loading thumbnail of page %1</source>
+        <translation>cargando miniaturas da páxina %1</translation>
     </message>
 </context>
 <context>
     <name>UBThumbnailTextItem</name>
     <message>
         <source>Page %0</source>
-        <translation type="unfinished">Sida %0</translation>
+        <translation>Páxina %0</translation>
     </message>
 </context>
 <context>
     <name>UBToolsManager</name>
     <message>
         <source>Mask</source>
-        <translation>Mask</translation>
+        <translation>Máscara</translation>
     </message>
     <message>
         <source>Ruler</source>
-        <translation>Linjal</translation>
+        <translation>Regla</translation>
     </message>
     <message>
         <source>Compass</source>
-        <translation>Kompass</translation>
+        <translation>Compás</translation>
     </message>
     <message>
         <source>Protractor</source>
-        <translation>Gradskiva</translation>
+        <translation>Transportador</translation>
     </message>
     <message>
         <source>Triangle</source>
-        <translation>Triangel</translation>
+        <translation>Triángulo</translation>
     </message>
     <message>
         <source>Magnifier</source>
-        <translation>Förstoringsglas</translation>
+        <translation>Lupa</translation>
     </message>
     <message>
         <source>Cache</source>
-        <translation>Cache</translation>
+        <translation>Caché</translation>
     </message>
 </context>
 <context>
     <name>UBTrapFlashController</name>
     <message>
         <source>Whole page</source>
-        <translation>Hela sidan</translation>
+        <translation>Páxina completa</translation>
     </message>
     <message>
         <source>Web</source>
-        <translation>Nät</translation>
+        <translation>Web</translation>
     </message>
 </context>
 <context>
     <name>UBUpdateDlg</name>
     <message>
         <source>Document updater</source>
-        <translation>Dokmentsuppdaterare</translation>
+        <translation>Actualizador de documento</translation>
     </message>
     <message>
         <source> files require an update.</source>
-        <translation>Filerna kräver en uppdatering.</translation>
+        <translation> los arquivos requiren unha actualización.</translation>
     </message>
     <message>
         <source>Backup path: </source>
-        <translation>Sökväg till säkerhetskopiering:</translation>
+        <translation>Ruta da copia de seguridade:</translation>
     </message>
     <message>
         <source>Browse</source>
-        <translation>Bläddra</translation>
+        <translation>Explorar</translation>
     </message>
     <message>
         <source>Update</source>
-        <translation>Uppdatera</translation>
+        <translation>Actualizar</translation>
     </message>
     <message>
         <source>Select a backup folder</source>
-        <translation>Välj en mapp för säkerhetskopiering</translation>
+        <translation>Seleccione un cartafol para a copia de seguridade</translation>
     </message>
     <message>
         <source>Files update successful!
 Please reboot the application to access the updated documents.</source>
-        <translation>Uppdateringen av filerna lyckades!
-Vänligen starta om programmet för att komma åt uppdaterade dokument.</translation>
+        <translation>¡Actualización de arquivos satisfactoria!
+Por favor, reinicie a aplicación para acceder aos documentos actualizados.</translation>
     </message>
     <message>
         <source>An error occured during the update. The files have not been affected.</source>
-        <translation>Ett fel inträffade vid uppdateringen. Filerna har inte påverkats.</translation>
+        <translation>Ocurriu un erro durante a actualización. Os archivos no foron afectados.</translation>
     </message>
     <message>
         <source>Files update results</source>
-        <translation>Resultatet av uppdateringen av filerna</translation>
+        <translation>Resultados de la actualización de arquivos</translation>
     </message>
     <message>
         <source>Updating file </source>
-        <translation>Uppdaterar fil</translation>
+        <translation>Actualizando arquivo</translation>
     </message>
     <message>
         <source>Please wait the import process will start soon...</source>
-        <translation>Vänligen vänta importprocessen börjar snart ...</translation>
+        <translation>Por favor espere, o proceso de importación comenzará pronto...</translation>
     </message>
     <message>
         <source>Remind me later</source>
-        <translation>Påminn mig senare</translation>
+        <translation>Recordamo máis tarde</translation>
     </message>
 </context>
 <context>
     <name>UBWebPluginWidget</name>
     <message>
         <source>Loading...</source>
-        <translation>Laddar...</translation>
+        <translation>Cargando...</translation>
     </message>
 </context>
 <context>
     <name>UBWidgetUniboardAPI</name>
     <message>
         <source>%0 called (method=%1, status=%2)</source>
-        <translation>%0 kallats (metod=%1, status=%2)</translation>
+        <translation>%0 chamado (método=%1, estado=%2)</translation>
     </message>
 </context>
 <context>
     <name>UBYouTubePublisher</name>
     <message>
         <source>YouTube authentication failed.</source>
-        <translation>YouTube verifiering misslyckades.</translation>
+        <translation>Fallo na autentificación de YouTube.</translation>
     </message>
     <message>
         <source>Error while uploading video to YouTube (%1)</source>
-        <translation>Ett fel inträffade när video laddas upp på YouTube (%1)</translation>
+        <translation>Error ao cargar o vídeo a YouTube (%1)</translation>
     </message>
     <message>
         <source>Upload to YouTube in progress %1 %</source>
-        <translation>Uppladdning till YouTube pågår %1 %</translation>
+        <translation>Carga de YoutTube en progreso %1 %</translation>
     </message>
 </context>
 <context>
     <name>UBYouTubePublishingDialog</name>
     <message>
         <source>Upload</source>
-        <translation>Ladda upp</translation>
+        <translation>Cargar</translation>
     </message>
     <message>
         <source>Autos &amp; Vehicles</source>
-        <translation>Bilar &amp; fordon</translation>
+        <translation>Autos &amp; Vehículos</translation>
     </message>
     <message>
         <source>Music</source>
-        <translation>Musik</translation>
+        <translation>Música</translation>
     </message>
     <message>
         <source>Pets &amp; Animals</source>
-        <translation>Husdjur &amp; djur</translation>
+        <translation>Mascotas &amp; Animais</translation>
     </message>
     <message>
         <source>Sports</source>
-        <translation>Sport</translation>
+        <translation>Deportes</translation>
     </message>
     <message>
         <source>Travel &amp; Events</source>
-        <translation>Resor &amp; evenemang</translation>
+        <translation>Viaxes &amp; Eventos</translation>
     </message>
     <message>
         <source>Gaming</source>
-        <translation>Spel</translation>
+        <translation>Xogo</translation>
     </message>
     <message>
         <source>Comedy</source>
-        <translation>Komedi</translation>
+        <translation>Comedia</translation>
     </message>
     <message>
         <source>People &amp; Blogs</source>
-        <translation>Flk &amp; bloggar</translation>
+        <translation>Persoas &amp; Blogs</translation>
     </message>
     <message>
         <source>News &amp; Politics</source>
-        <translation>Nyheter &amp; politik</translation>
+        <translation>Novas &amp; Política</translation>
     </message>
     <message>
         <source>Entertainment</source>
-        <translation>Underhållning</translation>
+        <translation>Entretemento</translation>
     </message>
     <message>
         <source>Education</source>
-        <translation>utbildning</translation>
+        <translation>Educación</translation>
     </message>
     <message>
         <source>Howto &amp; Style</source>
-        <translation>Fixa själv &amp; stil</translation>
+        <translation>Howto &amp; estilo</translation>
     </message>
     <message>
         <source>Nonprofits &amp; Activism</source>
-        <translation>Ideellt arbete &amp; aktivism</translation>
+        <translation>Sen ánimo de lucro &amp; Activismo</translation>
     </message>
     <message>
         <source>Science &amp; Technology</source>
-        <translation>Vetenskap &amp; teknologi</translation>
+        <translation>Ciencia &amp; Tecnoloxía</translation>
     </message>
 </context>
 <context>
@@ -2194,46 +2188,46 @@ Vänligen starta om programmet för att komma åt uppdaterade dokument.</transla
     <name>WBClearButton</name>
     <message>
         <source>Clear</source>
-        <translation>Rensa</translation>
+        <translation>Eliminar</translation>
     </message>
 </context>
 <context>
     <name>WBDownloadItem</name>
     <message>
         <source>Save File</source>
-        <translation>Spara fil</translation>
+        <translation>Gardar arquivo</translation>
     </message>
     <message>
         <source>Download canceled: %1</source>
-        <translation>Hämtningen avbröts: %1</translation>
+        <translation>Descarga cancelada: %1</translation>
     </message>
     <message>
         <source>Error opening saved file: %1</source>
-        <translation>Ett fel inträffade vid öppna fil: %1</translation>
+        <translation>Erro ao abrir o arquivo gardado: %1</translation>
     </message>
     <message>
         <source>Error saving: %1</source>
-        <translation>Felmeddelande: %1</translation>
+        <translation>Erro ao gardar: %1</translation>
     </message>
     <message>
         <source>Network Error: %1</source>
-        <translation>Nätverksfel: %1</translation>
+        <translation>Erro de rede: %1</translation>
     </message>
     <message>
         <source>seconds</source>
-        <translation>sekunder</translation>
+        <translation>segundos</translation>
     </message>
     <message>
         <source>minutes</source>
-        <translation>minuter</translation>
+        <translation>minutos</translation>
     </message>
     <message>
         <source>- %4 %5 remaining</source>
-        <translation>- %4 %5 kvar</translation>
+        <translation>- %4 %5 restante</translation>
     </message>
     <message>
         <source>%1 of %2 (%3/sec) %4</source>
-        <translation>%1 av %2 (%3/s) %4</translation>
+        <translation>%1 de %2 (%3/seg) %4</translation>
     </message>
     <message>
         <source>?</source>
@@ -2242,7 +2236,7 @@ Vänligen starta om programmet för att komma åt uppdaterade dokument.</transla
     </message>
     <message>
         <source>%1 of %2 - Stopped</source>
-        <translation>%1 av %2 - avbröts</translation>
+        <translation>%1 de %2 - Detido</translation>
     </message>
     <message>
         <source>bytes</source>
@@ -2261,109 +2255,109 @@ Vänligen starta om programmet för att komma åt uppdaterade dokument.</transla
     <name>WBDownloadManager</name>
     <message>
         <source>1 Download</source>
-        <translation>1 Hämtning</translation>
+        <translation>1 Descarga</translation>
     </message>
     <message>
         <source>%1 Downloads</source>
         <comment>always &gt;= 2</comment>
-        <translation>%1 Hämtning</translation>
+        <translation>%1 Descargas</translation>
     </message>
 </context>
 <context>
     <name>WBHistoryModel</name>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Adress</translation>
+        <translation>Dirección</translation>
     </message>
 </context>
 <context>
     <name>WBHistoryTreeModel</name>
     <message>
         <source>Earlier Today</source>
-        <translation>Tidigre idag</translation>
+        <translation>Anteriormente hoxe</translation>
     </message>
     <message>
         <source>%1 items</source>
-        <translation>%1 objekt</translation>
+        <translation>%1 elementos</translation>
     </message>
 </context>
 <context>
     <name>WBSearchLineEdit</name>
     <message>
         <source>Search</source>
-        <translation>Sök</translation>
+        <translation>Búsqueda</translation>
     </message>
 </context>
 <context>
     <name>WBTabBar</name>
     <message>
         <source>New &amp;Tab</source>
-        <translation>Ny &amp;Flik</translation>
+        <translation>Nova &amp;Lapela</translation>
     </message>
     <message>
         <source>Clone Tab</source>
-        <translation>Kloningsflik</translation>
+        <translation>Duplicar Lapela</translation>
     </message>
     <message>
         <source>&amp;Close Tab</source>
-        <translation>&amp;Stäng flik</translation>
+        <translation>&amp;Pechar Lapela</translation>
     </message>
     <message>
         <source>Close &amp;Other Tabs</source>
-        <translation>Stäng &amp;Andra flikar</translation>
+        <translation>Pechar &amp; Outras Lapelas</translation>
     </message>
     <message>
         <source>Reload Tab</source>
-        <translation>Uppdatera flik</translation>
+        <translation>Recargar Lapela</translation>
     </message>
     <message>
         <source>Reload All Tabs</source>
-        <translation>Uppdatera alla flikar</translation>
+        <translation>Volver a cargar tódalas lapelas</translation>
     </message>
 </context>
 <context>
     <name>WBTabWidget</name>
     <message>
         <source>Recently Closed Tabs</source>
-        <translation>Senaste stängda flikar</translation>
+        <translation>Lapelas pechadas recentemente</translation>
     </message>
     <message>
         <source>(Untitled)</source>
-        <translation>(Namnlös)</translation>
+        <translation>(Sen título)</translation>
     </message>
 </context>
 <context>
     <name>WBToolbarSearch</name>
     <message>
         <source>Search</source>
-        <translation>Sök</translation>
+        <translation>Búsqueda</translation>
     </message>
     <message>
         <source>No Recent Searches</source>
-        <translation>Inga senaste sökningar</translation>
+        <translation>Ningunha búsqueda recente</translation>
     </message>
     <message>
         <source>Recent Searches</source>
-        <translation>Senaste sökningar</translation>
+        <translation>Búsquedas recentes</translation>
     </message>
     <message>
         <source>Clear Recent Searches</source>
-        <translation>Rensa senaste sökningar</translation>
+        <translation>Borrar búsquedas recentes</translation>
     </message>
 </context>
 <context>
     <name>WBWebPage</name>
     <message>
         <source>Download</source>
-        <translation>Hämta</translation>
+        <translation>Descargar</translation>
     </message>
     <message>
         <source>Add to Current Document</source>
-        <translation>Lägg till aktuellt dokument</translation>
+        <translation>Engadir ao documento actual</translation>
     </message>
     <message>
         <source>PDF</source>
@@ -2371,49 +2365,49 @@ Vänligen starta om programmet för att komma åt uppdaterade dokument.</transla
     </message>
     <message>
         <source>Error loading page: %1</source>
-        <translation>Ett fel inträffade när sidan laddades: %1</translation>
+        <translation>Erro ao cargar páxina: %1</translation>
     </message>
     <message>
         <source>Download PDF Document: would you prefer to download the PDF file or add it to the current OpenBoard document?</source>
-        <translation type="unfinished"></translation>
+        <translation>Descargar documento PDF: prefererías descargar o arquivo PDF ou engadilo ao documento actual de OpenBoard? </translation>
     </message>
 </context>
 <context>
     <name>WBWebView</name>
     <message>
         <source>Open in New Tab</source>
-        <translation>Öppna i ny flik</translation>
+        <translation>Abrir en nova lapela</translation>
     </message>
 </context>
 <context>
     <name>YouTubePublishingDialog</name>
     <message>
         <source>Publish Podcast to YouTube</source>
-        <translation>Publicera Podcast på YouTube</translation>
+        <translation>Publicar Podcast en YouTube</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivning</translation>
+        <translation>Descrición</translation>
     </message>
     <message>
         <source>Keywords</source>
-        <translation>Nyckelord</translation>
+        <translation>Palabras clave</translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Kategori</translation>
+        <translation>Categoría</translation>
     </message>
     <message>
         <source>YouTube Username</source>
-        <translation>Användarnamn på YouTube</translation>
+        <translation>Nome de usuario de YouTube</translation>
     </message>
     <message>
         <source>YouTube Password</source>
-        <translation>Lösenord på YouTube</translation>
+        <translation>Contrasinal de Youtube</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -2425,111 +2419,111 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt;&quot;&gt;By clicking &apos;Upload,&apos; you certify that you own all rights to the content or that you are authorized by the owner to make the content publicly available on YouTube, and that it otherwise complies with the YouTube Terms of Service located at &lt;/span&gt;&lt;a href=&quot;http://www.youtube.com/t/terms&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.youtube.com/t/terms&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>OpenBoard</source>
-        <translation type="unfinished">Öppna Sankoré</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt;&quot;&gt;Ao facer clic en &apos;Descargar&apos; vostede certifica que posue tódolos dereitos sobre o contido ou que está autorizado por o propietario a publicar o contido en YouTube, e que éste cumple cos termos de servicio de YouTube que aparecen en&lt;/span&gt;&lt;a href=&quot;http://www.youtube.com/t/terms&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.youtube.com/t/terms&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Restore credentials on reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Restablece as credenciais ao reiniciar</translation>
+    </message>
+    <message>
+        <source>OpenBoard</source>
+        <translation>OpenBoard</translation>
     </message>
 </context>
 <context>
     <name>brushProperties</name>
     <message>
         <source>On Light Background</source>
-        <translation>På ljus bakgrund</translation>
+        <translation>Sobre fondo claro</translation>
     </message>
     <message>
         <source>On Dark Background</source>
-        <translation>På mörk bakgrund</translation>
+        <translation>Sobre fondo escuro</translation>
     </message>
     <message>
         <source>Opacity</source>
-        <translation>Genomskinlighet</translation>
+        <translation>Opacidade</translation>
     </message>
     <message>
         <source>Line Width</source>
-        <translation>Linjebredd</translation>
+        <translation>Ancho de liña</translation>
     </message>
     <message>
         <source>Medium</source>
-        <translation>Medium</translation>
+        <translation>Medio</translation>
     </message>
     <message>
         <source>Strong</source>
-        <translation>Stark</translation>
+        <translation>Forte</translation>
     </message>
     <message>
         <source>Fine</source>
-        <translation>Fin</translation>
+        <translation>Fino</translation>
     </message>
     <message>
         <source>Pen is Pressure Sensitive</source>
-        <translation>Pennan är tryckkänslig</translation>
+        <translation>O bolígrafo é sensible á presión</translation>
     </message>
     <message>
         <source>Show preview circle from</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar vista previa do círculo de</translation>
     </message>
     <message>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
     <name>capturePublishingDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation>E-post</translation>
+        <translation>Correo electrónico</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation>Författare</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation>Beskrivning</translation>
+        <translation>Descrición</translation>
     </message>
 </context>
 <context>
     <name>documents</name>
     <message>
         <source>OpenBoard Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Documentos OpenBoard</translation>
     </message>
 </context>
 <context>
     <name>preferencesDialog</name>
     <message>
         <source>Preferences</source>
-        <translation>Inställningar</translation>
+        <translation>Preferencias</translation>
     </message>
     <message>
         <source>version : …</source>
-        <translation>version : …</translation>
+        <translation>versión : …</translation>
     </message>
     <message>
         <source>Default Settings</source>
-        <translation>Grundinställningar</translation>
+        <translation>Configuración predeterminada</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Stäng</translation>
+        <translation>Pechar</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation>Visa</translation>
+        <translation>Mostrar</translation>
     </message>
     <message>
         <source>Internet</source>
@@ -2537,174 +2531,170 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Show Page with External Browser</source>
-        <translation>Visa sida med extern webläsare</translation>
+        <translation>Mostrar páxina con explorador externo</translation>
     </message>
     <message>
         <source>Home Page:</source>
-        <translation>Startsida:</translation>
+        <translation>Páxina de inicio:</translation>
     </message>
     <message>
         <source>Virtual Keyboard</source>
-        <translation>Virtuellt tangentbord</translation>
+        <translation>Teclado virtual</translation>
     </message>
     <message>
         <source>Keyboard button size:</source>
-        <translation type="vanished">Storlek på tangentbordet knappar:</translation>
+        <translation type="vanished">Tamaño das teclas do teclado:</translation>
     </message>
     <message>
         <source>Toolbar</source>
-        <translation>Verktygsfält</translation>
+        <translation>Barra de ferramentas</translation>
     </message>
     <message>
         <source>Positioned at the Top (recommended for tablets)</source>
-        <translation>Placerad högst upp (rekommenderas för läsplattor)</translation>
+        <translation>Colocar na parte superior (recomendado para computadores tipo tablet)</translation>
     </message>
     <message>
         <source>Positioned at the Bottom (recommended for white boards)</source>
-        <translation>Placerad längst ner (rekommenderas för whiteboardtavla)</translation>
+        <translation>Colocar na parte inferior (recomendado para encerados blancos)</translation>
     </message>
     <message>
         <source>Display Text Under Button</source>
-        <translation>Visa text under knapp</translation>
+        <translation>Mostrar texto debaixo do botón</translation>
     </message>
     <message>
         <source>Stylus Palette</source>
-        <translation>Pekpennans palett</translation>
+        <translation>Paleta do lápiz</translation>
     </message>
     <message>
         <source>Horizontal</source>
-        <translation>Horisontal</translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
         <source>Vertical</source>
-        <translation>Vertikal</translation>
+        <translation>Vertical</translation>
     </message>
     <message>
         <source>Pen</source>
-        <translation>Penna</translation>
+        <translation>Bolígrafo</translation>
     </message>
     <message>
         <source>Marker</source>
-        <translation>Markör</translation>
+        <translation>Marcador</translation>
     </message>
     <message>
         <source>About</source>
-        <translation>Om</translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <source>Software Update</source>
-        <translation>Uppdatering av mjukvara</translation>
+        <translation>Actualización do software</translation>
     </message>
     <message>
         <source>Check software update at launch</source>
-        <translation>Kontrollera programuppdateringar vid start av programmet</translation>
+        <translation>Comprobar se hai actualizacións do software ao iniciarse</translation>
     </message>
     <message>
         <source>Licences</source>
-        <translation>Licenser</translation>
+        <translation>Licenzas</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation>Nätverk</translation>
+        <translation>Rede</translation>
     </message>
     <message>
         <source>Show internal web page content on secondary screen or projector</source>
-        <translation>Visa innehåll för intern webbsida på den sekundära skärmen eller projektor</translation>
+        <translation>Mostrar o contido da páxina web nun monitor secundario ou proxector</translation>
     </message>
     <message>
         <source>Multi display</source>
-        <translation>Visa flera</translation>
+        <translation>Pantalla múltiple</translation>
     </message>
     <message>
         <source>Swap control display and view display</source>
-        <translation>Byt kontrollskärm och visa skärm</translation>
+        <translation>Intercambiar control de pantalla e vista de pantalla</translation>
     </message>
     <message>
         <source>Mode</source>
-        <translation>Läge</translation>
+        <translation>Modalidade</translation>
     </message>
     <message>
         <source>Mode to start in:</source>
-        <translation>Startläge</translation>
+        <translation>Comenzar en modalidade :</translation>
     </message>
     <message>
         <source>Board</source>
-        <translation>Tavla</translation>
+        <translation>Encerado</translation>
     </message>
     <message>
         <source>Desktop</source>
-        <translation>Skrivbord</translation>
+        <translation>Escritorio</translation>
     </message>
     <message>
         <source>Proxy User:</source>
-        <translation>Proxy användare:</translation>
+        <translation>Nome de usuario Proxy:</translation>
     </message>
     <message>
         <source>Pass:</source>
-        <translation>Lösenord:</translation>
+        <translation>Contrasinal:</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Poäng</translation>
+        <translation>Créditos</translation>
     </message>
     <message>
         <source>Open-Sankoré Importer</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar de Open-Sankoré</translation>
     </message>
     <message>
         <source>Check if Open-Sankoré data could be imported at launch</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprobe se os datos de Open-Sankoré se poden importar al iniciar</translation>
     </message>
     <message>
         <source>Use system keyboard (recommended)</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar o teclado do sistema (recomendado)</translation>
     </message>
     <message>
         <source>Built-in virtual keyboard button size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño do botón do teclado virtual integrado</translation>
     </message>
     <message>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuadrícula</translation>
     </message>
     <message>
         <source>On Dark Background</source>
-        <translation type="unfinished">På mörk bakgrund</translation>
+        <translation>Sobre fondo escuro</translation>
     </message>
     <message>
         <source>Opacity</source>
-        <translation type="unfinished">Genomskinlighet</translation>
+        <translation>Opacidade</translation>
     </message>
     <message>
         <source>On Light Background</source>
-        <translation type="unfinished">På ljus bakgrund</translation>
-    </message>
-    <message>
-        <source>Swap first and second view displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Sobre fondo claro</translation>
     </message>
 </context>
 <context>
     <name>trapFlashDialog</name>
     <message>
         <source>Trap flash</source>
-        <translation>Lagra flash</translation>
+        <translation>Capturar elemento flash</translation>
     </message>
     <message>
         <source>Select a flash to trap</source>
-        <translation>Välj en flash att lagra</translation>
+        <translation>Seleccionar un flash para capturar</translation>
     </message>
     <message>
         <source>about:blank</source>
-        <translation>om:tom</translation>
+        <translation>about:blank</translation>
     </message>
     <message>
         <source>Application name</source>
-        <translation>Applikationens namn</translation>
+        <translation>Nome da aplicación</translation>
     </message>
     <message>
         <source>Create Application</source>
-        <translation>Skapa applikation</translation>
+        <translation>Crear aplicación</translation>
     </message>
 </context>
 </TS>

@@ -124,8 +124,17 @@ win32 {
    LIBS += -lGdi32
    LIBS += -lAdvApi32
    LIBS += -lOle32
-   LIBS += -llept
-   LIBS += -ltesseract
+   #LIBS += -llept
+   #LIBS += -ltesseract
+
+    CONFIG(debug, debug|release) {
+       LIBS +="-L$$THIRD_PARTY_PATH/lib" -llibleptd
+       LIBS +="-L$$THIRD_PARTY_PATH/lib" -llibtesseract304d
+    }
+    CONFIG(release, debug|release) {
+       LIBS +="-L$$THIRD_PARTY_PATH/lib" -lliblept
+       LIBS +="-L$$THIRD_PARTY_PATH/lib" -llibtesseract304
+    }
 
    RC_FILE = resources/win/OpenBoard.rc
    CONFIG += axcontainer
@@ -976,7 +985,7 @@ DISTFILES += \
     resources/images/z_layer_down.svg \
     resources/images/z_layer_up.svg \
     resources/images/toolbar/mediaFloppy.png \
-    resources/images/toolbar/floppy.png
+    resources/images/toolbar/floppy.png \
     resources/images/moveDown.svg \
     resources/images/moveDownDisabled.svg
 

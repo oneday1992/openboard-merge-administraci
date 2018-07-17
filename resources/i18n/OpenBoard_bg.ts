@@ -4,1588 +4,908 @@
 <context>
     <name>BlackoutWidget</name>
     <message>
-        <location filename="../forms/blackoutWidget.ui" line="156"/>
         <source>Click to Return to Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Натисни, за да се върнеш към приложението</translation>
     </message>
 </context>
 <context>
     <name>DownloadDialog</name>
     <message>
-        <location filename="../../src/web/browser/downloads.ui" line="13"/>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтегляни файлове</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/downloads.ui" line="33"/>
         <source>Clean Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Почистване</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/downloads.ui" line="55"/>
         <source>0 Items</source>
-        <translation type="unfinished"></translation>
+        <translation>0 обекта</translation>
     </message>
 </context>
 <context>
     <name>DownloadItem</name>
     <message>
-        <location filename="../../src/web/browser/downloaditem.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/downloaditem.ui" line="44"/>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Име на файла</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/downloaditem.ui" line="91"/>
         <source>Try Again</source>
-        <translation type="unfinished"></translation>
+        <translation>Опитай отново</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/downloaditem.ui" line="98"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/downloaditem.ui" line="105"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори</translation>
     </message>
 </context>
 <context>
     <name>IntranetPodcastPublishingDialog</name>
     <message>
-        <location filename="../forms/intranetPodcastPublishingDialog.ui" line="17"/>
         <source>Publish Podcast to YouTube</source>
-        <translation type="unfinished"></translation>
+        <translation>Публикувай подкаст в YouTube</translation>
     </message>
     <message>
-        <location filename="../forms/intranetPodcastPublishingDialog.ui" line="28"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглавие</translation>
     </message>
     <message>
-        <location filename="../forms/intranetPodcastPublishingDialog.ui" line="42"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../forms/intranetPodcastPublishingDialog.ui" line="65"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Автор</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../forms/mainWindow.ui" line="14"/>
-        <location filename="../forms/mainWindow.ui" line="646"/>
-        <location filename="../forms/mainWindow.ui" line="649"/>
-        <source>OpenBoard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="38"/>
-        <location filename="../forms/mainWindow.ui" line="2476"/>
-        <source>Canvas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="76"/>
-        <location filename="../forms/mainWindow.ui" line="586"/>
         <source>Board</source>
-        <translation type="unfinished"></translation>
+        <translation>Дъска</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="122"/>
-        <location filename="../forms/mainWindow.ui" line="331"/>
         <source>Web</source>
-        <translation type="unfinished"></translation>
+        <translation>Мрежа</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="168"/>
-        <location filename="../forms/mainWindow.ui" line="316"/>
         <source>Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Документи</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="229"/>
-        <location filename="../forms/mainWindow.ui" line="232"/>
         <source>Stylus</source>
-        <translation type="unfinished"></translation>
+        <translation>Писалка</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="235"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="247"/>
         <source>Backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Фонове</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="250"/>
         <source>Change Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Смени фона</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="259"/>
         <source>Undo</source>
-        <translation type="unfinished"></translation>
+        <translation>Отмени последното действие</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="262"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="271"/>
         <source>Redo</source>
-        <translation type="unfinished"></translation>
+        <translation>Преработване</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="274"/>
         <source>Ctrl+Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="283"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Предишен</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="286"/>
-        <location filename="../forms/mainWindow.ui" line="511"/>
         <source>Previous Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Предишна страница</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="289"/>
         <source>PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation>PgUp</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="298"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Следващ</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="301"/>
-        <location filename="../forms/mainWindow.ui" line="526"/>
         <source>Next Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Следваща страница</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="304"/>
         <source>PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation>PgDown</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="319"/>
         <source>Manage Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Управление на документи</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="322"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="334"/>
         <source>Web Browsing</source>
-        <translation type="unfinished"></translation>
+        <translation>Търсене в мрежата</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="337"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="352"/>
-        <location filename="../forms/mainWindow.ui" line="367"/>
-        <location filename="../forms/mainWindow.ui" line="382"/>
-        <location filename="../forms/mainWindow.ui" line="1354"/>
-        <location filename="../forms/mainWindow.ui" line="1855"/>
-        <location filename="../forms/mainWindow.ui" line="2404"/>
-        <location filename="../forms/mainWindow.ui" line="2424"/>
-        <source>Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="355"/>
-        <source>Small Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="370"/>
-        <source>Medium Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="385"/>
-        <source>Large Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="394"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Изход</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="397"/>
-        <source>Quit OpenBoard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="415"/>
-        <location filename="../forms/mainWindow.ui" line="433"/>
-        <location filename="../forms/mainWindow.ui" line="448"/>
-        <location filename="../forms/mainWindow.ui" line="1236"/>
-        <source>Eraser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="418"/>
-        <source>Smalle Eraser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="436"/>
-        <source>Medium Eraser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="451"/>
-        <source>Large Eraser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="460"/>
-        <location filename="../forms/mainWindow.ui" line="463"/>
-        <location filename="../forms/mainWindow.ui" line="472"/>
-        <location filename="../forms/mainWindow.ui" line="481"/>
-        <location filename="../forms/mainWindow.ui" line="490"/>
-        <location filename="../forms/mainWindow.ui" line="499"/>
-        <location filename="../forms/mainWindow.ui" line="2416"/>
-        <source>Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="508"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="514"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>На ляво</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="523"/>
         <source>Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Напред</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="529"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>На дясно</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="538"/>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Презареждане</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="541"/>
-        <source>Reload Current Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="550"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>Home</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="553"/>
-        <source>Load Home Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="562"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Отметки</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="565"/>
-        <source>Show Bookmarks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="574"/>
         <source>Bookmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Отметка</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="577"/>
-        <source>Add Bookmark</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="589"/>
-        <source>Display Board</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="592"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+B</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="604"/>
-        <location filename="../forms/mainWindow.ui" line="2488"/>
         <source>Erase</source>
-        <translation type="unfinished"></translation>
+        <translation>Заличи</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="607"/>
-        <source>Erase Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="616"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Опции</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="619"/>
-        <source>Display Preferences</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="631"/>
         <source>Library</source>
-        <translation type="unfinished"></translation>
+        <translation>Библиотека</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="634"/>
-        <source>Show Library</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="637"/>
         <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="658"/>
         <source>Show Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Покажи десктоп</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="661"/>
-        <source>Show Computer Desktop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="664"/>
-        <source>Ctrl+Shift+H</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="673"/>
         <source>Bigger</source>
-        <translation type="unfinished"></translation>
+        <translation>По-голям</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="676"/>
-        <location filename="../forms/mainWindow.ui" line="1309"/>
-        <source>Zoom In</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="679"/>
         <source>Ctrl++</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl++</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="688"/>
         <source>Smaller</source>
-        <translation type="unfinished"></translation>
+        <translation>По-малък</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="691"/>
-        <location filename="../forms/mainWindow.ui" line="1322"/>
-        <source>Zoom Out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="694"/>
         <source>Ctrl+-</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="703"/>
         <source>New Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Нова папка</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="706"/>
-        <source>Create a New Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="715"/>
         <source>New Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Нов Документ</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="718"/>
-        <source>Create a New Document</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="727"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Вмъкване</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="730"/>
-        <source>Import a Document</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="739"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Екпортиране</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="742"/>
-        <source>Export a Document</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="751"/>
         <source>Open in Board</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори в режим на дъска</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="754"/>
-        <source>Open Page in Board</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="757"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="766"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>Копирай</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="769"/>
-        <source>Duplicate Selected Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="778"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтрий</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="781"/>
-        <source>Delete Selected Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="784"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation>Del</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="793"/>
         <source>Add to Working Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави в работен документ</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="796"/>
         <source>Add Selected Content to Open Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави избраното в отворен документ</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="805"/>
-        <location filename="../forms/mainWindow.ui" line="1201"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="808"/>
-        <source>Add Content to Document</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="817"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Преименувай</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="820"/>
-        <source>Rename Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="832"/>
-        <location filename="../forms/mainWindow.ui" line="847"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Инструменти</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="835"/>
-        <location filename="../forms/mainWindow.ui" line="850"/>
-        <source>Display Tools</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="865"/>
         <source>Multi Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Много екрани</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="877"/>
-        <location filename="../forms/mainWindow.ui" line="880"/>
         <source>Wide Size (16/9)</source>
-        <translation type="unfinished"></translation>
+        <translation>Широк размер (16/9)</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="883"/>
-        <source>Use Document Wide Size (16/9)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="898"/>
-        <location filename="../forms/mainWindow.ui" line="901"/>
         <source>Regular Size (4/3)</source>
-        <translation type="unfinished"></translation>
+        <translation>Нормален размер (4/3)</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="904"/>
-        <source>Use Document Regular Size (4/3)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="922"/>
-        <location filename="../forms/mainWindow.ui" line="925"/>
         <source>Custom Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер по избор</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="928"/>
-        <source>Use Custom Document Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="940"/>
         <source>Stop Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Спри зареждането</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="943"/>
-        <source>Stop Loading Web Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="952"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Изрежи</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="964"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Копирай</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="976"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Постави</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="992"/>
         <source>Sleep</source>
-        <translation type="unfinished"></translation>
+        <translation>Заспиване</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="995"/>
-        <source>Put Presentation to Sleep</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1008"/>
         <source>Virtual Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Виртуална клавиатура</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1011"/>
-        <source>Display Virtual Keyboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1024"/>
-        <location filename="../forms/mainWindow.ui" line="1030"/>
         <source>Plain Light Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Обикновен Светъл фон</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1027"/>
-        <location filename="../forms/mainWindow.ui" line="1046"/>
-        <location filename="../forms/mainWindow.ui" line="1065"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Светъл</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1043"/>
-        <location filename="../forms/mainWindow.ui" line="1049"/>
         <source>Grid Light Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Светъл фон - решетка</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1062"/>
-        <location filename="../forms/mainWindow.ui" line="1068"/>
-        <source>Ruled Light Background</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1081"/>
-        <location filename="../forms/mainWindow.ui" line="1087"/>
         <source>Plain Dark Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Обикновен тъмен фон</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1084"/>
-        <location filename="../forms/mainWindow.ui" line="1103"/>
-        <location filename="../forms/mainWindow.ui" line="1122"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Тъмен</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1100"/>
-        <location filename="../forms/mainWindow.ui" line="1106"/>
         <source>Grid Dark Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Тъмен фон - решетка</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1119"/>
-        <location filename="../forms/mainWindow.ui" line="1125"/>
-        <source>Ruled Dark Background</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1137"/>
         <source>Podcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Подкаст</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1140"/>
-        <source>Record Presentation to Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1153"/>
         <source>Record</source>
-        <translation type="unfinished"></translation>
+        <translation>Запиши</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1156"/>
         <source>Start Screen Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Започни записване на екрана</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1165"/>
         <source>Erase Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтрий обектите</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1168"/>
-        <source>Erase All Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1177"/>
-        <location filename="../forms/mainWindow.ui" line="1613"/>
         <source>Erase Annotations</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтрий анотациите</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1180"/>
-        <source>Erase All Annotations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1189"/>
         <source>Clear Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Изчисти страницата</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1192"/>
-        <source>Clear All Elements</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1217"/>
         <source>Pen</source>
-        <translation type="unfinished"></translation>
+        <translation>Химикалка</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1220"/>
-        <source>Annotate Document</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1223"/>
-        <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1239"/>
-        <source>Erase Annotation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1242"/>
-        <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1255"/>
-        <source>Marker</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1258"/>
-        <source>Highlight </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1261"/>
-        <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1274"/>
-        <source>Selector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1277"/>
-        <source>Select And Modify Objects</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1280"/>
-        <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1293"/>
-        <source>Hand</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1296"/>
-        <source>Scroll Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1335"/>
-        <source>Laser Pointer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1338"/>
-        <source>Virtual Laser Pointer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1341"/>
-        <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1357"/>
-        <location filename="../forms/mainWindow.ui" line="1858"/>
-        <source>Draw Lines</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1360"/>
-        <source>Ctrl+J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1373"/>
-        <source>Text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1376"/>
-        <source>Write Text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1379"/>
-        <source>Ctrl+K</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1392"/>
-        <source>Capture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1395"/>
-        <location filename="../forms/mainWindow.ui" line="1555"/>
-        <source>Capture Part of the Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1404"/>
-        <location filename="../forms/mainWindow.ui" line="1407"/>
-        <source>Add To Current Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1410"/>
-        <source>Add Item To Current Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1419"/>
-        <source>Add To New Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1422"/>
-        <source>Add Item To New Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1431"/>
-        <source>Add To Library</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1434"/>
-        <source>Add Item To Library</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1446"/>
-        <source>Pages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1449"/>
-        <location filename="../forms/mainWindow.ui" line="1461"/>
-        <source>Create a New Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1458"/>
-        <source>New Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1470"/>
-        <source>Duplicate Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1473"/>
-        <source>Duplicate the Current Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1482"/>
-        <source>Import Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1485"/>
-        <source>Import an External Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1500"/>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1503"/>
-        <source>Pause Podcast Recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1512"/>
-        <source>Podcast Config</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1515"/>
-        <source>Configure Podcast Recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1524"/>
-        <source>Flash Trap</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1527"/>
-        <source>Trap Flash Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1540"/>
-        <source>Web Trap</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1543"/>
-        <source>Trap Web Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1552"/>
-        <source>Custom Capture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1564"/>
-        <source>Window Capture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1567"/>
-        <source>Capture a Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1579"/>
-        <source>Embed Web Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1582"/>
-        <source>Capture Embeddable Web Content</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1595"/>
-        <source>Show on Display</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1598"/>
-        <source>Show Main Screen on Display Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1616"/>
-        <source>Erase all Annotations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1625"/>
-        <source>eduMedia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1628"/>
-        <source>Import eduMedia simulation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1637"/>
         <source>Check Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Провери за обновления</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1646"/>
-        <source>Hide OpenBoard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1649"/>
-        <source>Hide OpenBoard Application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1652"/>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Натиснете Ctrl+H</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1665"/>
+        <source>Eraser</source>
+        <translation>Гума</translation>
+    </message>
+    <message>
+        <source>Marker</source>
+        <translation>Маркер</translation>
+    </message>
+    <message>
+        <source>Selector</source>
+        <translation>Инструмент за маркиране</translation>
+    </message>
+    <message>
+        <source>Hand</source>
+        <translation>Ръка</translation>
+    </message>
+    <message>
+        <source>Zoom In</source>
+        <translation>Приближавам</translation>
+    </message>
+    <message>
+        <source>Zoom Out</source>
+        <translation>Отдалечавам</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Линия</translation>
+    </message>
+    <message>
+        <source>Small Line</source>
+        <translation>Малка линия</translation>
+    </message>
+    <message>
+        <source>Medium Line</source>
+        <translation>Средна линия</translation>
+    </message>
+    <message>
+        <source>Large Line</source>
+        <translation>Голяма линия</translation>
+    </message>
+    <message>
+        <source>Smalle Eraser</source>
+        <translation>Малка гума</translation>
+    </message>
+    <message>
+        <source>Medium Eraser</source>
+        <translation>средна гума</translation>
+    </message>
+    <message>
+        <source>Large Eraser</source>
+        <translation>Голяма гума</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation>Цвят</translation>
+    </message>
+    <message>
+        <source>Reload Current Page</source>
+        <translation>Презареди текущата страница</translation>
+    </message>
+    <message>
+        <source>Load Home Page</source>
+        <translation>Зареди началната страница</translation>
+    </message>
+    <message>
+        <source>Show Bookmarks</source>
+        <translation>Покажи отметките</translation>
+    </message>
+    <message>
+        <source>Add Bookmark</source>
+        <translation>Добави отметка</translation>
+    </message>
+    <message>
+        <source>Display Board</source>
+        <translation>Покажи дъската</translation>
+    </message>
+    <message>
+        <source>Erase Content</source>
+        <translation>Изтрий съдържанието</translation>
+    </message>
+    <message>
+        <source>Display Preferences</source>
+        <translation>Покажи опциите</translation>
+    </message>
+    <message>
+        <source>Show Library</source>
+        <translation>Покажи библиотека</translation>
+    </message>
+    <message>
+        <source>Show Computer Desktop</source>
+        <translation>Покажи десктоп</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+H</source>
+        <translation>Натиснете Ctrl+Shift+W</translation>
+    </message>
+    <message>
+        <source>Create a New Folder</source>
+        <translation>Създай нова папка</translation>
+    </message>
+    <message>
+        <source>Create a New Document</source>
+        <translation>Създай нов документ</translation>
+    </message>
+    <message>
+        <source>Import a Document</source>
+        <translation>Вмъкни документ</translation>
+    </message>
+    <message>
+        <source>Export a Document</source>
+        <translation>Експортирай документ</translation>
+    </message>
+    <message>
+        <source>Open Page in Board</source>
+        <translation>Отвори страница в режим Дъска</translation>
+    </message>
+    <message>
+        <source>Duplicate Selected Content</source>
+        <translation>Дублирай избраното съдържание</translation>
+    </message>
+    <message>
+        <source>Delete Selected Content</source>
+        <translation>Изтрий избраното съдържание</translation>
+    </message>
+    <message>
+        <source>Add Content to Document</source>
+        <translation>Добави съдържане към документа</translation>
+    </message>
+    <message>
+        <source>Rename Content</source>
+        <translation>Преименувай съдържанието</translation>
+    </message>
+    <message>
+        <source>Display Tools</source>
+        <translation>Покажи инструменти</translation>
+    </message>
+    <message>
+        <source>Use Document Wide Size (16/9)</source>
+        <translation>Широк формат на документа (16/9)</translation>
+    </message>
+    <message>
+        <source>Use Document Regular Size (4/3)</source>
+        <translation>Нормален формат на документа (4/3)</translation>
+    </message>
+    <message>
+        <source>Use Custom Document Size</source>
+        <translation>Формат на документа по избор</translation>
+    </message>
+    <message>
+        <source>Stop Loading Web Page</source>
+        <translation>Спиране на зареждането на страницата</translation>
+    </message>
+    <message>
+        <source>Put Presentation to Sleep</source>
+        <translation>Презентация в режим на сън</translation>
+    </message>
+    <message>
+        <source>Display Virtual Keyboard</source>
+        <translation>Покажи виртуалната клавиатура</translation>
+    </message>
+    <message>
+        <source>Record Presentation to Video</source>
+        <translation>Запиши презентацията като видео</translation>
+    </message>
+    <message>
+        <source>Erase All Items</source>
+        <translation>Изтрий всички обекти</translation>
+    </message>
+    <message>
+        <source>Erase All Annotations</source>
+        <translation>Изтрий всички анотации</translation>
+    </message>
+    <message>
+        <source>Clear All Elements</source>
+        <translation>Изчисти всички елементи</translation>
+    </message>
+    <message>
+        <source>Annotate Document</source>
+        <translation>Анотация на документ</translation>
+    </message>
+    <message>
+        <source>Ctrl+I</source>
+        <translation>Натиснете Ctrl+I</translation>
+    </message>
+    <message>
+        <source>Erase Annotation</source>
+        <translation>Изтрий анотация</translation>
+    </message>
+    <message>
+        <source>Ctrl+E</source>
+        <translation>Натиснете Ctrl+E</translation>
+    </message>
+    <message>
+        <source>Highlight </source>
+        <translation>Подчертаване</translation>
+    </message>
+    <message>
+        <source>Ctrl+M</source>
+        <translation>Натиснете Ctrl+M</translation>
+    </message>
+    <message>
+        <source>Select And Modify Objects</source>
+        <translation>Избиране и променяне на обекти</translation>
+    </message>
+    <message>
+        <source>Ctrl+F</source>
+        <translation>Натиснете Ctrl+F</translation>
+    </message>
+    <message>
+        <source>Scroll Page</source>
+        <translation>Превъртане на страницата</translation>
+    </message>
+    <message>
+        <source>Laser Pointer</source>
+        <translation>Лазерна показалка</translation>
+    </message>
+    <message>
+        <source>Virtual Laser Pointer</source>
+        <translation>Виртуална лазерна показалка</translation>
+    </message>
+    <message>
+        <source>Ctrl+G</source>
+        <translation>Натиснете Ctrl+G</translation>
+    </message>
+    <message>
+        <source>Draw Lines</source>
+        <translation>Рисуване на линии</translation>
+    </message>
+    <message>
+        <source>Ctrl+J</source>
+        <translation>Натиснете Ctrl+J</translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation>Текст</translation>
+    </message>
+    <message>
+        <source>Write Text</source>
+        <translation>Въведи текст</translation>
+    </message>
+    <message>
+        <source>Ctrl+K</source>
+        <translation>Натиснете Ctrl+K</translation>
+    </message>
+    <message>
+        <source>Capture</source>
+        <translation>Записване</translation>
+    </message>
+    <message>
+        <source>Add To Current Page</source>
+        <translation>Добави към текущата страница</translation>
+    </message>
+    <message>
+        <source>Add Item To Current Page</source>
+        <translation>Добави обекта на настоящата страница</translation>
+    </message>
+    <message>
+        <source>Add To New Page</source>
+        <translation>Добави на нова страница</translation>
+    </message>
+    <message>
+        <source>Add Item To New Page</source>
+        <translation>Добави обекта на нова страница</translation>
+    </message>
+    <message>
+        <source>Add To Library</source>
+        <translation>Добави в библиотека</translation>
+    </message>
+    <message>
+        <source>Add Item To Library</source>
+        <translation>Добави обекта в галерията</translation>
+    </message>
+    <message>
+        <source>Pages</source>
+        <translation>Страници</translation>
+    </message>
+    <message>
+        <source>Create a New Page</source>
+        <translation>Създай нова страница</translation>
+    </message>
+    <message>
+        <source>New Page</source>
+        <translation>Нова страница</translation>
+    </message>
+    <message>
+        <source>Duplicate Page</source>
+        <translation>Дублирай страница</translation>
+    </message>
+    <message>
+        <source>Duplicate the Current Page</source>
+        <translation>Дублирай текущата страница</translation>
+    </message>
+    <message>
+        <source>Import Page</source>
+        <translation>Вмъкни страница</translation>
+    </message>
+    <message>
+        <source>Import an External Page</source>
+        <translation>Вмъкни външна страница</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Пауза</translation>
+    </message>
+    <message>
+        <source>Pause Podcast Recording</source>
+        <translation>Пауза на записа на подкаст</translation>
+    </message>
+    <message>
+        <source>Podcast Config</source>
+        <translation>Конфигурации на подкаста</translation>
+    </message>
+    <message>
+        <source>Configure Podcast Recording</source>
+        <translation>Конфигурации на записа на подкаст</translation>
+    </message>
+    <message>
+        <source>Flash Trap</source>
+        <translation>Инструмент за Flash съдържание</translation>
+    </message>
+    <message>
+        <source>Trap Flash Content</source>
+        <translation>Съдържание на Flash</translation>
+    </message>
+    <message>
+        <source>Web Trap</source>
+        <translation>Инструмент за съдържание от мрежата</translation>
+    </message>
+    <message>
+        <source>Trap Web Content</source>
+        <translation>Съдържание от мрежата</translation>
+    </message>
+    <message>
+        <source>Capture Part of the Screen</source>
+        <translation>Снимане на част от екрана</translation>
+    </message>
+    <message>
+        <source>Custom Capture</source>
+        <translation>Снимане по избор</translation>
+    </message>
+    <message>
+        <source>Capture a Window</source>
+        <translation>Снимане на прозорец</translation>
+    </message>
+    <message>
+        <source>Embed Web Content</source>
+        <translation>Вмъкване на съдържание от мрежата</translation>
+    </message>
+    <message>
+        <source>Capture Embeddable Web Content</source>
+        <translation>Снимане на съдържание от мрежата</translation>
+    </message>
+    <message>
+        <source>Show Main Screen on Display Screen</source>
+        <translation>Покажи главния екран </translation>
+    </message>
+    <message>
+        <source>Erase all Annotations</source>
+        <translation>Изтрий всички анотации</translation>
+    </message>
+    <message>
+        <source>eduMedia</source>
+        <translation>eduMedia</translation>
+    </message>
+    <message>
+        <source>Import eduMedia simulation</source>
+        <translation>вмъкни eduMedia симулация</translation>
+    </message>
+    <message>
+        <source>Window Capture</source>
+        <translation>Снимане на прозореца</translation>
+    </message>
+    <message>
+        <source>Show on Display</source>
+        <translation>Покажи на екрана</translation>
+    </message>
+    <message>
+        <source>OpenBoard</source>
+        <translation>Отворено-Санкоре</translation>
+    </message>
+    <message>
+        <source>Quit OpenBoard</source>
+        <translation>Излез от Санкоре</translation>
+    </message>
+    <message>
+        <source>Hide OpenBoard</source>
+        <translation>Скрий Санкоре</translation>
+    </message>
+    <message>
+        <source>Hide OpenBoard Application</source>
+        <translation>Скрий приложението Санкоре</translation>
+    </message>
+    <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Пусни</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1668"/>
         <source>Interact with items</source>
-        <translation type="unfinished"></translation>
+        <translation>Работи с обектите</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1677"/>
         <source>Erase Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтрий фона</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1680"/>
         <source>Remove the backgound</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахни фона</translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1689"/>
         <source>Open Tutorial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1692"/>
         <source>Open the tutorial web page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1705"/>
-        <source>Rich Text Editor</source>
+        <source>Ruled Light Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1708"/>
-        <source>Write Rich Text</source>
+        <source>Ruled Dark Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainWindow.ui" line="1721"/>
-        <source>Ellipse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1724"/>
-        <source>Draw an Ellipse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1737"/>
-        <source>Change Filling Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1750"/>
-        <source>Polygon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1753"/>
-        <source>Draw a Polygon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1769"/>
-        <location filename="../forms/mainWindow.ui" line="1772"/>
-        <location filename="../forms/mainWindow.ui" line="1775"/>
-        <source>Drawing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1788"/>
-        <source>Circle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1791"/>
-        <source>Draw a Circle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1804"/>
-        <source>Rectangle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1807"/>
-        <source>Draw a Rectangle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1820"/>
-        <source>Square</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1823"/>
-        <source>Draw a Square</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1839"/>
-        <source>Freehand Drawing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1842"/>
-        <source>Freehand drawing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1871"/>
-        <source>Regular Shapes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1874"/>
-        <source>Draw a regular shape</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1887"/>
-        <source>Regular Triangle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1890"/>
-        <source>Draw a regular triangle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1903"/>
-        <source>Regular Square</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1906"/>
-        <source>Draw a regular square</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1919"/>
-        <source>Regular Pentagon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1922"/>
-        <source>Draw a regular pentagon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1935"/>
-        <source>Regular Hexagon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1938"/>
-        <source>Draw a regular hexagon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1951"/>
-        <source>Regular Heptagon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1954"/>
-        <source>Draw a regular heptagon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1967"/>
-        <source>Regular Octogon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1970"/>
-        <source>Draw a regular octogon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1979"/>
-        <source>Stroke Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1982"/>
-        <source>Stroke properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1991"/>
-        <source>Filling Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="1994"/>
-        <source>Filling properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2006"/>
-        <location filename="../forms/mainWindow.ui" line="2021"/>
-        <location filename="../forms/mainWindow.ui" line="2036"/>
-        <source>Stroke Thickness</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2009"/>
-        <location filename="../forms/mainWindow.ui" line="2024"/>
-        <location filename="../forms/mainWindow.ui" line="2039"/>
-        <source>Stroke thickness</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2051"/>
-        <source>Stroke Style Solid Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2054"/>
-        <source>Stroke style : Solid Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2066"/>
-        <source>Stroke Style Dot Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2069"/>
-        <source>Stroke style : Dot Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2082"/>
-        <location filename="../forms/mainWindow.ui" line="2085"/>
-        <source>Filling Style : Transparent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2098"/>
-        <location filename="../forms/mainWindow.ui" line="2101"/>
-        <source>Filling Style : Gradient</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2114"/>
-        <location filename="../forms/mainWindow.ui" line="2117"/>
-        <source>Filling Style : Full</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2130"/>
-        <location filename="../forms/mainWindow.ui" line="2133"/>
-        <source>Filling Style : Dense</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2146"/>
-        <location filename="../forms/mainWindow.ui" line="2149"/>
-        <source>Filling Style : Diagonal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2161"/>
-        <source>Stroke Style Dot Dash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2164"/>
-        <source>Stroke style : Dot Dash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2177"/>
-        <location filename="../forms/mainWindow.ui" line="2180"/>
-        <source>Align objects</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2193"/>
-        <source>Align Left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2196"/>
-        <source>Align objects to the left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2209"/>
-        <source>Align Center Vertically</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2212"/>
-        <source>Align the center of the objects vertically</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2225"/>
-        <source>Align Right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2228"/>
-        <source>Align objects to the right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2241"/>
-        <source>Align Top</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2244"/>
-        <source>Align objects to the top</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2257"/>
-        <source>Align Center Horizontally</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2260"/>
-        <source>Align the center of the objects horizontally</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2270"/>
-        <source>Align Bottom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2273"/>
-        <source>Align objects to the bottom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2285"/>
-        <location filename="../forms/mainWindow.ui" line="2288"/>
-        <source>End arrow style : Arrow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2300"/>
-        <location filename="../forms/mainWindow.ui" line="2303"/>
-        <source>Start arrow style : Arrow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2315"/>
-        <location filename="../forms/mainWindow.ui" line="2318"/>
-        <source>End arrow style : Round</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2330"/>
-        <location filename="../forms/mainWindow.ui" line="2333"/>
-        <source>Start arrow style : Round</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2345"/>
-        <location filename="../forms/mainWindow.ui" line="2348"/>
-        <source>End arrow style : None</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2360"/>
-        <location filename="../forms/mainWindow.ui" line="2363"/>
-        <source>Start arrow style : None</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2372"/>
-        <source>Arrows Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2375"/>
-        <source>Arrows properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2385"/>
-        <source>Groups</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2388"/>
-        <source>Group items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2407"/>
-        <location filename="../forms/mainWindow.ui" line="2427"/>
-        <source>Specify a custom line width [1-120]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2419"/>
-        <source>Select any color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2436"/>
-        <location filename="../forms/mainWindow.ui" line="2500"/>
-        <source>Save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2439"/>
-        <source>Save Document</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2452"/>
-        <source>OCR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2455"/>
-        <source>Convert Image to Text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2464"/>
-        <location filename="../forms/mainWindow.ui" line="2467"/>
         <source>Reset grid size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2479"/>
-        <source>Canvas (multi-touch)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2491"/>
-        <source>Erase Canvas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/mainWindow.ui" line="2503"/>
-        <source>Save canvas</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PasswordDialog</name>
     <message>
-        <location filename="../../src/web/browser/passworddialog.ui" line="14"/>
         <source>Authentication Required</source>
-        <translation type="unfinished"></translation>
+        <translation>Изисква се проверка за достоверност</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/passworddialog.ui" line="44"/>
         <source>Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Потребителско име:</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/passworddialog.ui" line="54"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Парола:</translation>
     </message>
 </context>
 <context>
     <name>ProxyDialog</name>
     <message>
-        <location filename="../../src/web/browser/proxy.ui" line="14"/>
         <source>Proxy Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка на Proxy</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/proxy.ui" line="27"/>
         <source>Connect to Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Свържи се към Proxy</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/proxy.ui" line="37"/>
         <source>Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Потребителско име:</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/proxy.ui" line="47"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Парола:</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/proxy.ui" line="71"/>
         <source>Save username and password for future use</source>
-        <translation type="unfinished"></translation>
+        <translation>Запомни потребителско име и парола за бъдеща употреба</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/gui/UBThumbnailWidget.cpp" line="861"/>
-        <location filename="../../src/gui/UBThumbnailWidget.cpp" line="983"/>
-        <source>Remove Page</source>
-        <translation type="unfinished"></translation>
+        <source>Element ID = </source>
+        <translation type="vanished">Номер на елемента =</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBThumbnailWidget.cpp" line="861"/>
-        <location filename="../../src/gui/UBThumbnailWidget.cpp" line="983"/>
+        <source>Content is not supported in destination format.</source>
+        <translation type="vanished">Това съдържание не се поддържа вкрайния формат.</translation>
+    </message>
+    <message>
+        <source>Remove Page</source>
+        <translation>Премахни страницата</translation>
+    </message>
+    <message>
         <source>Are you sure you want to remove 1 page from the selected document &apos;%0&apos;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сигурни ли сте ,че искате да премахнете 1 страница от избрания документ &apos;%0&apos;?</translation>
     </message>
 </context>
 <context>
     <name>UBApplication</name>
     <message>
-        <location filename="../../src/core/UBApplication.cpp" line="530"/>
         <source>Page Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Големина на страницата</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBApplication.cpp" line="550"/>
         <source>Podcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Подкаст</translation>
     </message>
 </context>
 <context>
     <name>UBApplicationController</name>
     <message>
-        <location filename="../../src/core/UBApplicationController.cpp" line="342"/>
         <source>Web</source>
-        <translation type="unfinished"></translation>
+        <translation>Мрежа</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBApplicationController.cpp" line="615"/>
-        <source>Update available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/UBApplicationController.cpp" line="615"/>
         <source>New update available, would you go to the web page ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Има ново обновление, ще отидете ли на интернет страницата?</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBApplicationController.cpp" line="621"/>
-        <source>Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/UBApplicationController.cpp" line="621"/>
         <source>No update available</source>
-        <translation type="unfinished"></translation>
+        <translation>Няма нови обновления</translation>
+    </message>
+    <message>
+        <source>Update available</source>
+        <translation>Има нови обновления</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Обновления</translation>
     </message>
 </context>
 <context>
     <name>UBBackgroundPalette</name>
     <message>
-        <location filename="../../src/gui/UBBackgroundPalette.cpp" line="50"/>
         <source>Grid size</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1593,91 +913,76 @@
 <context>
     <name>UBBoardController</name>
     <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="122"/>
+        <source>Downloading content %1 failed</source>
+        <translation>Изтеглянето %1 прекъсна</translation>
+    </message>
+    <message>
+        <source>Download finished</source>
+        <translation>Изтеглянето завърши</translation>
+    </message>
+    <message>
+        <source>Unknown tool type %1</source>
+        <translation>Непознат инструмент %1</translation>
+    </message>
+    <message>
+        <source>Unknown content type %1</source>
+        <translation>Непознато съдържание %1</translation>
+    </message>
+    <message>
+        <source>Add Item</source>
+        <translation>Добави обект</translation>
+    </message>
+    <message>
+        <source>All Supported (%1)</source>
+        <translation>Всички поддържани (%1)</translation>
+    </message>
+    <message>
+        <source>Delete page %1 from document</source>
+        <translation type="vanished">Изтрий страница %1 от документа</translation>
+    </message>
+    <message>
+        <source>Page %1 deleted</source>
+        <translation>Страница %1 изтрита</translation>
+    </message>
+    <message>
+        <source>Add file operation failed: file copying error</source>
+        <translation>Грешка при операцията:грешка при копирането на файл</translation>
+    </message>
+    <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Групирай</translation>
     </message>
     <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="123"/>
         <source>Ungroup</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахни групирането</translation>
     </message>
     <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="459"/>
         <source>Saving document...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="465"/>
         <source>Document has just been saved...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="865"/>
         <source>Deleting page %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="875"/>
-        <source>Page %1 deleted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="1268"/>
-        <source>Downloading content %1 failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="1276"/>
-        <source>Download finished</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="1394"/>
-        <location filename="../../src/board/UBBoardController.cpp" line="1439"/>
-        <location filename="../../src/board/UBBoardController.cpp" line="2456"/>
-        <location filename="../../src/board/UBBoardController.cpp" line="2491"/>
-        <source>Add file operation failed: file copying error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="1599"/>
-        <source>Unknown tool type %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="1654"/>
-        <source>Unknown content type %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="2830"/>
-        <source>Add Item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBBoardController.cpp" line="2832"/>
-        <source>All Supported (%1)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UBBoardPaletteManager</name>
     <message>
-        <location filename="../../src/board/UBBoardPaletteManager.cpp" line="1011"/>
-        <source>CapturedImage</source>
-        <translation type="unfinished"></translation>
+        <source>Error Adding Image to Library</source>
+        <translation>Грешка при добавяне на изображение в библиотеката</translation>
     </message>
     <message>
-        <location filename="../../src/board/UBBoardPaletteManager.cpp" line="1016"/>
-        <source>Error Adding Image to Library</source>
-        <translation type="unfinished"></translation>
+        <source>CapturedImage</source>
+        <translation>Уловени изображения</translation>
     </message>
 </context>
 <context>
     <name>UBBoardThumbnailsView</name>
     <message>
-        <location filename="../../src/gui/UBBoardThumbnailsView.cpp" line="118"/>
         <source>Loading page (%1/%2)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1685,614 +990,362 @@
 <context>
     <name>UBCachePropertiesWidget</name>
     <message>
-        <location filename="../../src/gui/UBCachePropertiesWidget.cpp" line="81"/>
         <source>Cache Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки на щората</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBCachePropertiesWidget.cpp" line="95"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Цвят:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBCachePropertiesWidget.cpp" line="106"/>
         <source>Shape:</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBCachePropertiesWidget.cpp" line="125"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBCachePropertiesWidget.cpp" line="136"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBCanvasController</name>
-    <message>
-        <location filename="../../src/canvas/UBCanvasController.cpp" line="175"/>
-        <source>Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBCanvasPalette</name>
-    <message>
-        <location filename="../../src/canvas/UBCanvasPalette.cpp" line="26"/>
-        <source>Pen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/canvas/UBCanvasPalette.cpp" line="31"/>
-        <source>Eraser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/canvas/UBCanvasPalette.cpp" line="36"/>
-        <source>Save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/canvas/UBCanvasPalette.cpp" line="41"/>
-        <source>Erase region</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBCellPropertiesPalette</name>
-    <message>
-        <location filename="../../src/gui/UBCellPropertiesPalette.cpp" line="9"/>
-        <source>Width (%) :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCellPropertiesPalette.cpp" line="11"/>
-        <source>Validate</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBCreateHyperLinkPalette</name>
-    <message>
-        <location filename="../../src/gui/UBCreateHyperLinkPalette.cpp" line="11"/>
-        <source>Link :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateHyperLinkPalette.cpp" line="13"/>
-        <source>Text :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateHyperLinkPalette.cpp" line="15"/>
-        <source>Validate</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBCreateLinkLabel</name>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="62"/>
-        <source>&lt;drop content&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="76"/>
-        <source>Images are not accepted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="84"/>
-        <source>Cannot display data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="93"/>
-        <source>Dropped file isn&apos;t reconized to be an audio file</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBCreateLinkPalette</name>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="145"/>
-        <source>Play an audio file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="146"/>
-        <source>Add Link to Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="147"/>
-        <source>Add Link to a Web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="169"/>
-        <source>Drag and drop the audio file from the library in this box</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="174"/>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="232"/>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="256"/>
-        <source>Ok</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="196"/>
-        <source>Next Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="201"/>
-        <source>Previous Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="206"/>
-        <source>Title Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="209"/>
-        <source>Last Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="214"/>
-        <source>Page Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateLinkPalette.cpp" line="251"/>
-        <source>Insert url text here</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBCreateTablePalette</name>
-    <message>
-        <location filename="../../src/gui/UBCreateTablePalette.cpp" line="10"/>
-        <source>Number of lines :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateTablePalette.cpp" line="12"/>
-        <source>Number of columns :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBCreateTablePalette.cpp" line="14"/>
-        <source>Validate</source>
-        <translation type="unfinished"></translation>
+        <translation>Затвори</translation>
     </message>
 </context>
 <context>
     <name>UBDesktopPalette</name>
     <message>
-        <location filename="../../src/desktop/UBDesktopPalette.cpp" line="55"/>
-        <source>Show OpenBoard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/desktop/UBDesktopPalette.cpp" line="69"/>
-        <source>Recognize text from image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/desktop/UBDesktopPalette.cpp" line="76"/>
         <source>Capture Part of the Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Снимай част от екрана</translation>
     </message>
     <message>
-        <location filename="../../src/desktop/UBDesktopPalette.cpp" line="80"/>
         <source>Capture the Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Снимай екрана</translation>
     </message>
     <message>
-        <location filename="../../src/desktop/UBDesktopPalette.cpp" line="101"/>
         <source>Show the stylus palette</source>
-        <translation type="unfinished"></translation>
+        <translation>Покажи палитрата на маркера</translation>
     </message>
     <message>
-        <location filename="../../src/desktop/UBDesktopPalette.cpp" line="151"/>
         <source>Show Board on Secondary Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Покажи дъската на втория екран</translation>
     </message>
     <message>
-        <location filename="../../src/desktop/UBDesktopPalette.cpp" line="153"/>
         <source>Show Desktop on Secondary Screen</source>
+        <translation>Покажи работния плот на втория екран</translation>
+    </message>
+    <message>
+        <source>Show OpenBoard</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UBDocumentController</name>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="88"/>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1485"/>
-        <source>Trash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="89"/>
-        <source>Untitled Documents</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="200"/>
-        <location filename="../../src/document/UBDocumentController.cpp" line="203"/>
         <source>New Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Нова папка</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="316"/>
+        <source>Page %1</source>
+        <translation>Страница %1</translation>
+    </message>
+    <message>
         <source>Add Folder of Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави папка с изображения</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="317"/>
         <source>Add Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави изображения</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="318"/>
         <source>Add Pages from File</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави страници към документа</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="540"/>
         <source>Duplicating Document %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Копирай документа %1</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="547"/>
         <source>Document %1 copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Документът %1 е копиран</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="783"/>
-        <source>Empty Trash</source>
-        <translation type="unfinished"></translation>
+        <source>Remove Page</source>
+        <translation>Премахни страницата</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="783"/>
-        <source>Are you sure you want to empty trash?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="799"/>
-        <source>Emptying trash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="808"/>
-        <source>Emptied trash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="831"/>
         <source>Remove Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахни документа</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="832"/>
         <source>Are you sure you want to remove the document &apos;%1&apos;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сигурни ли сте, че искате да премахнете документа &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="859"/>
+        <source>Empty Trash</source>
+        <translation>Изпразни кошчето</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to empty trash?</source>
+        <translation>Сигурни ли сте, че искате да изпразните кошчето?</translation>
+    </message>
+    <message>
+        <source>Emptying trash</source>
+        <translation>Изпразване на кошче</translation>
+    </message>
+    <message>
+        <source>Emptied trash</source>
+        <translation>Кошчето е изпразнено</translation>
+    </message>
+    <message>
         <source>Remove Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахни папка</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="860"/>
         <source>Are you sure you want to remove the folder &apos;%1&apos; and all its content?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сигурни ли сте, че искате да премахнете папка &apos;%1&apos; и всичко което съдържа? </translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="880"/>
-        <source>Remove multiple documents</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="881"/>
-        <source>Are you sure you want to remove all selected documents?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="933"/>
         <source>No document selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Не е избран документ!</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1086"/>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1225"/>
         <source>Open Supported File</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори поддържани файлове</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1104"/>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1239"/>
         <source>Importing file %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Вмъкване на файлове %1...</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1114"/>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1251"/>
         <source>Failed to import file ... </source>
-        <translation type="unfinished"></translation>
+        <translation>Греша при внъкването на файловете ...</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1130"/>
         <source>Import all Images from Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Вмъкни всички изображения от папката</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1145"/>
-        <source>Folder does not contain any image files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1175"/>
-        <source>Save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1176"/>
-        <source>Name of document:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1191"/>
-        <source>Saved done!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1197"/>
-        <source>Document name %1 allready exists!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1474"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтрий</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1479"/>
         <source>Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Изпразни</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1695"/>
+        <source>Trash</source>
+        <translation>Кошче</translation>
+    </message>
+    <message>
         <source>Open Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори документ</translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1696"/>
+        <source>Add all Images to Document</source>
+        <translation>Добави всички изображения към документа</translation>
+    </message>
+    <message>
+        <source>All Images (%1)</source>
+        <translation>Всички изображения (%1)</translation>
+    </message>
+    <message>
+        <source>Selection does not contain any image files!</source>
+        <translation>Избраните файлове не са изображения!</translation>
+    </message>
+    <message numerus="yes">
+        <source>Are you sure you want to remove %n page(s) from the selected document &apos;%1&apos;?</source>
+        <translatorcomment>We do not understand the warning marks here, please clarify what the problem is,  to: a.angelov@cct.bg and iva.ninova@cct.bg Thanks!</translatorcomment>
+        <translation>
+            <numerusform>Сигурни ли сте, че искате на премахнете %n страница  от избрания документ &apos;%1&apos;? </numerusform>
+            <numerusform>Сигурни ли сте, че искате на премахнете %n страници  от избрания документ &apos;%1&apos;? </numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Folder does not contain any image files</source>
+        <translation>В папката няма файлове с изображения</translation>
+    </message>
+    <message>
+        <source>Untitled Documents</source>
+        <translation>Неозаглавени документи</translation>
+    </message>
+    <message>
         <source>The document &apos;%1&apos; has been generated with a newer version of OpenBoard (%2). By opening it, you may lose some information. Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1753"/>
-        <source>Add all Images to Document</source>
+        <source>Are you sure you want to remove all selected documents?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1754"/>
-        <source>All Images (%1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1767"/>
-        <source>Selection does not contain any image files!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1880"/>
-        <source>Remove Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../../src/document/UBDocumentController.cpp" line="1880"/>
-        <source>Are you sure you want to remove %n page(s) from the selected document &apos;%1&apos;?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../../src/document/UBDocumentController.cpp" line="1940"/>
-        <source>Page %1</source>
+        <source>Remove multiple documents</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UBDocumentManager</name>
     <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="71"/>
         <source>images</source>
-        <translation type="unfinished"></translation>
+        <translation>Изображения</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="72"/>
         <source>videos</source>
-        <translation type="unfinished"></translation>
+        <translation>Видео </translation>
     </message>
     <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="73"/>
         <source>objects</source>
-        <translation type="unfinished"></translation>
+        <translation>обекти</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="74"/>
         <source>widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>widgets</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="112"/>
         <source>All supported files (*.%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Всички поддържани файлове (*.%1)</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="172"/>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="238"/>
-        <source>Inserting page %1 of %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="184"/>
-        <source>Import successful.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="201"/>
-        <source>Importing file %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="247"/>
-        <source>Import of file %1 successful.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/UBDocumentManager.cpp" line="290"/>
         <source>File %1 saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлът %1 е запазен</translation>
+    </message>
+    <message>
+        <source>Inserting page %1 of %2</source>
+        <translation>Вмъкване на страница %1 от %2</translation>
+    </message>
+    <message>
+        <source>Import successful.</source>
+        <translation>Вмъкването успешно.</translation>
+    </message>
+    <message>
+        <source>Import of file %1 successful.</source>
+        <translation>Вмъкване на файл %1 успешно.</translation>
+    </message>
+    <message>
+        <source>Importing file %1</source>
+        <translation>Вмъква файл %1</translation>
     </message>
 </context>
 <context>
     <name>UBDocumentNavigator</name>
     <message>
-        <location filename="../../src/gui/UBDocumentNavigator.cpp" line="139"/>
         <source>Page %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Страница %0</translation>
     </message>
 </context>
 <context>
     <name>UBDocumentTreeWidget</name>
     <message>
-        <location filename="../../src/gui/UBDocumentTreeWidget.cpp" line="90"/>
         <source>%1 (copy)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (копиране)</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBDocumentTreeWidget.cpp" line="273"/>
         <source>Copying page %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Копиране на страница %1/%2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/gui/UBDocumentTreeWidget.cpp" line="314"/>
         <source>%1 pages copied</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 страница копирана</numerusform>
+            <numerusform>%1 страници копирани</numerusform>
         </translation>
     </message>
 </context>
 <context>
     <name>UBDownloadWidget</name>
     <message>
-        <location filename="../../src/gui/UBDownloadWidget.cpp" line="55"/>
         <source>Downloading files</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтегляне на файлове</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBDownloadWidget.cpp" line="74"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Отмени</translation>
     </message>
 </context>
 <context>
     <name>UBDraggableThumbnail</name>
     <message>
-        <location filename="../../src/gui/UBThumbnailWidget.h" line="490"/>
-        <location filename="../../src/gui/UBThumbnailWidget.h" line="493"/>
-        <location filename="../../src/gui/UBThumbnailWidget.h" line="495"/>
         <source>Page %0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Страница %0</translation>
     </message>
 </context>
 <context>
     <name>UBDraggableThumbnailView</name>
     <message>
-        <location filename="../../src/gui/UBThumbnailWidget.h" line="575"/>
-        <location filename="../../src/gui/UBThumbnailWidget.h" line="578"/>
-        <location filename="../../src/gui/UBThumbnailWidget.h" line="580"/>
         <source>Page %0</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UBDrawingFillPropertiesPalette</name>
-    <message>
-        <location filename="../../src/gui/UBDrawingFillPropertiesPalette.cpp" line="41"/>
-        <source>Select and set filling color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBDrawingFillPropertiesPalette.cpp" line="91"/>
-        <source>Select and set second filling color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Страница %0</translation>
     </message>
 </context>
 <context>
     <name>UBExportAdaptor</name>
     <message>
-        <location filename="../../src/adaptors/UBExportAdaptor.cpp" line="133"/>
+        <source>Warnings during export was appeared</source>
+        <translation>Появиха се предупреждения по време на експортирането на страницата</translation>
+    </message>
+    <message>
         <source>Exporting document...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportAdaptor.cpp" line="141"/>
         <source>Export failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportAdaptor.cpp" line="142"/>
         <source>Unable to export to the selected location. You do not have the permissions necessary to save the file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportAdaptor.cpp" line="147"/>
         <source>Export failed: location not writable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportAdaptor.cpp" line="157"/>
         <source>Export successful.</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>UBExportCFF</name>
     <message>
-        <location filename="../../src/adaptors/UBExportAdaptor.cpp" line="176"/>
-        <source>Warnings during export was appeared</source>
-        <translation type="unfinished"></translation>
+        <source>Export to IWB</source>
+        <translation type="vanished">Експортирай към интерактивната дъска</translation>
+    </message>
+    <message>
+        <source>Export as IWB File</source>
+        <translation type="vanished">Експортирай като файл за интерактивна дъска</translation>
+    </message>
+    <message>
+        <source>Exporting document...</source>
+        <translation type="vanished">Експортиране на документ...</translation>
+    </message>
+    <message>
+        <source>Export successful.</source>
+        <translation type="vanished">Експортирането успешно.</translation>
+    </message>
+    <message>
+        <source>Export failed.</source>
+        <translation type="vanished">Експортирането се провали.</translation>
     </message>
 </context>
 <context>
     <name>UBExportDocument</name>
     <message>
-        <location filename="../../src/adaptors/UBExportDocument.cpp" line="51"/>
         <source>Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Страница</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportDocument.cpp" line="61"/>
         <source>Export as UBZ File</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортирай като UBZ файл</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportDocument.cpp" line="100"/>
+        <source>Exporting document...</source>
+        <translation type="vanished">Експортиране на документ...</translation>
+    </message>
+    <message>
+        <source>Export successful.</source>
+        <translation type="vanished">Експортирането е успешно.</translation>
+    </message>
+    <message>
         <source>Exporting %1 %2 of %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортиране на %1 %2 от %3</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportDocument.cpp" line="112"/>
         <source>Export to OpenBoard Format</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2300,323 +1353,240 @@
 <context>
     <name>UBExportFullPDF</name>
     <message>
-        <location filename="../../src/adaptors/UBExportFullPDF.cpp" line="138"/>
         <source>Export as PDF File</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортирай като PDF файл</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportFullPDF.cpp" line="276"/>
+        <source>Exporting document...</source>
+        <translation type="vanished">Експортиране на документа...</translation>
+    </message>
+    <message>
+        <source>Export successful.</source>
+        <translation type="vanished">Експортирането е успешно.</translation>
+    </message>
+    <message>
         <source>Export to PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортиране към PDF</translation>
     </message>
 </context>
 <context>
     <name>UBExportPDF</name>
     <message>
-        <location filename="../../src/adaptors/UBExportPDF.cpp" line="65"/>
         <source>Export as PDF File</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортиране като PDF файл</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportPDF.cpp" line="93"/>
+        <source>Exporting document...</source>
+        <translation type="vanished">Експортиране на документ...</translation>
+    </message>
+    <message>
+        <source>Export successful.</source>
+        <translation type="vanished">Експортирането успешно.</translation>
+    </message>
+    <message>
         <source>Exporting page %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортиране на страница %1 от %2</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportPDF.cpp" line="143"/>
         <source>Export to PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортиране като PDF</translation>
     </message>
 </context>
 <context>
     <name>UBExportWeb</name>
     <message>
-        <location filename="../../src/adaptors/UBExportWeb.cpp" line="52"/>
         <source>Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Страница</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportWeb.cpp" line="67"/>
         <source>Export as Web data</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортиране като Web data</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportWeb.cpp" line="72"/>
         <source>Exporting document...</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортиране на документ...</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportWeb.cpp" line="81"/>
         <source>Export successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортирането успешно.</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportWeb.cpp" line="87"/>
         <source>Export failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при експортирането.</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBExportWeb.cpp" line="98"/>
         <source>Export to Web Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортирането към интернет браузър</translation>
     </message>
 </context>
 <context>
     <name>UBFeatureProperties</name>
     <message>
-        <location filename="../../src/gui/UBFeaturesWidget.cpp" line="898"/>
         <source>Add to page</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави към страница</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesWidget.cpp" line="902"/>
+        <source>Set as background</source>
+        <translation type="vanished">Задай като фон</translation>
+    </message>
+    <message>
         <source>Add to library</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави към библиотека</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesWidget.cpp" line="907"/>
         <source>Object informations</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация за обекта</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesActionBar</name>
     <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="71"/>
         <source>Add to favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави в любими</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="72"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation>Сподели</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="73"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Търсене</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="74"/>
-        <source>Rescan file system</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="75"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтрий</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="76"/>
         <source>Back to folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Обратно в папката</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="77"/>
         <source>Remove from favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахване от любими</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesActionBar.cpp" line="78"/>
         <source>Create new folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаване на нова папка</translation>
+    </message>
+    <message>
+        <source>Rescan file system</source>
+        <translation>Сканирай файловата система отново</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesController</name>
     <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="334"/>
-        <source>Audios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="335"/>
-        <source>Movies</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="336"/>
-        <source>Pictures</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="337"/>
-        <source>Animations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="338"/>
-        <source>Interactivities</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="339"/>
-        <source>Applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="340"/>
-        <source>Shapes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="341"/>
-        <source>Favorites</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="342"/>
-        <source>Web search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="344"/>
-        <source>Trash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="753"/>
-        <location filename="../../src/board/UBFeaturesController.cpp" line="899"/>
         <source>ImportedImage</source>
-        <translation type="unfinished"></translation>
+        <translation>Вмъкнати изображения</translation>
+    </message>
+    <message>
+        <source>Audios</source>
+        <translation>Звук</translation>
+    </message>
+    <message>
+        <source>Movies</source>
+        <translation>Филми</translation>
+    </message>
+    <message>
+        <source>Pictures</source>
+        <translation>Изображения</translation>
+    </message>
+    <message>
+        <source>Animations</source>
+        <translation>Анимации</translation>
+    </message>
+    <message>
+        <source>Interactivities</source>
+        <translation>Интерактивни обекти</translation>
+    </message>
+    <message>
+        <source>Applications</source>
+        <translation>Приложения</translation>
+    </message>
+    <message>
+        <source>Shapes</source>
+        <translation>Форми</translation>
+    </message>
+    <message>
+        <source>Favorites</source>
+        <translation>Любими</translation>
+    </message>
+    <message>
+        <source>Web search</source>
+        <translation>Търсене в интернет</translation>
+    </message>
+    <message>
+        <source>Trash</source>
+        <translation>Кошче</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesNewFolderDialog</name>
     <message>
-        <location filename="../../src/gui/UBFeaturesWidget.cpp" line="631"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Приеми</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesWidget.cpp" line="632"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Откажи</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBFeaturesWidget.cpp" line="633"/>
         <source>Enter a new folder name</source>
-        <translation type="unfinished"></translation>
+        <translation>Въведете ново име на папка</translation>
     </message>
 </context>
 <context>
     <name>UBFeaturesProgressInfo</name>
     <message>
-        <location filename="../../src/gui/UBFeaturesWidget.cpp" line="736"/>
         <source>Loading </source>
-        <translation type="unfinished"></translation>
+        <translation>Зареждане</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsGroupContainerItemDelegate</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsGroupContainerItemDelegate.cpp" line="72"/>
         <source>Locked</source>
-        <translation type="unfinished"></translation>
+        <translation>Заключено</translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsGroupContainerItemDelegate.cpp" line="79"/>
         <source>Visible on Extended Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsGroupContainerItemDelegate.cpp" line="87"/>
-        <source>Add an action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsGroupContainerItemDelegate.cpp" line="108"/>
-        <source>Remove link to audio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsGroupContainerItemDelegate.cpp" line="111"/>
-        <source>Remove link to page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsGroupContainerItemDelegate.cpp" line="114"/>
-        <source>Remove link to web url</source>
-        <translation type="unfinished"></translation>
+        <translation>Видим на втория екран</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsItemDelegate</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="723"/>
         <source>Locked</source>
-        <translation type="unfinished"></translation>
+        <translation>Заключено</translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="730"/>
         <source>Visible on Extended Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Видим на втория екран</translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="739"/>
-        <source>Set as background</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="749"/>
         <source>Go to Content Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Отиди към източника на съдържанието</translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="756"/>
-        <source>Add an action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="759"/>
-        <source>Return to creation mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="763"/>
-        <source>Flip on horizontal axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="766"/>
-        <source>Flip on vertical axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="810"/>
-        <source>Remove link to audio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="817"/>
-        <source>Remove link to page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsItemDelegate.cpp" line="823"/>
-        <source>Remove link to web url</source>
-        <translation type="unfinished"></translation>
+        <source>Set as background</source>
+        <translation type="unfinished">Задай като фон</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsMediaItem</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsMediaItem.cpp" line="415"/>
         <source>Media resource couldn&apos;t be resolved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsMediaItem.cpp" line="418"/>
         <source>Unsupported media format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsMediaItem.cpp" line="421"/>
         <source>Media playback service not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsMediaItem.cpp" line="424"/>
         <source>Media error: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2624,236 +1594,168 @@
 <context>
     <name>UBGraphicsTextItem</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsTextItem.cpp" line="82"/>
         <source>&lt;Type Text Here&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Напишете текст тук&gt;</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsTextItemDelegate</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="217"/>
-        <source>Insert table</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="219"/>
-        <source>Column</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="220"/>
-        <source>Insert column after</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="221"/>
-        <source>Insert column before</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="222"/>
-        <source>Delete column</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="224"/>
-        <source>Row</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="225"/>
-        <source>Insert row after</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="226"/>
-        <source>Insert row before</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="227"/>
-        <source>Delete row</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="229"/>
-        <source>Cell properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="230"/>
-        <source>Evenly distribute the columns</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="473"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Цвят на текста</translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="504"/>
-        <source>Background Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/domain/UBGraphicsTextItemDelegate.cpp" line="984"/>
         <source>Editable</source>
-        <translation type="unfinished"></translation>
+        <translation>Възможност за редактиране</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsW3CWidgetItem</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsWidgetItem.cpp" line="939"/>
         <source>Web</source>
-        <translation type="unfinished"></translation>
+        <translation>Мрежа</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsWidgetItem</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsWidgetItem.cpp" line="580"/>
         <source>Loading ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Зареждане...</translation>
     </message>
 </context>
 <context>
     <name>UBGraphicsWidgetItemDelegate</name>
     <message>
-        <location filename="../../src/domain/UBGraphicsWidgetItemDelegate.cpp" line="80"/>
         <source>Frozen</source>
-        <translation type="unfinished"></translation>
+        <translation>Замръзнал</translation>
     </message>
     <message>
-        <location filename="../../src/domain/UBGraphicsWidgetItemDelegate.cpp" line="91"/>
         <source>Transform as Tool </source>
-        <translation type="unfinished"></translation>
+        <translation>Трансформирай като Инструмент </translation>
+    </message>
+</context>
+<context>
+    <name>UBImportCFF</name>
+    <message>
+        <source>Common File Format (</source>
+        <translation type="vanished">Общ формат на файла (</translation>
+    </message>
+    <message>
+        <source>Importing file %1...</source>
+        <translation type="vanished">Импортиране на файл %1...</translation>
+    </message>
+    <message>
+        <source>Import of file %1 failed.</source>
+        <translation type="vanished">Импортирането на файл %1 се провали.</translation>
+    </message>
+    <message>
+        <source>Import successful.</source>
+        <translation type="vanished">Импортирането успешно.</translation>
+    </message>
+    <message>
+        <source>Import failed.</source>
+        <translation type="vanished">Грешка при импортирането.</translation>
     </message>
 </context>
 <context>
     <name>UBImportDocument</name>
     <message>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="69"/>
-        <source>OpenBoard (*.ubz)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="176"/>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="196"/>
         <source>Importing file %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Импортиране на файл %1...</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="184"/>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="203"/>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="209"/>
-        <source>Import of file %1 failed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="189"/>
-        <location filename="../../src/adaptors/UBImportDocument.cpp" line="215"/>
         <source>Import successful.</source>
+        <translation>Импортирането успешно.</translation>
+    </message>
+    <message>
+        <source>Import of file %1 failed.</source>
+        <translation>Грешка при импортирането на файл %1.</translation>
+    </message>
+    <message>
+        <source>OpenBoard (*.ubz)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UBImportImage</name>
     <message>
-        <location filename="../../src/adaptors/UBImportImage.cpp" line="74"/>
         <source>Image Format (</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат на изображението (</translation>
     </message>
 </context>
 <context>
     <name>UBImportPDF</name>
     <message>
-        <location filename="../../src/adaptors/UBImportPDF.cpp" line="65"/>
         <source>Portable Document Format (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Portable Document Format (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBImportPDF.cpp" line="77"/>
         <source>PDF import failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при вмъкване на PDF .</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBImportPDF.cpp" line="86"/>
         <source>Importing page %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Вмъкване на страница %1 от %2</translation>
     </message>
 </context>
 <context>
     <name>UBIntranetPodcastPublisher</name>
     <message>
-        <location filename="../../src/podcast/intranet/UBIntranetPodcastPublisher.cpp" line="185"/>
         <source>Error while publishing video to intranet (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при публикуването на видеото (%1)</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/intranet/UBIntranetPodcastPublisher.cpp" line="196"/>
         <source>Publishing to Intranet in progress %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Видеото се публикува %1 %</translation>
     </message>
 </context>
 <context>
     <name>UBIntranetPodcastPublishingDialog</name>
     <message>
-        <location filename="../../src/podcast/intranet/UBIntranetPodcastPublisher.cpp" line="215"/>
         <source>Publish</source>
-        <translation type="unfinished"></translation>
+        <translation>Публикувай</translation>
     </message>
 </context>
 <context>
     <name>UBKeyboardPalette</name>
     <message>
-        <location filename="../../src/gui/UBKeyboardPalette_linux.cpp" line="173"/>
-        <location filename="../../src/gui/UBKeyboardPalette_win.cpp" line="87"/>
         <source>Enter</source>
-        <translation type="unfinished"></translation>
+        <translation>Вход</translation>
     </message>
 </context>
 <context>
     <name>UBMainWindow</name>
     <message>
-        <location filename="../../src/gui/UBMainWindow.cpp" line="222"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Да</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBMainWindow.cpp" line="223"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Не</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBMainWindow.cpp" line="244"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation>Добре</translation>
     </message>
 </context>
 <context>
     <name>UBMessagesDialog</name>
     <message>
-        <location filename="../../src/gui/UBMessagesDialog.cpp" line="60"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Затвори</translation>
     </message>
 </context>
 <context>
     <name>UBNetworkAccessManager</name>
     <message>
-        <location filename="../../src/network/UBNetworkAccessManager.cpp" line="121"/>
         <source>&lt;qt&gt;Enter username and password for &quot;%1&quot; at %2&lt;/qt&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;qt&gt;Въведи потребителско име и парола&quot;%1&quot; на %2&lt;/qt&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/network/UBNetworkAccessManager.cpp" line="153"/>
         <source>Failed to log to Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при свързването към Proxy</translation>
     </message>
     <message>
-        <location filename="../../src/network/UBNetworkAccessManager.cpp" line="181"/>
         <source>SSL Errors:
 
 %1
@@ -2861,854 +1763,717 @@
 %2
 
 Do you want to ignore these errors for this host?</source>
-        <translation type="unfinished"></translation>
+        <translation>SSL грешки:
+
+%1
+
+%2
+
+Искате ли да прескочите тези грешки?</translation>
     </message>
     <message>
-        <location filename="../../src/network/UBNetworkAccessManager.cpp" line="183"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Да</translation>
     </message>
     <message>
-        <location filename="../../src/network/UBNetworkAccessManager.cpp" line="184"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Не</translation>
     </message>
 </context>
 <context>
     <name>UBOpenSankoreImporterWidget</name>
     <message>
-        <location filename="../../src/gui/UBOpenSankoreImporterWidget.cpp" line="54"/>
         <source>Open-Sankore Documents Detected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBOpenSankoreImporterWidget.cpp" line="59"/>
-        <source>Open-Sankoré documents are present on your computer. It is possible to import them to OpenBoard by pressing the “Proceed” button to launch the importer application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBOpenSankoreImporterWidget.cpp" line="66"/>
         <source>Show this panel next time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBOpenSankoreImporterWidget.cpp" line="73"/>
         <source>You can always access the OpenBoard Document Importer through the Preferences panel in the About tab. Warning, if you have already imported your Open-Sankore datas, you might loose your current OpenBoard documents.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBOpenSankoreImporterWidget.cpp" line="80"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBOpenSankoreImporterWidget.cpp" line="86"/>
         <source>Proceed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open-Sankoré documents are present on your computer. It is possible to import them to OpenBoard by pressing the “Proceed” button to launch the importer application.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UBPersistenceManager</name>
     <message>
-        <location filename="../../src/core/UBPersistenceManager.cpp" line="458"/>
         <source>(copy)</source>
-        <translation type="unfinished"></translation>
+        <translation>(копирай)</translation>
     </message>
     <message>
-        <location filename="../../src/core/UBPersistenceManager.cpp" line="527"/>
-        <source>Moving page to trash folder...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/UBPersistenceManager.cpp" line="1217"/>
         <source>Document Repository Loss</source>
+        <translation>Загубено е хранилището за документи</translation>
+    </message>
+    <message>
+        <source>has lost access to the document repository &apos;%1&apos;. Unfortunately the application must shut down to avoid data corruption. Latest changes may be lost as well.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/UBPersistenceManager.cpp" line="1217"/>
-        <source>has lost access to the document repository &apos;%1&apos;. Unfortunately the application must shut down to avoid data corruption. Latest changes may be lost as well.</source>
+        <source>Moving page to trash folder...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UBPlatformUtils</name>
     <message>
-        <location filename="../../src/frameworks/UBPlatformUtils_linux.cpp" line="410"/>
-        <location filename="../../src/frameworks/UBPlatformUtils_win.cpp" line="409"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>Английски</translation>
     </message>
     <message>
-        <location filename="../../src/frameworks/UBPlatformUtils_linux.cpp" line="411"/>
-        <location filename="../../src/frameworks/UBPlatformUtils_win.cpp" line="410"/>
         <source>Russian</source>
-        <translation type="unfinished"></translation>
+        <translation>Руски</translation>
     </message>
     <message>
-        <location filename="../../src/frameworks/UBPlatformUtils_linux.cpp" line="412"/>
-        <location filename="../../src/frameworks/UBPlatformUtils_win.cpp" line="413"/>
         <source>German</source>
-        <translation type="unfinished"></translation>
+        <translation>Немски</translation>
     </message>
     <message>
-        <location filename="../../src/frameworks/UBPlatformUtils_linux.cpp" line="413"/>
-        <location filename="../../src/frameworks/UBPlatformUtils_win.cpp" line="411"/>
         <source>French</source>
-        <translation type="unfinished"></translation>
+        <translation>Френски</translation>
     </message>
     <message>
-        <location filename="../../src/frameworks/UBPlatformUtils_linux.cpp" line="414"/>
-        <location filename="../../src/frameworks/UBPlatformUtils_win.cpp" line="412"/>
         <source>Swiss French</source>
-        <translation type="unfinished"></translation>
+        <translation>Щвейцарски френски</translation>
     </message>
 </context>
 <context>
     <name>UBPodcastController</name>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="368"/>
-        <source>OpenBoard Cast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="398"/>
         <source>Failed to start encoder ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при стартирането на encoder ...</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="403"/>
         <source>No Podcast encoder available ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Не е наличен encoder за подкаст ...</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="574"/>
         <source>Part %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Част %1</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="723"/>
         <source>on your desktop ...</source>
-        <translation type="unfinished"></translation>
+        <translation>на вашия работен плот...</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="727"/>
         <source>in folder %1</source>
-        <translation type="unfinished"></translation>
+        <translation>в папка %1</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="730"/>
         <source>Podcast created %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаден подкаст %1</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="749"/>
         <source>Podcast recording error (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при записа на подкаст (%1)</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="889"/>
         <source>Default Audio Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудио вход по подразбиране</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="892"/>
         <source>No Audio Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Няма аудио разпис</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="931"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Малък</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="932"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Среден</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="933"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Пълен</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="968"/>
         <source>Publish to Intranet</source>
-        <translation type="unfinished"></translation>
+        <translation>Публикувай в мрежата</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/UBPodcastController.cpp" line="975"/>
         <source>Publish to Youtube</source>
+        <translation>Публикувай в YouTube</translation>
+    </message>
+    <message>
+        <source>OpenBoard Cast</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UBPreferencesController</name>
     <message>
-        <location filename="../../src/core/UBPreferencesController.cpp" line="125"/>
         <source>version: </source>
-        <translation type="unfinished"></translation>
+        <translation>версия: </translation>
     </message>
     <message>
-        <location filename="../../src/core/UBPreferencesController.cpp" line="243"/>
         <source>Marker is pressure sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Чувствителен на натиск маркер</translation>
     </message>
 </context>
 <context>
     <name>UBProxyLoginDlg</name>
     <message>
-        <location filename="../../src/adaptors/publishing/UBDocumentPublisher.cpp" line="45"/>
         <source>Proxy Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Прокси свързване</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/publishing/UBDocumentPublisher.cpp" line="54"/>
         <source>Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Потребителско име:</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/publishing/UBDocumentPublisher.cpp" line="59"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Парола:</translation>
     </message>
 </context>
 <context>
     <name>UBPublicationDlg</name>
     <message>
-        <location filename="../../src/adaptors/publishing/UBDocumentPublisher.cpp" line="117"/>
         <source>Publish document on the web</source>
-        <translation type="unfinished"></translation>
+        <translation>Публикувай документ в мрежата</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/publishing/UBDocumentPublisher.cpp" line="124"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглавие:</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/publishing/UBDocumentPublisher.cpp" line="131"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание:</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/publishing/UBDocumentPublisher.cpp" line="138"/>
         <source>Publish</source>
-        <translation type="unfinished"></translation>
+        <translation>Публикувай</translation>
     </message>
 </context>
 <context>
     <name>UBSettings</name>
     <message>
-        <location filename="../../src/core/UBSettings.cpp" line="977"/>
         <source>My Movies</source>
-        <translation type="unfinished"></translation>
+        <translation>Моите филми</translation>
     </message>
 </context>
 <context>
     <name>UBStartupHintsPalette</name>
     <message>
-        <location filename="../../src/gui/UBStartupHintsPalette.cpp" line="63"/>
         <source>Visible next time</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
+    <name>UBTeacherBarWidget</name>
+    <message>
+        <source></source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>UBThumbnailAdaptor</name>
     <message>
-        <location filename="../../src/adaptors/UBThumbnailAdaptor.cpp" line="74"/>
         <source>Generating preview thumbnails ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаване на икомите за предварителен преглед ...</translation>
     </message>
     <message>
-        <location filename="../../src/adaptors/UBThumbnailAdaptor.cpp" line="80"/>
         <source>%1 thumbnails generated ...</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 икони са създадени ...</translation>
     </message>
 </context>
 <context>
     <name>UBThumbnailTextItem</name>
     <message>
-        <location filename="../../src/gui/UBThumbnailWidget.h" line="218"/>
         <source>Page %0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Страница %0</translation>
     </message>
 </context>
 <context>
     <name>UBToolsManager</name>
     <message>
-        <location filename="../../src/tools/UBToolsManager.cpp" line="57"/>
         <source>Mask</source>
-        <translation type="unfinished"></translation>
+        <translation>Маска</translation>
     </message>
     <message>
-        <location filename="../../src/tools/UBToolsManager.cpp" line="65"/>
         <source>Ruler</source>
-        <translation type="unfinished"></translation>
+        <translation>Линия</translation>
     </message>
     <message>
-        <location filename="../../src/tools/UBToolsManager.cpp" line="73"/>
         <source>Compass</source>
-        <translation type="unfinished"></translation>
+        <translation>Компас</translation>
     </message>
     <message>
-        <location filename="../../src/tools/UBToolsManager.cpp" line="81"/>
         <source>Protractor</source>
-        <translation type="unfinished"></translation>
+        <translation>Транспортир</translation>
     </message>
     <message>
-        <location filename="../../src/tools/UBToolsManager.cpp" line="89"/>
         <source>Triangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Триъгълник</translation>
     </message>
     <message>
-        <location filename="../../src/tools/UBToolsManager.cpp" line="97"/>
         <source>Magnifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Лупа</translation>
     </message>
     <message>
-        <location filename="../../src/tools/UBToolsManager.cpp" line="105"/>
         <source>Cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Кеш</translation>
     </message>
 </context>
 <context>
     <name>UBTrapFlashController</name>
     <message>
-        <location filename="../../src/web/UBTrapFlashController.cpp" line="149"/>
         <source>Whole page</source>
-        <translation type="unfinished"></translation>
+        <translation>Цялата страница</translation>
     </message>
     <message>
-        <location filename="../../src/web/UBTrapFlashController.cpp" line="224"/>
         <source>Web</source>
-        <translation type="unfinished"></translation>
+        <translation>Мрежа</translation>
     </message>
 </context>
 <context>
     <name>UBUpdateDlg</name>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="64"/>
         <source>Document updater</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновяване на документ</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="69"/>
         <source> files require an update.</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлове, които имат нужда от обновяване.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="76"/>
         <source>Backup path: </source>
-        <translation type="unfinished"></translation>
+        <translation>Място на архив:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="82"/>
         <source>Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>Разгледай</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="94"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Обнови</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="95"/>
-        <source>Remind me later</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="180"/>
         <source>Select a backup folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Избери папка за архив</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="187"/>
-        <source>Please wait the import process will start soon...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="201"/>
         <source>Files update successful!
 Please reboot the application to access the updated documents.</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновяването на файловете е успешно! Моля рестартирайте приложението, за да имате достъп до обновените документи.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="204"/>
         <source>An error occured during the update. The files have not been affected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Възникна грешка по време на обновяването. Файловете не са засегнати.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="206"/>
         <source>Files update results</source>
-        <translation type="unfinished"></translation>
+        <translation>Резултат от обновяването на файловете</translation>
     </message>
     <message>
-        <location filename="../../src/gui/UBUpdateDlg.cpp" line="216"/>
         <source>Updating file </source>
-        <translation type="unfinished"></translation>
+        <translation>Файлът се обновява</translation>
+    </message>
+    <message>
+        <source>Please wait the import process will start soon...</source>
+        <translation>Моля, изчакайте, процесът на вмъкване ще започне след малко...</translation>
+    </message>
+    <message>
+        <source>Remind me later</source>
+        <translation>Напомни ми по-късно</translation>
     </message>
 </context>
 <context>
     <name>UBWebPluginWidget</name>
     <message>
-        <location filename="../../src/web/UBWebPluginWidget.cpp" line="92"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Зареждане...</translation>
     </message>
 </context>
 <context>
     <name>UBWidgetUniboardAPI</name>
     <message>
-        <location filename="../../src/api/UBWidgetUniboardAPI.cpp" line="458"/>
         <source>%0 called (method=%1, status=%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%0 извикани (метод=%1, статус=%2)</translation>
     </message>
 </context>
 <context>
     <name>UBYouTubePublisher</name>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="152"/>
         <source>YouTube authentication failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверката за достоверност в YouTube не е завършена.</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="252"/>
         <source>Error while uploading video to YouTube (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при зареждане на видео от YouTube (%1)</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="317"/>
         <source>Upload to YouTube in progress %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Качване в YouTube  %1 %</translation>
     </message>
 </context>
 <context>
     <name>UBYouTubePublishingDialog</name>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="354"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation>Качване</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="400"/>
         <source>Autos &amp; Vehicles</source>
-        <translation type="unfinished"></translation>
+        <translation>Коли &amp; превозни средства</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="401"/>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>Музика</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="402"/>
         <source>Pets &amp; Animals</source>
-        <translation type="unfinished"></translation>
+        <translation>Домашни любимци &amp; животни</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="403"/>
         <source>Sports</source>
-        <translation type="unfinished"></translation>
+        <translation>Спорт</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="404"/>
         <source>Travel &amp; Events</source>
-        <translation type="unfinished"></translation>
+        <translation>Пътуване &amp; събития</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="405"/>
         <source>Gaming</source>
-        <translation type="unfinished"></translation>
+        <translation>Игри</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="406"/>
         <source>Comedy</source>
-        <translation type="unfinished"></translation>
+        <translation>Комедия</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="407"/>
         <source>People &amp; Blogs</source>
-        <translation type="unfinished"></translation>
+        <translation>Хора &amp; блогове</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="408"/>
         <source>News &amp; Politics</source>
-        <translation type="unfinished"></translation>
+        <translation>Новини &amp; политика</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="409"/>
         <source>Entertainment</source>
-        <translation type="unfinished"></translation>
+        <translation>Забавление</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="410"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>Образование</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="411"/>
         <source>Howto &amp; Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Направи си сам &amp; стил</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="412"/>
         <source>Nonprofits &amp; Activism</source>
-        <translation type="unfinished"></translation>
+        <translation>Организации с нетърговска цел &amp; активизъм</translation>
     </message>
     <message>
-        <location filename="../../src/podcast/youtube/UBYouTubePublisher.cpp" line="413"/>
         <source>Science &amp; Technology</source>
-        <translation type="unfinished"></translation>
+        <translation>Наука &amp; технологии</translation>
     </message>
 </context>
 <context>
     <name>UBZoomPalette</name>
     <message>
-        <location filename="../../src/gui/UBZoomPalette.cpp" line="116"/>
         <source>%1 x</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 х</translation>
     </message>
 </context>
 <context>
     <name>WBClearButton</name>
     <message>
-        <location filename="../../src/web/browser/WBSearchLineEdit.cpp" line="82"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Изчисти</translation>
     </message>
 </context>
 <context>
     <name>WBDownloadItem</name>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="161"/>
         <source>Save File</source>
-        <translation type="unfinished"></translation>
+        <translation>Запиши файл</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="165"/>
         <source>Download canceled: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтеглянето е отменено: %1</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="262"/>
         <source>Error opening saved file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при отваряне на запазен файл: %1</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="273"/>
         <source>Error saving: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка при запазване: %1</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="283"/>
         <source>Network Error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка в мрежата: %1</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="321"/>
         <source>seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>секунди</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="325"/>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>минути</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="338"/>
         <source>- %4 %5 remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>-%4 %5 остават</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="341"/>
         <source>%1 of %2 (%3/sec) %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 от %2 (%3/сек) %4</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="343"/>
         <source>?</source>
         <comment>unknown file size</comment>
-        <translation type="unfinished"></translation>
+        <translation>?</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="352"/>
         <source>%1 of %2 - Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 от %2 - спряни</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="365"/>
         <source>bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>байтове</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="369"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="372"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
 </context>
 <context>
     <name>WBDownloadManager</name>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="667"/>
         <source>1 Download</source>
-        <translation type="unfinished"></translation>
+        <translation>1 изтегляне</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBDownloadManager.cpp" line="667"/>
         <source>%1 Downloads</source>
         <comment>always &gt;= 2</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 изтегляне</translation>
     </message>
 </context>
 <context>
     <name>WBHistoryModel</name>
     <message>
-        <location filename="../../src/web/browser/WBHistory.cpp" line="439"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглавие</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBHistory.cpp" line="440"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адрес</translation>
     </message>
 </context>
 <context>
     <name>WBHistoryTreeModel</name>
     <message>
-        <location filename="../../src/web/browser/WBHistory.cpp" line="1020"/>
         <source>Earlier Today</source>
-        <translation type="unfinished"></translation>
+        <translation>По-рано днес</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBHistory.cpp" line="1025"/>
         <source>%1 items</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 обекта</translation>
     </message>
 </context>
 <context>
     <name>WBSearchLineEdit</name>
     <message>
-        <location filename="../../src/web/browser/WBSearchLineEdit.cpp" line="203"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Търсене</translation>
     </message>
 </context>
 <context>
     <name>WBTabBar</name>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="134"/>
         <source>New &amp;Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Нов &amp; Разделител</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="137"/>
         <source>Clone Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Копирай разделията</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="142"/>
         <source>&amp;Close Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp; Затвори разделителя</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="145"/>
         <source>Close &amp;Other Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Затвори &amp;други разделители</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="150"/>
         <source>Reload Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Презариди разделителя</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="156"/>
         <source>Reload All Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Презареди всички разделители</translation>
     </message>
 </context>
 <context>
     <name>WBTabWidget</name>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="261"/>
         <source>Recently Closed Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Скоро затворени разделители</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="427"/>
-        <location filename="../../src/web/browser/WBTabWidget.cpp" line="451"/>
         <source>(Untitled)</source>
-        <translation type="unfinished"></translation>
+        <translation>(неименуван)</translation>
     </message>
 </context>
 <context>
     <name>WBToolbarSearch</name>
     <message>
-        <location filename="../../src/web/browser/WBToolBarSearch.cpp" line="101"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Търсене</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBToolBarSearch.cpp" line="167"/>
         <source>No Recent Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Няма скорошни търсения</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBToolBarSearch.cpp" line="171"/>
         <source>Recent Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Скорошни търсения</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBToolBarSearch.cpp" line="179"/>
         <source>Clear Recent Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Изчисти скорошните търсения</translation>
     </message>
 </context>
 <context>
     <name>WBWebPage</name>
     <message>
-        <location filename="../../src/web/browser/WBWebView.cpp" line="186"/>
-        <source>Download PDF Document: would you prefer to download the PDF file or add it to the current OpenBoard document?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/web/browser/WBWebView.cpp" line="188"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Изтегляне</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBWebView.cpp" line="189"/>
         <source>Add to Current Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Добави към текущия документ</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBWebView.cpp" line="222"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF</translation>
     </message>
     <message>
-        <location filename="../../src/web/browser/WBWebView.cpp" line="228"/>
         <source>Error loading page: %1</source>
+        <translation>Грешка при зареждане на страница: %1</translation>
+    </message>
+    <message>
+        <source>Download PDF Document: would you prefer to download the PDF file or add it to the current OpenBoard document?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>WBWebView</name>
     <message>
-        <location filename="../../src/web/browser/WBWebView.cpp" line="299"/>
         <source>Open in New Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори в нов раздел</translation>
     </message>
 </context>
 <context>
     <name>YouTubePublishingDialog</name>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="17"/>
         <source>Publish Podcast to YouTube</source>
-        <translation type="unfinished"></translation>
+        <translation>Публикувай подкат в YouTube</translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="28"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглавие</translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="42"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="65"/>
         <source>Keywords</source>
-        <translation type="unfinished"></translation>
+        <translation>Ключови думи</translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="72"/>
-        <source>OpenBoard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="79"/>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Категория</translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="105"/>
         <source>YouTube Username</source>
-        <translation type="unfinished"></translation>
+        <translation>потребителско име за YouTube</translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="115"/>
         <source>YouTube Password</source>
-        <translation type="unfinished"></translation>
+        <translation>парола за YouTube</translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="129"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt;&quot;&gt;By clicking &apos;Upload,&apos; you certify that you own all rights to the content or that you are authorized by the owner to make the content publicly available on YouTube, and that it otherwise complies with the YouTube Terms of Service located at &lt;/span&gt;&lt;a href=&quot;http://www.youtube.com/t/terms&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.youtube.com/t/terms&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt;&quot;&gt;С натискането на бутона &quot;Качи&quot; вие удостоверявате, че притежавате всички права върху съдържанието или че законния собственик ви е разрешил да разпространите публично съдържанието в YouTube  и че не е в разрез с условията на YouTube &lt;/span&gt;&lt;a href=&quot;http://www.youtube.com/t/terms&quot;&gt;&lt;span style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.youtube.com/t/terms&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Restore credentials on reboot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/youTubePublishingDialog.ui" line="156"/>
-        <source>Restore credentials on reboot</source>
-        <translation type="unfinished"></translation>
+        <source>OpenBoard</source>
+        <translation type="unfinished">Отворено-Санкоре</translation>
     </message>
 </context>
 <context>
     <name>brushProperties</name>
     <message>
-        <location filename="../forms/brushProperties.ui" line="53"/>
-        <source>Pen is Pressure Sensitive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/brushProperties.ui" line="98"/>
         <source>Opacity</source>
-        <translation type="unfinished"></translation>
+        <translation>Непрозрачност</translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="167"/>
         <source>On Light Background</source>
-        <translation type="unfinished"></translation>
+        <translation>На светъл фон</translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="228"/>
         <source>On Dark Background</source>
-        <translation type="unfinished"></translation>
+        <translation>На тъмен фон</translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="276"/>
         <source>Line Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Ширина на линията</translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="336"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Средна</translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="362"/>
         <source>Strong</source>
-        <translation type="unfinished"></translation>
+        <translation>Голяма</translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="454"/>
         <source>Fine</source>
-        <translation type="unfinished"></translation>
+        <translation>тънка</translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="504"/>
+        <source>Pen is Pressure Sensitive</source>
+        <translation>Химикалката е чувствителна на натиск</translation>
+    </message>
+    <message>
         <source>Show preview circle from</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/brushProperties.ui" line="514"/>
         <source>px</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3716,35 +2481,29 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>capturePublishingDialog</name>
     <message>
-        <location filename="../forms/capturePublishing.ui" line="17"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Диалог</translation>
     </message>
     <message>
-        <location filename="../forms/capturePublishing.ui" line="28"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглавие</translation>
     </message>
     <message>
-        <location filename="../forms/capturePublishing.ui" line="42"/>
         <source>E-mail</source>
-        <translation type="unfinished"></translation>
+        <translation>електронна поща</translation>
     </message>
     <message>
-        <location filename="../forms/capturePublishing.ui" line="52"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../forms/capturePublishing.ui" line="62"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
 </context>
 <context>
     <name>documents</name>
     <message>
-        <location filename="../forms/documents.ui" line="26"/>
         <source>OpenBoard Documents</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3752,251 +2511,199 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>preferencesDialog</name>
     <message>
-        <location filename="../forms/preferences.ui" line="14"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="41"/>
-        <location filename="../forms/preferences.ui" line="96"/>
         <source>Default Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки по подразбиране</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="63"/>
-        <location filename="../forms/preferences.ui" line="118"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Затвори</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="78"/>
-        <location filename="../forms/preferences.ui" line="3508"/>
-        <source>version : …</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="137"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Дисплей</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="143"/>
-        <source>Multi display</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="178"/>
-        <source>Swap control display and view display</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="185"/>
-        <source>Show internal web page content on secondary screen or projector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="192"/>
-        <source>Swap first and second view displays</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="208"/>
-        <source>Toolbar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="216"/>
-        <source>Positioned at the Top (recommended for tablets)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="223"/>
-        <source>Positioned at the Bottom (recommended for white boards)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="280"/>
-        <source>Display Text Under Button</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="296"/>
-        <source>Stylus Palette</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="354"/>
-        <source>Hori&amp;zontal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="364"/>
-        <source>&amp;Vertical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="398"/>
-        <source>Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="422"/>
-        <source>Mode to start in:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="430"/>
-        <source>Board</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="435"/>
-        <source>Desktop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="467"/>
-        <source>Virtual Keyboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="478"/>
-        <source>Built-in virtual keyboard button size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="485"/>
-        <source>Use system keyboard (recommended)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="595"/>
-        <location filename="../forms/preferences.ui" line="860"/>
-        <source>Grid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="622"/>
-        <location filename="../forms/preferences.ui" line="887"/>
-        <source>On Light Background</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="683"/>
-        <location filename="../forms/preferences.ui" line="798"/>
-        <location filename="../forms/preferences.ui" line="948"/>
-        <location filename="../forms/preferences.ui" line="1063"/>
-        <source>Opacity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="737"/>
-        <location filename="../forms/preferences.ui" line="1002"/>
-        <source>On Dark Background</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="1125"/>
-        <source>Pen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="1142"/>
-        <source>Marker</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="1159"/>
-        <source>Network</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="1171"/>
-        <source>Internet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/preferences.ui" line="1179"/>
         <source>Show Page with External Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Покажи страницата с външен браузър</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="1200"/>
-        <source>Home Page:</source>
-        <translation type="unfinished"></translation>
+        <source>Virtual Keyboard</source>
+        <translation>Виртуална клавиатура</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="1207"/>
-        <source>Proxy User:</source>
-        <translation type="unfinished"></translation>
+        <source>Keyboard button size:</source>
+        <translation type="vanished">Големина на бутоните на клавиатурата:</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="1235"/>
-        <source>Pass:</source>
-        <translation type="unfinished"></translation>
+        <source>Positioned at the Top (recommended for tablets)</source>
+        <translation>Поставена отгоре (препоръчва се за таблети)</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="1290"/>
-        <source>Licences</source>
-        <translation type="unfinished"></translation>
+        <source>Positioned at the Bottom (recommended for white boards)</source>
+        <translation>Поставена от долу (препоръчва се за бели дъски)</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="3291"/>
-        <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <source>Display Text Under Button</source>
+        <translation>Покажи текста под бутона</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="3388"/>
+        <source>Stylus Palette</source>
+        <translation>Палитна на стилуса</translation>
+    </message>
+    <message>
+        <source>Horizontal</source>
+        <translation>Хоризонтално</translation>
+    </message>
+    <message>
+        <source>Vertical</source>
+        <translation>Вертикално</translation>
+    </message>
+    <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="3440"/>
         <source>Software Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновяване на софтуера</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="3455"/>
         <source>Check software update at launch</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверявай за обновления при стартиране</translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="3478"/>
+        <source>Internet</source>
+        <translation>Интернет</translation>
+    </message>
+    <message>
+        <source>Home Page:</source>
+        <translation>начална страница:</translation>
+    </message>
+    <message>
+        <source>Toolbar</source>
+        <translation>Лента с инструменти</translation>
+    </message>
+    <message>
+        <source>Pen</source>
+        <translation>Химикалка</translation>
+    </message>
+    <message>
+        <source>Marker</source>
+        <translation>Маркер</translation>
+    </message>
+    <message>
+        <source>version : …</source>
+        <translation>версия: ...</translation>
+    </message>
+    <message>
+        <source>Licences</source>
+        <translation>Лиценз</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>мрежа</translation>
+    </message>
+    <message>
+        <source>Show internal web page content on secondary screen or projector</source>
+        <translation>Покажи вътрешната страница на втори екран на проектора</translation>
+    </message>
+    <message>
+        <source>Multi display</source>
+        <translation>Много екрани</translation>
+    </message>
+    <message>
+        <source>Swap control display and view display</source>
+        <translation>Размени контролния екран и екрана за гледане</translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation>Начин</translation>
+    </message>
+    <message>
+        <source>Mode to start in:</source>
+        <translation>Начин на започване:</translation>
+    </message>
+    <message>
+        <source>Board</source>
+        <translation>Дъска</translation>
+    </message>
+    <message>
+        <source>Desktop</source>
+        <translation>Десктоп</translation>
+    </message>
+    <message>
+        <source>Proxy User:</source>
+        <translation>Потребител на прокси:</translation>
+    </message>
+    <message>
+        <source>Pass:</source>
+        <translation>Парола:</translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Изготвили</translation>
+    </message>
+    <message>
         <source>Open-Sankoré Importer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/preferences.ui" line="3493"/>
         <source>Check if Open-Sankoré data could be imported at launch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use system keyboard (recommended)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Built-in virtual keyboard button size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On Dark Background</source>
+        <translation type="unfinished">На тъмен фон</translation>
+    </message>
+    <message>
+        <source>Opacity</source>
+        <translation type="unfinished">Непрозрачност</translation>
+    </message>
+    <message>
+        <source>On Light Background</source>
+        <translation type="unfinished">На светъл фон</translation>
+    </message>
+    <message>
+        <source>Swap first and second view displays</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>trapFlashDialog</name>
     <message>
-        <location filename="../forms/trapFlash.ui" line="14"/>
         <source>Trap flash</source>
-        <translation type="unfinished"></translation>
+        <translation>Използване на флаш</translation>
     </message>
     <message>
-        <location filename="../forms/trapFlash.ui" line="22"/>
         <source>Select a flash to trap</source>
-        <translation type="unfinished"></translation>
+        <translation>Избери флаш , който ще използваш</translation>
     </message>
     <message>
-        <location filename="../forms/trapFlash.ui" line="59"/>
         <source>about:blank</source>
-        <translation type="unfinished"></translation>
+        <translation>about:blank</translation>
     </message>
     <message>
-        <location filename="../forms/trapFlash.ui" line="75"/>
         <source>Application name</source>
-        <translation type="unfinished"></translation>
+        <translation>Име на приложението</translation>
     </message>
     <message>
-        <location filename="../forms/trapFlash.ui" line="104"/>
         <source>Create Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Създаване на приложение</translation>
     </message>
 </context>
 </TS>

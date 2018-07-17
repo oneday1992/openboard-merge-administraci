@@ -258,7 +258,7 @@ class UBGraphicsScene: public UBCoreGraphicsScene, public UBItem
 
         class SceneViewState
         {
-            QPointF mLastSceneCenter;// Issue 1598/1605 - CFA - 20131028
+            //QPointF mLastSceneCenter;// Issue 1598/1605 - CFA - 20131028
             public:
                 SceneViewState()
                 {

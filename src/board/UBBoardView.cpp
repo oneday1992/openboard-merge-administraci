@@ -1556,10 +1556,6 @@ void UBBoardView::mouseReleaseEvent (QMouseEvent *event)
             bReleaseIsNeed = false;
         }
 
-        UBGraphicsItem *graphicsItem = dynamic_cast<UBGraphicsItem*>(movingItem);
-        if (graphicsItem)
-            graphicsItem->Delegate()->commitUndoStep();
-
         if (mWidgetMoved)
         {
             mWidgetMoved = false;
