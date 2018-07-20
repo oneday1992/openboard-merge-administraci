@@ -20,7 +20,7 @@
  */
 
 #include "UBFFmpegVideoEncoder.h"
-
+#include "libavresample/avresample.h"
 
 // Due to the whole FFmpeg / libAV silliness, we have to support libavresample instead
 // of libswresapmle on some platforms, as well as now-obsolete function names
@@ -395,11 +395,14 @@ bool UBFFmpegVideoEncoder::init()
         c = mAudioStream->codec;
 
         c->bit_rate = 96000;
-        c->sample_fmt  = audioCodec->sample_fmts ? audioCodec->sample_fmts[0] : AV_SAMPLE_FMT_FLTP;// FLTP by default for AAC
+        c->time_base = { 1, c->sample_rate };
+		c->sample_fmt  = audioCodec->sample_fmts ? audioCodec->sample_fmts[0] : AV_SAMPLE_FMT_FLTP;// FLTP by default for AAC
         c->sample_rate = mAudioSampleRate;
-        c->channel_layout = AV_CH_LAYOUT_STEREO;
-        c->channels  = av_get_channel_layout_nb_channels(c->channel_layout);
-
+        
+        
+		c->channel_layout = AV_CH_LAYOUT_STEREO;
+		c->channels  = av_get_channel_layout_nb_channels(c->channel_layout);
+		c->profile = FF_PROFILE_AAC_MAIN;
         //deprecated on ffmpeg 4
         c->strict_std_compliance = -2;// Enable use of experimental codec
 
@@ -408,7 +411,7 @@ bool UBFFmpegVideoEncoder::init()
         //(see https://trac.ffmpeg.org/wiki/Encode/H.264#Compatibility).
         //c->profile = FF_PROFILE_AAC_MAIN;
 
-        c->time_base = { 1, c->sample_rate };
+        
 
         if (mOutputFormatContext->oformat->flags & AVFMT_GLOBALHEADER)
             c->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
