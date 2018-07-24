@@ -1354,14 +1354,14 @@ void UBGraphicsScene::updateSelectionFrame()
     case 1: {
         mSelectionFrame->setVisible(false);
         mSelectionFrame->setEnclosedItems(QList<QGraphicsItem*>());
-        //qWarning()<<selItems.count();
+
         UBGraphicsItemDelegate *itemDelegate = UBGraphicsItem::Delegate(selItems.first());
-        UBGraphicsMediaItem * mItem = dynamic_cast<UBGraphicsMediaItem*>(selItems.first());
-        if(!mItem){
+        if (itemDelegate)
+        {
             itemDelegate->createControls();
+            selItems.first()->setVisible(true);
             itemDelegate->showControls();
         }
-        selItems.first()->setVisible(true);
     } break;
     default: {
         mSelectionFrame->setVisible(true);
