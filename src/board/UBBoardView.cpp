@@ -619,7 +619,7 @@ bool UBBoardView::itemHaveParentWithType(QGraphicsItem *item, int type)
 
 bool UBBoardView::isUBItem(QGraphicsItem *item)
 {
-
+    qDebug() << "item type: " << item->type();
     if ((UBGraphicsItemType::UserTypesCount > item->type()) && (item->type() > QGraphicsItem::UserType))
         return true;
 
@@ -670,7 +670,11 @@ void UBBoardView::handleItemsSelection(QGraphicsItem *item)
             // only with UB items.
             if ((UBGraphicsItemType::UserTypesCount > item->type()) && (item->type() > QGraphicsItem::UserType))
             {
-                scene()->deselectAllItemsExcept(item);
+                // if Item can be selected at mouse press - then we need to deselect all other items.
+                if(item->type() != UBGraphicsItemType::GraphicsHandle){
+                    //issue 1554 - NNE - 20131009
+                    scene()->deselectAllItemsExcept(item);
+                }
             }
         }
     }
@@ -854,8 +858,7 @@ bool UBBoardView::itemShouldBeMoved(QGraphicsItem *item)
     }
 
 
-    int nType = -1;
-    nType = item->type();
+    qDebug() << "item type: " << item->type();
 
     switch(item->type())
     {
@@ -880,7 +883,7 @@ bool UBBoardView::itemShouldBeMoved(QGraphicsItem *item)
     case UBGraphicsAudioItem::Type:
         return true;
     case UBGraphicsStrokesGroup::Type:
-        return false;
+        return true;
     case UBGraphicsTextItem::Type:
         return !item->isSelected();
     }
@@ -896,31 +899,24 @@ QGraphicsItem* UBBoardView::determineItemToPress(QGraphicsItem *item)
         UBStylusTool::Enum currentTool = (UBStylusTool::Enum)UBDrawingController::drawingController()->stylusTool();
 
         //TODO claudio
-        // another chuck of very good code
-//        if(item->parentItem() && UBGraphicsGroupContainerItem::Type == item->parentItem()->type() && currentTool == UBStylusTool::Play){
-//            UBGraphicsGroupContainerItem* group = qgraphicsitem_cast<UBGraphicsGroupContainerItem*>(item->parentItem());
-//            if(group && group->Delegate()->action()){
-//                group->Delegate()->action()->play();
-//                return item;
-//            }
-//        }
+        // another chuck of very good code        
+        if(item->parentItem() && UBGraphicsGroupContainerItem::Type == item->parentItem()->type() && currentTool == UBStylusTool::Play){
+            UBGraphicsGroupContainerItem* group = qgraphicsitem_cast<UBGraphicsGroupContainerItem*>(item->parentItem());
+            if(group && group->Delegate()->action()){
+                group->Delegate()->action()->play();
+                return item;
+            }
+        }
 
         // if item is on group and group is not selected - group should take press.
-        if (UBStylusTool::Selector == currentTool
-                && item->parentItem()
-                && UBGraphicsGroupContainerItem::Type == item->parentItem()->type()
-                && !item->parentItem()->isSelected())
+        if ((UBStylusTool::Selector == currentTool
+             || currentTool == UBStylusTool::Play) // Issue 1509 - AOU - 20131113
+            && item->parentItem()
+            && UBGraphicsGroupContainerItem::Type == item->parentItem()->type())
+                /*&& !item->parentItem()->isSelected())*/ // Issue 1509 - AOU - 20131113
+        {
             return item->parentItem();
-
-        // if item is on group and group is not selected - group should take press.
-        //if ((UBStylusTool::Selector == currentTool
-        //     || currentTool == UBStylusTool::Play) // Issue 1509 - AOU - 20131113
-        //    && item->parentItem()
-        //    && UBGraphicsGroupContainerItem::Type == item->parentItem()->type())
-        //        /*&& !item->parentItem()->isSelected())*/ // Issue 1509 - AOU - 20131113
-        //{
-        //    return item->parentItem();
-        //}
+        }
 
         // items like polygons placed in two groups nested, so we need to recursive call.
         if(item->parentItem() && UBGraphicsStrokesGroup::Type == item->parentItem()->type())
@@ -1423,6 +1419,8 @@ void UBBoardView::mouseMoveEvent (QMouseEvent *event)
                         // Fin Issue 1569 - CFA - 20131113
 
                         //EV-7 - NNE - 20140103 : Add test on drawing objects
+                        qDebug() << "item type: " << item->type();
+
                         if (item->type() == UBGraphicsW3CWidgetItem::Type
                                 || item->type() == UBGraphicsPixmapItem::Type
                                 || item->type() == UBGraphicsVideoItem::Type

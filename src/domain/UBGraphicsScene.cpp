@@ -2103,6 +2103,11 @@ void UBGraphicsScene::deselectAllItemsExcept(QGraphicsItem* item)
             UBGraphicsTextItem* textItem = dynamic_cast<UBGraphicsTextItem*>(eachItem);
             if(textItem)
                 textItem->activateTextEditor(false);
+				
+			//EV-7 - NNE - 20140206
+            if(UBShapeFactory::isShape(eachItem)){
+                UBShapeFactory::desactivateEditionMode(eachItem);
+            }
         }
     }
 }

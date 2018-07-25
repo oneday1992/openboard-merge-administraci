@@ -127,7 +127,8 @@ void UBGraphicsStrokesGroup::mousePressEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsItemGroup::mousePressEvent(event);
     event->accept();
 
-    setSelected(false);
+    //2018-07-25-fty鼠标点击钢笔对象时，不取消选择状态
+    //setSelected(false);
 }
 
 void UBGraphicsStrokesGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -136,7 +137,8 @@ void UBGraphicsStrokesGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         QGraphicsItemGroup::mouseMoveEvent(event);
 
         event->accept();
-        setSelected(false);
+        //2018-07-25-fty鼠标拖动钢笔对象时，不取消选择状态
+        //setSelected(false);
     }
 }
 

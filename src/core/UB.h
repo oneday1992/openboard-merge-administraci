@@ -156,6 +156,8 @@ struct UBGraphicsItemType
         SvgItemType,
         DelegateButtonType,
         MediaItemType,
+        VideoItemType,
+        AudioItemType,
         PDFItemType,
         TextItemType,
         CurtainItemType,
@@ -168,8 +170,6 @@ struct UBGraphicsItemType
         cacheItemType,
         AristoItemType,
         groupContainerType,
-        AudioItemType,
-        VideoItemType,
         ToolWidgetItemType,
         GraphicsWidgetItemType,
         GraphicsShapeItemType,
@@ -178,8 +178,8 @@ struct UBGraphicsItemType
         GraphicsFreehandItemType,
         GraphicsHandle,
         GraphicsProxyWidget,        
-        SelectionFrameType,
-        UserTypesCount // this line must be the last line in this enum because it is types counter.
+        UserTypesCount,
+        SelectionFrameType // this line must be the last line in this enum because it is types counter.
     };
 };
 
