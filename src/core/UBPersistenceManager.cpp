@@ -897,19 +897,26 @@ QString UBPersistenceManager::generateUniqueDocumentPath(const QString& baseFold
     return baseFolder + QString("/OpenBoard Document %1").arg(dirName);
 }
 
+/****modify fty-20180727-不生成tmp document, 恢复自动保存******/
+//QString UBPersistenceManager::generateUniqueDocumentPath()
+//{
+//    qDebug()  << "Activate temp Document folder  : " + UBSettings::settings()->activateTempDoc->get().toString();
+//
+//    if (UBSettings::settings()->activateTempDoc->get().toBool())
+//    {
+//        return generateTmpDocumentPath(UBSettings::userDocumentDirectory());
+//    }
+//    else
+//     {
+//        return generateUniqueDocumentPath(UBSettings::userDocumentDirectory());
+//     }
+//}
+
 QString UBPersistenceManager::generateUniqueDocumentPath()
 {
-    qDebug()  << "Activate temp Document folder  : " + UBSettings::settings()->activateTempDoc->get().toString();
-
-    if (UBSettings::settings()->activateTempDoc->get().toBool())
-    {
-        return generateTmpDocumentPath(UBSettings::userDocumentDirectory());
-    }
-    else
-     {
-        return generateUniqueDocumentPath(UBSettings::userDocumentDirectory());
-     }
+    return generateUniqueDocumentPath(UBSettings::userDocumentDirectory());
 }
+
 
 
 void UBPersistenceManager::generatePathIfNeeded(UBDocumentProxy* pDocumentProxy)

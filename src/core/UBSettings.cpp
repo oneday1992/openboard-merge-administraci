@@ -462,8 +462,6 @@ void UBSettings::init()
     swapControlAndDisplayScreens = new UBSetting(this, "App", "SwapControlAndDisplayScreens", false);
 
     angleTolerance = new UBSetting(this, "App", "AngleTolerance", 4);
-    activateTempDoc = new UBSetting(this, "App", "ActivateTempDoc", 1);
-
     historyLimit = new UBSetting(this, "Web", "HistoryLimit", 15);
 
     libIconSize = new UBSetting(this, "Library", "LibIconSize", defaultLibraryIconSize);

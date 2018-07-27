@@ -439,7 +439,7 @@ void UBBoardController::connectToolbar()
     connect(mMainWindow->actionSleep, SIGNAL(triggered()), this, SLOT(blackout()));
     connect(mMainWindow->actionVirtualKeyboard, SIGNAL(triggered(bool)), this, SLOT(showKeyboard(bool)));
     connect(mMainWindow->actionImportPage, SIGNAL(triggered()), this, SLOT(importPage()));
-    connect(mMainWindow->actionSave, SIGNAL(triggered()), this, SLOT(saveDocument()));
+    //connect(mMainWindow->actionSave, SIGNAL(triggered()), this, SLOT(saveDocument()));//modify --fty
 }
 
 void UBBoardController::startScript()
@@ -2037,14 +2037,7 @@ void UBBoardController::lastWindowClosed()
             persistCurrentScene();
         }
 
-        if (UBSettings::settings()->activateTempDoc->get().toBool())
-        {
-            UBPersistenceManager::persistenceManager()->purgeTmpDocuments();
-        }
-        else
-        {
-             UBPersistenceManager::persistenceManager()->purgeEmptyDocuments();
-        }
+        UBPersistenceManager::persistenceManager()->purgeEmptyDocuments();
 
         mCleanupDone = true;
     }
