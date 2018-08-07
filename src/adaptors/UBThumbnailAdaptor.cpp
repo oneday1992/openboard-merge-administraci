@@ -87,6 +87,7 @@ const QPixmap* UBThumbnailAdaptor::get(UBDocumentProxy* proxy, int pageIndex)
 {
     QString fileName = proxy->persistencePath() + UBFileSystemUtils::digitFileFormat("/page%1.thumbnail.jpg", pageIndex);
 
+    qDebug() << "fileName::::: " << fileName;
     QFile file(fileName);
     if (!file.exists())
     {

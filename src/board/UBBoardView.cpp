@@ -1316,6 +1316,11 @@ void UBBoardView::mousePressEvent (QMouseEvent *event)
             event->accept ();
             break;
 
+        case UBStylusTool::ChangeFill:
+            qDebug() << "on est dans le cas du pot de peinture, on va remplir l'objet si possible";
+            UBApplication::boardController->shapeFactory().changeFillColor(mapToScene(mMouseDownPos));
+
+            break;
         default:
             //qWarning() << "default %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
             if(UBDrawingController::drawingController()->mActiveRuler==NULL) {
