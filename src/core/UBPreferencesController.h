@@ -79,6 +79,8 @@ class UBPreferencesController : public QObject
         void wire();
         void init();
 
+        QMap<QString,QString>mIsoCodeAndLanguage;
+
         UBPreferencesDialog* mPreferencesWindow;
         Ui::preferencesDialog* mPreferencesUI;
         UBBrushPropertiesFrame* mPenProperties;
@@ -101,6 +103,7 @@ class UBPreferencesController : public QObject
         void toolbarPositionChanged(bool checked);
         void toolbarOrientationVertical(bool checked);
         void toolbarOrientationHorizontal(bool checked);
+        void onLanguageChanged(QString currentItem);
         void systemOSKCheckBoxToggled(bool checked);
 
     private slots:

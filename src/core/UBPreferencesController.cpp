@@ -86,6 +86,7 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
     mPreferencesUI->setupUi(mPreferencesWindow);
     adjustScreens(1);
     connect(mDesktop, &QDesktopWidget::screenCountChanged, this, &UBPreferencesController::adjustScreens);
+    connect(mPreferencesUI->languageComboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(onLanguageChanged(QString)));
 
     wire();
 }
@@ -265,6 +266,8 @@ void UBPreferencesController::init()
     mPreferencesUI->checkOpenSankoreAtStartup->setChecked(settings->appLookForOpenSankoreInstall->get().toBool());
 
     // display tab
+    //modify fty visble false hide system keyboard use and  set default keyboard 41*41
+    mPreferencesUI->useSystemOSKCheckBox->setVisible(false);
     for(int i=0; i<mPreferencesUI->keyboardPaletteKeyButtonSize->count(); i++)
         if (mPreferencesUI->keyboardPaletteKeyButtonSize->itemText(i) == settings->boardKeyboardPaletteKeyBtnSize->get().toString()) {
             mPreferencesUI->keyboardPaletteKeyButtonSize->setCurrentIndex(i);
@@ -306,6 +309,85 @@ void UBPreferencesController::init()
 
     mMarkerProperties->opacitySlider->setValue(settings->boardMarkerAlpha->get().toDouble() * 100);
 
+    //Issue NC - CFA - 20140520 : clear list, to prevent duplication of the list
+    mIsoCodeAndLanguage.clear();
+    //modify ”Ô—‘
+    /*mIsoCodeAndLanguage.insert(tr("Default"),"NO_VALUE");
+    mIsoCodeAndLanguage.insert(tr("Arabic"),"ar");
+    mIsoCodeAndLanguage.insert(tr("Basque"),"eu");
+    mIsoCodeAndLanguage.insert(tr("Bambara"),"bm");
+    mIsoCodeAndLanguage.insert(tr("Bulgarian"),"bg");
+    mIsoCodeAndLanguage.insert(tr("Catalan"),"ca");
+    mIsoCodeAndLanguage.insert(tr("Corsican"),"co");
+    mIsoCodeAndLanguage.insert(tr("Czech"),"cs");
+    mIsoCodeAndLanguage.insert(tr("Danish"),"da");
+    mIsoCodeAndLanguage.insert(tr("German"),"de");
+    mIsoCodeAndLanguage.insert(tr("Greek"),"el");
+    mIsoCodeAndLanguage.insert(tr("English"),"en");
+    mIsoCodeAndLanguage.insert(tr("English UK"),"en_UK");
+    mIsoCodeAndLanguage.insert(tr("Spanish"),"es");
+    mIsoCodeAndLanguage.insert(tr("Finnish"),"fi");
+    mIsoCodeAndLanguage.insert(tr("French"),"fr");
+    mIsoCodeAndLanguage.insert(tr("Swiss French"),"fr_CH");
+    mIsoCodeAndLanguage.insert(tr("Hindi"),"hi");
+    mIsoCodeAndLanguage.insert(tr("Hungarian"),"hu");
+    mIsoCodeAndLanguage.insert(tr("Italian"),"it");
+    mIsoCodeAndLanguage.insert(tr("Hebrew"),"iw");
+    mIsoCodeAndLanguage.insert(tr("Japanese"),"ja");
+    mIsoCodeAndLanguage.insert(tr("Korean"),"ko");
+    mIsoCodeAndLanguage.insert(tr("Malagasy"),"mg");
+    mIsoCodeAndLanguage.insert(tr("Norwegian"),"nb");
+    mIsoCodeAndLanguage.insert(tr("Dutch"),"nl");
+    mIsoCodeAndLanguage.insert(tr("Occitan"), "oc");
+    mIsoCodeAndLanguage.insert(tr("Polish"),"pl");
+    mIsoCodeAndLanguage.insert(tr("Portuguese"),"pt");
+    mIsoCodeAndLanguage.insert(tr("Romansh"),"rm");
+    mIsoCodeAndLanguage.insert(tr("Romanian"),"ro");
+    mIsoCodeAndLanguage.insert(tr("Russian"),"ru");
+    mIsoCodeAndLanguage.insert(tr("Slovak"),"sk");
+    mIsoCodeAndLanguage.insert(tr("Swedish"),"sv");
+    mIsoCodeAndLanguage.insert(tr("Turkish"),"tr");
+    mIsoCodeAndLanguage.insert(tr("Chinese"),"zh");
+    mIsoCodeAndLanguage.insert(tr("Chinese Simplified"),"zh_CN");
+    mIsoCodeAndLanguage.insert(tr("Chinese Traditional"),"zh_TW");
+    mIsoCodeAndLanguage.insert(tr("Galician"),"gl");*/
+    mIsoCodeAndLanguage.insert(tr("Default"),"NO_VALUE");
+    mIsoCodeAndLanguage.insert(tr("Russian"),"ru");
+    mIsoCodeAndLanguage.insert(tr("German"),"de");
+    mIsoCodeAndLanguage.insert(tr("Polish"),"pl");
+    mIsoCodeAndLanguage.insert(tr("English"),"en");
+    mIsoCodeAndLanguage.insert(tr("English UK"),"en_UK");
+    mIsoCodeAndLanguage.insert(tr("Chinese Simplified"),"zh_CN");
+    mIsoCodeAndLanguage.insert(tr("Chinese Traditional"),"zh_TW");
+
+    QStringList list;
+    list << mIsoCodeAndLanguage.keys();
+    list.sort();
+    //Issue NC - CFA - 20140520 : clear list, to prevent duplication of the list
+    QString currentIsoLanguage = UBSettings::settings()->appPreferredLanguage->get().toString();
+    mPreferencesUI->languageComboBox->clear();
+    mPreferencesUI->languageComboBox->addItems(list);
+    if(currentIsoLanguage.length()){
+        QString language;
+        foreach(QString eachKey, mIsoCodeAndLanguage.keys())
+            if(mIsoCodeAndLanguage[eachKey] == currentIsoLanguage){
+                language = eachKey;
+                break;
+            }
+        mPreferencesUI->languageComboBox->setCurrentIndex(list.indexOf(language));
+    }
+    else
+        mPreferencesUI->languageComboBox->setCurrentIndex(list.indexOf("Default"));
+
+    connect(mPreferencesUI->quitOpenSankorePushButton,SIGNAL(clicked()),UBApplication::app(),SLOT(closing()));
+    mPreferencesUI->quitOpenSankorePushButton->setDisabled(true);
+}
+
+void UBPreferencesController::onLanguageChanged(QString currentItem)
+{
+    QString isoCode = mIsoCodeAndLanguage[currentItem] == "NO_VALUE" ? "" : mIsoCodeAndLanguage[currentItem];
+    UBSettings::settings()->appPreferredLanguage->setString(isoCode);
+    mPreferencesUI->quitOpenSankorePushButton->setEnabled(true);
 }
 
 void UBPreferencesController::close()
@@ -336,7 +418,7 @@ void UBPreferencesController::defaultSettings()
         mPreferencesUI->verticalChoice->setChecked(settings->appToolBarOrientationVertical->reset().toBool());
         mPreferencesUI->horizontalChoice->setChecked(!settings->appToolBarOrientationVertical->reset().toBool());
         mPreferencesUI->startModeComboBox->setCurrentIndex(0);
-
+        onLanguageChanged("Default");
         mPreferencesUI->useSystemOSKCheckBox->setChecked(settings->useSystemOnScreenKeyboard->reset().toBool());
     }
     else if (mPreferencesUI->mainTabWidget->currentWidget() == mPreferencesUI->penTab)
