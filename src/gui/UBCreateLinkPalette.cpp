@@ -190,7 +190,9 @@ void UBCreateLinkPalette::init()
     pageLinkWidgetLayout->addLayout(pageLinkBackButtonLayout);
 
     int activeIndex = UBApplication::boardController->activeSceneIndex();
-    int lastSceneIndex = UBApplication::boardController->selectedDocument()->pageCount() - 1;
+    //modify fty
+    //int lastSceneIndex = UBApplication::boardController->selectedDocument()->pageCount() - 1;// opensankore have title page,next it is 1 page
+    int lastSceneIndex = UBApplication::boardController->selectedDocument()->pageCount();// openboard dont have title page,so first is 1 page
     mButtonGroup = new QButtonGroup();
     mButtonGroup->setExclusive(true);
     QCheckBox* nextPageCheckBox = new QCheckBox(tr("Next Page"),this);
@@ -203,7 +205,7 @@ void UBCreateLinkPalette::init()
     if(activeIndex == 0)
         previousPageCheckBox->setEnabled(false);
     pageLinkWidgetLayout->addWidget(previousPageCheckBox);
-    QCheckBox* firstPageCheckBox = new QCheckBox(tr("Title Page"),this);
+    QCheckBox* firstPageCheckBox = new QCheckBox(tr("First Page"),this);
     mButtonGroup->addButton(firstPageCheckBox,eMoveToFirstPage);
     pageLinkWidgetLayout->addWidget(firstPageCheckBox);
     QCheckBox* lastPageCheckBox = new QCheckBox(tr("Last Page"),this);
@@ -216,7 +218,8 @@ void UBCreateLinkPalette::init()
     toPageNumberLayout->addWidget(pageNumberCheckBox);
     mPageComboBox = new QComboBox(this);
     toPageNumberLayout->addWidget(mPageComboBox);
-    for(int sceneIndex = 0; sceneIndex <= lastSceneIndex;sceneIndex+=1)
+    //modify fty£¬page from 1 begin
+    for(int sceneIndex = 1; sceneIndex <= lastSceneIndex;sceneIndex+=1)
         if(sceneIndex != activeIndex)
             mPageComboBox->insertItem(sceneIndex,QString("%1").arg(sceneIndex));
     if(!mPageComboBox->count())
@@ -309,7 +312,7 @@ void UBCreateLinkPalette::onOkLinkToPageClicked()
     if(id!= eMoveToPage)
         action = new UBGraphicsItemMoveToPageAction(id);
     else
-        action = new UBGraphicsItemMoveToPageAction(id,mPageComboBox->currentText().toInt());
+        action = new UBGraphicsItemMoveToPageAction(id,mPageComboBox->currentText().toInt()-1);//modify fty  no title page , title page is 1 page ,but id 0
     emit definedAction(action);
     close();
 }

@@ -302,6 +302,7 @@ void UBSettings::init()
     boardInterpolateMarkerStrokes = new UBSetting(this, "Board", "InterpolateMarkerStrokes", true);
     boardSimplifyMarkerStrokes = new UBSetting(this, "Board", "SimplifyMarkerStrokes", true);
 
+    //modify fty
     boardKeyboardPaletteKeyBtnSize = new UBSetting(this, "Board", "KeyboardPaletteKeyBtnSize", "41x41");
     ValidateKeyboardPaletteKeyBtnSize();
 
