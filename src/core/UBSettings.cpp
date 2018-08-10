@@ -1034,6 +1034,17 @@ QString UBSettings::userDocumentDirectory()
     return documentDirectory;
 }
 
+QString UBSettings::userBookmarkDirectory()
+{
+    static QString bookmarkDirectory = "";
+    if(bookmarkDirectory.isEmpty()){
+        bookmarkDirectory = userDataDirectory() + "/bookmark";
+        checkDirectory(bookmarkDirectory);
+    }
+    qDebug() << "userBookmarkDirectory()" << bookmarkDirectory;
+    return bookmarkDirectory;
+}
+
 QString UBSettings::userFavoriteListFilePath()
 {
     static QString filePath = "";

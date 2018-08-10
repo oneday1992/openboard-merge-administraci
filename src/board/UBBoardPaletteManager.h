@@ -72,6 +72,7 @@ class UBBoardPaletteManager : public QObject
         void setupLayout();
         UBLeftPalette* leftPalette(){return mLeftPalette;}
         UBRightPalette* rightPalette(){return mRightPalette;}
+        UBFeaturesWidget *featuresWidget(){return mpFeaturesWidget;}
         UBStylusPalette* stylusPalette(){return mStylusPalette;}
         UBDrawingPalette* drawingPalette() { return mDrawingPalette; }
         UBActionPalette *addItemPalette() {return mAddItemPalette;}        

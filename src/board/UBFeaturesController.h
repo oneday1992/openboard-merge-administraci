@@ -120,6 +120,7 @@ enum UBFeatureElementType
     FEATURE_TRASH,
     FEATURE_FAVORITE,
     FEATURE_SEARCH,
+    FEATURE_BOOKMARK,
     FEATURE_INVALID
 };
 
@@ -212,6 +213,7 @@ public:
     void removeFromFavorite(const QUrl &path, bool deleteManualy = false);
     void importImage(const QImage &image, const QString &fileName = QString());
     void importImage( const QImage &image, const UBFeature &destination, const QString &fileName = QString() );
+    void createBookmark(const QString& fileName, const QString &urlString);
     QStringList getFileNamesInFolders();
 
     void fileSystemScan(const QUrl &currPath, const QString & currVirtualPath);
@@ -241,6 +243,7 @@ public:
     static const QString trashPath;
     static const QString favoritePath;
     static const QString webSearchPath;
+    static const QString bookMarkPath;
 
 signals:
     void maxFilesCountEvaluated(int pLimit);
@@ -296,6 +299,7 @@ private:
 
     QUrl trashDirectoryPath;
     QUrl mLibSearchDirectoryPath;
+    QUrl mLibBookMarkDirectoryPath;
 
 
 
@@ -312,6 +316,7 @@ private:
     UBFeature flashElement;
     UBFeature shapesElement;
     UBFeature webSearchElement;
+    UBFeature bookMarkElement;
 
     QSet <QUrl> *favoriteSet;
 

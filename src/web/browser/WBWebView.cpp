@@ -336,6 +336,12 @@ void WBWebView::setProgress(int progress)
 {
     //qDebug() << "loading progress" << progress << "% in" << mLoadStartTime.elapsed() << "ms";
 
+    qDebug() << "loading in progress: " << url().toString();
+     //qDebug() << "mInitialUrl: " << mInitialUrl.toString();
+    if(url().toString() != mInitialUrl.toString()){
+        qDebug() << "Url changed!";
+    }
+
     mProgress = progress;
 }
 
@@ -385,7 +391,9 @@ QUrl WBWebView::url() const
 {
     QUrl url;
     try{
+        //qDebug() << "url:" << url.toString();
         url = QWebView::url();
+        //qDebug() << "url:" << url.toString();
     } catch(...)
     {}
 

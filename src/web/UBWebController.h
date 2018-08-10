@@ -134,6 +134,8 @@ class UBWebController : public QObject
         void onOEmbedParsed(QVector<sOEmbedContent> contents);
         void onOpenTutorial();
 
+        void onActionBookmark();
+
 
     signals:
         /**

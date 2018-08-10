@@ -31,7 +31,6 @@
 #include <QWebView>
 #include <QWebFrame>
 #include <QWidget>
-
 #include "UBFeaturesWidget.h"
 #include "gui/UBThumbnailWidget.h"
 #include "frameworks/UBFileSystemUtils.h"
@@ -39,6 +38,7 @@
 #include "core/UBDownloadManager.h"
 #include "globals/UBGlobals.h"
 #include "board/UBBoardController.h"
+#include "web/UBWebController.h"
 
 const char *UBFeaturesWidget::objNamePathList = "PathList";
 const char *UBFeaturesWidget::objNameFeatureList = "FeatureList";
@@ -141,7 +141,8 @@ void UBFeaturesWidget::currentSelected(const QModelIndex &current)
 
     UBFeature feature = controller->getFeature(current, objName);
 
-    if ( feature.isFolder() ) {
+    if ( feature.isFolder() )
+    {
         QString newPath = feature.getFullVirtualPath();
 
         controller->setCurrentElement(feature);
@@ -149,25 +150,33 @@ void UBFeaturesWidget::currentSelected(const QModelIndex &current)
 
         centralWidget->switchTo(UBFeaturesCentralWidget::MainList);
 
-        if ( feature.getType() == FEATURE_FAVORITE ) {
+        if ( feature.getType() == FEATURE_FAVORITE )
+        {
             mActionBar->setCurrentState( IN_FAVORITE );
-
-        }  else if ( feature.getType() == FEATURE_CATEGORY && feature.getName() == "root" ) {
+        }
+        else if ( feature.getType() == FEATURE_CATEGORY && feature.getName() == "root" )
+        {
             mActionBar->setCurrentState( IN_ROOT );
-
-        } else if (feature.getType() == FEATURE_TRASH) {
+        }
+        else if (feature.getType() == FEATURE_TRASH)
+        {
             mActionBar->setCurrentState(IN_TRASH);
-
-        } else if (feature.getType() == FEATURE_SEARCH) {
+        }
+        else if (feature.getType() == FEATURE_SEARCH)
+        {
             //The search feature behavior is not standard. If features list clicked - show empty element
             //else show existing saved features search QWebView
-            if (sender()->objectName() == objNameFeatureList) {
+            if (sender()->objectName() == objNameFeatureList)
+            {
                 centralWidget->showElement(feature, UBFeaturesCentralWidget::FeaturesWebView);
-            } else if (sender()->objectName() == objNamePathList) {
+            }
+            else if (sender()->objectName() == objNamePathList)
+            {
                 centralWidget->switchTo(UBFeaturesCentralWidget::FeaturesWebView);
             }
-
-        } else  {
+        }
+        else
+        {
             mActionBar->setCurrentState(IN_FOLDER);
         }
 
@@ -175,10 +184,26 @@ void UBFeaturesWidget::currentSelected(const QModelIndex &current)
 //        centralWidget->showElement(feature, UBFeaturesCentralWidget::FeaturesWebView);
 
     }
-
-    else if (UBSettings::settings()->libraryShowDetailsForLocalItems->get().toBool() == true) {
+    else if (UBSettings::settings()->libraryShowDetailsForLocalItems->get().toBool() == true)
+    {
         centralWidget->showElement(feature, UBFeaturesCentralWidget::FeaturePropertiesList);
         mActionBar->setCurrentState( IN_PROPERTIES );
+    }
+    else
+    {
+        if(feature.getType() == FEATURE_BOOKMARK)
+        {
+            QString url;
+            QFile bookmarkFile(feature.getFullPath().toLocalFile());
+            if(bookmarkFile.open(QIODevice::ReadOnly|QIODevice::Text))
+            {
+                url = QString::fromUtf8(bookmarkFile.readAll());
+                bookmarkFile.close();
+                UBApplication::webController->loadUrl(QUrl(url));
+            }
+            else
+                qWarning() << "failed to read file named " << feature.getFullPath().toLocalFile();
+        }
     }
     mActionBar->cleanText();
 }
@@ -405,6 +430,11 @@ QStringList UBFeaturesMimeData::formats() const
 void UBFeaturesWidget::importImage(const QImage &image, const QString &fileName)
 {
     controller->importImage(image, fileName);
+}
+
+void UBFeaturesWidget::createBookmark(const QString& title, const QString& urlString)
+{
+    controller->createBookmark(title,urlString);
 }
 
 UBFeaturesListView::UBFeaturesListView( QWidget* parent, const char* name )
@@ -1381,6 +1411,7 @@ Qt::ItemFlags UBFeaturesModel::flags( const QModelIndex &index ) const
              || item.getType() == FEATURE_IMAGE
              || item.getType() == FEATURE_FLASH
              || item.getType() == FEATURE_INTERNAL
+             || item.getType() == FEATURE_BOOKMARK
              || item.getType() == FEATURE_FOLDER)
 
             resultFlags |= Qt::ItemIsDragEnabled;

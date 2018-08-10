@@ -77,6 +77,8 @@ UBWebController::UBWebController(UBMainWindow* mainWindow)
     , mToolsPalettePositionned(false)
     , mDownloadViewIsVisible(false)
 {
+    connect(mMainWindow->actionBookmark, SIGNAL(triggered()), this, SLOT(onActionBookmark()));
+
     connect(&mOEmbedParser, SIGNAL(oembedParsed(QVector<sOEmbedContent>)), this, SLOT(onOEmbedParsed(QVector<sOEmbedContent>)));
 
     // TODO : Comment the next line to continue the Youtube button bugfix
@@ -601,6 +603,14 @@ QWebView* UBWebController::createNewTab()
     return mCurrentWebBrowser->createNewTab();
 }
 
+void UBWebController::onActionBookmark()
+{
+    QString title = mCurrentWebBrowser->currentTabWebView()->page()->mainFrame()->title();
+    QString url = mCurrentWebBrowser->currentTabWebView()->page()->mainFrame()->url().toString();
+    if(title.isEmpty())
+        title = url;
+    UBApplication::boardController->paletteManager()->featuresWidget()->createBookmark(title, url);
+}
 
 void UBWebController::copy()
 {
@@ -624,7 +634,6 @@ void UBWebController::paste()
             act->trigger();
     }
 }
-
 
 void UBWebController::cut()
 {

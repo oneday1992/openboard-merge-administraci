@@ -1246,6 +1246,54 @@ void UBBoardController::downloadURL(const QUrl& url, QString contentSourceUrl, c
     }
 }
 
+void UBBoardController::addLinkToPage(QString sourceUrl, QSize size, QPointF pos, const QString &embedCode)
+{
+    QString widgetUrl;
+    QString lSourceUrl = sourceUrl.replace("\n","").replace("\r","");
+    UBMimeType::Enum itemMimeType = UBFileSystemUtils::mimeTypeFromUrl(lSourceUrl);
+
+    if(UBMimeType::Flash == itemMimeType){
+        QString tmpDirPath = UBFileSystemUtils::createTempDir();
+        widgetUrl = UBGraphicsW3CWidgetItem::createNPAPIWrapperInDir(sourceUrl, QDir(tmpDirPath),UBFileSystemUtils::mimeTypeFromFileName(lSourceUrl),QSize(300,150),QUuid::createUuid().toString());
+
+    }
+    else{
+        QString html;
+        if (!embedCode.isEmpty())
+            html = embedCode;
+        else if(UBMimeType::Video == itemMimeType)
+            html = "     <video src=\"" + lSourceUrl + "\" controls=\"controls\">\n";
+        else if(UBMimeType::Audio == itemMimeType)
+            html = "     <audio src=\"" + lSourceUrl + "\" controls=\"controls\">\n";
+        else if(UBMimeType::RasterImage == itemMimeType || UBMimeType::VectorImage == itemMimeType)
+            html = "     <img src=\"" + lSourceUrl + "\">\n";
+        else if(QUrl(lSourceUrl).isValid())
+        {
+            html = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\r\n";
+            html += "<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n";
+            html += "    <head>\r\n";
+            html += "        <meta http-equiv=\"refresh\" content=\"0; " + lSourceUrl + "\">\r\n";
+            html += "    </head>\r\n";
+            html += "    <body>\r\n";
+            html += "        Redirect to target...\r\n";
+            html += "    </body>\r\n";
+            html += "</html>\r\n";
+        }
+
+        QString tmpDirPath = UBFileSystemUtils::createTempDir();
+        widgetUrl = UBGraphicsW3CWidgetItem::createHtmlWrapperInDir(html, QDir(tmpDirPath), size, QUuid::createUuid().toString());
+    }
+
+    if (widgetUrl.length() > 0)
+    {
+        UBGraphicsWidgetItem *widgetItem = mActiveScene->addW3CWidget(QUrl::fromLocalFile(widgetUrl), pos);
+        widgetItem->setUuid(QUuid::createUuid());
+        widgetItem->setSourceUrl(QUrl::fromLocalFile(widgetUrl));
+
+        UBDrawingController::drawingController()->setStylusTool(UBStylusTool::Selector);
+    }
+}
+
 UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl contentUrl, QString pContentTypeHeader,
                                             QByteArray pData, QPointF pPos, QSize pSize,
                                             bool isBackground, bool internalData)
@@ -1648,6 +1696,48 @@ UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl 
                 }
             }
         }
+    }
+    else if (UBMimeType::Link == itemMimeType)
+    {
+        QString url;
+        QString embedCode;
+        QSize size;
+
+        QDomDocument linkDoc;
+        linkDoc.setContent(QString(pData));
+
+        QDomElement e = linkDoc.firstChildElement();
+        if ("link" == e.tagName().toLower())
+            e = e.firstChildElement();
+
+        while(!e.isNull())
+        {
+            if ("src" == e.tagName().toLower())
+                url = e.text();
+
+            if ( "html" == e.tagName().toLower())
+                embedCode = e.text();
+
+            if ( "width" == e.tagName().toLower())
+                size.setWidth(e.text().toInt());
+
+            if ( "height" == e.tagName().toLower())
+                size.setHeight(e.text().toInt());
+
+            e = e.nextSiblingElement();
+        }
+
+
+        addLinkToPage(url, size, pPos, embedCode);
+    }
+    else if (UBMimeType::Web == itemMimeType){
+        addLinkToPage(sourceUrl.toString(),pSize,pPos);
+    }
+    else if(UBMimeType::Bookmark){
+        QFile file(sourceUrl.toLocalFile());
+        file.open(QIODevice::ReadOnly);
+        addLinkToPage(QString::fromLatin1(file.readAll()),QSize(640,480),pPos);
+        file.close();
     }
     else
     {

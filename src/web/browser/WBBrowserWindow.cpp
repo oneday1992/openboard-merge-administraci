@@ -478,6 +478,8 @@ void WBBrowserWindow::slotSwapFocus()
 void WBBrowserWindow::loadPage(const QString &page)
 {
     QUrl url = guessUrlFromString(page);
+    //qDebug() << "page : " << page;
+    //qDebug() << "url : " << url.toString();
     loadUrl(url);
 }
 

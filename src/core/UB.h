@@ -49,6 +49,9 @@ struct UBMimeType
         PDF,
         OpenboardTool,
         Group,
+        Bookmark,
+        Link,
+        Web,
         UNKNOWN
     };
 };

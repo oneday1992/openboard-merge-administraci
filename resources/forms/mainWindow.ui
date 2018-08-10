@@ -149,6 +149,7 @@
    <addaction name="actionWebReload"/>
    <addaction name="actionStopLoading"/>
    <addaction name="actionHome"/>
+   <addaction name="actionBookmark"/>
    <addaction name="separator"/>
    <addaction name="actionWebBigger"/>
    <addaction name="actionWebSmaller"/>
@@ -1678,6 +1679,21 @@
    </property>
    <property name="toolTip">
     <string>Remove the backgound</string>
+   </property>
+  </action>
+  <action name="actionBookmark">
+   <property name="icon">
+    <iconset resource="../sankore.qrc">
+     <normaloff>:/images/toolbar/bookmark.png</normaloff>:/images/toolbar/bookmark.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bookmark</string>
+   </property>
+   <property name="iconText">
+    <string comment="tooltip">Bookmark</string>
+   </property>
+   <property name="toolTip">
+    <string extracomment="tooltip">Bookmark</string>
    </property>
   </action>
   <action name="actionOpenTutorial">
