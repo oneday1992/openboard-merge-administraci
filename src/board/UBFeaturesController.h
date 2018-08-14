@@ -214,6 +214,7 @@ public:
     void importImage(const QImage &image, const QString &fileName = QString());
     void importImage( const QImage &image, const UBFeature &destination, const QString &fileName = QString() );
     void createBookmark(const QString& fileName, const QString &urlString);
+    void createWebtoFeature(const QString& fileName,const QString& iconPath, const QString &wgtFolderPath);
     QStringList getFileNamesInFolders();
 
     void fileSystemScan(const QUrl &currPath, const QString & currVirtualPath);

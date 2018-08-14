@@ -47,6 +47,8 @@
 
 #include "frameworks/UBPlatformUtils.h"
 
+#include "board/UBBoardPaletteManager.h"
+
 #include "ui_trapFlash.h"
 
 #include "core/memcheck.h"
@@ -195,13 +197,18 @@ void UBTrapFlashController::createWidget()
 
         generateFullPageHtml(widgetDir.path(), true);
 
-        generateIcon(widgetDir.path());
+       generateIcon(widgetDir.path());
         generateConfig(800, 600, widgetDir.path());
 
         //generateDefaultPng(width, height, widgetDir.path());
 
         importWidgetInLibrary(widgetDir);
 
+        //modify fty 20180814 add web page to applications right pattele
+        //QString htmFileName = mTrapFlashUi->widgetNameLineEdit->text();
+        //QString iconFilePath = UBSettings::settings()->userInteractiveDirectory() + "/" + tr("Web") + "/" + mTrapFlashUi->widgetNameLineEdit->text() + ".wgt" + "/" + "icon.png";
+        //QString wgtFilePath = UBSettings::settings()->userInteractiveDirectory() + "/" + tr("Web") + "/" + mTrapFlashUi->widgetNameLineEdit->text() + ".wgt";
+        //UBApplication::boardController->paletteManager()->featuresWidget()->getFeaturesController()->createWebtoFeature(htmFileName,iconFilePath,wgtFilePath);
         UBFileSystemUtils::deleteDir(tempDir);
     }
     else

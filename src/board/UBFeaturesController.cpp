@@ -302,7 +302,7 @@ bool UBFeature::isDeletable() const
             || elementType == FEATURE_FOLDER
             || elementType == FEATURE_BOOKMARK
     //Ilia. Just a hotfix. Permission mechanism for UBFeatures should be reworked
-            || getVirtualPath().startsWith("/root/Applications/Web");// Issue 1627 - CFA - 20131024 : Interactivities, not Applications
+            || getVirtualPath().startsWith("/root/Interactivities/Web");// Issue 1627 - CFA - 20131024 : Interactivities, not Applications
 }
 
 bool UBFeature::inTrash() const
@@ -415,6 +415,12 @@ void UBFeaturesController::createNpApiFeature(const QString &str)
 
     featuresModel->addItem(UBFeature(QString(appPath + "/Web/" + widgetName), QImage(UBGraphicsWidgetItem::iconFilePath(QUrl::fromLocalFile(str))), widgetName, QUrl::fromLocalFile(str), FEATURE_INTERACTIVE));
 }
+
+void UBFeaturesController::createWebtoFeature(const QString& fileName,const QString& iconPath, const QString &wgtFolderPath)
+{
+    featuresModel->addItem(UBFeature(wgtFolderPath, QImage(UBGraphicsWidgetItem::iconFilePath(QUrl::fromLocalFile(iconPath))), fileName, QUrl::fromLocalFile(wgtFolderPath), FEATURE_INTERACTIVE));
+}
+
 
 void UBFeaturesController::scanFS()
 {
