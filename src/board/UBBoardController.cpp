@@ -1531,6 +1531,7 @@ UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl 
             if (eduMediaFile->open())
             {
                 eduMediaFile->write(pData);
+                eduMediaFile->close();
                 QFileInfo fi(*eduMediaFile);
                 sUrl = fi.absoluteFilePath();
             }
@@ -1547,6 +1548,7 @@ UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl 
 
         QString widgetUrl = UBGraphicsW3CWidgetItem::createNPAPIWrapper(sUrl, mimeType, size);
         UBFileSystemUtils::deleteFile(sourceUrl.toLocalFile());
+
         emit npapiWidgetCreated(widgetUrl);
 
         if (widgetUrl.length() > 0)
@@ -1554,13 +1556,15 @@ UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl 
             UBGraphicsWidgetItem *widgetItem = mActiveScene->addW3CWidget(QUrl::fromLocalFile(widgetUrl), pPos);
             widgetItem->setUuid(QUuid::createUuid());
             widgetItem->setSourceUrl(QUrl::fromLocalFile(widgetUrl));
-            qDebug() << widgetItem->getOwnFolder();
-            qDebug() << widgetItem->getSnapshotPath();
-            QString ownFolder = selectedDocument()->persistencePath() + "/" + UBPersistenceManager::widgetDirectory + "/" + widgetItem->uuid().toString() + ".wgt";
-            widgetItem->setOwnFolder(ownFolder);
-            QString adaptedUUid = widgetItem->uuid().toString().replace("{","").replace("}","");
-            ownFolder = ownFolder.replace(widgetItem->uuid().toString() + ".wgt", adaptedUUid + ".png");
-            widgetItem->setSnapshotPath(ownFolder);
+            //modify fty 20180814 solve flash inset convert to tool crash problem
+            //qDebug() << widgetItem->getOwnFolder();
+            //qDebug() << widgetItem->getSnapshotPath();
+            //QString ownFolder = selectedDocument()->persistencePath() + "/" + UBPersistenceManager::widgetDirectory + "/" + widgetItem->uuid().toString() + ".wgt";
+            //widgetItem->setOwnFolder(ownFolder);
+            //QString adaptedUUid = widgetItem->uuid().toString().replace("{","").replace("}","");
+            //ownFolder = ownFolder.replace(widgetItem->uuid().toString() + ".wgt", adaptedUUid + ".png");
+            //widgetItem->setSnapshotPath(ownFolder);
+            widgetItem->resize(size);
 
             UBDrawingController::drawingController()->setStylusTool(UBStylusTool::Selector);
 

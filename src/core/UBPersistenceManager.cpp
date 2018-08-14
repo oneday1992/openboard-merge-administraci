@@ -1196,6 +1196,7 @@ bool UBPersistenceManager::addGraphicsWidgetToDocument(UBDocumentProxy *pDocumen
         QDir dir;
         if (!dir.mkpath(destinationPath))
             return false;
+
         return UBFileSystemUtils::copyDir(widgetRootDir, destinationPath);
     }
     else

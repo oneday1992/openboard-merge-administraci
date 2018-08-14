@@ -302,7 +302,7 @@ bool UBFeature::isDeletable() const
             || elementType == FEATURE_FOLDER
             || elementType == FEATURE_BOOKMARK
     //Ilia. Just a hotfix. Permission mechanism for UBFeatures should be reworked
-            || getVirtualPath().startsWith("/root/Interactivities/Web");// Issue 1627 - CFA - 20131024 : Interactivities, not Applications
+            || getVirtualPath().startsWith("/root/Applications/Web");// Issue 1627 - CFA - 20131024 : Interactivities, not Applications
 }
 
 bool UBFeature::inTrash() const
@@ -407,6 +407,8 @@ void UBFeaturesController::startThread()
 
 void UBFeaturesController::createNpApiFeature(const QString &str)
 {
+    qDebug() << "str::" << str;
+
     Q_ASSERT(QFileInfo(str).exists() && QFileInfo(str).isDir());
 
     QString widgetName = QFileInfo(str).fileName();
