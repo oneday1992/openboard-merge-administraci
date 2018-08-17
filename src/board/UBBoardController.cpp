@@ -122,6 +122,7 @@ UBBoardController::UBBoardController(UBMainWindow* mainWindow)
     , mActionGroupText(tr("Group"))
     , mActionUngroupText(tr("Ungroup"))
     , mAutosaveTimer(0)
+    , mW3cWidgetItem(0)
 {
     mZoomFactor = UBSettings::settings()->boardZoomFactor->get().toDouble();
 
@@ -464,6 +465,12 @@ void UBBoardController::saveData(SaveFlags fls)
     if (verbose) {
         UBApplication::showMessage(tr("Document has just been saved..."));
     }
+}
+
+void UBBoardController::saveW3CWidgetPng()
+{
+    if( mW3cWidgetItem && mW3cWidgetItem->scene() )
+       mW3cWidgetItem->snapshot().save(mW3cWidgetItem->getSnapshotPath().toLocalFile(), "PNG");
 }
 
 void UBBoardController::initToolbarTexts()
@@ -1558,12 +1565,12 @@ UBItem *UBBoardController::downloadFinished(bool pSuccess, QUrl sourceUrl, QUrl 
             widgetItem->setSourceUrl(QUrl::fromLocalFile(widgetUrl));
             //modify fty 20180814 solve flash inset convert to tool crash problem
             //qDebug() << widgetItem->getOwnFolder();
-            //qDebug() << widgetItem->getSnapshotPath();
-            //QString ownFolder = selectedDocument()->persistencePath() + "/" + UBPersistenceManager::widgetDirectory + "/" + widgetItem->uuid().toString() + ".wgt";
+            qDebug() << widgetItem->getSnapshotPath();
+            QString ownFolder = selectedDocument()->persistencePath() + "/" + UBPersistenceManager::widgetDirectory + "/" + widgetItem->uuid().toString() + ".wgt";
             //widgetItem->setOwnFolder(ownFolder);
-            //QString adaptedUUid = widgetItem->uuid().toString().replace("{","").replace("}","");
-            //ownFolder = ownFolder.replace(widgetItem->uuid().toString() + ".wgt", adaptedUUid + ".png");
-            //widgetItem->setSnapshotPath(ownFolder);
+            QString adaptedUUid = widgetItem->uuid().toString().replace("{","").replace("}","");
+            ownFolder = ownFolder.replace(widgetItem->uuid().toString() + ".wgt", adaptedUUid + ".png");
+            widgetItem->setSnapshotPath(ownFolder);
             widgetItem->resize(size);
 
             UBDrawingController::drawingController()->setStylusTool(UBStylusTool::Selector);
@@ -2614,12 +2621,8 @@ UBGraphicsWidgetItem *UBBoardController::addW3cWidget(const QUrl &pUrl, const QP
         QString struuid = UBStringUtils::toCanonicalUuid(uuid);
         QString snapshotPath = selectedDocument()->persistencePath() +  "/" + UBPersistenceManager::widgetDirectory + "/" + struuid + ".png";
         w3cWidgetItem->setSnapshotPath(QUrl::fromLocalFile(snapshotPath));
-        UBGraphicsWidgetItem *tmpItem = dynamic_cast<UBGraphicsWidgetItem*>(w3cWidgetItem);
-        if (tmpItem && tmpItem->scene())
-           tmpItem->takeSnapshot().save(snapshotPath, "PNG");
-
     }
-
+    mW3cWidgetItem = w3cWidgetItem;
     return w3cWidgetItem;
 }
 

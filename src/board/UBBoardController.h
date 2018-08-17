@@ -286,6 +286,7 @@ class UBBoardController : public UBDocumentContainer
         void stopScript();
 
         void saveData(SaveFlags fls = sf_none);
+        void saveW3CWidgetPng();
 
     signals:
         void newPageAdded();
@@ -358,6 +359,8 @@ class UBBoardController : public UBDocumentContainer
 
         //EV-7 - NNE - 20131230
         UBShapeFactory mShapeFactory;
+
+        UBGraphicsWidgetItem* mW3cWidgetItem;
 
     private slots:
         void stylusToolDoubleClicked(int tool);

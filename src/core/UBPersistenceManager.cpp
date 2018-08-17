@@ -410,7 +410,6 @@ UBDocumentProxy* UBPersistenceManager::createDocumentFromDir(const QString& pDoc
 
 
     emit documentCreated(doc);
-
     return doc;
 }
 

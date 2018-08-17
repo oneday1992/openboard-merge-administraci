@@ -131,6 +131,7 @@ void UBGraphicsWidgetItem::initialize()
     connect(this, SIGNAL(loadFinished(bool)), this, SLOT(mainFrameLoadFinished (bool)));
     connect(page()->mainFrame(), SIGNAL(initialLayoutCompleted()), this, SLOT(initialLayoutCompleted()));
     connect(page(), SIGNAL(linkClicked(const QUrl&)), this, SLOT(onLinkClicked(const QUrl&)));
+    connect(this,SIGNAL(mainFramLoadFinish()),UBApplication::boardController,SLOT(saveW3CWidgetPng()));
 }
 
 void UBGraphicsWidgetItem::onLinkClicked(const QUrl& url)
@@ -621,6 +622,10 @@ void UBGraphicsWidgetItem::mainFrameLoadFinished (bool ok)
 
     if (mInitialLoadDone && scene() && scene()->renderingContext() == UBGraphicsScene::Screen)
         takeSnapshot();
+
+    if (hasLoadedSuccessfully() && scene() )
+        emit mainFramLoadFinish();
+
 }
 
 void UBGraphicsWidgetItem::wheelEvent(QGraphicsSceneWheelEvent *event)

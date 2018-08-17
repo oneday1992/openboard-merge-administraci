@@ -913,6 +913,8 @@ void UBGraphicsDelegateFrame::positionHandles()
 
 QGraphicsItem* UBGraphicsDelegateFrame::delegated()
 {
+    if (mDelegate==NULL)
+        return NULL;
     return mDelegate->delegated();
 }
 

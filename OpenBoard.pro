@@ -69,6 +69,10 @@ DEPENDPATH += src/pdf-merger
 INCLUDEPATH += src/pdf-merger
 include(src/pdf-merger/pdfMerger.pri)
 
+#plugins
+include(plugins/plugins.pri)
+INCLUDEPATH += plugins/cffadaptor/src
+
 #ThirdParty
 DEPENDPATH += $$THIRD_PARTY_PATH/quazip/
 INCLUDEPATH += $$THIRD_PARTY_PATH/quazip/

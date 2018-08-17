@@ -594,6 +594,7 @@ void UBGraphicsItemDelegate::lock(bool locked)
     mDelegated->update();
 
     positionHandles();
+    if (mFrame)
     mFrame->positionHandles();
 }
 

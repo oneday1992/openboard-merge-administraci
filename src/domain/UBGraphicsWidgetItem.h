@@ -127,6 +127,8 @@ class UBGraphicsWidgetItem : public QGraphicsWebView, public UBItem, public UBRe
         static QString widgetName(const QUrl& pUrl);
         static QString iconFilePath(const QUrl& pUrl);
 
+    Q_SIGNALS:
+        void mainFramLoadFinish();
     public slots:
         void freeze();
         void unFreeze();
