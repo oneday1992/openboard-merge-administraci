@@ -80,6 +80,17 @@ QLabel#UBTGMediaDropMeLabel
 	padding: 2px;
 }
 
+/*Issue 1683 (Evolution) - AOU - 20131206*/
+QPushButton#UBTGPushButton 
+{
+        border: 1 solid #999999;
+        border-radius : 10px;
+        width : 50px;
+        height : 18px;
+        padding: 1px;
+}
+/* Fin Issue 1683 (Evolution) - AOU - 20131206*/
+
 QComboBox#DockPaletteWidgetComboBox
 {
 	background: white;
@@ -105,6 +116,11 @@ QComboBox#DockPaletteWidgetComboBox::down-arrow
 	padding: 0px 0px 0px 0px;
 	margin: 5px 10px 0px 0px;
 	border-radius: 10px;
+}
+
+QComboBox#CacheModeSelectionComboBox
+{
+      background:#DDDDDD;
 }
 
 QPushButton#DockPaletteWidgetButton

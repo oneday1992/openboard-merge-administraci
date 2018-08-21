@@ -45,6 +45,13 @@ typedef enum
 class UBGraphicsCache : public QGraphicsRectItem, public UBItem
 {
 public:
+    enum eMode
+    {
+        OnClick = 0,
+        Persistent
+    };
+
+public:
     static UBGraphicsCache* instance(UBGraphicsScene *scene);
     ~UBGraphicsCache();
 
@@ -60,14 +67,28 @@ public:
     void setMaskColor(QColor color);
     eMaskShape maskshape();
     void setMaskShape(eMaskShape shape);
-    int shapeWidth();
-    void setShapeWidth(int width);
+    int holeWidth();
+    int holeHeight();
+
+    void setHoleWidth(int width);
+    void setHoleHeight(int height);
+
+    void setHolePos(QPointF pos);
+    void setHoleSize(QSize size);
+
+    void setMode(int mode);
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
+    void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+private:
+    void drawHole(bool draw);
 
 private:
     static QMap<UBGraphicsScene*, UBGraphicsCache*> sInstances;
@@ -76,16 +97,23 @@ private:
     eMaskShape mMaskShape;
     int mShapeWidth;
     bool mDrawMask;
-    QPointF mShapePos;
-    int mOldShapeWidth;
+    QPointF mHolePos;
+    QSize mOldShapeSize;
     QPointF mOldShapePos;
     UBGraphicsScene* mScene;
-    
+    bool mShouldDrawAtHoverEnter;
+
+    eMode mCurrentMode;
+
+    QSize mHoleSize;
 
     UBGraphicsCache(UBGraphicsScene *scene);
     
     void init();
     QRectF updateRect(QPointF currentPoint);
+
+    QCursor mSavedCursor;
+    QCursor mCursorForHole;
 };
 
 #endif // UBGRAPHICSCACHE_H
